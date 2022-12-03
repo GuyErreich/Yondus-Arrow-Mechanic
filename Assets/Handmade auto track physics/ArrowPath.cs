@@ -3,25 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Path
+public class ArrowPath
 {
     private List<Vector3> points;
 
-    public Path(Vector3 anchor1, Vector3 anchor2, Vector3 direction, float velocity) {       
-        // this.points = new List<Vector3> {
-        //     anchor1,
-        //     anchor1 + (direction * velocity)
-        // };
-
-        // direction = anchor2 - anchor1;
-
-        // this.points.AddRange(
-        //     new List<Vector3> {
-        //         anchor2 + (direction * velocity),
-        //         anchor2
-        //     }
-        // );
-
+    public ArrowPath(Vector3 anchor1, Vector3 anchor2, Vector3 direction, float velocity) {
         var control1 = anchor1 + (direction * velocity);
 
         this.points = new List<Vector3> {
@@ -55,8 +41,9 @@ public class Path
         } 
     }
 
-    public void AddSegment(Vector3 anchor) {
-        this.points.Add(this.points[this.points.Count - 1] * 2 - this.points[this.points.Count - 2]);
+    public void AddSegment(Vector3 anchor, float force) {
+        var direction = (this.points[this.points.Count - 1] - this.points[this.points.Count - 2]);
+        this.points.Add(this.points[this.points.Count - 1] + direction * force);
         this.points.Add((this.points[this.points.Count - 1] + anchor) * .5f);
         this.points.Add(anchor);
     }
