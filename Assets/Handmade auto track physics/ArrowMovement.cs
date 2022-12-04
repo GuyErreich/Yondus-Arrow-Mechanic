@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
-[RequireComponent(typeof(LineRenderer))]
 public class ArrowMovement : MonoBehaviour
 {
     [SerializeField] private List<Transform> points;
@@ -31,7 +31,7 @@ public class ArrowMovement : MonoBehaviour
 
     private void Update() {
         if (Input.GetKey(KeyCode.Space)) {
-            StartCoroutine(Shoot());
+            StartCoroutine(this.Shoot());
         }
     }
 
@@ -45,7 +45,8 @@ public class ArrowMovement : MonoBehaviour
 
             while (t <= 1) {
                 var segmentPoints = this.path.GetPointsInSegment(segmentIndex);
-                this.transform.position = BezireCurve.Cubic(segmentPoints[0], segmentPoints[1], segmentPoints[2], segmentPoints[3], t);
+                this.transform.DOMove(BezireCurve.Cubic(segmentPoints[0], segmentPoints[1], segmentPoints[2], segmentPoints[3], t), 0f);
+                this.transform.DOLookAt(BezireCurve.Quadratic(segmentPoints[1], segmentPoints[2], segmentPoints[3], t), 0.1f);
 
                 yield return new WaitForEndOfFrame();
 
