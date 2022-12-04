@@ -10,9 +10,11 @@ public class ArrowMovement : MonoBehaviour
     [SerializeField, Range(1, 4)] private float speed = 1f;
 
     private ArrowPath path;
+    private Transform parent;
 
     private void Awake() {
         this.ResetPath();
+        this.parent = this.transform.parent;
     }
 
     private void ResetPath()
@@ -30,13 +32,16 @@ public class ArrowMovement : MonoBehaviour
     }
 
     private void Update() {
-        if (Input.GetKey(KeyCode.Space)) {
+        this.ResetPath();
+        if (Input.GetKey(KeyCode.Mouse0)) {
             StartCoroutine(this.Shoot());
         }
     }
 
     private IEnumerator Shoot() {
         if (this.path == null || path.NumOfSegments == 0) yield return null;
+
+        this.transform.parent = null;
 
         var segmentIndex = 0;
 
@@ -54,6 +59,13 @@ public class ArrowMovement : MonoBehaviour
             }
 
             segmentIndex++;
+        }
+
+        this.transform.parent = this.parent;
+        while (this.transform.localPosition != Vector3.zero) {
+            yield return new WaitForEndOfFrame();
+            // this.transform.DOLocalMove(Vector3.zero, 1.5f);
+            this.transform.DORotateQuaternion(Quaternion.identity, 1.5f);
         }
     }
 }
