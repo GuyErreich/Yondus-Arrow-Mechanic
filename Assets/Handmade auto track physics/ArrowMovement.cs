@@ -49,13 +49,13 @@ public class ArrowMovement : MonoBehaviour
             var t = 0f;
 
             while (t <= 1) {
-                var segmentPoints = this.path.GetPointsInSegment(segmentIndex);
-                this.transform.DOMove(BezireCurve.Cubic(segmentPoints[0], segmentPoints[1], segmentPoints[2], segmentPoints[3], t), 0f);
-                this.transform.DOLookAt(BezireCurve.Quadratic(segmentPoints[1], segmentPoints[2], segmentPoints[3], t), 0.1f);
-
                 yield return new WaitForEndOfFrame();
 
                 t += speed * Time.deltaTime;
+
+                var segmentPoints = this.path.GetPointsInSegment(segmentIndex);
+                this.transform.DOMove(BezireCurve.Cubic(segmentPoints[0], segmentPoints[1], segmentPoints[2], segmentPoints[3], t), 0f);
+                this.transform.DOLookAt(BezireCurve.Quadratic(segmentPoints[1], segmentPoints[2], segmentPoints[3], t), 0.1f);
             }
 
             segmentIndex++;
