@@ -9,7 +9,7 @@ namespace YundosArrow.Scripts.Player
     [RequireComponent(typeof(MovementMode))]
     [RequireComponent(typeof(JumpingMode))]
     // [RequireComponent(typeof(HandleCollision))]
-    public class PlayerMachine : StateMachine {
+    public class YundosPlayerMachine : StateMachine {
 
         [SerializeField] private PlayerStates InitState;
         

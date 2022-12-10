@@ -7,7 +7,7 @@ namespace YundosArrow.Scripts.Player
     [RequireComponent(typeof(MovementHandler))]
     [RequireComponent(typeof(DetectCollision))]
     public class MovementMode : PlayerState {
-        private bool Jump { get => InputReceiver.JumpPressed || MovementHandler.jumpAgain; }
+        private bool Jump { get => InputReceiver.Bool[InputReceiverType.JumpPressed] || MovementHandler.jumpAgain; }
 
         private DetectCollision detectCollision;
 
@@ -18,9 +18,9 @@ namespace YundosArrow.Scripts.Player
             
             while (true)
             {
-                var direction = (Camera.main.transform.right * InputReceiver.SmoothMovement.x) + 
-                                (Camera.main.transform.forward * InputReceiver.SmoothMovement.y);
-                var finalSpeed = (InputReceiver.RunPressed ? PlayerStats.SprintMultiplier : 1f);
+                var direction = (Camera.main.transform.right * InputReceiver.Vector2[InputReceiverType.SmoothMovement].x) + 
+                                (Camera.main.transform.forward * InputReceiver.Vector2[InputReceiverType.SmoothMovement].y);
+                var finalSpeed = (InputReceiver.Bool[InputReceiverType.RunPressed] ? PlayerStats.SprintMultiplier : 1f);
                 finalSpeed *= PlayerStats.Speed;
                 MovementHandler.Move(direction, finalSpeed);
                 MovementHandler.Gravity();

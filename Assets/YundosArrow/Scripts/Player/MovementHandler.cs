@@ -19,8 +19,8 @@ namespace YundosArrow.Scripts.Player
         public static bool jumpAgain { get => Time.time - _jumpButtonPressedTime <= _jumpGracePeriod; } 
         public static Vector3 Direction { 
             get {
-                var X = (Camera.main.transform.right.normalized * InputReceiver.Movement.x);
-                var Z = (Camera.main.transform.forward.normalized * InputReceiver.Movement.y);
+                var X = (Camera.main.transform.right.normalized * InputReceiver.Vector2[InputReceiverType.Movement].x);
+                var Z = (Camera.main.transform.forward.normalized * InputReceiver.Vector2[InputReceiverType.Movement].y);
                 var directionXZ = Vector3.Scale(X + Z, new Vector3(1,0,1));
 
                 return directionXZ;
@@ -59,7 +59,7 @@ namespace YundosArrow.Scripts.Player
         }
 
         public static void Rotate(float rotationTime) {
-            if(InputReceiver.Movement != Vector2.zero)
+            if(InputReceiver.Vector2[InputReceiverType.Movement] != Vector2.zero)
             {
                 Quaternion toRotation = Quaternion.LookRotation(Direction, Vector3.up);
 
@@ -70,7 +70,7 @@ namespace YundosArrow.Scripts.Player
         }
 
         public static void Jump(float jumpForce, float jumpGracePeriod) {
-            if (InputReceiver.JumpPressed)
+            if (InputReceiver.Bool[InputReceiverType.JumpPressed])
                 _jumpButtonPressedTime = Time.time;
 
             _jumpGracePeriod = jumpGracePeriod;

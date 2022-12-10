@@ -27,9 +27,9 @@ namespace YundosArrow.Scripts.Player
             while (true)
             {
                 if (!PlayerStats.UsePhysics) {
-                    direction = (Camera.main.transform.right * InputReceiver.SmoothMovement.x) + 
-                                (Camera.main.transform.forward * InputReceiver.SmoothMovement.y);
-                    finalSpeed = (InputReceiver.RunPressed ? PlayerStats.SprintMultiplier : 1f);
+                    direction = (Camera.main.transform.right * InputReceiver.Vector2[InputReceiverType.SmoothMovement].x) + 
+                                (Camera.main.transform.forward * InputReceiver.Vector2[InputReceiverType.SmoothMovement].y);
+                    finalSpeed = (InputReceiver.Bool[InputReceiverType.RunPressed] ? PlayerStats.SprintMultiplier : 1f);
                     finalSpeed *= PlayerStats.Speed;
                 }
 

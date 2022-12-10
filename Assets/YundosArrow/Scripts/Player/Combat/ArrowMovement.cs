@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.VFX;
 
 namespace YundosArrow.Scripts.Player 
 {
@@ -12,6 +10,11 @@ namespace YundosArrow.Scripts.Player
         [SerializeField, Range(1, 4)] private float speed = 1f;
 
         private Transform parent;
+
+        private void Update() {
+            if (InputReceiver.Bool[InputReceiverType.ShootPressed])
+                StartCoroutine(this.Move());
+        }
 
         private IEnumerator Move() {
             var comps = this.GetComponents<LineRenderer>();

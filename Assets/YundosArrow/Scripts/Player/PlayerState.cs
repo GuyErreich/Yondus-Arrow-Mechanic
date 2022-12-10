@@ -4,10 +4,10 @@ namespace YundosArrow.Scripts.Player
 {
     public class PlayerState : State
     {
-        protected PlayerMachine stateMachine;
+        protected YundosPlayerMachine stateMachine;
 
         private void Start() {
-            this.stateMachine = GetComponent<PlayerMachine>();
+            this.stateMachine = GetComponent<YundosPlayerMachine>();
         }
 
         protected void ChangeState(PlayerStates mode) {

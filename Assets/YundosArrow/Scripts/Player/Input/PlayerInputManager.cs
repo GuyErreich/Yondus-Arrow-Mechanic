@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using YundosArrow.Scripts.Input;
 
@@ -11,7 +12,7 @@ namespace YundosArrow.Scripts.Player
         private PlayerControls.CharacterActions characterInput;
 
         private Vector2 smoothMovement, movement;
-        private bool isMoving ,isJumping, isRunnig;
+        private bool isMoving ,isJumping, isRunnig, isShooting;
 
         private Vector2 currentMovementInput, smoothMovementVelocity;
 
@@ -33,7 +34,7 @@ namespace YundosArrow.Scripts.Player
             var y = (smoothedMovement.y < smoothMovementThreshHold) && (smoothedMovement.y > -smoothMovementThreshHold) ? 0 : smoothedMovement.y;
             this.smoothMovement = new Vector2(x, y);
 
-            InputReceiver.Receive(this.movement ,this.smoothMovement, this.isRunnig, this.isJumping);
+            InputReceiver.Receive(this.InputsVector2, this.InputsBool);
         }
 
         private void CharacterInput() {
@@ -43,8 +44,25 @@ namespace YundosArrow.Scripts.Player
             this.characterInput.Movement.performed += ctx => this.movement  = ctx.ReadValue<Vector2>();
             this.characterInput.Run.started += ctx => this.isRunnig = true;
             this.characterInput.Run.canceled += ctx => this.isRunnig = false;
-            this.characterInput.Jump.started += ctx => this.isJumping = ctx.ReadValueAsButton();
-            this.characterInput.Jump.canceled += ctx => this.isJumping = ctx.ReadValueAsButton();
+            this.characterInput.Jump.started += ctx => this.isJumping = true;
+            this.characterInput.Jump.canceled += ctx => this.isJumping = false;
+            this.characterInput.Shoot.started += ctx => this.isShooting = true;
+            this.characterInput.Shoot.canceled += ctx => this.isShooting = false;
+        }
+
+        private Dictionary<InputReceiverType, bool> InputsBool {
+            get => new Dictionary<InputReceiverType, bool>() {
+                {InputReceiverType.RunPressed, this.isRunnig},
+                {InputReceiverType.JumpPressed, this.isJumping},
+                {InputReceiverType.ShootPressed, this.isShooting}
+            };
+        }
+
+        private Dictionary<InputReceiverType, Vector2> InputsVector2 {
+            get => new Dictionary<InputReceiverType, Vector2>() {
+                {InputReceiverType.Movement, this.movement},
+                {InputReceiverType.SmoothMovement, this.smoothMovement}
+            };
         }
 
         private void OnEnable() {

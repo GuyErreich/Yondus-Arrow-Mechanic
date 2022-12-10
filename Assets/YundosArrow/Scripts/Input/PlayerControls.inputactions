@@ -29,7 +29,7 @@
                     "id": "dcf54d94-6ddf-473f-bd2e-a63c554ddd45",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=2)",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -122,7 +122,7 @@
                     "name": "",
                     "id": "241828fb-6d1b-4500-8a00-a394ec1164cf",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
