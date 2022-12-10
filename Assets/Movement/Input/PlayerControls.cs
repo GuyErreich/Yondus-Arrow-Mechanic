@@ -15,12 +15,14 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public partial class @PlayerControls : IInputActionCollection2, IDisposable
+namespace Movement.Input
 {
-    public InputActionAsset asset { get; }
-    public @PlayerControls()
+    public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
-        asset = InputActionAsset.FromJson(@"{
+        public InputActionAsset asset { get; }
+        public @PlayerControls()
+        {
+            asset = InputActionAsset.FromJson(@"{
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
@@ -254,229 +256,230 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
+            // Character
+            m_Character = asset.FindActionMap("Character", throwIfNotFound: true);
+            m_Character_Movement = m_Character.FindAction("Movement", throwIfNotFound: true);
+            m_Character_Jump = m_Character.FindAction("Jump", throwIfNotFound: true);
+            m_Character_Shoot = m_Character.FindAction("Shoot", throwIfNotFound: true);
+            m_Character_Aim = m_Character.FindAction("Aim", throwIfNotFound: true);
+            m_Character_Run = m_Character.FindAction("Run", throwIfNotFound: true);
+            // SlimeRepo
+            m_SlimeRepo = asset.FindActionMap("SlimeRepo", throwIfNotFound: true);
+            m_SlimeRepo_Purple = m_SlimeRepo.FindAction("Purple", throwIfNotFound: true);
+            m_SlimeRepo_Green = m_SlimeRepo.FindAction("Green", throwIfNotFound: true);
+            // Misc
+            m_Misc = asset.FindActionMap("Misc", throwIfNotFound: true);
+            m_Misc_Menu = m_Misc.FindAction("Menu", throwIfNotFound: true);
+        }
+
+        public void Dispose()
+        {
+            UnityEngine.Object.Destroy(asset);
+        }
+
+        public InputBinding? bindingMask
+        {
+            get => asset.bindingMask;
+            set => asset.bindingMask = value;
+        }
+
+        public ReadOnlyArray<InputDevice>? devices
+        {
+            get => asset.devices;
+            set => asset.devices = value;
+        }
+
+        public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
+
+        public bool Contains(InputAction action)
+        {
+            return asset.Contains(action);
+        }
+
+        public IEnumerator<InputAction> GetEnumerator()
+        {
+            return asset.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public void Enable()
+        {
+            asset.Enable();
+        }
+
+        public void Disable()
+        {
+            asset.Disable();
+        }
+        public IEnumerable<InputBinding> bindings => asset.bindings;
+
+        public InputAction FindAction(string actionNameOrId, bool throwIfNotFound = false)
+        {
+            return asset.FindAction(actionNameOrId, throwIfNotFound);
+        }
+        public int FindBinding(InputBinding bindingMask, out InputAction action)
+        {
+            return asset.FindBinding(bindingMask, out action);
+        }
+
         // Character
-        m_Character = asset.FindActionMap("Character", throwIfNotFound: true);
-        m_Character_Movement = m_Character.FindAction("Movement", throwIfNotFound: true);
-        m_Character_Jump = m_Character.FindAction("Jump", throwIfNotFound: true);
-        m_Character_Shoot = m_Character.FindAction("Shoot", throwIfNotFound: true);
-        m_Character_Aim = m_Character.FindAction("Aim", throwIfNotFound: true);
-        m_Character_Run = m_Character.FindAction("Run", throwIfNotFound: true);
+        private readonly InputActionMap m_Character;
+        private ICharacterActions m_CharacterActionsCallbackInterface;
+        private readonly InputAction m_Character_Movement;
+        private readonly InputAction m_Character_Jump;
+        private readonly InputAction m_Character_Shoot;
+        private readonly InputAction m_Character_Aim;
+        private readonly InputAction m_Character_Run;
+        public struct CharacterActions
+        {
+            private @PlayerControls m_Wrapper;
+            public CharacterActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Movement => m_Wrapper.m_Character_Movement;
+            public InputAction @Jump => m_Wrapper.m_Character_Jump;
+            public InputAction @Shoot => m_Wrapper.m_Character_Shoot;
+            public InputAction @Aim => m_Wrapper.m_Character_Aim;
+            public InputAction @Run => m_Wrapper.m_Character_Run;
+            public InputActionMap Get() { return m_Wrapper.m_Character; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(CharacterActions set) { return set.Get(); }
+            public void SetCallbacks(ICharacterActions instance)
+            {
+                if (m_Wrapper.m_CharacterActionsCallbackInterface != null)
+                {
+                    @Movement.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMovement;
+                    @Movement.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMovement;
+                    @Movement.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMovement;
+                    @Jump.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJump;
+                    @Jump.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJump;
+                    @Jump.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJump;
+                    @Shoot.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnShoot;
+                    @Shoot.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnShoot;
+                    @Shoot.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnShoot;
+                    @Aim.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAim;
+                    @Aim.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAim;
+                    @Aim.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAim;
+                    @Run.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnRun;
+                    @Run.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnRun;
+                    @Run.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnRun;
+                }
+                m_Wrapper.m_CharacterActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Movement.started += instance.OnMovement;
+                    @Movement.performed += instance.OnMovement;
+                    @Movement.canceled += instance.OnMovement;
+                    @Jump.started += instance.OnJump;
+                    @Jump.performed += instance.OnJump;
+                    @Jump.canceled += instance.OnJump;
+                    @Shoot.started += instance.OnShoot;
+                    @Shoot.performed += instance.OnShoot;
+                    @Shoot.canceled += instance.OnShoot;
+                    @Aim.started += instance.OnAim;
+                    @Aim.performed += instance.OnAim;
+                    @Aim.canceled += instance.OnAim;
+                    @Run.started += instance.OnRun;
+                    @Run.performed += instance.OnRun;
+                    @Run.canceled += instance.OnRun;
+                }
+            }
+        }
+        public CharacterActions @Character => new CharacterActions(this);
+
         // SlimeRepo
-        m_SlimeRepo = asset.FindActionMap("SlimeRepo", throwIfNotFound: true);
-        m_SlimeRepo_Purple = m_SlimeRepo.FindAction("Purple", throwIfNotFound: true);
-        m_SlimeRepo_Green = m_SlimeRepo.FindAction("Green", throwIfNotFound: true);
+        private readonly InputActionMap m_SlimeRepo;
+        private ISlimeRepoActions m_SlimeRepoActionsCallbackInterface;
+        private readonly InputAction m_SlimeRepo_Purple;
+        private readonly InputAction m_SlimeRepo_Green;
+        public struct SlimeRepoActions
+        {
+            private @PlayerControls m_Wrapper;
+            public SlimeRepoActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Purple => m_Wrapper.m_SlimeRepo_Purple;
+            public InputAction @Green => m_Wrapper.m_SlimeRepo_Green;
+            public InputActionMap Get() { return m_Wrapper.m_SlimeRepo; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(SlimeRepoActions set) { return set.Get(); }
+            public void SetCallbacks(ISlimeRepoActions instance)
+            {
+                if (m_Wrapper.m_SlimeRepoActionsCallbackInterface != null)
+                {
+                    @Purple.started -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnPurple;
+                    @Purple.performed -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnPurple;
+                    @Purple.canceled -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnPurple;
+                    @Green.started -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnGreen;
+                    @Green.performed -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnGreen;
+                    @Green.canceled -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnGreen;
+                }
+                m_Wrapper.m_SlimeRepoActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Purple.started += instance.OnPurple;
+                    @Purple.performed += instance.OnPurple;
+                    @Purple.canceled += instance.OnPurple;
+                    @Green.started += instance.OnGreen;
+                    @Green.performed += instance.OnGreen;
+                    @Green.canceled += instance.OnGreen;
+                }
+            }
+        }
+        public SlimeRepoActions @SlimeRepo => new SlimeRepoActions(this);
+
         // Misc
-        m_Misc = asset.FindActionMap("Misc", throwIfNotFound: true);
-        m_Misc_Menu = m_Misc.FindAction("Menu", throwIfNotFound: true);
-    }
-
-    public void Dispose()
-    {
-        UnityEngine.Object.Destroy(asset);
-    }
-
-    public InputBinding? bindingMask
-    {
-        get => asset.bindingMask;
-        set => asset.bindingMask = value;
-    }
-
-    public ReadOnlyArray<InputDevice>? devices
-    {
-        get => asset.devices;
-        set => asset.devices = value;
-    }
-
-    public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
-
-    public bool Contains(InputAction action)
-    {
-        return asset.Contains(action);
-    }
-
-    public IEnumerator<InputAction> GetEnumerator()
-    {
-        return asset.GetEnumerator();
-    }
-
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
-    }
-
-    public void Enable()
-    {
-        asset.Enable();
-    }
-
-    public void Disable()
-    {
-        asset.Disable();
-    }
-    public IEnumerable<InputBinding> bindings => asset.bindings;
-
-    public InputAction FindAction(string actionNameOrId, bool throwIfNotFound = false)
-    {
-        return asset.FindAction(actionNameOrId, throwIfNotFound);
-    }
-    public int FindBinding(InputBinding bindingMask, out InputAction action)
-    {
-        return asset.FindBinding(bindingMask, out action);
-    }
-
-    // Character
-    private readonly InputActionMap m_Character;
-    private ICharacterActions m_CharacterActionsCallbackInterface;
-    private readonly InputAction m_Character_Movement;
-    private readonly InputAction m_Character_Jump;
-    private readonly InputAction m_Character_Shoot;
-    private readonly InputAction m_Character_Aim;
-    private readonly InputAction m_Character_Run;
-    public struct CharacterActions
-    {
-        private @PlayerControls m_Wrapper;
-        public CharacterActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Movement => m_Wrapper.m_Character_Movement;
-        public InputAction @Jump => m_Wrapper.m_Character_Jump;
-        public InputAction @Shoot => m_Wrapper.m_Character_Shoot;
-        public InputAction @Aim => m_Wrapper.m_Character_Aim;
-        public InputAction @Run => m_Wrapper.m_Character_Run;
-        public InputActionMap Get() { return m_Wrapper.m_Character; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CharacterActions set) { return set.Get(); }
-        public void SetCallbacks(ICharacterActions instance)
+        private readonly InputActionMap m_Misc;
+        private IMiscActions m_MiscActionsCallbackInterface;
+        private readonly InputAction m_Misc_Menu;
+        public struct MiscActions
         {
-            if (m_Wrapper.m_CharacterActionsCallbackInterface != null)
+            private @PlayerControls m_Wrapper;
+            public MiscActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Menu => m_Wrapper.m_Misc_Menu;
+            public InputActionMap Get() { return m_Wrapper.m_Misc; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(MiscActions set) { return set.Get(); }
+            public void SetCallbacks(IMiscActions instance)
             {
-                @Movement.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMovement;
-                @Movement.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMovement;
-                @Movement.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMovement;
-                @Jump.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJump;
-                @Shoot.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnShoot;
-                @Shoot.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnShoot;
-                @Shoot.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnShoot;
-                @Aim.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAim;
-                @Aim.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAim;
-                @Aim.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAim;
-                @Run.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnRun;
-                @Run.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnRun;
-                @Run.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnRun;
-            }
-            m_Wrapper.m_CharacterActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Movement.started += instance.OnMovement;
-                @Movement.performed += instance.OnMovement;
-                @Movement.canceled += instance.OnMovement;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
-                @Shoot.started += instance.OnShoot;
-                @Shoot.performed += instance.OnShoot;
-                @Shoot.canceled += instance.OnShoot;
-                @Aim.started += instance.OnAim;
-                @Aim.performed += instance.OnAim;
-                @Aim.canceled += instance.OnAim;
-                @Run.started += instance.OnRun;
-                @Run.performed += instance.OnRun;
-                @Run.canceled += instance.OnRun;
+                if (m_Wrapper.m_MiscActionsCallbackInterface != null)
+                {
+                    @Menu.started -= m_Wrapper.m_MiscActionsCallbackInterface.OnMenu;
+                    @Menu.performed -= m_Wrapper.m_MiscActionsCallbackInterface.OnMenu;
+                    @Menu.canceled -= m_Wrapper.m_MiscActionsCallbackInterface.OnMenu;
+                }
+                m_Wrapper.m_MiscActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Menu.started += instance.OnMenu;
+                    @Menu.performed += instance.OnMenu;
+                    @Menu.canceled += instance.OnMenu;
+                }
             }
         }
-    }
-    public CharacterActions @Character => new CharacterActions(this);
-
-    // SlimeRepo
-    private readonly InputActionMap m_SlimeRepo;
-    private ISlimeRepoActions m_SlimeRepoActionsCallbackInterface;
-    private readonly InputAction m_SlimeRepo_Purple;
-    private readonly InputAction m_SlimeRepo_Green;
-    public struct SlimeRepoActions
-    {
-        private @PlayerControls m_Wrapper;
-        public SlimeRepoActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Purple => m_Wrapper.m_SlimeRepo_Purple;
-        public InputAction @Green => m_Wrapper.m_SlimeRepo_Green;
-        public InputActionMap Get() { return m_Wrapper.m_SlimeRepo; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(SlimeRepoActions set) { return set.Get(); }
-        public void SetCallbacks(ISlimeRepoActions instance)
+        public MiscActions @Misc => new MiscActions(this);
+        public interface ICharacterActions
         {
-            if (m_Wrapper.m_SlimeRepoActionsCallbackInterface != null)
-            {
-                @Purple.started -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnPurple;
-                @Purple.performed -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnPurple;
-                @Purple.canceled -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnPurple;
-                @Green.started -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnGreen;
-                @Green.performed -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnGreen;
-                @Green.canceled -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnGreen;
-            }
-            m_Wrapper.m_SlimeRepoActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Purple.started += instance.OnPurple;
-                @Purple.performed += instance.OnPurple;
-                @Purple.canceled += instance.OnPurple;
-                @Green.started += instance.OnGreen;
-                @Green.performed += instance.OnGreen;
-                @Green.canceled += instance.OnGreen;
-            }
+            void OnMovement(InputAction.CallbackContext context);
+            void OnJump(InputAction.CallbackContext context);
+            void OnShoot(InputAction.CallbackContext context);
+            void OnAim(InputAction.CallbackContext context);
+            void OnRun(InputAction.CallbackContext context);
         }
-    }
-    public SlimeRepoActions @SlimeRepo => new SlimeRepoActions(this);
-
-    // Misc
-    private readonly InputActionMap m_Misc;
-    private IMiscActions m_MiscActionsCallbackInterface;
-    private readonly InputAction m_Misc_Menu;
-    public struct MiscActions
-    {
-        private @PlayerControls m_Wrapper;
-        public MiscActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Menu => m_Wrapper.m_Misc_Menu;
-        public InputActionMap Get() { return m_Wrapper.m_Misc; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MiscActions set) { return set.Get(); }
-        public void SetCallbacks(IMiscActions instance)
+        public interface ISlimeRepoActions
         {
-            if (m_Wrapper.m_MiscActionsCallbackInterface != null)
-            {
-                @Menu.started -= m_Wrapper.m_MiscActionsCallbackInterface.OnMenu;
-                @Menu.performed -= m_Wrapper.m_MiscActionsCallbackInterface.OnMenu;
-                @Menu.canceled -= m_Wrapper.m_MiscActionsCallbackInterface.OnMenu;
-            }
-            m_Wrapper.m_MiscActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Menu.started += instance.OnMenu;
-                @Menu.performed += instance.OnMenu;
-                @Menu.canceled += instance.OnMenu;
-            }
+            void OnPurple(InputAction.CallbackContext context);
+            void OnGreen(InputAction.CallbackContext context);
         }
-    }
-    public MiscActions @Misc => new MiscActions(this);
-    public interface ICharacterActions
-    {
-        void OnMovement(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
-        void OnShoot(InputAction.CallbackContext context);
-        void OnAim(InputAction.CallbackContext context);
-        void OnRun(InputAction.CallbackContext context);
-    }
-    public interface ISlimeRepoActions
-    {
-        void OnPurple(InputAction.CallbackContext context);
-        void OnGreen(InputAction.CallbackContext context);
-    }
-    public interface IMiscActions
-    {
-        void OnMenu(InputAction.CallbackContext context);
+        public interface IMiscActions
+        {
+            void OnMenu(InputAction.CallbackContext context);
+        }
     }
 }
