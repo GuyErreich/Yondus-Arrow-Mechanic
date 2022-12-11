@@ -12,7 +12,7 @@ namespace YundosArrow.Scripts.Player
         private PlayerControls.CharacterActions characterInput;
 
         private Vector2 smoothMovement, movement;
-        private bool isMoving ,isJumping, isRunnig, isShooting;
+        private bool isMoving ,isJumping, isRunnig, isShooting, isAiming;
 
         private Vector2 currentMovementInput, smoothMovementVelocity;
 
@@ -48,13 +48,16 @@ namespace YundosArrow.Scripts.Player
             this.characterInput.Jump.canceled += ctx => this.isJumping = false;
             this.characterInput.Shoot.started += ctx => this.isShooting = true;
             this.characterInput.Shoot.canceled += ctx => this.isShooting = false;
+            this.characterInput.Aim.started += ctx => this.isAiming = true;
+            this.characterInput.Aim.canceled += ctx => this.isAiming = false;
         }
 
         private Dictionary<InputReceiverType, bool> InputsBool {
             get => new Dictionary<InputReceiverType, bool>() {
                 {InputReceiverType.RunPressed, this.isRunnig},
                 {InputReceiverType.JumpPressed, this.isJumping},
-                {InputReceiverType.ShootPressed, this.isShooting}
+                {InputReceiverType.ShootPressed, this.isShooting},
+                {InputReceiverType.AimPressed, this.isAiming}
             };
         }
 

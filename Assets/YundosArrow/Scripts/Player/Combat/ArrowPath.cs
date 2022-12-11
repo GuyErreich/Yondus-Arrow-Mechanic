@@ -57,9 +57,9 @@ namespace YundosArrow.Scripts.Player
 
         public Vector3[] GetPointsInSegment(int i) {
             return new Vector3[] { 
-                this.points[i * 3],
-                this.points[i * 3 + 1],
-                this.points[i * 3 + 2],
+                this.points[LoopIndex(i * 3)],
+                this.points[LoopIndex(i * 3 + 1)],
+                this.points[LoopIndex(i * 3 + 2)],
                 this.points[LoopIndex(i * 3 + 3)] 
             };
         }

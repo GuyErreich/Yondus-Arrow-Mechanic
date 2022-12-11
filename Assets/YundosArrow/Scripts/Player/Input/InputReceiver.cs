@@ -8,7 +8,8 @@ namespace YundosArrow.Scripts.Player
         JumpPressed = 1,
         Movement = 2,
         SmoothMovement = 3,
-        ShootPressed = 4
+        ShootPressed = 4,
+        AimPressed = 5
     }
     public class InputReceiver
     {
@@ -24,7 +25,8 @@ namespace YundosArrow.Scripts.Player
             Bool = new Dictionary<InputReceiverType, bool>() {
                 {InputReceiverType.RunPressed, false},
                 {InputReceiverType.JumpPressed, false},
-                {InputReceiverType.ShootPressed, false}
+                {InputReceiverType.ShootPressed, false},
+                {InputReceiverType.AimPressed, false}
             };
         }
 
