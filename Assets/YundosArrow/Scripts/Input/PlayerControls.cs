@@ -168,7 +168,7 @@ namespace YundosArrow.Scripts.Input
                     ""name"": """",
                     ""id"": ""f1fbef26-f309-46fa-8aa1-01c526a69369"",
                     ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Aim"",

@@ -19,6 +19,10 @@ namespace YundosArrow.Scripts.Player
             
         }
 
+        public static IEnumerator shit() {
+            yield return null;
+        }
+
         // Update is called once per frame
         void Update()
         {
