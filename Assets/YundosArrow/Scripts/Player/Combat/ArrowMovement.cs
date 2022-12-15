@@ -21,7 +21,7 @@ namespace YundosArrow.Scripts.Player
             foreach (var comp in comps)
                 comp.enabled = false;
 
-            if (PathCreator.Path == null || PathCreator.Path.NumOfSegments == 0) yield return null;
+            if (PathCreator.Path == null || PathCreator.Path.NumOfPoints == 0 || PathCreator.Path.NumOfSegments == 0) yield return null;
 
             this.arrow.parent = null;
 
