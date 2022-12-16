@@ -17,7 +17,10 @@ namespace YundosArrow.Scripts.Player
         }
 
         private void LateUpdate() {
-            if (PathCreator.Path == null || PathCreator.Path.NumOfSegments == 0) return;
+            if (PathCreator.Path == null || PathCreator.Path.NumOfSegments == 0) {
+                line.positionCount = 0;
+                return;
+            }
 
             var positions = new List<Vector3>();
 

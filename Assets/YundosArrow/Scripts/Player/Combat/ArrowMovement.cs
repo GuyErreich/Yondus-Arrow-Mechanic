@@ -12,16 +12,16 @@ namespace YundosArrow.Scripts.Player
         private Transform parent;
 
         private void Update() {
-            if (InputReceiver.Bool[InputReceiverType.ShootPressed])
-                StartCoroutine(this.Move());
+            // if (InputReceiver.Bool[InputReceiverType.ShootPressed])
+            //     StartCoroutine(this.Move());
         }
 
-        private IEnumerator Move() {
+        public IEnumerator Move() {
             var comps = this.GetComponents<LineRenderer>();
             foreach (var comp in comps)
                 comp.enabled = false;
 
-            if (PathCreator.Path == null || PathCreator.Path.NumOfPoints == 0 || PathCreator.Path.NumOfSegments == 0) yield return null;
+            if (PathCreator.Path == null || PathCreator.Path.NumOfSegments == 0) yield return null;
 
             this.arrow.parent = null;
 
@@ -53,6 +53,8 @@ namespace YundosArrow.Scripts.Player
 
             foreach (var comp in comps)
                 comp.enabled = true;
+            TargetsCollection.Points = null;
+            PathCreator.Path = null;
         }
     }
 }
