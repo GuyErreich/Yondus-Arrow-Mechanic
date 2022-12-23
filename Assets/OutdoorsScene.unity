@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2160.5166, g: 2264.5703, b: 3287.5781, a: 1}
+  m_IndirectSpecularColor: {r: 2159.747, g: 2263.629, b: 3286.621, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -513,7 +513,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243862454}
-  m_LocalRotation: {x: 0.12229487, y: 0.12077137, z: -0.014994573, w: 0.9850043}
+  m_LocalRotation: {x: 0.12189598, y: 0.14458492, z: -0.017951185, w: 0.9817914}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -598,7 +598,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277728772}
-  m_LocalRotation: {x: -0.015495435, y: 0.1216838, z: 0.0018998947, w: 0.9924462}
+  m_LocalRotation: {x: -0.015444886, y: 0.14567725, z: 0.002274513, w: 0.989209}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -929,8 +929,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b97590b57c56441bdd40af17d2a0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrow: {fileID: 0}
-  speed: 2.5
 --- !u!4 &318861568
 Transform:
   m_ObjectHideFlags: 0
@@ -974,17 +972,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b835f35abae274349bcb3aee41d2443d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootScript: {fileID: 0}
-  startPoint: {fileID: 0}
-  radius: 5
-  range: 5
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  duration: 5
-  slowAmount: 0.5
-  aimPoint: {fileID: 0}
-  pointRange: 0
 --- !u!1 &395020144
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,7 +1546,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926698291}
-  m_LocalRotation: {x: -0.015495435, y: 0.1216838, z: 0.0018998947, w: 0.9924462}
+  m_LocalRotation: {x: -0.015444888, y: 0.14567725, z: 0.0022745132, w: 0.989209}
   m_LocalPosition: {x: -1.7, y: 2.4299998, z: -23.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7031,8 +7018,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b97590b57c56441bdd40af17d2a0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrow: {fileID: 1055400902}
-  speed: 4
 --- !u!1 &1615044204
 GameObject:
   m_ObjectHideFlags: 0
@@ -7498,7 +7483,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910683946}
-  m_LocalRotation: {x: -0.015495435, y: 0.1216838, z: 0.0018998947, w: 0.9924462}
+  m_LocalRotation: {x: -0.015444888, y: 0.14567725, z: 0.0022745132, w: 0.989209}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7576,8 +7561,9 @@ GameObject:
   - component: {fileID: 2050040103}
   - component: {fileID: 2050040111}
   - component: {fileID: 2050040112}
+  - component: {fileID: 2050040113}
   m_Layer: 7
-  m_Name: Capsule
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7789,17 +7775,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b835f35abae274349bcb3aee41d2443d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootScript: {fileID: 1525087277}
-  startPoint: {fileID: 2050040102}
-  radius: 0.2
-  range: 100
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  duration: 7
-  slowAmount: 0.15
-  aimPoint: {fileID: 22504402157826631, guid: f878f57321c889c40aeea0247bd930a0, type: 3}
-  pointRange: 15
 --- !u!120 &2050040112
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -7906,6 +7881,29 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &2050040113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050040090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84f585351ff37a64f8a0316a152e88f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitState: 0
+  arrowStats:
+    arrowTransform: {fileID: 1055400902}
+    idleStats:
+      duration: 1
+      strength: {x: 0.02, y: 0.03, z: 0.01}
+      vibration: 3
+      randomness: 90
+      snapping: 0
+      fadeOut: 0
+      randomnessMode: 1
 --- !u!1 &2108878286
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
-namespace YundosArrow.Scripts.Player 
+namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
 {
     public class ArrowMovement : MonoBehaviour
     {
