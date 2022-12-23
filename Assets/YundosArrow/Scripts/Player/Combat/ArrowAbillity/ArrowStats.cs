@@ -5,20 +5,25 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities
 {
 	[System.Serializable]
 	public class ArrowStats : ISerializationCallbackReceiver {
-		#region Serializable Fields
 		[Header("References")]
 		[SerializeField] private Transform arrowTransform;
 		[Space]
 
 		[SerializeField] private IdleStats idleStats;
-		#endregion Serialized Static Variables
+		[SerializeField] private MarkTargetsStats markTargetsStats;
+
+		#region Serialized Static Variables
         public static Transform ArrowTransform { get; private set; }
 		public static IdleStats IdleStats { get; private set; }
+		public static MarkTargetsStats MarkTargetsStats { get; private set; }
+		#endregion Serialized Static Variables
+
 
         public void OnAfterDeserialize()
 		{
 			ArrowTransform =  this.arrowTransform;
 			IdleStats =  this.idleStats;
+			MarkTargetsStats =  this.markTargetsStats;
 		}
 
 		public void OnBeforeSerialize()

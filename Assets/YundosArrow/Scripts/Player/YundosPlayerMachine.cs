@@ -6,8 +6,6 @@ using System.Linq;
 namespace YundosArrow.Scripts.Player
 {
     [RequireComponent(typeof(PlayerInputManager))]
-    [RequireComponent(typeof(MovementMode))]
-    [RequireComponent(typeof(JumpingMode))]
     // [RequireComponent(typeof(HandleCollision))]
     public class YundosPlayerMachine : StateMachine {
 
@@ -19,8 +17,8 @@ namespace YundosArrow.Scripts.Player
             var arraySize = Enum.GetValues(typeof(PlayerStates)).Cast<PlayerStates>().Last() + 1;
             this.States = new State[(int)arraySize];
 
-            this.States[(int)PlayerStates.GroundMovement] = this.GetComponent<MovementMode>();
-            this.States[(int)PlayerStates.Jumping] = this.GetComponent<JumpingMode>();
+            this.States[(int)PlayerStates.GroundMovement] = this.gameObject.AddComponent<MovementMode>();
+            this.States[(int)PlayerStates.Jumping] = this.gameObject.AddComponent<JumpingMode>();
         }
         
         private void Start() {
