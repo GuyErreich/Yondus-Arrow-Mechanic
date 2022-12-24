@@ -7,13 +7,13 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.States
 {
     public class Attack : ArrowState {
         public override IEnumerator On() {
-            yield return StartCoroutine(Actions.ArrowMovement.Move());
-            // while (true) {
-            //     Actions.MarkTargets.Mark();
-            //     yield return new WaitForEndOfFrame();
-            // }
+            var shoot = StartCoroutine(Actions.ArrowMovement.Move());
+            while (true) {
+                Actions.MarkTargets.Mark();
+                yield return new WaitForEndOfFrame();
+            }
 
-            ChangeState(ArrowStates.Idle);
+            // ChangeState(ArrowStates.Idle);
         }
 
         private void OnDrawGizmos() {

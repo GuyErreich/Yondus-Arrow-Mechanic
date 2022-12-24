@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils
 {
-    public class TargetsCollection
+    public class GlobalCollections
     {
-        public static List<Transform> Points { get; set; }
+        public static List<Transform> Targets { get; set; }
     }
 }

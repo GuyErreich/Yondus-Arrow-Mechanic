@@ -79,7 +79,8 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils
                 this.points.Add(this.points[0] + direction * force);
             }
             else {
-                this.points.RemoveRange(this.points.Count - 2, 2);
+                // this.points.RemoveRange(this.points.Count - 2, 2);
+                this.points.RemoveAt(this.points.Count - 1);
             }
         }
 

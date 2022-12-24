@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System;
 using UnityEngine;
 
 namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils 
@@ -11,17 +8,34 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils
 
         public static void CreatePath(Transform startPoint, Transform endPoint) {
             var direction = startPoint.forward;
-            var velocity = (endPoint.position - startPoint.position).magnitude * 0.5f;
+            // var velocity = (endPoint.position - startPoint.position).magnitude * 0.5f;
+            var velocity = ArrowStats.AttackStats.Movement.Force * 0.5f;
             Path = new ArrowPath(startPoint.position, endPoint.position, direction, velocity);
             ClosePath();
         }
-
-        //TODO: update position of targets in the arrow path
 
         public static void AddSegment(Transform anchor) {
             OpenPath();
             Path.AddSegment(anchor.position, ArrowStats.AttackStats.Movement.Force);
             ClosePath();
+        }
+
+        public void MoveSegment(int i , Transform point) {
+            if (i == 0) {
+                var direction = point.forward;
+                var velocity = ArrowStats.AttackStats.Movement.Force * 0.5f;
+
+                Path.Points[i * 3] = point.position;
+                Path.Points[i * 3 + 1] = point.position + (point.forward * velocity);
+                Path.Points[i * 3 + 2] = (Path.Points[i * 3 + 1] + Path.Points[(i + 1) * 3]) * .5f;
+            }
+            else {
+                var direction = (Path.Points[i * 3] - Path.Points[i * 3 - 1]);
+
+                Path.Points[i * 3] = point.position;
+                Path.Points[i * 3 + 1] = point.position + direction * ArrowStats.AttackStats.Movement.Force;
+                Path.Points[i * 3 + 2] = point.position;
+            }
         }
 
         private static void ClosePath() {
