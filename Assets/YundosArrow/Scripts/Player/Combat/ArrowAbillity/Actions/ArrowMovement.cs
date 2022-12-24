@@ -1,57 +1,47 @@
-// using System.Collections;
-// using DG.Tweening;
-// using UnityEngine;
+using System;
+using System.Collections;
+using DG.Tweening;
+using UnityEngine;
+using YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils;
 
-// namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
-// {
-//     public class ArrowMovement : MonoBehaviour
-//     {
-//         private Transform parent;
+namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
+{
+    public class ArrowMovement
+    {
+        public static IEnumerator Move() {
+            if (ArrowPathController.Path == null)
+                throw new NullReferenceException("ArrowPathController.Path");
 
-//         private void Update() {
-//             // if (InputReceiver.Bool[InputReceiverType.ShootPressed])
-//             //     StartCoroutine(this.Move());
-//         }
+            if (ArrowPathController.Path.NumOfSegments == 0) 
+                throw new Exception("ArrowPathController.Path cant be empty.", new IndexOutOfRangeException());
 
-//         public IEnumerator Move() {
-//             var comps = this.GetComponents<LineRenderer>();
-//             foreach (var comp in comps)
-//                 comp.enabled = false;
+            var cacheParent = ArrowStats.Arrow.parent;
+            ArrowStats.Arrow.parent = null;
 
-//             if (PathCreator.Path == null || PathCreator.Path.NumOfSegments == 0) yield return null;
+            var segmentIndex = 0;
+            var t = 0f;
 
-//             this.arrow.parent = null;
+            while(segmentIndex < ArrowPathController.Path.NumOfSegments) {
+                t = 0f;
 
-//             var segmentIndex = 0;
+                while (t <= 1) {
+                    yield return new WaitForEndOfFrame();
 
-//             var t = 0f;
+                    t += ArrowStats.AttackStats.Movement.Speed * Time.deltaTime;
 
-//             while(segmentIndex < PathCreator.Path.NumOfSegments) {
-//                 // var t = 0f;
-//                 t = 0f;
+                    var segmentPoints = ArrowPathController.Path.GetPointsInSegment(segmentIndex);
+                    ArrowStats.Arrow.DOMove(BezireCurve.Cubic(segmentPoints[0], segmentPoints[1], segmentPoints[2], segmentPoints[3], t), 0f);
+                    ArrowStats.Arrow.DOLookAt(BezireCurve.Quadratic(segmentPoints[1], segmentPoints[2], segmentPoints[3], t), 0.1f);
+                }
 
-//                 while (t <= 1) {
-//                     yield return new WaitForEndOfFrame();
+                segmentIndex++;
+            }
 
-//                     t += speed * Time.deltaTime;
+            ArrowStats.Arrow.parent = cacheParent;
+            ArrowStats.Arrow.DOLocalRotateQuaternion(Quaternion.identity, 0f);
 
-//                     var segmentPoints = PathCreator.Path.GetPointsInSegment(segmentIndex);
-//                     this.arrow.DOMove(BezireCurve.Cubic(segmentPoints[0], segmentPoints[1], segmentPoints[2], segmentPoints[3], t), 0f);
-//                     this.arrow.DOLookAt(BezireCurve.Quadratic(segmentPoints[1], segmentPoints[2], segmentPoints[3], t), 0.1f);
-//                 }
-
-//                 segmentIndex++;
-//             }
-
-//             this.arrow.parent = this.transform;
-
-//             // this.arrow.DOLocalMove(Vector3.zero, 3f);
-//             this.arrow.DOLocalRotateQuaternion(Quaternion.identity, 0f);
-
-//             foreach (var comp in comps)
-//                 comp.enabled = true;
-//             TargetsCollection.Points = null;
-//             PathCreator.Path = null;
-//         }
-//     }
-// }
+            // TargetsCollection.Points = null;
+            // ArrowPathController.Path = null;
+        }
+    }
+}

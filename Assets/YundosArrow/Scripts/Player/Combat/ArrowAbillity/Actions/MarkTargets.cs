@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils;
 
@@ -6,6 +8,10 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
     public class MarkTargets
     {
         private static RaycastHit _hit;
+
+        public static bool IsMarked { get => 
+            TargetsCollection.Points != null && TargetsCollection.Points.Count > 0f; 
+        }
 
         // // Update is called once per frame
         // private IEnumerator StartMarking() {
@@ -30,18 +36,30 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
         //     StartCoroutine((shootScript as ArrowMovement).Move());
         // }
 
-        public static void Mark() {
+        public static void Mark() {                
             Ray ray = Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f));
-            // if (Physics.SphereCast(, this.radius, Camera.main.transform.forward, out _hit, this.range, this.layerMask)) {
+
             if (Physics.SphereCast(ray, ArrowStats.AttackStats.MarkTargets.Radius, out _hit, ArrowStats.AttackStats.MarkTargets.Range, ArrowStats.AttackStats.MarkTargets.LayerMask)) {
                 if (InputReceiver.Bool[InputReceiverType.ShootPressed])
-                    if(!TargetsCollection.Points.Contains(_hit.transform))
-                        TargetsCollection.Points.Add(_hit.transform);
+                    if(!TargetsCollection.Points.Contains(_hit.transform)) {
+                        if (!IsMarked) {
+                            ArrowPathController.CreatePath(ArrowStats.StartPoint, _hit.transform);
+                            TargetsCollection.Points.Add(_hit.transform);
+                        }
+                        else {
+                            TargetsCollection.Points.Add(_hit.transform);
+                            ArrowPathController.AddSegment(_hit.transform);
+                        }
+                    }
             }
 
             if (_hit.point == Vector3.zero)
                 _hit.point = ray.origin + ray.direction * ArrowStats.AttackStats.MarkTargets.RangeOnNoHit;
         }
+
+        public static void ResetTargets() {
+            TargetsCollection.Points =  new List<Transform>();
+        } 
 
         public static void Draw() {
             Gizmos.color = Color.magenta;
