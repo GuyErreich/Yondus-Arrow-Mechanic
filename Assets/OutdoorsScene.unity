@@ -818,6 +818,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   precision: 0.015
+  line: {fileID: 0}
+  lineSplits: 0
 --- !u!120 &318861566
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -6907,6 +6909,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   precision: 0.015
+  line: {fileID: 0}
+  lineSplits: 0
 --- !u!120 &1525087276
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -7895,7 +7899,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitState: 0
   arrowStats:
-    arrowTransform: {fileID: 1055400902}
+    arrow: {fileID: 0}
+    startPosition: {x: 0, y: 0, z: 0}
     idleStats:
       duration: 1
       strength: {x: 0.02, y: 0.03, z: 0.01}
@@ -7904,14 +7909,16 @@ MonoBehaviour:
       snapping: 0
       fadeOut: 0
       randomnessMode: 1
-    markTargetsStats:
-      startPoint: {fileID: 2050040102}
-      radius: 0.5
-      range: 100
-      rangeOnNoHit: 20
-      layerMask:
-        serializedVersion: 2
-        m_Bits: 64
+    attackStats:
+      movement:
+        speed: 1
+      markTargets:
+        radius: 0.2
+        range: 50
+        rangeOnNoHit: 20
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 64
 --- !u!1 &2108878286
 GameObject:
   m_ObjectHideFlags: 0
