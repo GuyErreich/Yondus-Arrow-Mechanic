@@ -9,33 +9,29 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
     public class ArrowMovement
     {
         public static IEnumerator Move() {
-            if (ArrowPathController.Path == null)
-                throw new NullReferenceException("ArrowPathController.Path");
+        //     if (ArrowPathController.Path == null)
+        //         throw new NullReferenceException("ArrowPathController.Path");
 
-            if (ArrowPathController.Path.NumOfSegments == 0) 
-                throw new Exception("ArrowPathController.Path cant be empty.", new IndexOutOfRangeException());
+        //     if (ArrowPathController.Path.NumOfSegments == 0) 
+        //         throw new Exception("ArrowPathController.Path cant be empty.", new IndexOutOfRangeException());
 
             var cacheParent = ArrowStats.Arrow.parent;
             ArrowStats.Arrow.parent = null;
 
-            var segmentIndex = 0;
-            var t = 0f;
-
-            while(segmentIndex < ArrowPathController.Path.NumOfSegments) {
-                t = 0f;
-
+            var path = GlobalCollections.Path;
+            while (path.Count > 0) {
+                var t = 0f;
+                var segment = path[0];
                 while (t <= 1) {
+                    ArrowStats.Arrow.DOMove(BezireCurve.Lerp(segment.start, segment.end, t), 0f);
+                    
                     yield return new WaitForEndOfFrame();
-
-                    t += ArrowStats.AttackStats.Movement.Speed * Time.deltaTime;
-
-                    var segmentPoints = ArrowPathController.Path.GetPointsInSegment(segmentIndex);
-                    ArrowStats.Arrow.DOMove(BezireCurve.Cubic(segmentPoints[0], segmentPoints[1], segmentPoints[2], segmentPoints[3], t), 0f);
-                    ArrowStats.Arrow.DOLookAt(BezireCurve.Quadratic(segmentPoints[1], segmentPoints[2], segmentPoints[3], t), 0.1f);
+                    t += 0.2f * Time.deltaTime;
                 }
-
-                segmentIndex++;
+                path.RemoveAt(0);
             }
+
+            GlobalCollections.Targets.Clear();
 
             ArrowStats.Arrow.parent = cacheParent;
             ArrowStats.Arrow.DOLocalRotateQuaternion(Quaternion.identity, 0f);

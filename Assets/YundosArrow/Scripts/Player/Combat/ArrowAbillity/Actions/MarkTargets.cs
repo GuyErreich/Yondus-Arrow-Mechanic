@@ -7,39 +7,47 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
 {
     public static class MarkTargets
     {
-        private static LinearArrowPath path;
-        private static List<Transform> targets;
-
         private static RaycastHit _hit;
 
-        public static bool IsMarked { get => targets != null && targets.Count > 0f; }
+        public static bool IsMarked { get => GlobalCollections.Targets != null && GlobalCollections.Targets.Count > 0f; }
 
         public static void Mark() {                
             Ray ray = Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f));
 
             if (Physics.SphereCast(ray, ArrowStats.AttackStats.MarkTargets.Radius, out _hit, ArrowStats.AttackStats.MarkTargets.Range, ArrowStats.AttackStats.MarkTargets.LayerMask)) {
-                if (InputReceiver.Bool[InputReceiverType.ShootPressed])
-                    if(!GlobalCollections.Targets.Contains(_hit.transform)) {
-                        if (!IsMarked) {
-                            path = new LinearArrowPath();
-                            targets = 
-                            path.AddSegment(ArrowStats.StartPoint.position, _hit.point);
-                            targets.Add(_hit.transform);
-                        }
-                        else {
+                if (InputReceiver.Bool[InputReceiverType.ShootPressed]) {
+                    if (!IsMarked) {
+                        //Targets
+                        GlobalCollections.Targets = new List<Transform>();
+                        GlobalCollections.Targets.Add(_hit.transform);
+                        
+                        //Path
+                        GlobalCollections.Path = new LinearArrowPath();
+                        var segment = new Segment(ArrowStats.StartPoint.position, _hit.point);
+                        GlobalCollections.Path.Add(segment);
+                        GlobalCollections.Path.ClosePath();
+                    }
+                    else {
+                        if(!GlobalCollections.Targets.Contains(_hit.transform)) {
+                            //Path
+                            var targets = GlobalCollections.Targets;
+                            var last_target_pos = targets[targets.Count - 1].transform.position;
+                            var segment = new Segment(last_target_pos, _hit.point);
+                            
+                            GlobalCollections.Path.OpenPath();
+                            GlobalCollections.Path.Add(segment);
+                            GlobalCollections.Path.ClosePath();
+                            
+                            //Targets
                             GlobalCollections.Targets.Add(_hit.transform);
-                            ArrowPathController.AddSegment(_hit.transform);
                         }
                     }
+                }
             }
 
             if (_hit.point == Vector3.zero)
                 _hit.point = ray.origin + ray.direction * ArrowStats.AttackStats.MarkTargets.RangeOnNoHit;
         }
-
-        public static void ResetTargets() {
-            GlobalCollections.Targets =  new List<Transform>();
-        } 
 
         public static void Draw() {
             Gizmos.color = Color.magenta;

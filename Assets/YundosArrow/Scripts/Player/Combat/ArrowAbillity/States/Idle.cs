@@ -7,8 +7,6 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.States
     public class Idle : ArrowState {
         public override IEnumerator On() {
             ArrowStates nextState;
-            
-            MarkTargets.ResetTargets();
 
             var anim = StartCoroutine(Actions.Idle.FloatAnimation());
             

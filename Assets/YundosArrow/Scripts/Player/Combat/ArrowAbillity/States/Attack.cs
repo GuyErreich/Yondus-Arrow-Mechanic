@@ -1,19 +1,31 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils;
+using YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions;
 
 namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.States
 {
     public class Attack : ArrowState {
         public override IEnumerator On() {
-            var shoot = StartCoroutine(Actions.ArrowMovement.Move());
+            ArrowStates nextState;
+
+            var shoot = StartCoroutine(ArrowMovement.Move());
+
             while (true) {
-                Actions.MarkTargets.Mark();
+                MarkTargets.Mark();
+
                 yield return new WaitForEndOfFrame();
+
+                print("Attack");
+                
+                if (!MarkTargets.IsMarked) {
+                    nextState = ArrowStates.Idle;
+                    break;
+                }
             }
 
-            // ChangeState(ArrowStates.Idle);
+            StopCoroutine(shoot);
+
+            ChangeState(nextState);
         }
 
         private void OnDrawGizmos() {
