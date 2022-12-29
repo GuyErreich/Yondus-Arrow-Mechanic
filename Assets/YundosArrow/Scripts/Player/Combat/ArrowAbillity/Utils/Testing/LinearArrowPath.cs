@@ -7,10 +7,13 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils
     public class LinearArrowPath
     {
         private List<Segment> segments;
+        private Segment startSegement;
         private bool isClosed { get; set;}
         
-        public LinearArrowPath() {
+        public LinearArrowPath(Segment segment) {
             this.segments = new List<Segment>();
+            this.segments.Add(segment);
+            this.startSegement = segment;
         }
 
         public void Add(Segment segment) {
@@ -25,7 +28,7 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils
             this.isClosed = !this.isClosed;
 
             if (this.isClosed) {
-                var seg = new Segment( segments[segments.Count - 1].end, segments[0].start);
+                var seg = new Segment( segments[segments.Count - 1].end, startSegement.start);
                 this.segments.Add(seg);
             }
             else {

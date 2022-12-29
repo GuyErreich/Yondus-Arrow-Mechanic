@@ -17,7 +17,7 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.States
 
                 print("Attack");
                 
-                if (!MarkTargets.IsMarked) {
+                if (!ArrowMovement.IsMoving) {
                     nextState = ArrowStates.Idle;
                     break;
                 }

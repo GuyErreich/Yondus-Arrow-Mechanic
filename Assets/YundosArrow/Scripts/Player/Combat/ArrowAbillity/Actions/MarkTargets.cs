@@ -22,13 +22,12 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
                         GlobalCollections.Targets.Add(_hit.transform);
                         
                         //Path
-                        GlobalCollections.Path = new LinearArrowPath();
                         var segment = new Segment(ArrowStats.StartPoint.position, _hit.point);
-                        GlobalCollections.Path.Add(segment);
+                        GlobalCollections.Path = new LinearArrowPath(segment);
                         GlobalCollections.Path.ClosePath();
                     }
                     else {
-                        if(!GlobalCollections.Targets.Contains(_hit.transform)) {
+                        if(GlobalCollections.Targets[GlobalCollections.Targets.Count - 1] != _hit.transform) {
                             //Path
                             var targets = GlobalCollections.Targets;
                             var last_target_pos = targets[targets.Count - 1].transform.position;

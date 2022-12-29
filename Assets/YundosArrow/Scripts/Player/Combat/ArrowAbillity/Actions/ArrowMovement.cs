@@ -8,6 +8,8 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
 {
     public class ArrowMovement
     {
+        public static bool IsMoving { get => GlobalCollections.Path != null && GlobalCollections.Path.Count > 0f; }
+
         public static IEnumerator Move() {
         //     if (ArrowPathController.Path == null)
         //         throw new NullReferenceException("ArrowPathController.Path");
@@ -26,12 +28,13 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
                     ArrowStats.Arrow.DOMove(BezireCurve.Lerp(segment.start, segment.end, t), 0f);
                     
                     yield return new WaitForEndOfFrame();
-                    t += 0.2f * Time.deltaTime;
+                    t += ArrowStats.AttackStats.Movement.Speed * Time.deltaTime;
                 }
                 path.RemoveAt(0);
+                if (MarkTargets.IsMarked)
+                    GlobalCollections.Targets.RemoveAt(0);
             }
 
-            GlobalCollections.Targets.Clear();
 
             ArrowStats.Arrow.parent = cacheParent;
             ArrowStats.Arrow.DOLocalRotateQuaternion(Quaternion.identity, 0f);

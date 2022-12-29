@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 2160.5088, g: 2264.5703, b: 3287.6133, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1542,7 +1542,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926698291}
-  m_LocalRotation: {x: 0.03671285, y: 0.1453476, z: -0.0053971964, w: 0.98868454}
+  m_LocalRotation: {x: 0.036712855, y: 0.1453476, z: -0.005397198, w: 0.98868454}
   m_LocalPosition: {x: -1.7, y: 2.4299998, z: -17.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7475,7 +7475,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910683946}
-  m_LocalRotation: {x: 0.03671285, y: 0.1453476, z: -0.0053971964, w: 0.98868454}
+  m_LocalRotation: {x: 0.036712855, y: 0.1453476, z: -0.005397198, w: 0.98868454}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7886,7 +7886,7 @@ MonoBehaviour:
       randomnessMode: 1
     attackStats:
       movement:
-        speed: 1
+        speed: 0.5
         force: 1
         loopHoleForce: 3.9
       markTargets:
