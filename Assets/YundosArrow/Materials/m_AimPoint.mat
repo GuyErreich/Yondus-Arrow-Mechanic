@@ -12,12 +12,14 @@ Material:
     type: 3}
   m_ValidKeywords:
   - _ALPHATEST_ON
+  - _ALPHATOMASK_ON
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords:
   - _DISABLE_SSR_TRANSPARENT
+  - _DOUBLESIDED_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: 3000
   stringTagMap:
     MotionVector: User
@@ -49,8 +51,8 @@ Material:
     - _AlphaCutoffEnable: 1
     - _AlphaDstBlend: 10
     - _AlphaSrcBlend: 1
-    - _AlphaToMask: 0
-    - _AlphaToMaskInspectorValue: 0
+    - _AlphaToMask: 1
+    - _AlphaToMaskInspectorValue: 1
     - _Amplitude: 2.58
     - _BUILTIN_AlphaClip: 1
     - _BUILTIN_Blend: 0
@@ -65,11 +67,11 @@ Material:
     - _BUILTIN_ZWriteControl: 0
     - _BlendMode: 0
     - _ConservativeDepthOffsetEnable: 0
-    - _CullMode: 1
-    - _CullModeForward: 1
+    - _CullMode: 0
+    - _CullModeForward: 0
     - _DepthOffsetEnable: 0
-    - _DoubleSidedEnable: 0
-    - _DoubleSidedGIMode: 2
+    - _DoubleSidedEnable: 1
+    - _DoubleSidedGIMode: 1
     - _DoubleSidedNormalMode: 2
     - _DstBlend: 10
     - _EnableBlendModePreserveSpecularLighting: 1
@@ -106,12 +108,12 @@ Material:
     - _TransparentDepthPrepassEnable: 0
     - _TransparentSortPriority: 0
     - _TransparentWritingMotionVec: 0
-    - _TransparentZWrite: 0
+    - _TransparentZWrite: 1
     - _UseShadowThreshold: 0
     - _ZTestDepthEqualForOpaque: 4
     - _ZTestGBuffer: 3
     - _ZTestTransparent: 4
-    - _ZWrite: 0
+    - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.063725494, g: 0, b: 0.25, a: 0}
     - _Direction: {r: 0, g: 0, b: 0, a: 0}

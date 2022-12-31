@@ -19,7 +19,7 @@ namespace YundosArrow.Scripts.Enemy
         // Update is called once per frame
         void Update()
         {
-            agent.Move(player.position);
+            agent.destination = player.position;
         }
     }
 }

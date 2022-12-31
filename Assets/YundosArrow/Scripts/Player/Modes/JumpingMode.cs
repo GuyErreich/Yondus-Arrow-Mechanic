@@ -19,9 +19,13 @@ namespace YundosArrow.Scripts.Player
             var direction = Vector3.zero;
             var finalSpeed = 0f;
 
-            if (MovementHandler.UsePhysics) {
-                direction = this.GetComponent<CharacterController>().velocity;
-                finalSpeed = 1f;
+            if (PlayerStats.UsePhysics) {
+                // direction = this.GetComponent<CharacterController>().velocity;
+                // finalSpeed = 1f;
+                direction = (Camera.main.transform.right * InputReceiver.Vector2[InputReceiverType.SmoothMovement].x) + 
+                                (Camera.main.transform.forward * InputReceiver.Vector2[InputReceiverType.SmoothMovement].y);
+                finalSpeed = (InputReceiver.Bool[InputReceiverType.RunPressed] ? PlayerStats.SprintMultiplier : 1f);
+                finalSpeed *= PlayerStats.Speed;
             }
 
             while (true)
@@ -37,6 +41,8 @@ namespace YundosArrow.Scripts.Player
                 MovementHandler.Move(direction, finalSpeed);
                 MovementHandler.Gravity();
                 MovementHandler.Rotate(PlayerStats.RotationSpeed);
+
+                Debug.Log("Jumping");
 
                 yield return new WaitForEndOfFrame();
 

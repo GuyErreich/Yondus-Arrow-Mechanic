@@ -26,6 +26,8 @@ namespace YundosArrow.Scripts.Player
                 MovementHandler.Gravity();
                 MovementHandler.Rotate(PlayerStats.RotationSpeed);
 
+                Debug.Log("Moving");
+
                 yield return new WaitForEndOfFrame();
 
                 if (this.Jump) {

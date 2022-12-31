@@ -41,13 +41,12 @@ namespace YundosArrow.Scripts.Player
         }
 
         public static void Gravity() {
-            var speed = 1.2f; //TODO: make it global and serializable with a curve
-
+            //TODO: make it global and serializable with a curve
             if (!_charController.isGrounded) {
                 if (_ySpeed >= 0f)
                     _ySpeed += Physics.gravity.y * Time.deltaTime;
                 else 
-                    _ySpeed += Physics.gravity.y * speed * Time.deltaTime;
+                    _ySpeed += Physics.gravity.y * PlayerStats.FallMultiplier * Time.deltaTime;
             }
 
             if(_charController.isGrounded) {

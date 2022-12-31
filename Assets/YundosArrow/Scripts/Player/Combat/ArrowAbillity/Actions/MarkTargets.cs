@@ -21,21 +21,25 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
                         GlobalCollections.Targets = new List<Transform>();
                         GlobalCollections.Targets.Add(_hit.transform);
                         
-                        //Path
-                        var segment = new Segment(ArrowStats.StartPoint.position, _hit.point);
-                        GlobalCollections.Path = new LinearArrowPath(segment);
-                        GlobalCollections.Path.ClosePath();
+                        // //Path
+                        // if (!ArrowMovement.IsMoving) {
+                        //     var segment = new Segment(ArrowStats.StartPoint.position, _hit.point);
+                        //     GlobalCollections.Path = new LinearArrowPath(segment);
+                        //     GlobalCollections.Path.ClosePath();
+                        // }
                     }
                     else {
                         if(GlobalCollections.Targets[GlobalCollections.Targets.Count - 1] != _hit.transform) {
                             //Path
-                            var targets = GlobalCollections.Targets;
-                            var last_target_pos = targets[targets.Count - 1].transform.position;
-                            var segment = new Segment(last_target_pos, _hit.point);
-                            
-                            GlobalCollections.Path.OpenPath();
-                            GlobalCollections.Path.Add(segment);
-                            GlobalCollections.Path.ClosePath();
+                            // if (GlobalCollections.Path[0].end != GlobalCollections.Path.StartSegment.start) {
+                            //     var targets = GlobalCollections.Targets;
+                            //     var last_target_pos = targets[targets.Count - 1].transform.position;
+                            //     var segment = new Segment(last_target_pos, _hit.point);
+
+                            //     GlobalCollections.Path.OpenPath();
+                            //     GlobalCollections.Path.Add(segment);
+                            //     GlobalCollections.Path.ClosePath();
+                            // }
                             
                             //Targets
                             GlobalCollections.Targets.Add(_hit.transform);
