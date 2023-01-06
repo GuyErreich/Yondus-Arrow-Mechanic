@@ -31,11 +31,18 @@ namespace YundosArrow.Scripts.Systems.Managers.Enemy
             {
                 instance = this;
                 DontDestroyOnLoad(this.gameObject);
+
+                this.Init();
             }
         }
 
         void Start()
         {
+
+            StartCoroutine(Instance.StartSpawning());
+        }
+
+        private void Init() {
             Enemies = new List<Transform>();
             enemiesPool = new Queue<Transform>();
 
@@ -46,8 +53,6 @@ namespace YundosArrow.Scripts.Systems.Managers.Enemy
                 enemy.SetActive(false);
                 enemiesPool.Enqueue(enemy.transform);
             }
-
-            StartCoroutine(Instance.StartSpawning());
         }
 
         private IEnumerator StartSpawning() {

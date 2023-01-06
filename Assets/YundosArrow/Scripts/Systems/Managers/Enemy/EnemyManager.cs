@@ -44,7 +44,9 @@ namespace YundosArrow.Scripts.Systems.Managers.Enemy
             while (true) {
                 foreach(var enemy in EnemySpawnManager.Enemies) {
                     var agent = enemy.GetComponent<NavMeshAgent>();
-                    agent.destination = Instance.player.position;
+                    if (agent) {
+                        agent.destination = Instance.player.position;
+                    }
                 }
 
                 yield return new WaitForEndOfFrame();
