@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
 
-namespace Systems.Managers.Enemy
+namespace YundosArrow.Scripts.Systems.Managers.Enemy
 {
     public class EnemySpawnManager : MonoBehaviour 
     {
@@ -14,27 +15,44 @@ namespace Systems.Managers.Enemy
         [SerializeField] private float respawnTime = 10f;
         [SerializeField] private LayerMask spawnMask;
 
-        private static List<Transform> enemies;
         private static Queue<Transform> enemiesPool;
+        public static List<Transform> Enemies { get; private set; }
+
+        private static EnemySpawnManager instance;
+        public static EnemySpawnManager Instance { get => instance; }
+
+        private void Awake()
+        {
+            if (instance != null && instance != this)
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                instance = this;
+                DontDestroyOnLoad(this.gameObject);
+            }
+        }
 
         void Start()
         {
-            enemies = new List<Transform>();
+            Enemies = new List<Transform>();
             enemiesPool = new Queue<Transform>();
 
             for (int i = 0; i < this.amount; i++) {
                 GameObject enemy = Instantiate(this.pref_Enemy);
+                // enemy.AddComponent<NavMeshAgent>();
                 enemy.transform.SetParent(enemiesContainer);
                 enemy.SetActive(false);
                 enemiesPool.Enqueue(enemy.transform);
             }
 
-            StartCoroutine(this.StartSpawning());
+            StartCoroutine(Instance.StartSpawning());
         }
 
         private IEnumerator StartSpawning() {
             while (true) {
-                if (enemies.Count < this.amount) {
+                if (Enemies.Count < this.amount) {
                     var enemy = enemiesPool.Dequeue();
 
                     var spawnIndex = Random.Range(0, spawnAreas.Count);
@@ -50,7 +68,7 @@ namespace Systems.Managers.Enemy
                     enemy.gameObject.SetActive(true);
                     enemy.transform.position = spawnArea.transform.TransformPoint(spawnPoint);
 
-                    enemies.Add(enemy);
+                    Enemies.Add(enemy);
 
                     yield return new WaitForSeconds(respawnTime);
                 }

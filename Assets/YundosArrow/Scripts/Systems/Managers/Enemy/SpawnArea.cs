@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Systems.Managers.Enemy
+namespace YundosArrow.Scripts.Systems.Managers.Enemy
 {
     public class SpawnArea : MonoBehaviour {
         [MenuItem("GameObject/Systems/Managers/Enemy/EnemySpawnManager/SpawnArea")]
