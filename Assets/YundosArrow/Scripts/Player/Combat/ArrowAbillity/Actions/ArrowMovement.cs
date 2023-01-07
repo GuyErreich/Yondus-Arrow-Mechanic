@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils;
+using YundosArrow.Scripts.Systems;
 
 namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
 {
@@ -43,6 +44,7 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
 
                     t += (ArrowStats.AttackStats.Movement.Speed / distance)  * Time.deltaTime;              
                 }
+                targets[0].GetComponent<Health>().Change(50);
                 targets.RemoveAt(0);
             }
 

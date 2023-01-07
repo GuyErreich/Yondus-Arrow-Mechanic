@@ -42,7 +42,7 @@ namespace YundosArrow.Scripts.Systems.Managers.Enemy
 
         private static IEnumerator MovementSupervisor() {
             while (true) {
-                foreach(var enemy in EnemySpawnManager.Enemies) {
+                foreach(var enemy in EnemySpawnManager.Instance.Enemies) {
                     var agent = enemy.GetComponent<NavMeshAgent>();
                     if (agent) {
                         agent.destination = Instance.player.position;
