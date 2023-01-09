@@ -15,7 +15,5 @@ namespace YundosArrow.Scripts.Systems.Managers.Enemy
             Gizmos.color = Color.magenta;
             Gizmos.DrawWireCube(Vector3.zero, this.transform.lossyScale);
         }
-
-
     }
 }
