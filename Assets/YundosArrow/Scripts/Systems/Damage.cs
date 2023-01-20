@@ -2,10 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace YundosArrow.Scripts.Systems {
-    [RequireComponent(typeof(Collider))]
     public class Damage : MonoBehaviour, ISerializationCallbackReceiver {
+        [System.Serializable]
+        private struct col {
+            [SerializeField] public Vector3 center;
+            [SerializeField] public float radius;
+        }
+
+        [SerializeField] private new col collider;
         [SerializeField] private float amount;
-        [SerializeField] private List<string> tagsToHit;
+        [SerializeField] private LayerMask layerMask;
 
         public float Amount { get; set; }
 
@@ -15,22 +21,20 @@ namespace YundosArrow.Scripts.Systems {
 
         private void OnTriggerEnter(Collider other) {
             print(amount);
-            foreach (string tag in tagsToHit) {
+            if (other.tag == "Enemy") {
                 var health = other.GetComponent<Health>();
                 if (health) {
-                    health.Change(this.Amount);
+                    health.Change(-(this.Amount));
                 }
             }
         }
 
-        private void OnCollisionEnter(Collision other) {
-            print("1" + amount);
-            foreach (string tag in tagsToHit) {
-                var health = other.gameObject.GetComponent<Health>();
-                if (health) {
-                    health.Change(this.Amount);
-                }
-            }
+        private void OnDrawGizmosSelected() {
+
+            Gizmos.matrix = this.transform.localToWorldMatrix;
+            Gizmos.color = Color.green;
+            // var pos = this.transform.right * this.collider.center.x + this.transform.up * this.collider.center.y + this.transform.forward * this.collider.center.z;
+            Gizmos.DrawWireSphere(this.collider.center, this.collider.radius);
         }
 
         public void OnBeforeSerialize()

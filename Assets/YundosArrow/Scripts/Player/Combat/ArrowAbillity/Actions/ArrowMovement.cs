@@ -44,7 +44,6 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
 
                     t += (ArrowStats.AttackStats.Movement.Speed / distance)  * Time.deltaTime;              
                 }
-                targets[0].GetComponent<Health>().Change(50);
                 targets.RemoveAt(0);
             }
 

@@ -11,8 +11,6 @@ namespace YundosArrow.Scripts.Systems.Managers.Enemy
     {
         [SerializeField] private Transform enemy;
         [SerializeField] private Transform enemiesContainer;
-        [SerializeField] private Transform healthBar;
-        [SerializeField] private Transform healthBarsContainer;
 
         [SerializeField] private List<SpawnArea> spawnAreas;
         [SerializeField] private int amount = 10;
@@ -20,10 +18,8 @@ namespace YundosArrow.Scripts.Systems.Managers.Enemy
         [SerializeField] private LayerMask spawnMask;
 
         private Queue<Transform> enemiesPool = new Queue<Transform>();
-        private Queue<Transform> healthBarsPool = new Queue<Transform>();
 
         public List<Transform> Enemies { get; private set; }
-        public Dictionary<Transform, Transform> HealthBars { get; private set; }
 
         private static EnemySpawnManager instance;
         public static EnemySpawnManager Instance { get => instance; }
@@ -36,59 +32,51 @@ namespace YundosArrow.Scripts.Systems.Managers.Enemy
             }
             else
             {
-                instance = this;
                 DontDestroyOnLoad(this.gameObject);
-
-                this.Init();
+                instance = this;
             }
+
+            Instance.Init();
         }
 
         void Start()
         {
-            StartCoroutine(Instance.StartSpawning());
+            StartCoroutine(Instance.SpawnSupervisor());
         }
 
         private void Init() {
             Instance.Enemies = new List<Transform>();
-            Instance.HealthBars = new Dictionary<Transform, Transform>();
 
             for (int i = 0; i < Instance.amount; i++) {
                 var newEnemy = Instantiate(Instance.enemy, Vector3.zero, Quaternion.identity, Instance.enemiesContainer);
                 newEnemy.position = Vector3.zero;
                 newEnemy.rotation = Quaternion.identity;
-                enemy.gameObject.SetActive(false);
-                enemiesPool.Enqueue(newEnemy);
-
-                var newHealthBar = Instantiate(Instance.healthBar,Instance.healthBarsContainer);
-                newHealthBar.position = Vector3.zero;
-                newHealthBar.rotation = Quaternion.identity;
-                newHealthBar.gameObject.SetActive(false);
-                healthBarsPool.Enqueue(newHealthBar);
+                Instance.enemy.gameObject.SetActive(false);
+                Instance.enemiesPool.Enqueue(newEnemy);
             }
         }
 
-        private IEnumerator StartSpawning() {
+        private IEnumerator SpawnSupervisor() {
             while (true) {
                 if (Instance.Enemies.Count < Instance.amount) {
-                    var enemy = Instance.enemiesPool.Dequeue();
-                    enemy.position = Instance.GetRandomSpawnPoint();
-                    enemy.gameObject.SetActive(true);
+                    var currentEnemy = Instance.enemiesPool.Dequeue();
+                    currentEnemy.position = Instance.GetRandomSpawnPoint();
+                    currentEnemy.GetComponent<Health>().OnDeath += this.StashEnemy;
+                    currentEnemy.gameObject.SetActive(true);
 
-                    if (Instance.HealthBars.Count < Instance.amount) {
-                        var healthBar = Instance.healthBarsPool.Dequeue();
-                        healthBar.GetComponent<DynamicHealthBar>().Target = enemy;
-                        enemy.GetComponent<Health>().OnHealthChanged += healthBar.GetComponent<DynamicHealthBar>().HandleHealthChanged;
-                        healthBar.gameObject.SetActive(true);
-                        HealthBars.Add(enemy, healthBar);
-                    }
-
-                    Enemies.Add(enemy);
-
-                    yield return new WaitForSeconds(respawnTime);
+                    Instance.Enemies.Add(currentEnemy);
                 }
 
-                yield return new WaitForEndOfFrame();
+                yield return new WaitForSeconds(respawnTime);
             }
+        }
+
+        public void StashEnemy(GameObject currentEnemy) {
+            currentEnemy.GetComponent<Health>().OnDeath -= this.StashEnemy;
+            currentEnemy.SetActive(false);
+
+            Instance.Enemies.Remove(currentEnemy.transform);
+            Instance.enemiesPool.Enqueue(currentEnemy.transform);
         }
 
         private Vector3 GetRandomSpawnPoint() {

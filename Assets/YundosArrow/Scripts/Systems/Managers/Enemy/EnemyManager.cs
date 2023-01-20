@@ -1,12 +1,36 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using YundosArrow.Scripts.UI.HealthBars;
 
 namespace YundosArrow.Scripts.Systems.Managers.Enemy
 {
     public class EnemyManager : MonoBehaviour {
         [SerializeField] private Transform player;
+        [SerializeField] private Transform healthBar;
+        [SerializeField] private Transform healthBarsContainer;
+
+        private Queue<DynamicHealthBar> healthBarsPool = new Queue<DynamicHealthBar>();
+        
+        public Transform Player { get => player; }
+
+        public DynamicHealthBar HealthBar { 
+            get {
+                if (Instance.healthBarsPool == null || Instance.healthBarsPool.Count == 0)
+                    return Instantiate(Instance.healthBar, Instance.healthBarsContainer).GetComponent<DynamicHealthBar>();
+                else 
+                    return Instance.healthBarsPool.Dequeue();
+            }
+
+            set {
+                if (value.GetComponent<DynamicHealthBar>() != null)
+                    Instance.healthBarsPool.Enqueue(value);
+                else
+                    throw new System.TypeLoadException("You can only set Transform type to HealthBar");
+            }            
+        }
 
         private static EnemyManager instance;
 
@@ -26,6 +50,7 @@ namespace YundosArrow.Scripts.Systems.Managers.Enemy
         {
             if (instance == null)
             {
+                DontDestroyOnLoad(this.gameObject);
                 instance = this;
             }
             else if (instance != this)
@@ -33,30 +58,6 @@ namespace YundosArrow.Scripts.Systems.Managers.Enemy
                 Destroy(this.gameObject);
             }
             
-            DontDestroyOnLoad(this.gameObject);
-        }
-
-        private void Start() {
-            StartCoroutine(MovementSupervisor());
-        }
-
-        private static IEnumerator MovementSupervisor() {
-            while (true) {
-                foreach(var enemy in EnemySpawnManager.Instance.Enemies) {
-                    var agent = enemy.GetComponent<NavMeshAgent>();
-                    if (agent) {
-                        agent.destination = Instance.player.position;
-                    }
-                }
-
-                yield return new WaitForEndOfFrame();
-            }
-        }
-
-        private void OnDrawGizmos() { 
-            Gizmos.matrix = this.transform.localToWorldMatrix;
-            Gizmos.color = Color.magenta;
-            Gizmos.DrawWireCube(Vector3.zero, this.transform.lossyScale);
         }
 
         [MenuItem("GameObject/Systems/Managers/Enemy/EnemyManager")]
@@ -64,5 +65,6 @@ namespace YundosArrow.Scripts.Systems.Managers.Enemy
             GameObject go = new GameObject("EnemyManager");
             go.AddComponent<EnemyManager>();
         }
+
     }
 }

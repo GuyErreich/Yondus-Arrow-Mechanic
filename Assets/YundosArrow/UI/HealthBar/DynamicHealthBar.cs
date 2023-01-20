@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace YundosArrow.Scripts.UI.HealthBars
 {
@@ -12,7 +13,7 @@ namespace YundosArrow.Scripts.UI.HealthBars
     public class DynamicHealthBar : MonoBehaviour
     {
         [Header("Settings")]
-        [SerializeField] private float updateSpeedSeconds = 0.5f;
+        [SerializeField] private float speed = 0.5f;
         [SerializeField] private float positionOffset = 2f;
         [SerializeField] private float maxDistanceToScale = 30000;
 
@@ -41,24 +42,10 @@ namespace YundosArrow.Scripts.UI.HealthBars
             this.image.fillAmount = 1f;
         }
 
-        public void HandleHealthChanged(float percentage)
+        public void HandleHealthChanged(float currentHealth, float maxHealth)
         {
-            StartCoroutine(this.ChangeToPercentage(percentage));
-        }
-
-        private IEnumerator ChangeToPercentage(float percentage)
-        {
-            float preChangePercentage = this.image.fillAmount;
-            float elapsed = 0f;
-
-            while (elapsed < updateSpeedSeconds)
-            {
-                elapsed += Time.deltaTime;
-                this.image.fillAmount = Mathf.Lerp(preChangePercentage, percentage, elapsed / updateSpeedSeconds);
-                yield return null;
-            }
-
-            this.image.fillAmount = percentage;
+            var percentage = currentHealth / maxHealth;
+            this.image.DOFillAmount(percentage, speed);
         }
 
         private void LateUpdate()
