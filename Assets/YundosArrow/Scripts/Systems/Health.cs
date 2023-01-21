@@ -1,6 +1,6 @@
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace YundosArrow.Scripts.Systems {
     public class Health : MonoBehaviour {
@@ -21,15 +21,17 @@ namespace YundosArrow.Scripts.Systems {
             Debug.Log($"Current health: {this.CurrentHealth}");
         }
 
-        public void Change(float amount) {
+        public async void Change(float amount) {
             Debug.Log($"amount: {amount}");
             this.CurrentHealth += amount;
             Debug.Log($"amount after damage: {amount}");
             Debug.Log($"Current health after damage: {this.CurrentHealth}");
             OnHealthChanged?.Invoke(this.CurrentHealth, this.MaxHealth);
 
-            if (this.CurrentHealth <= 0)
+            if (this.CurrentHealth <= 0) {
+                while (this.GetComponent<AttachHealthBar>().healthBar.Image.fillAmount > 0) { await Task.Delay(25); }
                 OnDeath?.Invoke(this.gameObject);
+            }
         }
     }
 }

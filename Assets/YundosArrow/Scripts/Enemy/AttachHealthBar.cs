@@ -7,7 +7,7 @@ using YundosArrow.Scripts.UI.HealthBars;
 
 public class AttachHealthBar : MonoBehaviour
 {
-    private DynamicHealthBar healthBar;
+    public DynamicHealthBar healthBar;
     private Health healthScript;
 
     private void Awake() {
@@ -17,13 +17,13 @@ public class AttachHealthBar : MonoBehaviour
     private void OnEnable() {
         this.healthBar = EnemyManager.Instance.HealthBar;
         this.healthBar.Target = this.transform;
-        this.healthScript.OnHealthChanged +=  this.healthBar.HandleHealthChanged;
+        this.healthScript.OnHealthChanged += this.healthBar.HandleHealthChanged;
         this.healthBar.gameObject.SetActive(true);
     }
 
     private void OnDisable() {
         this.healthBar.Target = null;
-        this.healthScript.OnHealthChanged -=  this.healthBar.HandleHealthChanged;
+        this.healthScript.OnHealthChanged -= this.healthBar.HandleHealthChanged;
         this.healthBar.gameObject.SetActive(false);
         EnemyManager.Instance.HealthBar = this.healthBar;
     }

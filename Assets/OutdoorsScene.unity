@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2159.5615, g: 2263.3594, b: 3286.4023, a: 1}
+  m_IndirectSpecularColor: {r: 2161.7432, g: 2265.6836, b: 3288.8555, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -454,7 +454,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243862454}
-  m_LocalRotation: {x: 0.17415266, y: 0.1144504, z: -0.020383695, w: 0.97783256}
+  m_LocalRotation: {x: 0.17411113, y: 0.11642651, z: -0.020735648, w: 0.9775992}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -779,7 +779,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277728772}
-  m_LocalRotation: {x: 0.03685587, y: 0.116171345, z: -0.004313796, w: 0.99253577}
+  m_LocalRotation: {x: 0.036847062, y: 0.11817717, z: -0.004388276, w: 0.99229896}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2664,7 +2664,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926698291}
-  m_LocalRotation: {x: 0.03685587, y: 0.116171345, z: -0.004313796, w: 0.99253577}
+  m_LocalRotation: {x: 0.036847062, y: 0.11817717, z: -0.004388276, w: 0.99229896}
   m_LocalPosition: {x: -1.7, y: 2.4299998, z: -17.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13437,8 +13437,8 @@ MonoBehaviour:
   - {fileID: 1329422854}
   - {fileID: 1888271978}
   - {fileID: 1235275405}
-  amount: 20
-  respawnTime: 1
+  amount: 1
+  respawnTime: 5
   spawnMask:
     serializedVersion: 2
     m_Bits: 0
@@ -14252,7 +14252,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910683946}
-  m_LocalRotation: {x: 0.03685587, y: 0.116171345, z: -0.004313796, w: 0.99253577}
+  m_LocalRotation: {x: 0.036847062, y: 0.11817717, z: -0.004388276, w: 0.99229896}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14991,7 +14991,7 @@ PrefabInstance:
     - target: {fileID: 3222773034910450502, guid: 494a38f30c77f154283a64c249eaceb6,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3222773034910450502, guid: 494a38f30c77f154283a64c249eaceb6,
         type: 3}

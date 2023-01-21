@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,6 +20,7 @@ namespace YundosArrow.Scripts.UI.HealthBars
         private Image image;
 
         public Transform Target { get; set;}
+        public Image Image { get => this.image; }
 
         private void Awake()
         {
