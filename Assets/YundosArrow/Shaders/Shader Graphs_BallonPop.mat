@@ -68,7 +68,7 @@ Material:
     - _AlphaSrcBlend: 1
     - _AlphaToMask: 1
     - _AlphaToMaskInspectorValue: 1
-    - _Amount: -1.14
+    - _Amount: -2.13
     - _BUILTIN_QueueControl: -1
     - _BUILTIN_QueueOffset: 0
     - _BlendMode: 0
