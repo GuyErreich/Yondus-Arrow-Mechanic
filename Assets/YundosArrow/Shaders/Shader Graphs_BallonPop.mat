@@ -68,7 +68,7 @@ Material:
     - _AlphaSrcBlend: 1
     - _AlphaToMask: 1
     - _AlphaToMaskInspectorValue: 1
-    - _Amount: -2.13
+    - _Amount: -1.12
     - _BUILTIN_QueueControl: -1
     - _BUILTIN_QueueOffset: 0
     - _BlendMode: 0
@@ -76,25 +76,26 @@ Material:
     - _CullMode: 0
     - _CullModeForward: 0
     - _CutoffHeight: -0.06
-    - _Cutoff_Height: 0.17
+    - _Cutoff_Height: 0.11
     - _DepthOffsetEnable: 0
     - _DiffusionProfileHash: 0
     - _Displacement_Position: 0.15
     - _Displacement_Size: 0.19
-    - _Displacement_Strength: 0.73
+    - _Displacement_Strength: 0.28
     - _DoubleSidedEnable: 1
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 1
     - _DstBlend: 0
     - _Edge: 0.64
     - _Edge_Emission_Intesity: 54.08
-    - _Edge_Width: 0.01
+    - _Edge_Width: 0.03
     - _Emission_Intesity: 82183
     - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 1
     - _Float: 1
     - _Noise_Scale: 50
-    - _Noise_Strength: 0.35
+    - _Noise_Speed: -0.13
+    - _Noise_Strength: 0.29
     - _OpaqueCullMode: 2
     - _RayTracing: 0
     - _ReceivesSSR: 1

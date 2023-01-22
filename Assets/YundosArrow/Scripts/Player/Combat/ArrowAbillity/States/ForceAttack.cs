@@ -5,7 +5,7 @@ using YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils;
 
 namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.States
 {
-    public class Attack : ArrowState {
+    public class ForceAttack : ArrowState {
         public override IEnumerator On() {
             ArrowStates nextState;
 

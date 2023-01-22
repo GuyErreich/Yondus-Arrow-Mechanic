@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using YundosArrow.Scripts.Systems;
-using YundosArrow.Scripts.UI.HealthBars;
+using YundosArrow.Scripts.Enemy;
 
 namespace YundosArrow.Scripts.Systems.Managers.Enemy
 {
@@ -61,7 +60,7 @@ namespace YundosArrow.Scripts.Systems.Managers.Enemy
                 if (Instance.Enemies.Count < Instance.amount) {
                     var currentEnemy = Instance.enemiesPool.Dequeue();
                     currentEnemy.position = Instance.GetRandomSpawnPoint();
-                    currentEnemy.GetComponent<Health>().OnDeath += this.StashEnemy;
+                    // currentEnemy.GetComponent<Health>().OnDeath += this.StashEnemy;
                     currentEnemy.gameObject.SetActive(true);
 
                     Instance.Enemies.Add(currentEnemy);
@@ -72,7 +71,7 @@ namespace YundosArrow.Scripts.Systems.Managers.Enemy
         }
 
         public void StashEnemy(GameObject currentEnemy) {
-            currentEnemy.GetComponent<Health>().OnDeath -= this.StashEnemy;
+            // currentEnemy.GetComponent<Health>().OnDeath -= this.StashEnemy;
             currentEnemy.SetActive(false);
 
             Instance.Enemies.Remove(currentEnemy.transform);

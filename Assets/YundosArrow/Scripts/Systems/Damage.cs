@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
+using YundosArrow.Scripts.Enemy;
 
 namespace YundosArrow.Scripts.Systems {
     public class Damage : MonoBehaviour, ISerializationCallbackReceiver {

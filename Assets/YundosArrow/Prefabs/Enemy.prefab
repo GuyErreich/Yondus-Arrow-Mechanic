@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 471580302548315351}
   - component: {fileID: 7685503934175875495}
   - component: {fileID: 1270919753617514559}
-  - component: {fileID: 7876537455333689266}
   - component: {fileID: 6707912437387203271}
   - component: {fileID: 9053390846300352829}
+  - component: {fileID: 7265831218791916607}
+  - component: {fileID: 7265831218791916608}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -123,19 +124,6 @@ NavMeshAgent:
   m_BaseOffset: 1.4
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7876537455333689266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3222773034910450502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cb84465d8939e44c880b51edac3af4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amount: 100
 --- !u!114 &6707912437387203271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,4 +148,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d79dbb4d25354a8d663fe94913213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
+--- !u!114 &7265831218791916607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3222773034910450502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d19e3fb678f34784fb6946484d48df1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 100
+--- !u!114 &7265831218791916608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3222773034910450502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e018bb634ba0e7045afc8cf64c8218d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balloonPop: {fileID: 2100000, guid: 0c3b1817730e5db42a22dff5304c29c5, type: 2}
+  startFrameAmount: -1.12
+  endFrameAmount: 0.18
+  duration: 3

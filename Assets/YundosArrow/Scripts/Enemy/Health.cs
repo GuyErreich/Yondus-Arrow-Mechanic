@@ -1,13 +1,16 @@
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
+using YundosArrow.Scripts.Systems.Managers.Enemy;
 
-namespace YundosArrow.Scripts.Systems {
+namespace YundosArrow.Scripts.Enemy {
+    [RequireComponent(typeof(AttachHealthBar))]
+    [RequireComponent(typeof(BalloonEffect))]
     public class Health : MonoBehaviour {
         [SerializeField] private float amount;
         
         public event Action<float, float> OnHealthChanged;
-        public event Action<GameObject> OnDeath;
+        public event Action OnDeath;
 
         public float MaxHealth { get; private set; }
         public float CurrentHealth { get; private set; }
@@ -26,11 +29,13 @@ namespace YundosArrow.Scripts.Systems {
             this.CurrentHealth += amount;
             Debug.Log($"amount after damage: {amount}");
             Debug.Log($"Current health after damage: {this.CurrentHealth}");
-            OnHealthChanged?.Invoke(this.CurrentHealth, this.MaxHealth);
+            this.OnHealthChanged?.Invoke(this.CurrentHealth, this.MaxHealth);
 
             if (this.CurrentHealth <= 0) {
                 while (this.GetComponent<AttachHealthBar>().healthBar.Image.fillAmount > 0) { await Task.Delay(25); }
-                OnDeath?.Invoke(this.gameObject);
+                this.GetComponent<BalloonEffect>().Play();
+                while (!this.GetComponent<BalloonEffect>().IsCompleted) { await Task.Delay(25); }
+                EnemySpawnManager.Instance.StashEnemy(this.gameObject);
             }
         }
     }
