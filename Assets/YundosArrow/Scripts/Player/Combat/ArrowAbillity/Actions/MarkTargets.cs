@@ -11,6 +11,12 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
 
         public static bool IsMarked { get => GlobalCollections.Targets != null && GlobalCollections.Targets.Count > 0f; }
 
+        /**
+        TODO: this what is better - 
+            to not let the player mark more than once in row(before it is no longer in the list)
+            OR
+            to limit it to the maximum of time it takes to kill the target so bugs wont happnd
+        **/
         public static void Mark() {                
             Ray ray = Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f));
 

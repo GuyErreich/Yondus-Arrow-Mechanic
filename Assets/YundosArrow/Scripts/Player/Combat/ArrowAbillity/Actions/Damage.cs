@@ -13,6 +13,10 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions {
             this.Amount = this.amount;
         }
 
+        /**
+        TODO: confirm the current target is the next one in the list so the arrow want
+        remove damage for accidentally colliding other targets on the way
+        **/
         private void OnTriggerEnter(Collider other) {
             print(amount);
             if (other.tag == "Enemy") {

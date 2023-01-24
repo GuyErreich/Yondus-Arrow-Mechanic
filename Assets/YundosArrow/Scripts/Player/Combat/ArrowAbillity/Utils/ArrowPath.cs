@@ -8,7 +8,7 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils
     public class ArrowPath
     {
         private List<Vector3> points;
-        public bool isClosed { get; private set;}
+        private bool isClosed { get; set;}
 
         public ArrowPath(Vector3 anchor1, Vector3 anchor2, Vector3 direction, float velocity) {
             var control1 = anchor1 + (direction * velocity);
@@ -44,11 +44,23 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils
             } 
         }
 
-        public void AddSegment(Vector3 anchor, float force) {
-            var direction = (this.points[this.points.Count - 1] - this.points[this.points.Count - 2]);
-            this.points.Add(this.points[this.points.Count - 1] + direction * force);
-            this.points.Add((this.points[this.points.Count - 1] + anchor) * .5f);
-            this.points.Add(anchor);
+        public void RecalculatePath(Vector3 anchor) {
+            this.points[this.points.Count - 2] = (this.points[this.points.Count - 3] + anchor) * .5f;
+            this.points[this.points.Count - 1] = anchor;
+        }
+
+        public void ChangeDestination(Vector3 anchor, float force) {
+            var lastPoint = this.points[this.points.Count - 1];
+            var direction = (lastPoint - this.points[this.points.Count - 2]);
+
+            var newPoints = new List<Vector3> {
+                lastPoint,
+                lastPoint + direction * force,
+                (lastPoint + anchor) * .5f,
+                anchor
+            };
+
+            this.points = newPoints;
         }
 
         public void RemoveSegment(int i) {
@@ -68,7 +80,7 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils
             this.points[i] = pos;
         }
 
-        public void ToggleClosed(float force) {
+        private void ToggleClosed(float force) {
             this.isClosed = !this.isClosed;
 
             if (this.isClosed) {
@@ -82,6 +94,16 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils
                 // this.points.RemoveRange(this.points.Count - 2, 2);
                 this.points.RemoveAt(this.points.Count - 1);
             }
+        }
+
+        public void ClosePath() {
+            if (!this.isClosed)
+                this.ToggleClosed(ArrowStats.AttackStats.Movement.Force);
+        }
+
+        public void OpenPath() {
+            if (this.isClosed)
+                this.ToggleClosed(ArrowStats.AttackStats.Movement.Force);
         }
 
         private int LoopIndex(int i) {

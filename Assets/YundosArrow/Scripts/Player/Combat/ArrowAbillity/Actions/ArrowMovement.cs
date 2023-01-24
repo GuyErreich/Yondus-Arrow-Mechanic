@@ -25,37 +25,57 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
             var cacheParent = ArrowStats.Arrow.parent;
             var localPos = ArrowStats.Arrow.localPosition;
             ArrowStats.Arrow.parent = null;
-            ArrowStats.Arrow.DOLookAt(targets[0].position, 0.2f);
+            // ArrowStats.Arrow.DOLookAt(targets[0].position, 0.2f);
             ArrowStats.Arrow.position = cacheParent.TransformPoint(localPos);
             IsMoving = true;
             
             var t = 0f;
             var distance = 0f;
+            // var forward = Vector3.zero;
+            ArrowPath path = null;
 
             while (targets.Count > 0) {
                 t = 0f;
                 var currentPos = ArrowStats.Arrow.position;
                 distance = Vector3.Distance(currentPos, targets[0].position);
+                // forward = ArrowStats.Arrow.forward;
+                if (path == null)
+                    path = new ArrowPath(ArrowStats.Arrow.position, targets[0].position, ArrowStats.Arrow.forward, ArrowStats.AttackStats.Movement.Force);
+                else
+                    path.ChangeDestination(targets[0].position, ArrowStats.AttackStats.Movement.Force);
                 while (t <= 1f ) {
-                    ArrowStats.Arrow.DOLookAt(BezireCurve.Lerp(currentPos, targets[0].position, t), 0.2f);
-                    ArrowStats.Arrow.DOMove(BezireCurve.Lerp(currentPos, targets[0].position, t), 0f);
+                    path.RecalculatePath(targets[0].position);
+                    // ArrowStats.Arrow.DOLookAt(BezireCurve.Lerp(currentPos, targets[0].position, t), 0.2f);
+                    // ArrowStats.Arrow.DOMove(BezireCurve.Lerp(currentPos, targets[0].position, t), 0f);
+                    ArrowStats.Arrow.DOMove(BezireCurve.Cubic(path.Points[0], path.Points[1], path.Points[2], path.Points[3], t), 0f);
+                    ArrowStats.Arrow.DOLookAt(BezireCurve.Quadratic(path.Points[1], path.Points[2], path.Points[3], t), 0.2f);
+                    // ArrowStats.Arrow.DOLookAt(BezireCurve.Quadratic(path.Points[1], path.Points[2], path.Points[3], t), 0.2f);
                     
                     yield return new WaitForEndOfFrame(); 
 
                     t += (ArrowStats.AttackStats.Movement.Speed / distance)  * Time.deltaTime;              
+                    // t += ArrowStats.AttackStats.Movement.Speed * Time.deltaTime;              
                 }
                 targets.RemoveAt(0);
             }
 
+
+
             t = 0f;
             var lastPos = ArrowStats.Arrow.position;
             distance = Vector3.Distance(lastPos, ArrowStats.StartPoint.position);
+            // forward = ArrowStats.Arrow.forward;
+            path.ChangeDestination(ArrowStats.StartPoint.position, ArrowStats.AttackStats.Movement.Force);
             while (t <= 1f ) {
-                ArrowStats.Arrow.DOLookAt(BezireCurve.Lerp(lastPos, ArrowStats.StartPoint.position, t), 0.2f);
-                ArrowStats.Arrow.DOMove(BezireCurve.Lerp(lastPos, ArrowStats.StartPoint.position, t), 0f);
+                path.RecalculatePath(ArrowStats.StartPoint.position);
+                // ArrowStats.Arrow.DOLookAt(BezireCurve.Lerp(lastPos, ArrowStats.StartPoint.position, t), 0.2f);
+                // ArrowStats.Arrow.DOMove(BezireCurve.Lerp(lastPos, ArrowStats.StartPoint.position, t), 0f);
+                ArrowStats.Arrow.DOMove(BezireCurve.Cubic(path.Points[0], path.Points[1], path.Points[2], path.Points[3], t), 0f);
+                ArrowStats.Arrow.DOLookAt(BezireCurve.Quadratic(path.Points[1], path.Points[2], path.Points[3], t), 0.2f);
                 yield return new WaitForEndOfFrame();
 
                 t += (ArrowStats.AttackStats.Movement.Speed / distance) * Time.deltaTime;   
+                // t += ArrowStats.AttackStats.Movement.Speed * Time.deltaTime;   
             }
 
             ArrowStats.Arrow.parent = cacheParent;

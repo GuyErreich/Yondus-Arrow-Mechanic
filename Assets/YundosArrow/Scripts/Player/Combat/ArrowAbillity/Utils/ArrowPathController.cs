@@ -10,15 +10,15 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils
             var direction = startPoint.forward;
             // var velocity = (endPoint.position - startPoint.position).magnitude * 0.5f;
             var velocity = ArrowStats.AttackStats.Movement.Force * 0.5f;
-            Path = new ArrowPath(startPoint.position, endPoint.position, direction, velocity);
-            ClosePath();
+            // Path = new ArrowPath(startPoint.position, endPoint.position, direction, velocity);
+            // ClosePath();
         }
 
-        public static void AddSegment(Transform anchor) {
-            OpenPath();
-            Path.AddSegment(anchor.position, ArrowStats.AttackStats.Movement.Force);
-            ClosePath();
-        }
+        // public static void AddSegment(Transform anchor) {
+        //     OpenPath();
+        //     Path.AddSegment(anchor.position, ArrowStats.AttackStats.Movement.Force);
+        //     ClosePath();
+        // }
 
         public void MoveSegment(int i , Transform point) {
             if (i == 0) {
@@ -36,16 +36,6 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils
                 Path.Points[i * 3 + 1] = point.position + direction * ArrowStats.AttackStats.Movement.Force;
                 Path.Points[i * 3 + 2] = point.position;
             }
-        }
-
-        private static void ClosePath() {
-            if (!Path.isClosed)
-                Path.ToggleClosed(ArrowStats.AttackStats.Movement.Force);
-        }
-
-        private static void OpenPath() {
-            if (Path.isClosed)
-                Path.ToggleClosed(ArrowStats.AttackStats.Movement.Force);
         }
 
         // void Update()
