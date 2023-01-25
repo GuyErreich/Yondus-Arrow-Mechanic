@@ -1,0 +1,5 @@
+- [ ] UI template
+- [ ] Score system
+- [ ] maybe take back the camera a bit
+- [ ] think about combo dash
+- [ ] minimum level design
