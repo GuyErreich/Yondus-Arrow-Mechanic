@@ -10,7 +10,6 @@ namespace YundosArrow.Scripts.Enemy {
         [SerializeField] private float amount;
         
         public event Action<float, float> OnHealthChanged;
-        public event Action OnDeath;
 
         public float MaxHealth { get; private set; }
         public float CurrentHealth { get; private set; }
