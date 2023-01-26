@@ -1,4 +1,5 @@
 using UnityEngine;
+using YundosArrow.Scripts.UI;
 using YundosArrow.Scripts.Player.Combat.ArrowAbilities.Stats;
 
 namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities
@@ -6,6 +7,9 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities
 	[System.Serializable]
 	public class ArrowStats : ISerializationCallbackReceiver {
 		[Header("References")]
+		[SerializeField] private CrosshairAnim crosshairAnim;
+		[Space]
+
 		[SerializeField] private Transform arrow;
 		[SerializeField] private Transform startPoint;
 		[Space]
@@ -14,6 +18,7 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities
 		[SerializeField] private AttackStats attackStats;
 
 		#region Serialized Static Variables
+        public static CrosshairAnim CrosshairAnim { get; private set; }
         public static Transform Arrow { get; private set; }
         public static Transform StartPoint { get; private set; }
 		public static IdleStats IdleStats { get; private set; }
@@ -23,6 +28,7 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities
 
         public void OnAfterDeserialize()
 		{
+			CrosshairAnim = this.crosshairAnim;
 			Arrow =  this.arrow;
 			StartPoint =  this.startPoint;
 			IdleStats =  this.idleStats;

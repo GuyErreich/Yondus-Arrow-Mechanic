@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8799480974950933733}
   - component: {fileID: 471580302548315351}
   - component: {fileID: 7685503934175875495}
+  - component: {fileID: 4625030556071557022}
   - component: {fileID: 1270919753617514559}
   - component: {fileID: 6707912437387203271}
   - component: {fileID: 9053390846300352829}
@@ -100,7 +101,20 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.75
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &4625030556071557022
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3222773034910450502}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.75
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &1270919753617514559
 NavMeshAgent:

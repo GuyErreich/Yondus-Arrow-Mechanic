@@ -50,6 +50,7 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
                     path.RecalculatePath(targets[0].position);
 
                     t += (ArrowStats.AttackStats.Movement.Speed / distance)  * Time.deltaTime;            
+                    // t += ArrowStats.AttackStats.Movement.Speed  * Time.deltaTime;            
                 }
                 targets.RemoveAt(0);
             }
@@ -72,11 +73,15 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
                 path.MovePoint(path.Points.Length - 2, point);
 
                 t += (ArrowStats.AttackStats.Movement.Speed / distance) * Time.deltaTime;
+                // t += ArrowStats.AttackStats.Movement.Speed  * Time.deltaTime;            
+
             }
 
             ArrowStats.Arrow.parent = cacheParent;
-            ArrowStats.Arrow.DOLocalRotateQuaternion(Quaternion.identity, 0.2f);
-            IsMoving = false;
+            Sequence seq = DOTween.Sequence();
+            seq.Append(ArrowStats.Arrow.DOLocalMove(Vector3.zero, 0.2f));
+            seq.Join(ArrowStats.Arrow.DOLocalRotateQuaternion(Quaternion.identity, 0.2f));
+            seq.Play().OnComplete(() => { IsMoving = false; });
         }
     }
 }

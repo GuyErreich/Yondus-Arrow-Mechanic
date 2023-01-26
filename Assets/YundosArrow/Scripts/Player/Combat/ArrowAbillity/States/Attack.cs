@@ -13,6 +13,7 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.States
 
             while (true) {
                 MarkTargets.Mark();
+                // ArrowStats.CrosshairAnim.Open();
 
                 yield return new WaitForEndOfFrame();
 
