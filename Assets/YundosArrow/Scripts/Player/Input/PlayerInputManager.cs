@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using YundosArrow.Scripts.Input;
+using YundosArrow.Scripts.UI;
 
 namespace YundosArrow.Scripts.Player
 {
     public class PlayerInputManager : MonoBehaviour {
         [SerializeField] private float smoothMovementTime = 0.2f;
         [SerializeField, Range(0.001f, 0.01f)] private float smoothMovementThreshHold = 0.005f;
+        [SerializeField] private CrosshairAnim crosshairAnim;
+        
 
         private PlayerControls controls;
         private PlayerControls.CharacterActions characterInput;
@@ -46,8 +49,13 @@ namespace YundosArrow.Scripts.Player
             this.characterInput.Run.canceled += ctx => this.isRunnig = false;
             this.characterInput.Jump.started += ctx => this.isJumping = true;
             this.characterInput.Jump.canceled += ctx => this.isJumping = false;
+
             this.characterInput.Shoot.started += ctx => this.isShooting = true;
             this.characterInput.Shoot.canceled += ctx => this.isShooting = false;
+
+            this.characterInput.Shoot.started += ctx => crosshairAnim.Open();
+            this.characterInput.Shoot.canceled += ctx => crosshairAnim.Close();
+
             this.characterInput.Aim.started += ctx => this.isAiming = true;
             this.characterInput.Aim.canceled += ctx => this.isAiming = false;
         }
