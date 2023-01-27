@@ -6,7 +6,7 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Stats.SubStats
 	[System.Serializable]
 	public class Movement {
         [SerializeField, Range(0.1f, 50)] private float speed;
-        [SerializeField, Range(1, 2)] private float force;
+        [SerializeField, Range(1, 10)] private float force;
         [SerializeField, Range(1, 20)] private float returnForce = 5f;
         [SerializeField, Range(1, 10)] private float loopHoleForce = 1f;
         

@@ -49,8 +49,7 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
 
                     path.RecalculatePath(targets[0].position);
 
-                    t += (ArrowStats.AttackStats.Movement.Speed / distance)  * Time.deltaTime;            
-                    // t += ArrowStats.AttackStats.Movement.Speed  * Time.deltaTime;            
+                    t += (ArrowStats.AttackStats.Movement.Speed * Time.deltaTime) / (distance * Time.deltaTime) * Time.deltaTime;            
                 }
                 targets.RemoveAt(0);
             }
@@ -69,12 +68,10 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
                 
                 path.RecalculatePath(ArrowStats.StartPoint.position);
                 var point = ArrowStats.StartPoint.position - ArrowStats.StartPoint.forward * (ArrowStats.AttackStats.Movement.ReturnForce);
-                point -= ArrowStats.StartPoint.right * (ArrowStats.AttackStats.Movement.ReturnForce);
+                // point += ArrowStats.StartPoint.right * (ArrowStats.AttackStats.Movement.ReturnForce);
                 path.MovePoint(path.Points.Length - 2, point);
 
-                t += (ArrowStats.AttackStats.Movement.Speed / distance) * Time.deltaTime;
-                // t += ArrowStats.AttackStats.Movement.Speed  * Time.deltaTime;            
-
+                t += (ArrowStats.AttackStats.Movement.Speed * Time.deltaTime) / (distance * Time.deltaTime) * Time.deltaTime;            
             }
 
             ArrowStats.Arrow.parent = cacheParent;
