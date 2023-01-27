@@ -53,8 +53,8 @@ namespace YundosArrow.Scripts.Player
             this.characterInput.Shoot.started += ctx => this.isShooting = true;
             this.characterInput.Shoot.canceled += ctx => this.isShooting = false;
 
-            this.characterInput.Shoot.started += ctx => crosshairAnim.Open();
-            this.characterInput.Shoot.canceled += ctx => crosshairAnim.Close();
+            // this.characterInput.Shoot.started += ctx => crosshairAnim.Open();
+            // this.characterInput.Shoot.canceled += ctx => crosshairAnim.Close();
 
             this.characterInput.Aim.started += ctx => this.isAiming = true;
             this.characterInput.Aim.canceled += ctx => this.isAiming = false;

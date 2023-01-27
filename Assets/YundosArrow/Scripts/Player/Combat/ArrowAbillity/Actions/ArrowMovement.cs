@@ -13,7 +13,7 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
         public static bool IsMoving { get; private set; }
 
         public static IEnumerator Move() {
-            var targets = GlobalCollections.Targets;
+            var targets = GlobalCollections.CurrentTargets;
 
             if (targets == null)
                 throw new NullReferenceException("targets");
@@ -81,7 +81,10 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions
             Sequence seq = DOTween.Sequence();
             seq.Append(ArrowStats.Arrow.DOLocalMove(Vector3.zero, 0.2f));
             seq.Join(ArrowStats.Arrow.DOLocalRotateQuaternion(Quaternion.identity, 0.2f));
-            seq.Play().OnComplete(() => { IsMoving = false; });
+            seq.Play().OnComplete(() => { 
+                GlobalCollections.Targets.Clear();
+                IsMoving = false; 
+            });
         }
     }
 }

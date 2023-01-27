@@ -19,7 +19,7 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities
 
             this.States[(int)ArrowStates.Idle] = this.gameObject.AddComponent<Idle>();
             this.States[(int)ArrowStates.Attack] = this.gameObject.AddComponent<Attack>();
-            this.States[(int)ArrowStates.Attack] = this.gameObject.AddComponent<ForceAttack>();
+            this.States[(int)ArrowStates.ForceAttack] = this.gameObject.AddComponent<ForceAttack>();
         }
         
         private void Start() {
@@ -29,6 +29,7 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities
 
     public enum ArrowStates {
         Idle = 0,
-        Attack = 1
+        Attack = 1,
+        ForceAttack = 2
     }
 }

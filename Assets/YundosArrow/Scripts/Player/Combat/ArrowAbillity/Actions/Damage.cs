@@ -22,7 +22,7 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions {
             if (other.tag == "Enemy") {
                 var health = other.GetComponent<Health>();
                 if (health) {
-                    if (GlobalCollections.Targets.Contains(other.transform))
+                    if (GlobalCollections.CurrentTargets.Contains(other.transform))
                         health.Change(-(this.Amount));
                 }
             }

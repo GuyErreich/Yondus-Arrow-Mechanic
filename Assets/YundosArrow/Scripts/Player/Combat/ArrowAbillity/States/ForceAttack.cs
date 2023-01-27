@@ -7,26 +7,26 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.States
 {
     public class ForceAttack : ArrowState {
         public override IEnumerator On() {
-            ArrowStates nextState;
+            // ArrowStates nextState;
 
-            var shoot = StartCoroutine(ArrowMovement.Move());
+            // var shoot = StartCoroutine(ArrowMovement.Move());
 
-            while (true) {
-                MarkTargets.Mark();
+            // while (true) {
+            //     MarkTargets.Mark();
 
                 yield return new WaitForEndOfFrame();
 
-                print("Attack");
+            //     print("Attack");
                 
-                if (!ArrowMovement.IsMoving) {
-                    nextState = ArrowStates.Idle;
-                    break;
-                }
-            }
+            //     if (!ArrowMovement.IsMoving) {
+            //         nextState = ArrowStates.Idle;
+            //         break;
+            //     }
+            // }
 
-            StopCoroutine(shoot);
+            // StopCoroutine(shoot);
 
-            ChangeState(nextState);
+            // ChangeState(nextState);
         }
 
         private void OnDrawGizmos() {
