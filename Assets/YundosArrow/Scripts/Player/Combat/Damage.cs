@@ -1,8 +1,7 @@
 using UnityEngine;
-using YundosArrow.Scripts.Enemy;
 using YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils;
 
-namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions {
+namespace YundosArrow.Scripts.Player.Combat {
     public class Damage : MonoBehaviour, ISerializationCallbackReceiver {
         [SerializeField] private float amount;
         [SerializeField] private LayerMask layerMask;
@@ -18,11 +17,10 @@ namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions {
         remove damage for accidentally colliding other targets on the way
         **/
         private void OnTriggerEnter(Collider other) {
-            print(amount);
             if (other.tag == "Enemy") {
-                var health = other.GetComponent<Health>();
+                var health = other.GetComponent<Enemy.Health>();
                 if (health) {
-                    if (GlobalCollections.CurrentTargets.Contains(other.transform))
+                    if (GlobalCollections.CurrentTargets != null && GlobalCollections.CurrentTargets.Contains(other.transform))
                         health.Change(-(this.Amount));
                 }
             }

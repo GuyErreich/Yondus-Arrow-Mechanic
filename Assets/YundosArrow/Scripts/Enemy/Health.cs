@@ -20,14 +20,10 @@ namespace YundosArrow.Scripts.Enemy {
 
         private void OnEnable() {
             this.CurrentHealth = this.MaxHealth;
-            Debug.Log($"Current health: {this.CurrentHealth}");
         }
 
         public async void Change(float amount) {
-            Debug.Log($"amount: {amount}");
             this.CurrentHealth += amount;
-            Debug.Log($"amount after damage: {amount}");
-            Debug.Log($"Current health after damage: {this.CurrentHealth}");
             this.OnHealthChanged?.Invoke(this.CurrentHealth, this.MaxHealth);
 
             if (this.CurrentHealth <= 0) {

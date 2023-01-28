@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 8799480974950933733}
   - component: {fileID: 471580302548315351}
   - component: {fileID: 7685503934175875495}
-  - component: {fileID: 4625030556071557022}
   - component: {fileID: 1270919753617514559}
   - component: {fileID: 6707912437387203271}
   - component: {fileID: 9053390846300352829}
   - component: {fileID: 7265831218791916607}
   - component: {fileID: 7265831218791916608}
+  - component: {fileID: 1381066765}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -103,19 +103,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.75
   m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &4625030556071557022
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3222773034910450502}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.75
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &1270919753617514559
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -191,3 +178,19 @@ MonoBehaviour:
   startFrameAmount: -1.12
   endFrameAmount: 0.18
   duration: 0.5
+--- !u!114 &1381066765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3222773034910450502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed37de2170db0d46866d55899c0fa5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 10
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
