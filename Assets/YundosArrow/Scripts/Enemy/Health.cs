@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 using YundosArrow.Scripts.Systems.Managers.Enemy;
 
 namespace YundosArrow.Scripts.Enemy {
@@ -10,6 +11,7 @@ namespace YundosArrow.Scripts.Enemy {
         [SerializeField] private float amount;
         
         public event Action<float, float> OnHealthChanged;
+        public UnityEvent OnDeath;
 
         public float MaxHealth { get; private set; }
         public float CurrentHealth { get; private set; }
@@ -31,6 +33,7 @@ namespace YundosArrow.Scripts.Enemy {
                 this.GetComponent<BalloonEffect>().Play();
                 while (!this.GetComponent<BalloonEffect>().IsCompleted) { await Task.Delay(25); }
                 EnemySpawnManager.Instance.StashEnemy(this.gameObject);
+                this.OnDeath?.Invoke();
             }
         }
     }

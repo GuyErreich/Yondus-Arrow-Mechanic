@@ -6,6 +6,9 @@ using UnityEngine.Events;
 namespace YundosArrow.Scripts.Player.Combat {
     public class Health : MonoBehaviour {
         [SerializeField] private float amount;
+        [SerializeField, Range(0, 10)] private float hitGracePeriod = 1f;
+
+        private float? lastHitTime;
         
         public UnityEvent<float> OnStart;
         public UnityEvent<float> OnHealthChanged;
@@ -26,6 +29,12 @@ namespace YundosArrow.Scripts.Player.Combat {
         }
 
         public void Change(float amount) {
+            if (this.lastHitTime != null)
+                if (Time.time - this.lastHitTime <= this.hitGracePeriod)
+                    return;
+                
+            this.lastHitTime = Time.time;
+            
             this.CurrentHealth += amount;
             this.OnHealthChanged?.Invoke(this.CurrentHealth);
         }
