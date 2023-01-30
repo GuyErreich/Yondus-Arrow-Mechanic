@@ -17,7 +17,7 @@ namespace YundosArrow.Scripts.UI
         }
 
         public void UpdateValue() {
-            this.slider.DOValue(ComboManager.Instance.Number, this.duration);
+            this.slider.DOValue(ComboManager.Instance.CurrentNumber, this.duration);
         }
     }
 }

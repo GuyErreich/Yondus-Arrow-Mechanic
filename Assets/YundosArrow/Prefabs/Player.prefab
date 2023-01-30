@@ -4963,7 +4963,6 @@ GameObject:
   m_Component:
   - component: {fileID: 303351760760739818}
   - component: {fileID: 303351760760739810}
-  - component: {fileID: 303351760760739809}
   - component: {fileID: 303351760760739808}
   - component: {fileID: 303351760760739815}
   - component: {fileID: 303351760760739814}
@@ -5014,28 +5013,6 @@ MonoBehaviour:
   smoothMovementTime: 0.2
   smoothMovementThreshHold: 0.005
   crosshairAnim: {fileID: 0}
---- !u!114 &303351760760739809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303351760760739798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6d9e3bdb359c5e4182fcfc770538128, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  speed: 8
-  rotationSpeed: 0.3
-  sprintMultiplier: 1
-  jumpForce: 10
-  fallMultiplier: 2.2
-  jumpGracePeriod: 0.2
-  usePhysics: 1
-  climbSpeed: 4
-  climbGracePeriod: 1
 --- !u!143 &303351760760739808
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5128,6 +5105,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitState: 0
+  playerStats:
+    movementStats:
+      speed: 30
+      rotationSpeed: 0.2
+      sprintMultiplier: 5
+      dash:
+        distance: 10
+        duration: 1
+    jumpStats:
+      jumpForce: 10
+      fallMultiplier: 2.2
+      jumpGracePeriod: 0.2
+      usePhysics: 1
 --- !u!120 &303351760760739836
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -5485,8 +5475,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 303351761781593358}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.18990463, w: -0.9818026}
+  m_LocalPosition: {x: 0.003487676, y: -0.0069434643, z: -0.0010215109}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.29}
   m_ConstrainProportionsScale: 0
   m_Children:

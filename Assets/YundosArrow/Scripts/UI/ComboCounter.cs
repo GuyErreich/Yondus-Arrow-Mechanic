@@ -14,10 +14,10 @@ namespace YundosArrow.Scripts.UI
         }
 
         public void UpdateText() {
-            if (ComboManager.Instance.Number == 0)
+            if (ComboManager.Instance.CurrentNumber == 0)
                 this.text.text = "";
             else 
-                this.text.text = $"x{ComboManager.Instance.Number.ToString()}";
+                this.text.text = $"x{ComboManager.Instance.CurrentNumber.ToString()}";
         }
     }
 }

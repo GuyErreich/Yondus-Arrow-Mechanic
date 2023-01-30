@@ -6,10 +6,10 @@ using System.Linq;
 namespace YundosArrow.Scripts.Player
 {
     [RequireComponent(typeof(PlayerInputManager))]
-    // [RequireComponent(typeof(HandleCollision))]
     public class YundosPlayerMachine : StateMachine {
 
         [SerializeField] private PlayerStates InitState;
+        [SerializeField] private PlayerStats playerStats;
         
         public State[] States { get; private set; }
 
@@ -19,6 +19,7 @@ namespace YundosArrow.Scripts.Player
 
             this.States[(int)PlayerStates.GroundMovement] = this.gameObject.AddComponent<MovementMode>();
             this.States[(int)PlayerStates.Jumping] = this.gameObject.AddComponent<JumpingMode>();
+            this.States[(int)PlayerStates.Dash] = this.gameObject.AddComponent<DashMode>();
         }
         
         private void Start() {
@@ -28,6 +29,7 @@ namespace YundosArrow.Scripts.Player
 
     public enum PlayerStates {
         GroundMovement = 0,
-        Jumping = 1
+        Jumping = 1,
+        Dash = 2
     }
 }

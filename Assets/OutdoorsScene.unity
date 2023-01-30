@@ -152,6 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b39618b0c1e42e141b04d4cca464c30f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxNumber: 25
+  dashNumber: 5
   OnUpdate:
     m_PersistentCalls:
       m_Calls:
@@ -712,7 +714,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277728772}
-  m_LocalRotation: {x: 0.087277964, y: 0.059824366, z: -0.005250899, w: 0.99437225}
+  m_LocalRotation: {x: 0.087277964, y: 0.05982437, z: -0.0052509, w: 0.99437225}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4775,7 +4777,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910683946}
-  m_LocalRotation: {x: 0.0874304, y: 0.01105246, z: -0.00097009586, w: 0.9961089}
+  m_LocalRotation: {x: 0.0874304, y: 0.011052462, z: -0.00097009604, w: 0.9961089}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5538,6 +5540,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303351760760739819, guid: 0118efafee993894988299a803303365,
+        type: 3}
+      propertyPath: playerStats.movementStats.speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 303351760760739819, guid: 0118efafee993894988299a803303365,
+        type: 3}
+      propertyPath: playerStats.movementStats.dash.distance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 303351760760739819, guid: 0118efafee993894988299a803303365,
+        type: 3}
+      propertyPath: playerStats.movementStats.dash.duration
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 303351760760739819, guid: 0118efafee993894988299a803303365,
+        type: 3}
+      propertyPath: playerStats.movementStats.sprintMultiplier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 303351760760739837, guid: 0118efafee993894988299a803303365,
         type: 3}

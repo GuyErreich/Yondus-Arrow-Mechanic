@@ -5,8 +5,12 @@ using UnityEngine.Events;
 
 namespace YundosArrow.Scripts.Systems.Managers
 {
-    public class ComboManager : MonoBehaviour {
-        public int Number { get; private set; }
+    public class ComboManager : MonoBehaviour, ISerializationCallbackReceiver {
+        [SerializeField] private int maxNumber;
+        [SerializeField] private int dashNumber;
+
+        public int CurrentNumber { get; private set; }
+        public int DashNumber { get =>  this.dashNumber; }
 
         public UnityEvent OnUpdate;
 
@@ -37,12 +41,12 @@ namespace YundosArrow.Scripts.Systems.Managers
         }
 
         public void Increase(int amount) {
-            Instance.Number += Mathf.Abs(amount);
+            Instance.CurrentNumber += Mathf.Abs(amount);
             Instance.OnUpdate?.Invoke();
         }
 
         public void Decrease(int amount) {
-            Instance.Number -= Mathf.Abs(amount);
+            Instance.CurrentNumber -= Mathf.Abs(amount);
             Instance.OnUpdate?.Invoke();
         }
 
@@ -52,5 +56,14 @@ namespace YundosArrow.Scripts.Systems.Managers
             go.AddComponent<ComboManager>();
         }
 
+        public void OnBeforeSerialize()
+        {
+            return;
+        }
+
+        public void OnAfterDeserialize()
+        {
+            this.dashNumber = Mathf.Clamp(this.dashNumber, 0, this.maxNumber);
+        }
     }
 }

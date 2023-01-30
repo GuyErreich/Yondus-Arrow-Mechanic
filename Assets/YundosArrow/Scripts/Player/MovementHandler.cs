@@ -46,7 +46,7 @@ namespace YundosArrow.Scripts.Player
                 if (_ySpeed >= 0f)
                     _ySpeed += Physics.gravity.y * Time.deltaTime;
                 else 
-                    _ySpeed += Physics.gravity.y * PlayerStats.FallMultiplier * Time.deltaTime;
+                    _ySpeed += Physics.gravity.y * PlayerStats.Jump.FallMultiplier * Time.deltaTime;
             }
 
             if(_charController.isGrounded) {
