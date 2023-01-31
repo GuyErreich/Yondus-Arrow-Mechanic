@@ -1,17 +1,12 @@
 using UnityEngine;
 using System.Collections;
+using YundosArrow.Scripts.Systems.Managers;
 
 namespace YundosArrow.Scripts.Player
 {
     [RequireComponent(typeof(MovementHandler))]
     [RequireComponent(typeof(DetectCollision))]
     public class MovementMode : PlayerState {
-        private bool Jump { get => InputReceiver.Bool[InputReceiverType.JumpPressed] || MovementHandler.jumpAgain; }
-
-        private DetectCollision detectCollision;
-
-        private void Awake() => this.detectCollision = this.GetComponent<DetectCollision>();
-
         public override IEnumerator On() {
             PlayerStates nextState;
             
@@ -29,14 +24,16 @@ namespace YundosArrow.Scripts.Player
 
                 yield return new WaitForEndOfFrame();
 
-                if (this.Jump) {
+                if (InputReceiver.Bool[InputReceiverType.JumpPressed] || MovementHandler.isJumpGracePeriod) {
                     nextState = PlayerStates.Jumping;
                     break;
                 }
 
                 if (InputReceiver.Bool[InputReceiverType.RunPressed]) {
-                    nextState = PlayerStates.Dash;
-                    break;
+                    if (ComboManager.Instance.CurrentNumber >= ComboManager.Instance.DashNumber) {
+                        nextState = PlayerStates.Dash;
+                        break;
+                    }
                 }
             }
 

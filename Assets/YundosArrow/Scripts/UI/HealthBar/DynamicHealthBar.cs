@@ -86,16 +86,5 @@ namespace YundosArrow.Scripts.UI.HealthBars
 
             this.GetComponent<CanvasGroup>().alpha = this.isOnScreen ? 1 : 0;
         }
-
-        [MenuItem("GameObject/Systems/Health/DynamicHealthBar")]
-        private static void CreateDynamicHealthBar(){
-            GameObject go = new GameObject("DynamicHealthBar");
-            go.AddComponent<DynamicHealthBar>();
-            var image = go.GetComponent<Image>();
-
-            image.type = Image.Type.Filled;
-            image.fillMethod = Image.FillMethod.Horizontal;
-            image.fillOrigin = (int)Image.OriginHorizontal.Right;
-        }
     }
 }

@@ -6,39 +6,44 @@ namespace YundosArrow.Scripts.Player
 {
     [RequireComponent(typeof(MovementHandler))]
     public class DashMode : PlayerState {
-        private bool Jump { get => InputReceiver.Bool[InputReceiverType.JumpPressed] || MovementHandler.jumpAgain; }
-
         public override IEnumerator On() {
             PlayerStates nextState;
-            nextState = PlayerStates.GroundMovement;
+            
+            var direction = (Camera.main.transform.right * InputReceiver.Vector2[InputReceiverType.SmoothMovement].x) + 
+                            (Camera.main.transform.forward * InputReceiver.Vector2[InputReceiverType.SmoothMovement].y);
+            var dashEndPos = this.transform.position + direction * PlayerStats.Movement.Dash.Distance;
+            var startTime = Time.time;
 
-
-            if (ComboManager.Instance.CurrentNumber >= ComboManager.Instance.DashNumber)
+            ComboManager.Instance.Decrease(ComboManager.Instance.DashNumber);
+            
+            while (Time.time - startTime < PlayerStats.Movement.Dash.Duration)
             {
-                var direction = (Camera.main.transform.right * InputReceiver.Vector2[InputReceiverType.SmoothMovement].x) + 
-                                (Camera.main.transform.forward * InputReceiver.Vector2[InputReceiverType.SmoothMovement].y);
-                var dashEndPos = this.transform.position + direction * PlayerStats.Movement.Dash.Distance;
-                var startTime = Time.time;
+                    
+                var speed = PlayerStats.Movement.Dash.Distance / PlayerStats.Movement.Dash.Duration;
+                MovementHandler.Move(direction, speed);
+                MovementHandler.Gravity();
 
-                ComboManager.Instance.Decrease(ComboManager.Instance.DashNumber);
-                
-                while (Time.time - startTime < PlayerStats.Movement.Dash.Duration)
-                {
-                        
-                    var speed = PlayerStats.Movement.Dash.Distance / PlayerStats.Movement.Dash.Duration;
-                    MovementHandler.Move(direction, speed);
-                    MovementHandler.Gravity();
+                Debug.Log("Dashing");
 
-                    Debug.Log("Dashing");
+                yield return new WaitForEndOfFrame();
 
-                    yield return new WaitForEndOfFrame();
+                if (InputReceiver.Bool[InputReceiverType.JumpPressed] && MovementHandler.isGrounded) {
+                    nextState = PlayerStates.Jumping;
+                    break;
+                }
 
-                    if (this.Jump) {
-                        nextState = PlayerStates.Jumping;
+                if(InputReceiver.Bool[InputReceiverType.JumpPressed] && !MovementHandler.isGrounded) {
+                    if (ComboManager.Instance.CurrentNumber >= ComboManager.Instance.DoubleJumpNumber) {
+                        nextState = PlayerStates.DoubleJump;
                         break;
                     }
                 }
             }
+
+            if (MovementHandler.isGrounded)
+                nextState = PlayerStates.GroundMovement;
+            else
+                nextState = PlayerStates.Jumping;
             
             base.ChangeState(nextState);
         }

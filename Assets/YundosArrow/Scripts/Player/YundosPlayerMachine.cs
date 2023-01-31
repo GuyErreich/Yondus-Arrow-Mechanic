@@ -20,6 +20,7 @@ namespace YundosArrow.Scripts.Player
             this.States[(int)PlayerStates.GroundMovement] = this.gameObject.AddComponent<MovementMode>();
             this.States[(int)PlayerStates.Jumping] = this.gameObject.AddComponent<JumpingMode>();
             this.States[(int)PlayerStates.Dash] = this.gameObject.AddComponent<DashMode>();
+            this.States[(int)PlayerStates.DoubleJump] = this.gameObject.AddComponent<DoubleJumpMode>();
         }
         
         private void Start() {
@@ -30,6 +31,7 @@ namespace YundosArrow.Scripts.Player
     public enum PlayerStates {
         GroundMovement = 0,
         Jumping = 1,
-        Dash = 2
+        Dash = 2,
+        DoubleJump = 3
     }
 }

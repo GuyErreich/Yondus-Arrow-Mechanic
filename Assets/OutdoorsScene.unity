@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2160.373, g: 2264.0508, b: 3286.586, a: 1}
+  m_IndirectSpecularColor: {r: 2157.7441, g: 2262.6543, b: 3287.121, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxNumber: 25
   dashNumber: 5
+  doubleJumpNumber: 5
   OnUpdate:
     m_PersistentCalls:
       m_Calls:
@@ -3027,7 +3028,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!1 &1129191426
 GameObject:
   m_ObjectHideFlags: 0
@@ -4777,7 +4778,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910683946}
-  m_LocalRotation: {x: 0.0874304, y: 0.011052462, z: -0.00097009604, w: 0.9961089}
+  m_LocalRotation: {x: 0.0874304, y: 0.01105246, z: -0.00097009586, w: 0.9961089}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5543,8 +5544,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 303351760760739819, guid: 0118efafee993894988299a803303365,
         type: 3}
+      propertyPath: InitState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 303351760760739819, guid: 0118efafee993894988299a803303365,
+        type: 3}
       propertyPath: playerStats.movementStats.speed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 303351760760739819, guid: 0118efafee993894988299a803303365,
+        type: 3}
+      propertyPath: playerStats.jumpStats.jumpGracePeriod
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 303351760760739819, guid: 0118efafee993894988299a803303365,
         type: 3}
@@ -5559,13 +5570,23 @@ PrefabInstance:
     - target: {fileID: 303351760760739819, guid: 0118efafee993894988299a803303365,
         type: 3}
       propertyPath: playerStats.movementStats.sprintMultiplier
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 303351760760739819, guid: 0118efafee993894988299a803303365,
+        type: 3}
+      propertyPath: playerStats.jumpStats.doubleJump.reactionGapTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 303351760760739837, guid: 0118efafee993894988299a803303365,
         type: 3}
       propertyPath: arrowStats.crosshairAnim
       value: 
       objectReference: {fileID: 386701813}
+    - target: {fileID: 303351760760739837, guid: 0118efafee993894988299a803303365,
+        type: 3}
+      propertyPath: arrowStats.attackStats.movement.speed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 303351760760739839, guid: 0118efafee993894988299a803303365,
         type: 3}
       propertyPath: OnStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5581,6 +5602,16 @@ PrefabInstance:
       propertyPath: OnHealthChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 758756267}
+    - target: {fileID: 303351761781593350, guid: 0118efafee993894988299a803303365,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303351761781593350, guid: 0118efafee993894988299a803303365,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0118efafee993894988299a803303365, type: 3}
 --- !u!1001 &7265831218791916604

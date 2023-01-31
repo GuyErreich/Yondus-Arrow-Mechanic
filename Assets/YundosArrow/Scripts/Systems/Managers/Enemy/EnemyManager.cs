@@ -59,12 +59,5 @@ namespace YundosArrow.Scripts.Systems.Managers.Enemy
             }
             
         }
-
-        [MenuItem("GameObject/Systems/Managers/Enemy/EnemyManager")]
-        private static void CreateSpawnArea(){
-            GameObject go = new GameObject("EnemyManager");
-            go.AddComponent<EnemyManager>();
-        }
-
     }
 }

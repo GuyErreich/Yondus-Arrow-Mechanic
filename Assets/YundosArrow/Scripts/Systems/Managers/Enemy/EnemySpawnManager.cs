@@ -91,11 +91,5 @@ namespace YundosArrow.Scripts.Systems.Managers.Enemy
 
             return spawnArea.transform.TransformPoint(spawnPoint);
         }
-
-        [MenuItem("GameObject/Systems/Managers/Enemy/EnemySpawnManager/Manager")]
-        private static void CreateSpawnArea(){
-            GameObject go = new GameObject("EnemySpawnManager");
-            go.AddComponent<EnemySpawnManager>();
-        }
     }
 }

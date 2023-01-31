@@ -8,9 +8,11 @@ namespace YundosArrow.Scripts.Systems.Managers
     public class ComboManager : MonoBehaviour, ISerializationCallbackReceiver {
         [SerializeField] private int maxNumber;
         [SerializeField] private int dashNumber;
+        [SerializeField] private int doubleJumpNumber;
 
         public int CurrentNumber { get; private set; }
         public int DashNumber { get =>  this.dashNumber; }
+        public int DoubleJumpNumber { get =>  this.doubleJumpNumber; }
 
         public UnityEvent OnUpdate;
 
@@ -48,12 +50,6 @@ namespace YundosArrow.Scripts.Systems.Managers
         public void Decrease(int amount) {
             Instance.CurrentNumber -= Mathf.Abs(amount);
             Instance.OnUpdate?.Invoke();
-        }
-
-        [MenuItem("GameObject/Systems/Managers/ComboManager")]
-        private static void CreateSpawnArea(){
-            GameObject go = new GameObject("ComboManager");
-            go.AddComponent<ComboManager>();
         }
 
         public void OnBeforeSerialize()
