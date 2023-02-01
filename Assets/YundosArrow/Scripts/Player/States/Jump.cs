@@ -2,11 +2,11 @@ using UnityEngine;
 using System.Collections;
 using YundosArrow.Scripts.Systems.Managers;
 
-namespace YundosArrow.Scripts.Player
+namespace YundosArrow.Scripts.Player.States
 {
     [RequireComponent(typeof(MovementHandler))]
     [RequireComponent(typeof(DetectCollision))]
-    public class JumpingMode : PlayerState {
+    public class Jump : PlayerState {
         public override IEnumerator On() {
             PlayerStates nextState;
     

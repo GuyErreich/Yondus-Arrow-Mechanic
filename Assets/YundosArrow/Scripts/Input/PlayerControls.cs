@@ -157,7 +157,7 @@ namespace YundosArrow.Scripts.Input
                     ""name"": """",
                     ""id"": ""c168ad8c-ed05-4bea-b0d7-ae5d313cf69e"",
                     ""path"": ""<Keyboard>/shift"",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Run"",

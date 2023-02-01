@@ -2,10 +2,10 @@ using UnityEngine;
 using System.Collections;
 using YundosArrow.Scripts.Systems.Managers;
 
-namespace YundosArrow.Scripts.Player
+namespace YundosArrow.Scripts.Player.States
 {
     [RequireComponent(typeof(MovementHandler))]
-    public class DoubleJumpMode : PlayerState {
+    public class DoubleJump : PlayerState {
         public override IEnumerator On() {    
             var direction = Vector3.zero;
             var finalSpeed = 0f;

@@ -2,10 +2,10 @@ using UnityEngine;
 using System.Collections;
 using YundosArrow.Scripts.Systems.Managers;
 
-namespace YundosArrow.Scripts.Player
+namespace YundosArrow.Scripts.Player.States
 {
     [RequireComponent(typeof(MovementHandler))]
-    public class DashMode : PlayerState {
+    public class Dash : PlayerState {
         public override IEnumerator On() {
             PlayerStates nextState;
             
@@ -46,5 +46,24 @@ namespace YundosArrow.Scripts.Player
             base.ChangeState(nextState);
         }
 
+        public override void OnFixedUpdate()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void OnUpdate()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void Decision()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void OnStart()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

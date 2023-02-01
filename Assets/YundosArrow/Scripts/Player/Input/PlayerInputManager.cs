@@ -31,7 +31,7 @@ namespace YundosArrow.Scripts.Player
             this.CharacterInput();
         }
 
-        private void Update() {
+        private void FixedUpdate() {
             var smoothedMovement = Vector2.SmoothDamp(this.smoothMovement, this.currentMovementInput, ref this.smoothMovementVelocity, this.smoothMovementTime);
             var x = (smoothedMovement.x < smoothMovementThreshHold) && (smoothedMovement.x > -smoothMovementThreshHold) ? 0 : smoothedMovement.x;
             var y = (smoothedMovement.y < smoothMovementThreshHold) && (smoothedMovement.y > -smoothMovementThreshHold) ? 0 : smoothedMovement.y;

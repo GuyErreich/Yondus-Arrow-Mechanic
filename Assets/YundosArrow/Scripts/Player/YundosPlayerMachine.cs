@@ -2,6 +2,7 @@ using UnityEngine;
 using YundosArrow.Scripts.FSM;
 using System;
 using System.Linq;
+using YundosArrow.Scripts.Player.States;
 
 namespace YundosArrow.Scripts.Player
 {
@@ -17,10 +18,10 @@ namespace YundosArrow.Scripts.Player
             var arraySize = Enum.GetValues(typeof(PlayerStates)).Cast<PlayerStates>().Last() + 1;
             this.States = new State[(int)arraySize];
 
-            this.States[(int)PlayerStates.GroundMovement] = this.gameObject.AddComponent<MovementMode>();
-            this.States[(int)PlayerStates.Jumping] = this.gameObject.AddComponent<JumpingMode>();
-            this.States[(int)PlayerStates.Dash] = this.gameObject.AddComponent<DashMode>();
-            this.States[(int)PlayerStates.DoubleJump] = this.gameObject.AddComponent<DoubleJumpMode>();
+            this.States[(int)PlayerStates.GroundMovement] = new Movement();
+            this.States[(int)PlayerStates.Jumping] = new Jump();
+            this.States[(int)PlayerStates.Dash] = new Dash();
+            this.States[(int)PlayerStates.DoubleJump] = new DoubleJump();
         }
         
         private void Start() {

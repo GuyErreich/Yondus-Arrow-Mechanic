@@ -15,8 +15,16 @@ namespace YundosArrow.Scripts.FSM
         {
             this.prevState = this.state;
             this.state = state;
-            StartCoroutine(this.state.On());
         }
 
+        protected virtual void Update() 
+        {
+            this.state.OnUpdate();
+        }
+
+        protected virtual void FixedUpdate() 
+        {
+            this.state.OnFixedUpdate();
+        }
     }
 }

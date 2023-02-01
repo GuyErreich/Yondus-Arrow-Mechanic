@@ -3,11 +3,14 @@ using System.Collections;
 
 namespace YundosArrow.Scripts.FSM
 {
-    public abstract class State : MonoBehaviour
+    public abstract class State
     {
-        public virtual IEnumerator On()
-        {
-            yield return null;
-        }
+        protected abstract void OnStart();
+
+        public abstract void OnUpdate();
+
+        public abstract void OnFixedUpdate();
+
+        protected abstract void Decision();
     }
 }
