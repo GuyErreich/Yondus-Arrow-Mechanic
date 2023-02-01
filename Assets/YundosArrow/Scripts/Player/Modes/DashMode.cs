@@ -30,9 +30,7 @@ namespace YundosArrow.Scripts.Player
                 if (InputReceiver.Bool[InputReceiverType.JumpPressed] && MovementHandler.isGrounded) {
                     nextState = PlayerStates.Jumping;
                     break;
-                }
-
-                if(InputReceiver.Bool[InputReceiverType.JumpPressed] && !MovementHandler.isGrounded) {
+                } else if (InputReceiver.Bool[InputReceiverType.JumpPressed]) {
                     if (ComboManager.Instance.CurrentNumber >= ComboManager.Instance.DoubleJumpNumber) {
                         nextState = PlayerStates.DoubleJump;
                         break;

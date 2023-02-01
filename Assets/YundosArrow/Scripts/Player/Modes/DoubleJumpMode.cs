@@ -16,15 +16,15 @@ namespace YundosArrow.Scripts.Player
                 finalSpeed = (InputReceiver.Bool[InputReceiverType.RunPressed] ? PlayerStats.Movement.SprintMultiplier : 1f);
                 finalSpeed *= PlayerStats.Movement.Speed;
             }
-
-            ComboManager.Instance.Decrease(ComboManager.Instance.DoubleJumpNumber);
-            
-            if (!PlayerStats.Jump.UsePhysics) {
+            else {
                 direction = (Camera.main.transform.right * InputReceiver.Vector2[InputReceiverType.SmoothMovement].x) + 
                             (Camera.main.transform.forward * InputReceiver.Vector2[InputReceiverType.SmoothMovement].y);
                 finalSpeed = (InputReceiver.Bool[InputReceiverType.RunPressed] ? PlayerStats.Movement.SprintMultiplier : 1f);
                 finalSpeed *= PlayerStats.Movement.Speed;
             }
+
+            ComboManager.Instance.Decrease(ComboManager.Instance.DoubleJumpNumber);
+            
 
             MovementHandler.Jump(PlayerStats.Jump.JumpForce, PlayerStats.Jump.JumpGracePeriod, true);
 

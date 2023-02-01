@@ -1,55 +1,85 @@
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace YundosArrow.Scripts.Systems.Managers
 {
-    public class ComboManager : MonoBehaviour, ISerializationCallbackReceiver {
-        [SerializeField] private int maxNumber;
-        [SerializeField] private int dashNumber;
-        [SerializeField] private int doubleJumpNumber;
+    public class ComboManager : MonoBehaviour, ISerializationCallbackReceiver
+    {
+        [SerializeField, Min(1)] private float duration = 3f;
+        [SerializeField] private int maxNumber = 25;
+        [SerializeField] private int dashNumber = 5;
+        [SerializeField] private int doubleJumpNumber = 5;
 
         public int CurrentNumber { get; private set; }
-        public int DashNumber { get =>  this.dashNumber; }
-        public int DoubleJumpNumber { get =>  this.doubleJumpNumber; }
 
-        public UnityEvent OnUpdate;
+        public int DashNumber
+        {
+            get => this.dashNumber;
+        }
 
-        private static ComboManager instance;
+        public int DoubleJumpNumber
+        {
+            get => this.doubleJumpNumber;
+        }
+
+        public UnityEvent onUpdate;
+        private float? lastChangeTime;
+
+        private static ComboManager _instance;
+
         public static ComboManager Instance
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
-                    instance = FindObjectOfType<ComboManager>();
+                    _instance = FindObjectOfType<ComboManager>();
                 }
-                return instance;
+
+                return _instance;
             }
         }
 
         private void Awake()
         {
-            if (instance == null)
+            if (_instance == null)
             {
                 DontDestroyOnLoad(this.gameObject);
-                instance = this;
+                _instance = this;
             }
-            else if (instance != this)
+            else if (_instance != this)
             {
                 Destroy(this.gameObject);
-            } 
+            }
         }
 
-        public void Increase(int amount) {
+        private void Update()
+        {
+            if (Instance.lastChangeTime != null)
+            {
+                if (Time.time - Instance.lastChangeTime >= Instance.duration)
+                {
+                    Instance.CurrentNumber = 0;
+                    Instance.onUpdate?.Invoke();
+                    Instance.lastChangeTime = null;
+                }
+            }
+        }
+
+        public void Increase(int amount)
+        {
             Instance.CurrentNumber += Mathf.Abs(amount);
-            Instance.OnUpdate?.Invoke();
+            Instance.onUpdate?.Invoke();
+
+            Instance.lastChangeTime = Time.time;
         }
 
-        public void Decrease(int amount) {
+        public void Decrease(int amount)
+        {
             Instance.CurrentNumber -= Mathf.Abs(amount);
-            Instance.OnUpdate?.Invoke();
+            Instance.onUpdate?.Invoke();
+
+            Instance.lastChangeTime = Time.time;
         }
 
         public void OnBeforeSerialize()
@@ -59,7 +89,7 @@ namespace YundosArrow.Scripts.Systems.Managers
 
         public void OnAfterDeserialize()
         {
-            this.dashNumber = Mathf.Clamp(this.dashNumber, 0, this.maxNumber);
+            Instance.dashNumber = Mathf.Clamp(Instance.dashNumber, 0, Instance.maxNumber);
         }
     }
 }

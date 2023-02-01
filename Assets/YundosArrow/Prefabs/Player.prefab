@@ -5107,17 +5107,20 @@ MonoBehaviour:
   InitState: 0
   playerStats:
     movementStats:
-      speed: 30
+      speed: 10
       rotationSpeed: 0.2
-      sprintMultiplier: 5
+      sprintMultiplier: 1
       dash:
         distance: 10
-        duration: 1
+        duration: 0.3
     jumpStats:
       jumpForce: 10
       fallMultiplier: 2.2
       jumpGracePeriod: 0.2
       usePhysics: 1
+      doubleJump:
+        force: 10
+        reactionGapTime: 0.4
 --- !u!120 &303351760760739836
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -5251,7 +5254,7 @@ MonoBehaviour:
       randomnessMode: 1
     attackStats:
       movement:
-        speed: 30
+        speed: 50
         force: 1.5
         returnForce: 10
         loopHoleForce: 3.9
@@ -5459,8 +5462,8 @@ GameObject:
   - component: {fileID: 303351761781593354}
   - component: {fileID: 303351761781593355}
   - component: {fileID: 303351761781593350}
-  - component: {fileID: 303351761781593349}
   - component: {fileID: 303351761781593348}
+  - component: {fileID: 882879184}
   m_Layer: 7
   m_Name: Arrow
   m_TagString: Player
@@ -5514,20 +5517,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 1
---- !u!135 &303351761781593349
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303351761781593358}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.32
-  m_Center: {x: 0, y: 0, z: 1.88}
+  m_CollisionDetection: 2
 --- !u!114 &303351761781593348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5544,6 +5534,19 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!65 &882879184
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303351761781593358}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7653461, y: 0.67882764, z: 4.0787272}
+  m_Center: {x: 0.01322791, y: -0.008178472, z: 0.19504943}
 --- !u!1001 &303351761813352295
 PrefabInstance:
   m_ObjectHideFlags: 0
