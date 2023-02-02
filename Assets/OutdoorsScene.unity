@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2160.4697, g: 2264.5664, b: 3287.629, a: 1}
+  m_IndirectSpecularColor: {r: 2157.7441, g: 2262.6543, b: 3287.121, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -152,37 +152,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b39618b0c1e42e141b04d4cca464c30f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 3
-  maxNumber: 25
-  dashNumber: 0
-  doubleJumpNumber: 5
-  onUpdate:
+  _duration: 3
+  _maxNumber: 25
+  _dashNumber: 5
+  _doubleJumpNumber: 0
+  OnUpdate:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 761082964}
-        m_TargetAssemblyTypeName: YundosArrow.Scripts.UI.ComboCounter, Assembly-CSharp
-        m_MethodName: UpdateText
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 509649305}
-        m_TargetAssemblyTypeName: YundosArrow.Scripts.UI.EnergyBar, Assembly-CSharp
-        m_MethodName: UpdateValue
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!4 &47790504
 Transform:
   m_ObjectHideFlags: 0
@@ -5461,11 +5437,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 303351760760739810, guid: 0118efafee993894988299a803303365,
-        type: 3}
-      propertyPath: crosshairAnim
-      value: 
-      objectReference: {fileID: 386701813}
     - target: {fileID: 303351760760739818, guid: 0118efafee993894988299a803303365,
         type: 3}
       propertyPath: m_RootOrder
@@ -5521,26 +5492,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 303351760760739837, guid: 0118efafee993894988299a803303365,
-        type: 3}
-      propertyPath: arrowStats.crosshairAnim
-      value: 
-      objectReference: {fileID: 386701813}
-    - target: {fileID: 303351760760739839, guid: 0118efafee993894988299a803303365,
-        type: 3}
-      propertyPath: OnStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 758756266}
-    - target: {fileID: 303351760760739839, guid: 0118efafee993894988299a803303365,
-        type: 3}
-      propertyPath: OnStart.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 758756267}
-    - target: {fileID: 303351760760739839, guid: 0118efafee993894988299a803303365,
-        type: 3}
-      propertyPath: OnHealthChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 758756267}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0118efafee993894988299a803303365, type: 3}
 --- !u!1001 &7265831218791916604

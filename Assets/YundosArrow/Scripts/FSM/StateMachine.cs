@@ -1,30 +1,20 @@
 using UnityEngine;
 
-namespace YundosArrow.Scripts.FSM
+namespace Assets.YundosArrow.Scripts.FSM
 {
     public abstract class StateMachine : MonoBehaviour
     {
-        protected State state;
-        protected State prevState;
-
-        public virtual State PrevState {
-            get => this.prevState;
-        }
-        
-        public virtual void SetState(State state) 
-        {
-            this.prevState = this.state;
-            this.state = state;
-        }
+        protected State _state;
+        protected State _prevState;
 
         protected virtual void Update() 
         {
-            this.state.OnUpdate();
+            _state.OnUpdate();
         }
 
         protected virtual void FixedUpdate() 
         {
-            this.state.OnFixedUpdate();
+            _state.OnFixedUpdate();
         }
     }
 }

@@ -1,8 +1,8 @@
+using Assets.YundosArrow.Scripts.Systems.Managers;
 using UnityEngine;
 using TMPro;
-using YundosArrow.Scripts.Systems.Managers;
 
-namespace YundosArrow.Scripts.UI
+namespace Assets.YundosArrow.Scripts.UI
 {
     public class ComboCounter : MonoBehaviour
     {

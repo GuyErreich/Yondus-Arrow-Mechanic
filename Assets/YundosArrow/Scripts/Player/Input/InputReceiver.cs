@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace YundosArrow.Scripts.Player
+namespace Assets.YundosArrow.Scripts.Player.Input
 {
     public enum InputReceiverType {
         RunPressed = 0,
@@ -11,7 +11,8 @@ namespace YundosArrow.Scripts.Player
         ShootPressed = 4,
         AimPressed = 5
     }
-    public class InputReceiver
+
+	public static class InputReceiver
     {
         public static Dictionary<InputReceiverType, Vector2> Vector2 { get; private set; }
         public static Dictionary<InputReceiverType, bool> Bool { get; private set; }

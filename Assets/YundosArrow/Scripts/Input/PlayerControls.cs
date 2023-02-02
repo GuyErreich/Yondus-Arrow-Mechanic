@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-namespace YundosArrow.Scripts.Input
+namespace Assets.YundosArrow.Scripts.Input
 {
     public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {

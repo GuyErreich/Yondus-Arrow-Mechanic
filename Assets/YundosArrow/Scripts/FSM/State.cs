@@ -1,16 +1,18 @@
-using UnityEngine;
-using System.Collections;
-
-namespace YundosArrow.Scripts.FSM
+namespace Assets.YundosArrow.Scripts.FSM
 {
     public abstract class State
     {
-        protected abstract void OnStart();
+		protected StateMachine _stateMachine;
+
+		protected State(StateMachine stateMachine)
+		{
+			_stateMachine = stateMachine;
+		}
 
         public abstract void OnUpdate();
 
         public abstract void OnFixedUpdate();
 
-        protected abstract void Decision();
-    }
+		protected abstract void Decision();
+	}
 }

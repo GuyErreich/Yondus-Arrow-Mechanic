@@ -1,29 +1,27 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace YundosArrow.Scripts.Systems.Managers
+namespace Assets.YundosArrow.Scripts.Systems.Managers
 {
     public class ComboManager : MonoBehaviour, ISerializationCallbackReceiver
     {
-        [SerializeField, Min(1)] private float duration = 3f;
-        [SerializeField] private int maxNumber = 25;
-        [SerializeField] private int dashNumber = 5;
-        [SerializeField] private int doubleJumpNumber = 5;
+        [SerializeField, Min(1)] private float _duration = 3f;
+        [SerializeField] private int _maxNumber = 25;
+        [SerializeField] private int _dashNumber = 5;
+        [SerializeField] private int _doubleJumpNumber = 5;
+
+		public UnityEvent OnUpdate;
+        private float? _lastChangeTime;
 
         public int CurrentNumber { get; private set; }
-
         public int DashNumber
         {
-            get => this.dashNumber;
+            get => _dashNumber;
         }
-
         public int DoubleJumpNumber
         {
-            get => this.doubleJumpNumber;
+            get => _doubleJumpNumber;
         }
-
-        public UnityEvent onUpdate;
-        private float? lastChangeTime;
 
         private static ComboManager _instance;
 
@@ -44,24 +42,24 @@ namespace YundosArrow.Scripts.Systems.Managers
         {
             if (_instance == null)
             {
-                DontDestroyOnLoad(this.gameObject);
+                DontDestroyOnLoad(gameObject);
                 _instance = this;
             }
             else if (_instance != this)
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
         }
 
         private void Update()
         {
-            if (Instance.lastChangeTime != null)
+            if (Instance._lastChangeTime != null)
             {
-                if (Time.time - Instance.lastChangeTime >= Instance.duration)
+                if (Time.time - Instance._lastChangeTime >= Instance._duration)
                 {
                     Instance.CurrentNumber = 0;
-                    Instance.onUpdate?.Invoke();
-                    Instance.lastChangeTime = null;
+                    Instance.OnUpdate?.Invoke();
+                    Instance._lastChangeTime = null;
                 }
             }
         }
@@ -69,27 +67,24 @@ namespace YundosArrow.Scripts.Systems.Managers
         public void Increase(int amount)
         {
             Instance.CurrentNumber += Mathf.Abs(amount);
-            Instance.onUpdate?.Invoke();
+            Instance.OnUpdate?.Invoke();
 
-            Instance.lastChangeTime = Time.time;
+            Instance._lastChangeTime = Time.time;
         }
 
         public void Decrease(int amount)
         {
             Instance.CurrentNumber -= Mathf.Abs(amount);
-            Instance.onUpdate?.Invoke();
+            Instance.OnUpdate?.Invoke();
 
-            Instance.lastChangeTime = Time.time;
+            Instance._lastChangeTime = Time.time;
         }
 
-        public void OnBeforeSerialize()
-        {
-            return;
-        }
+        public void OnBeforeSerialize() {}
 
         public void OnAfterDeserialize()
         {
-            Instance.dashNumber = Mathf.Clamp(Instance.dashNumber, 0, Instance.maxNumber);
+            _dashNumber = Mathf.Clamp(Instance._dashNumber, 0, Instance._maxNumber);
         }
     }
 }
