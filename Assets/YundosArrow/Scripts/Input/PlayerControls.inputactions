@@ -24,6 +24,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "03a9e26f-0221-4e36-8a42-9aff890832da",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Shoot",
                     "type": "Button",
                     "id": "dcf54d94-6ddf-473f-bd2e-a63c554ddd45",
@@ -133,7 +142,7 @@
                     "name": "",
                     "id": "c168ad8c-ed05-4bea-b0d7-ae5d313cf69e",
                     "path": "<Keyboard>/shift",
-                    "interactions": "Press",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "",
                     "action": "Run",
@@ -148,6 +157,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1c1fddfa-c099-47b6-b076-7cae3506ef06",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

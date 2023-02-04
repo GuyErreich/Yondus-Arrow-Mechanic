@@ -9,7 +9,20 @@ namespace Assets.YundosArrow.Scripts.Player.Movement
 			{
 				var x = (Camera.main.transform.right.normalized * InputReceiver.Vector2[InputReceiverType.Movement].x);
 				var z = (Camera.main.transform.forward.normalized * InputReceiver.Vector2[InputReceiverType.Movement].y);
-				var direction = Vector3.Scale(x + z, new Vector3(1,0,1));
+				var direction = Vector3.Scale(x + z, new Vector3(1,0,1)).normalized;
+
+				Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+
+				var angle = Quaternion.Angle(_charController.transform.rotation, toRotation);
+
+				_charController.transform.rotation = Quaternion.RotateTowards(_charController.transform.rotation, toRotation, angle / (rotationTime / Time.deltaTime));
+			}
+		}
+
+		public static void Rotate(Vector3 direction ,float rotationTime) {
+			if(InputReceiver.Vector2[InputReceiverType.Movement] != Vector2.zero)
+			{
+				direction = Vector3.Scale(direction, new Vector3(1,0,1));
 
 				Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
 

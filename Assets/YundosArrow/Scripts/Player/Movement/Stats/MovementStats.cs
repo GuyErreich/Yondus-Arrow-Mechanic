@@ -18,7 +18,7 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.Stats
         public MovementStats()
         {
             _speed = 10f;
-            _rotationSpeed = 1.2f;
+            _rotationSpeed = 0.4f;
             _sprintMultiplier = 1.2f;
             _dash = new DashStats();
         }

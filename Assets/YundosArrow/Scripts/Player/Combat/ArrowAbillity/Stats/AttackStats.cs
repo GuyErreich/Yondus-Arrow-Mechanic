@@ -1,29 +1,20 @@
-//using DG.Tweening;
-//using UnityEngine;
-//using YundosArrow.Scripts.Player.Combat.ArrowAbilities.Stats.SubStats;
-//
-//namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Stats
-//{
-//	[System.Serializable]
-//	public class AttackStats {
-//        [SerializeField] private SubStats.Movement movement;
-//        [Space]
-//        [SerializeField] private SubStats.MarkTargets markTargets;
-//
-//        public SubStats.Movement Movement { get => movement; }
-//        public SubStats.MarkTargets MarkTargets { get => markTargets; }
-//
-//        public AttackStats()
-//        {
-//            this.movement = new SubStats.Movement();
-//            this.markTargets = new SubStats.MarkTargets();
-//        }
-//
-//        public AttackStats(SubStats.Movement movement, MarkTargets markTargets)
-//        {
-//            this.movement = movement;
-//            this.markTargets = markTargets;
-//        }
-//
-//    }
-//}
+using UnityEngine;
+
+namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats
+{
+	[System.Serializable]
+	public class AttackStats {
+        [SerializeField] private SubStats.Movement _movement;
+        [Space]
+        [SerializeField] private SubStats.MarkTargets _markTargets;
+
+        public SubStats.Movement Movement => _movement;
+        public SubStats.MarkTargets MarkTargets => _markTargets;
+
+        public AttackStats()
+        {
+            _movement = new SubStats.Movement();
+            _markTargets = new SubStats.MarkTargets();
+        }
+    }
+}

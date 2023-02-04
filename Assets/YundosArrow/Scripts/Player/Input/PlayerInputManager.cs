@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Assets.YundosArrow.Scripts.Input;
+using Assets.YundosArrow.Scripts.Player.Movement;
 using UnityEngine;
-using YundosArrow.Scripts.UI;
 
 namespace Assets.YundosArrow.Scripts.Player.Input
 {
@@ -15,7 +15,7 @@ namespace Assets.YundosArrow.Scripts.Player.Input
         private PlayerControls.CharacterActions _characterInput;
 
         private Vector2 _smoothMovement, _movement;
-        private bool _isMoving ,_isJumping, _isRunnig, _isShooting, _isAiming;
+        private bool _isMoving ,_isJumping, _isRunnig, _isShooting, _isAiming, _isDashing;
 
         private Vector2 _currentMovementInput, _smoothMovementVelocity;
 
@@ -45,16 +45,20 @@ namespace Assets.YundosArrow.Scripts.Player.Input
 
             _characterInput.Movement.performed += ctx => _currentMovementInput  = ctx.ReadValue<Vector2>();
             _characterInput.Movement.performed += ctx => _movement  = ctx.ReadValue<Vector2>();
+			
             _characterInput.Run.started += ctx => _isRunnig = true;
             _characterInput.Run.canceled += ctx => _isRunnig = false;
-            _characterInput.Jump.started += ctx => _isJumping = true;
-            _characterInput.Jump.canceled += ctx => _isJumping = false;
 
-            _characterInput.Shoot.started += ctx => _isShooting = true;
+			_characterInput.Jump.started += ctx => _isJumping = true;
+			_characterInput.Jump.started += ctx => JumpGracePeriodHandler.Jump();
+			_characterInput.Jump.canceled += ctx => _isJumping = false;
+
+			_characterInput.Dash.started += ctx => _isDashing = true;
+			_characterInput.Dash.performed += ctx => _isDashing = false;
+			_characterInput.Dash.canceled += ctx => _isDashing = false;
+
+			_characterInput.Shoot.started += ctx => _isShooting = true;
             _characterInput.Shoot.canceled += ctx => _isShooting = false;
-
-            // _characterInput.Shoot.started += ctx => _crosshairAnim.Open();
-            // _characterInput.Shoot.canceled += ctx => _crosshairAnim.Close();
 
             _characterInput.Aim.started += ctx => _isAiming = true;
             _characterInput.Aim.canceled += ctx => _isAiming = false;
@@ -64,7 +68,8 @@ namespace Assets.YundosArrow.Scripts.Player.Input
             get => new Dictionary<InputReceiverType, bool>() {
                 {InputReceiverType.RunPressed, _isRunnig},
                 {InputReceiverType.JumpPressed, _isJumping},
-                {InputReceiverType.ShootPressed, _isShooting},
+				{InputReceiverType.DashPressed, _isDashing},
+				{InputReceiverType.ShootPressed, _isShooting},
                 {InputReceiverType.AimPressed, _isAiming}
             };
         }

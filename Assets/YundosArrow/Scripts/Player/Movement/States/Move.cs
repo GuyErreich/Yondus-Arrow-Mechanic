@@ -1,47 +1,42 @@
 using Assets.YundosArrow.Scripts.Player.Input;
-using Assets.YundosArrow.Scripts.Systems.Managers;
+using Assets.YundosArrow.Scripts.Player.Movement.Decisions;
+using Assets.YundosArrow.Scripts.Player.Movement.Stats;
 using UnityEngine;
 
 namespace Assets.YundosArrow.Scripts.Player.Movement.States
 {
 	public class Move : PlayerState
 	{
-		private PlayerStates _nextState;
-
-		public Move(YundosPlayerMachine stateMachine, CharacterController characterController) : base(stateMachine) {
-			_nextState = PlayerStates.None;
-			Actions.CharController = characterController;
+		public Move(PlayerController playerController, CharacterController characterController) : base(playerController, characterController)
+		{
+			Transitions.Add(new Transition(this ,new FallDecision(), PlayerStates.Fall));
+			Transitions.Add(new Transition(this, new JumpDecision(), PlayerStates.Jump));
+			Transitions.Add(new Transition(this, new DashDecision(),  PlayerStates.Dash));
 		}
 
-		public override void OnUpdate()
+		public override void Update()
 		{
-			var direction = (Camera.main.transform.right * InputReceiver.Vector2[InputReceiverType.SmoothMovement].x) +
-			                (Camera.main.transform.forward * InputReceiver.Vector2[InputReceiverType.SmoothMovement].y);
-			var finalSpeed = (InputReceiver.Bool[InputReceiverType.RunPressed]
-				? PlayerStats.Movement.SprintMultiplier
-				: 1f);
-			finalSpeed *= PlayerStats.Movement.Speed;
-			Actions.Move(direction, finalSpeed);
+			_direction = ((Camera.main.transform.right * InputReceiver.Vector2[InputReceiverType.SmoothMovement].x) +
+				(Camera.main.transform.forward * InputReceiver.Vector2[InputReceiverType.SmoothMovement].y)).normalized;
+			_speed = (InputReceiver.Bool[InputReceiverType.RunPressed] ? PlayerStats.Movement.SprintMultiplier : 1f);
+			_speed *= PlayerStats.Movement.Speed;
+			Actions.Move(_direction, _speed);
 			Actions.Gravity();
 			Actions.Rotate(PlayerStats.Movement.RotationSpeed);
 
-			Debug.Log("Moving");
+			JumpGracePeriodHandler.TouchGround();
 
-			Decision();
+			Debug.Log("Moving");
 		}
 
-		public override void OnFixedUpdate() {}
-
-		protected override void Decision()
+		public override void OnStateEnter()
 		{
-			if (InputReceiver.Bool[InputReceiverType.JumpPressed] || Actions.IsJumpGracePeriod)
-				_nextState = PlayerStates.Jump;
+			// Play jump animation
+		}
 
-			 if (InputReceiver.Bool[InputReceiverType.RunPressed])
-			 	if (ComboManager.Instance.CurrentNumber >= ComboManager.Instance.DashNumber)
-			 		_nextState = PlayerStates.Dash;
-
-			ChangeState(_nextState);
+		public override void OnStateExit()
+		{
+			// Stop jump animation
 		}
 	}
 }

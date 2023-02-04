@@ -5016,15 +5016,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 303351760760739798}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72ae4a1783dd0c34f8d6476fe472d9c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 624135875abacac44be65b7453848975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initState: 1
   _playerStats:
     _movementStats:
       _speed: 10
-      _rotationSpeed: 1.2
-      _sprintMultiplier: 1.2
+      _rotationSpeed: 0.4
+      _sprintMultiplier: 1
       _dash:
         _distance: 10
         _duration: 0.3

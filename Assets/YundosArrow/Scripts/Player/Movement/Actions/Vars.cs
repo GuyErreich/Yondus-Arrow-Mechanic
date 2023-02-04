@@ -7,8 +7,6 @@ namespace Assets.YundosArrow.Scripts.Player.Movement
 		private static CharacterController _charController;
 		private static Vector3 _velocity;
 		private static float _verticalSpeed;
-		private static float? _lastGroundedTime;
-		private static float? _jumpButtonPressedTime;
-
+		private static bool _canJump;
     }
 }

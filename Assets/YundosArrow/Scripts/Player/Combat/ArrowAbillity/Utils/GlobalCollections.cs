@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Utils
+namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Utils
 {
     public static class GlobalCollections
     {

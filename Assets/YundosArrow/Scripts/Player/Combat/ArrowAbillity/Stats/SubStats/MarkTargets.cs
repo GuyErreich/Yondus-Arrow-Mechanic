@@ -1,38 +1,29 @@
-//using DG.Tweening;
-//using UnityEngine;
-//
-//namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Stats.SubStats
-//{
-//	[System.Serializable]
-//	public class MarkTargets {
-//		[Header("Spherecast settings")]
-//        // [SerializeReference] private Transform startPoint;
-//        [SerializeField] private float radius;
-//        [SerializeField] private float range;
-//        [SerializeField] private float rangeOnNoHit;
-//        [SerializeField] private LayerMask layerMask;
-//
-//        // public Transform StartPoint { get => startPoint; }
-//        public float Radius { get => radius; }
-//        public float Range { get => range; }
-//        public float RangeOnNoHit { get => rangeOnNoHit; }
-//        public LayerMask LayerMask { get => layerMask; }
-//
-//        public MarkTargets()
-//        {
-//            this.radius = 5f;
-//            this.range = 5f;
-//            this.rangeOnNoHit = 20f;
-//            this.layerMask = new LayerMask();
-//        }
-//
-//        public MarkTargets(float radius, float range, float rangeOnNoHit, LayerMask layerMask)
-//        {
-//            // this.startPoint = startPoint;
-//            this.radius = radius;
-//            this.range = range;
-//            this.rangeOnNoHit = rangeOnNoHit;
-//            this.layerMask = layerMask;
-//        }
-//    }
-//}
+using DG.Tweening;
+using UnityEngine;
+
+namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats.SubStats
+{
+	[System.Serializable]
+	public class MarkTargets {
+		[Header("Spherecast settings")]
+        // [SerializeReference] private Transform startPoint;
+        [SerializeField] private float _radius;
+        [SerializeField] private float _range;
+        [SerializeField] private float _rangeOnNoHit;
+        [SerializeField] private LayerMask _layerMask;
+
+        // public Transform StartPoint { get => startPoint; }
+        public float Radius => _radius;
+        public float Range => _range;
+        public float RangeOnNoHit => _rangeOnNoHit;
+        public LayerMask LayerMask => _layerMask;
+
+        public MarkTargets()
+        {
+            _radius = 5f;
+            _range = 5f;
+            _rangeOnNoHit = 20f;
+            _layerMask = new LayerMask();
+        }
+    }
+}

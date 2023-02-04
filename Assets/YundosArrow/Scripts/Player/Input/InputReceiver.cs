@@ -4,12 +4,14 @@ using System.Collections.Generic;
 namespace Assets.YundosArrow.Scripts.Player.Input
 {
     public enum InputReceiverType {
-        RunPressed = 0,
-        JumpPressed = 1,
-        Movement = 2,
-        SmoothMovement = 3,
-        ShootPressed = 4,
-        AimPressed = 5
+        Movement = 0,
+        SmoothMovement,
+        RunPressed,
+        JumpPressed,
+		DashPressed,
+        ShootPressed,
+        AimPressed,
+
     }
 
 	public static class InputReceiver
@@ -26,7 +28,8 @@ namespace Assets.YundosArrow.Scripts.Player.Input
             Bool = new Dictionary<InputReceiverType, bool>() {
                 {InputReceiverType.RunPressed, false},
                 {InputReceiverType.JumpPressed, false},
-                {InputReceiverType.ShootPressed, false},
+				{InputReceiverType.DashPressed, false},
+				{InputReceiverType.ShootPressed, false},
                 {InputReceiverType.AimPressed, false}
             };
         }

@@ -1,36 +1,30 @@
-//using UnityEngine;
-//using System.Collections;
-//using YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions;
-//
-//namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.States
-//{
-//    public class Idle : ArrowState {
-//        public override IEnumerator On() {
-//            ArrowStates nextState;
-//
-//            var anim = StartCoroutine(Actions.Idle.FloatAnimation());
-//
-//            while (true) {
-//                MarkTargets.Mark();
-//                ArrowStats.CrosshairAnim.Close();
-//
-//                yield return new WaitForEndOfFrame();
-//
-//                print("Idle");
-//
-//                if (MarkTargets.IsMarked) {
-//                    nextState = ArrowStates.Attack;
-//                    break;
-//                }
-//            }
-//
-//            StopCoroutine(anim);
-//
-//            ChangeState(nextState);
-//        }
-//
-//        private void OnDrawGizmos() {
-//            Actions.MarkTargets.Draw();
-//        }
-//    }
-//}
+using UnityEngine;
+using System.Collections;
+using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Decisions;
+using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats;
+using Debug = UnityEngine.Debug;
+
+namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
+{
+    public class Idle : ArrowState {
+        public Idle(ArrowController playerController) : base(playerController)
+        {
+			Transitions.Add(new Transition(this, new AttackDecision(), ArrowStates.Attack));
+        }
+
+        public override void Update()
+        {
+//			Actions.FloatAnimation();
+			Actions.Mark();
+
+			Debug.Log("Idle");
+        }
+
+        public override void OnStateEnter()
+        {
+			ArrowStats.CrosshairAnim.Close();
+        }
+
+        public override void OnStateExit() {}
+    }
+}

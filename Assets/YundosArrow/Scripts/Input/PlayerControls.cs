@@ -48,6 +48,15 @@ namespace Assets.YundosArrow.Scripts.Input
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""03a9e26f-0221-4e36-8a42-9aff890832da"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Shoot"",
                     ""type"": ""Button"",
                     ""id"": ""dcf54d94-6ddf-473f-bd2e-a63c554ddd45"",
@@ -157,7 +166,7 @@ namespace Assets.YundosArrow.Scripts.Input
                     ""name"": """",
                     ""id"": ""c168ad8c-ed05-4bea-b0d7-ae5d313cf69e"",
                     ""path"": ""<Keyboard>/shift"",
-                    ""interactions"": ""Press"",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Run"",
@@ -172,6 +181,17 @@ namespace Assets.YundosArrow.Scripts.Input
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c1fddfa-c099-47b6-b076-7cae3506ef06"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": ""Tap"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -260,6 +280,7 @@ namespace Assets.YundosArrow.Scripts.Input
             m_Character = asset.FindActionMap("Character", throwIfNotFound: true);
             m_Character_Movement = m_Character.FindAction("Movement", throwIfNotFound: true);
             m_Character_Jump = m_Character.FindAction("Jump", throwIfNotFound: true);
+            m_Character_Dash = m_Character.FindAction("Dash", throwIfNotFound: true);
             m_Character_Shoot = m_Character.FindAction("Shoot", throwIfNotFound: true);
             m_Character_Aim = m_Character.FindAction("Aim", throwIfNotFound: true);
             m_Character_Run = m_Character.FindAction("Run", throwIfNotFound: true);
@@ -331,6 +352,7 @@ namespace Assets.YundosArrow.Scripts.Input
         private ICharacterActions m_CharacterActionsCallbackInterface;
         private readonly InputAction m_Character_Movement;
         private readonly InputAction m_Character_Jump;
+        private readonly InputAction m_Character_Dash;
         private readonly InputAction m_Character_Shoot;
         private readonly InputAction m_Character_Aim;
         private readonly InputAction m_Character_Run;
@@ -340,6 +362,7 @@ namespace Assets.YundosArrow.Scripts.Input
             public CharacterActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_Character_Movement;
             public InputAction @Jump => m_Wrapper.m_Character_Jump;
+            public InputAction @Dash => m_Wrapper.m_Character_Dash;
             public InputAction @Shoot => m_Wrapper.m_Character_Shoot;
             public InputAction @Aim => m_Wrapper.m_Character_Aim;
             public InputAction @Run => m_Wrapper.m_Character_Run;
@@ -358,6 +381,9 @@ namespace Assets.YundosArrow.Scripts.Input
                     @Jump.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJump;
                     @Jump.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJump;
                     @Jump.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJump;
+                    @Dash.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnDash;
+                    @Dash.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnDash;
+                    @Dash.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnDash;
                     @Shoot.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnShoot;
                     @Shoot.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnShoot;
                     @Shoot.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnShoot;
@@ -377,6 +403,9 @@ namespace Assets.YundosArrow.Scripts.Input
                     @Jump.started += instance.OnJump;
                     @Jump.performed += instance.OnJump;
                     @Jump.canceled += instance.OnJump;
+                    @Dash.started += instance.OnDash;
+                    @Dash.performed += instance.OnDash;
+                    @Dash.canceled += instance.OnDash;
                     @Shoot.started += instance.OnShoot;
                     @Shoot.performed += instance.OnShoot;
                     @Shoot.canceled += instance.OnShoot;
@@ -468,6 +497,7 @@ namespace Assets.YundosArrow.Scripts.Input
         {
             void OnMovement(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
+            void OnDash(InputAction.CallbackContext context);
             void OnShoot(InputAction.CallbackContext context);
             void OnAim(InputAction.CallbackContext context);
             void OnRun(InputAction.CallbackContext context);
