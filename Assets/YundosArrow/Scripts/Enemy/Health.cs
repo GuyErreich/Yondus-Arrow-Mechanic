@@ -2,13 +2,13 @@ using System;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
-using YundosArrow.Scripts.Systems.Managers.Enemy;
+using Assets.YundosArrow.Scripts.Systems.Managers.Enemy;
 
-namespace YundosArrow.Scripts.Enemy {
+namespace Assets.YundosArrow.Scripts.Enemy {
     [RequireComponent(typeof(AttachHealthBar))]
     [RequireComponent(typeof(BalloonEffect))]
     public class Health : MonoBehaviour {
-        [SerializeField] private float amount;
+        [SerializeField] private float _amount = 100f;
         
         public event Action<float, float> OnHealthChanged;
         public UnityEvent OnDeath;
@@ -17,23 +17,23 @@ namespace YundosArrow.Scripts.Enemy {
         public float CurrentHealth { get; private set; }
 
         private void Awake() {
-            this.MaxHealth = this.amount;
+            MaxHealth = _amount;
         }
 
         private void OnEnable() {
-            this.CurrentHealth = this.MaxHealth;
+            CurrentHealth = MaxHealth;
         }
 
         public async void Change(float amount) {
-            this.CurrentHealth += amount;
-            this.OnHealthChanged?.Invoke(this.CurrentHealth, this.MaxHealth);
+            CurrentHealth += amount;
+            OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
 
-            if (this.CurrentHealth <= 0) {
-                while (this.GetComponent<AttachHealthBar>().healthBar.Image.fillAmount > 0) { await Task.Delay(25); }
-                this.GetComponent<BalloonEffect>().Play();
-                while (!this.GetComponent<BalloonEffect>().IsCompleted) { await Task.Delay(25); }
-                EnemySpawnManager.Instance.StashEnemy(this.gameObject);
-                this.OnDeath?.Invoke();
+            if (CurrentHealth <= 0) {
+                while (GetComponent<AttachHealthBar>().HealthBar.Image.fillAmount > 0) { await Task.Delay(25); }
+                GetComponent<BalloonEffect>().Play();
+                while (!GetComponent<BalloonEffect>().IsCompleted) { await Task.Delay(25); }
+                EnemySpawnManager.Instance.StashEnemy(gameObject);
+                OnDeath?.Invoke();
             }
         }
     }

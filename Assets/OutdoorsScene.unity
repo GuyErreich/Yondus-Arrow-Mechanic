@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2157.4434, g: 2262.2578, b: 3286.3516, a: 1}
+  m_IndirectSpecularColor: {r: 2157.7441, g: 2262.6543, b: 3287.121, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -152,13 +152,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b39618b0c1e42e141b04d4cca464c30f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 3
+  _duration: 7
   _maxNumber: 25
-  _dashNumber: 0
-  _doubleJumpNumber: 0
+  _dashNumber: 5
+  _doubleJumpNumber: 5
   OnUpdate:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 761082964}
+        m_TargetAssemblyTypeName: Assets.YundosArrow.Scripts.UI.ComboCounter, Assembly-CSharp
+        m_MethodName: UpdateText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 509649305}
+        m_TargetAssemblyTypeName: Assets.YundosArrow.Scripts.UI.EnergyBar, Assembly-CSharp
+        m_MethodName: UpdateValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &47790504
 Transform:
   m_ObjectHideFlags: 0
@@ -238,12 +262,6 @@ MonoBehaviour:
   minMax: {x: 0, y: 0}
   minFalloff: 10
   maxFalloff: 10
---- !u!1 &131786648 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 303351760760739798, guid: 0118efafee993894988299a803303365,
-    type: 3}
-  m_PrefabInstance: {fileID: 303351761128863436}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &157207112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,9 +1110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf6b65483401b44994a2d9f554e5d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2050040102}
-  healthBar: {fileID: 105467487}
-  healthBarsContainer: {fileID: 862205290}
+  _player: {fileID: 2050040102}
+  _healthBar: {fileID: 105467487}
+  _healthBarsContainer: {fileID: 862205290}
 --- !u!4 &453929801
 Transform:
   m_ObjectHideFlags: 0
@@ -2011,12 +2029,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &792595632 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 303351760237742821, guid: 0118efafee993894988299a803303365,
-    type: 3}
-  m_PrefabInstance: {fileID: 303351761128863436}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &829825081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3953,12 +3965,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1543485756 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 303351761781593354, guid: 0118efafee993894988299a803303365,
-    type: 3}
-  m_PrefabInstance: {fileID: 303351761128863436}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1543527235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4102,15 +4108,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd6c11f386e50b4691b50323ab72133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1001368157}
-  enemiesContainer: {fileID: 1748114586}
-  spawnAreas:
+  _enemy: {fileID: 1001368157}
+  _enemiesContainer: {fileID: 1748114586}
+  _spawnAreas:
   - {fileID: 1329422854}
   - {fileID: 1888271978}
   - {fileID: 1235275405}
-  amount: 20
-  respawnTime: 3
-  spawnMask:
+  _amount: 150
+  _respawnTime: 2
+  _spawnMask:
     serializedVersion: 2
     m_Bits: 0
 --- !u!4 &1659537461
@@ -4751,7 +4757,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910683946}
-  m_LocalRotation: {x: 0.0874304, y: 0.011052462, z: -0.00097009604, w: 0.9961089}
+  m_LocalRotation: {x: 0.0874304, y: 0.01105246, z: -0.00097009586, w: 0.9961089}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5069,43 +5075,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 303351761128863436}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2050040107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131786648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb5b0bdbeca5dc242bb5c03641a6fb06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerStats:
-    _crosshairAnim: {fileID: 386701813}
-    _arrow: {fileID: 1543485756}
-    _startPoint: {fileID: 792595632}
-    _idleStats:
-      _duration: 1
-      _strength: {x: 0.5, y: 0.5, z: 0.5}
-      _vibration: 1
-      _randomness: 10
-      _snapping: 0
-      _fadeOut: 1
-      _randomnessMode: 0
-    _attackStats:
-      _movement:
-        _speed: 50
-        _force: 1.5
-        _returnForce: 10
-        _loopHoleForce: 1
-      _markTargets:
-        _radius: 1
-        _range: 70
-        _rangeOnNoHit: 20
-        _layerMask:
-          serializedVersion: 2
-          m_Bits: 64
 --- !u!1 &2094350864
 GameObject:
   m_ObjectHideFlags: 0
@@ -5487,34 +5456,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1372372811}
     m_Modifications:
-    - target: {fileID: 2050040103, guid: 0118efafee993894988299a803303365, type: 3}
-      propertyPath: _playerStats._movementStats._speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2050040103, guid: 0118efafee993894988299a803303365, type: 3}
-      propertyPath: _playerStats._jumpStats._fallMultiplier
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2050040103, guid: 0118efafee993894988299a803303365, type: 3}
-      propertyPath: _playerStats._jumpStats._jumpGracePeriod
-      value: 0.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 2050040103, guid: 0118efafee993894988299a803303365, type: 3}
-      propertyPath: _playerStats._movementStats._rotationSpeed
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2050040103, guid: 0118efafee993894988299a803303365, type: 3}
-      propertyPath: _playerStats._movementStats._sprintMultiplier
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2050040103, guid: 0118efafee993894988299a803303365, type: 3}
-      propertyPath: _playerStats._movementStats._dash._reactionGapTime
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2050040104, guid: 0118efafee993894988299a803303365, type: 3}
-      propertyPath: _smoothMovementTime
-      value: 0.05
-      objectReference: {fileID: 0}
+    - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
+      propertyPath: _playerStats._crosshairAnim
+      value: 
+      objectReference: {fileID: 386701813}
     - target: {fileID: 303351760760739798, guid: 0118efafee993894988299a803303365,
         type: 3}
       propertyPath: m_Name
@@ -5575,6 +5520,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2519644468810401276, guid: 0118efafee993894988299a803303365,
+        type: 3}
+      propertyPath: OnStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 758756267}
+    - target: {fileID: 2519644468810401276, guid: 0118efafee993894988299a803303365,
+        type: 3}
+      propertyPath: OnHealthChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 758756267}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0118efafee993894988299a803303365, type: 3}
 --- !u!1001 &7265831218791916604
@@ -5643,6 +5598,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222773034910450502, guid: 494a38f30c77f154283a64c249eaceb6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7265831218791916607, guid: 494a38f30c77f154283a64c249eaceb6,
         type: 3}

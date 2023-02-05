@@ -14,15 +14,8 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers
         private float? _lastChangeTime;
 
         public int CurrentNumber { get; private set; }
-        public int DashNumber
-        {
-            get => _dashNumber;
-        }
-        public int DoubleJumpNumber
-        {
-            get => _doubleJumpNumber;
-        }
-
+        public int DashNumber => _dashNumber;
+        public int DoubleJumpNumber => _doubleJumpNumber;
         private static ComboManager _instance;
 
         public static ComboManager Instance
@@ -53,38 +46,38 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers
 
         private void Update()
         {
-            if (Instance._lastChangeTime != null)
+            if (_instance._lastChangeTime != null)
             {
-                if (Time.time - Instance._lastChangeTime >= Instance._duration)
+                if (Time.time - _instance._lastChangeTime >= _instance._duration)
                 {
-                    Instance.CurrentNumber = 0;
-                    Instance.OnUpdate?.Invoke();
-                    Instance._lastChangeTime = null;
+                    _instance.CurrentNumber = 0;
+                    _instance.OnUpdate?.Invoke();
+                    _instance._lastChangeTime = null;
                 }
             }
         }
 
         public void Increase(int amount)
         {
-            Instance.CurrentNumber += Mathf.Abs(amount);
-            Instance.OnUpdate?.Invoke();
+            _instance.CurrentNumber += Mathf.Abs(amount);
+            _instance.OnUpdate?.Invoke();
 
-            Instance._lastChangeTime = Time.time;
+            _instance._lastChangeTime = Time.time;
         }
 
         public void Decrease(int amount)
         {
-            Instance.CurrentNumber -= Mathf.Abs(amount);
-            Instance.OnUpdate?.Invoke();
+            _instance.CurrentNumber -= Mathf.Abs(amount);
+            _instance.OnUpdate?.Invoke();
 
-            Instance._lastChangeTime = Time.time;
+            _instance._lastChangeTime = Time.time;
         }
 
         public void OnBeforeSerialize() {}
 
         public void OnAfterDeserialize()
         {
-            _dashNumber = Mathf.Clamp(Instance._dashNumber, 0, Instance._maxNumber);
+            _dashNumber = Mathf.Clamp(_instance._dashNumber, 0, _instance._maxNumber);
         }
     }
 }

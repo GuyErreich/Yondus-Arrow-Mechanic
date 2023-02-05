@@ -1,14 +1,12 @@
-using System;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace YundosArrow.Scripts.Player.Combat {
+namespace Assets.YundosArrow.Scripts.Player.Combat {
     public class Health : MonoBehaviour {
-        [SerializeField] private float amount;
-        [SerializeField, Range(0, 10)] private float hitGracePeriod = 1f;
+        [SerializeField] private float _amount = 100f;
+        [SerializeField, Range(0, 10)] private float _hitGracePeriod = 1f;
 
-        private float? lastHitTime;
+        private float? _lastHitTime;
         
         public UnityEvent<float> OnStart;
         public UnityEvent<float> OnHealthChanged;
@@ -17,26 +15,26 @@ namespace YundosArrow.Scripts.Player.Combat {
         public float CurrentHealth { get; private set; }
 
         private void Awake() {
-            this.MaxHealth = this.amount;
+            MaxHealth = _amount;
         }
 
         private void Start() {
-            OnStart?.Invoke(this.MaxHealth);
+            OnStart?.Invoke(MaxHealth);
         }
 
         private void OnEnable() {
-            this.CurrentHealth = this.MaxHealth;
+            CurrentHealth = MaxHealth;
         }
 
         public void Change(float amount) {
-            if (this.lastHitTime != null)
-                if (Time.time - this.lastHitTime <= this.hitGracePeriod)
+            if (_lastHitTime != null)
+                if (Time.time - _lastHitTime <= _hitGracePeriod)
                     return;
                 
-            this.lastHitTime = Time.time;
+            _lastHitTime = Time.time;
             
-            this.CurrentHealth += amount;
-            this.OnHealthChanged?.Invoke(this.CurrentHealth);
+			CurrentHealth += amount;
+            OnHealthChanged?.Invoke(CurrentHealth);
         }
     }
 }

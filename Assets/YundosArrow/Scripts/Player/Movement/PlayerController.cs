@@ -8,7 +8,6 @@ namespace Assets.YundosArrow.Scripts.Player.Movement
 {
 	[RequireComponent(typeof(CharacterController))]
 	[RequireComponent(typeof(PlayerInputManager))]
-	[RequireComponent(typeof(DetectCollision))]
 	public class PlayerController : MonoBehaviour {
         [SerializeField] private PlayerStats _playerStats;
 

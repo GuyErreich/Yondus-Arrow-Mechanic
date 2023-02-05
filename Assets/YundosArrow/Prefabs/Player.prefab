@@ -805,7 +805,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 7000
+    maxNumParticles: 15000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -4965,6 +4965,8 @@ GameObject:
   - component: {fileID: 2050040105}
   - component: {fileID: 2050040103}
   - component: {fileID: 2050040104}
+  - component: {fileID: 2050040107}
+  - component: {fileID: 2519644468810401276}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -5022,19 +5024,19 @@ MonoBehaviour:
   _playerStats:
     _movementStats:
       _speed: 10
-      _rotationSpeed: 0.4
+      _rotationSpeed: 0.2
       _sprintMultiplier: 1
       _dash:
         _distance: 10
         _duration: 0.3
+        _reactionGapTime: 0.1
     _jumpStats:
       _jumpForce: 10
-      _fallMultiplier: 2.2
-      _jumpGracePeriod: 0.2
+      _fallMultiplier: 6
+      _gracePeriod: 0.2
       _usePhysics: 1
       _doubleJump:
         _force: 10
-        _reactionGapTime: 0.4
 --- !u!114 &2050040104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5047,8 +5049,91 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b622e2bbdd05734ea7973faf33102ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _smoothMovementTime: 0.2
+  _smoothMovementTime: 0.05
   _smoothMovementThreshHold: 0.005
+--- !u!114 &2050040107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303351760760739798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5b0bdbeca5dc242bb5c03641a6fb06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerStats:
+    _crosshairAnim: {fileID: 0}
+    _arrow: {fileID: 303351761781593354}
+    _startPoint: {fileID: 303351760237742821}
+    _idleStats:
+      _duration: 1
+      _strength: {x: 0.02, y: 0.03, z: 0.01}
+      _vibration: 3
+      _randomness: 90
+      _snapping: 0
+      _fadeOut: 0
+      _randomnessMode: 1
+    _attackStats:
+      _movement:
+        _speed: 40
+        _force: 1.5
+        _returnForce: 10
+        _loopHoleForce: 1
+      _markTargets:
+        _radius: 1
+        _range: 70
+        _rangeOnNoHit: 20
+        _layerMask:
+          serializedVersion: 2
+          m_Bits: 64
+--- !u!114 &2519644468810401276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303351760760739798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a5d2271c66ebc48b2f452672bc001c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 100
+  _hitGracePeriod: 1
+  OnStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: YundosArrow.Scripts.UI.HealthBars.StaticHealthBar,
+          Assembly-CSharp
+        m_MethodName: HandleHealthChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: YundosArrow.Scripts.UI.HealthBars.StaticHealthBar,
+          Assembly-CSharp
+        m_MethodName: HandleHealthChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &303351761583180361
 GameObject:
   m_ObjectHideFlags: 0
@@ -5159,6 +5244,7 @@ GameObject:
   - component: {fileID: 303351761781593350}
   - component: {fileID: 303351761781593348}
   - component: {fileID: 882879184}
+  - component: {fileID: 1543485760}
   m_Layer: 7
   m_Name: Arrow
   m_TagString: Player
@@ -5211,8 +5297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6330deb78a653f14abbe1097fbff1fd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 50
-  layerMask:
+  _amount: 50
+  _layerMask:
     serializedVersion: 2
     m_Bits: 64
 --- !u!65 &882879184
@@ -5228,6 +5314,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7653461, y: 0.67882764, z: 4.0787272}
   m_Center: {x: 0.01322791, y: -0.008178472, z: 0.19504943}
+--- !u!114 &1543485760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303351761781593358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c94b5f26bafdbef42bb696a5ba3d247f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _axis: {x: 0, y: 0, z: 1}
+  _speed: 100
 --- !u!1001 &303351761813352295
 PrefabInstance:
   m_ObjectHideFlags: 0

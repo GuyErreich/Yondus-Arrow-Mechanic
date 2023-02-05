@@ -114,14 +114,15 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 		{
 			if (_currentTargets.Count > 0)
 			{
-
-				if (_tMove <= 1f)
+				if (_tMove < 1f)
 				{
 					_pathMove.RecalculatePath(_currentTargets[0].position);
 
-					var velocity = BezireCurve.CubicVelocity(_pathMove.Points[0], _pathMove.Points[1], _pathMove.Points[2],
+					var velocity = BezireCurve.CubicVelocity(_pathMove.Points[0], _pathMove.Points[1],
+						_pathMove.Points[2],
 						_pathMove.Points[3], _tMove);
-					var distance = BezireCurve.CubicDistance(_pathMove.Points[0], _pathMove.Points[1], _pathMove.Points[2],
+					var distance = BezireCurve.CubicDistance(_pathMove.Points[0], _pathMove.Points[1],
+						_pathMove.Points[2],
 						_pathMove.Points[3], _tMove);
 					_tMove += ArrowStats.AttackStats.Movement.Speed * velocity / distance * Time.deltaTime;
 
@@ -132,9 +133,10 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 				}
 				else
 				{
-					_tMove = 0;
 					_currentTargets.RemoveAt(0);
-					_pathMove.ChangeDestination(_currentTargets[0].position, ArrowStats.AttackStats.Movement.Force);
+					if (_currentTargets.Count > 0 )
+						_pathMove.ChangeDestination(_currentTargets[0].position, ArrowStats.AttackStats.Movement.Force);
+					_tMove = 0;
 				}
 			}
 
@@ -148,7 +150,6 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 		{
 			if (_tMove == 0)
 				_pathMove.ChangeDestination(ArrowStats.StartPoint.position, ArrowStats.AttackStats.Movement.Force);
-
 
 			if (_tMove <= 1f)
 			{
@@ -165,7 +166,8 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 					_pathMove.Points[3], _tMove);
 				_tMove += ArrowStats.AttackStats.Movement.Speed * velocity / distance * Time.deltaTime;
 
-				ArrowStats.Arrow.position = BezireCurve.CubicPoint(_pathMove.Points[0], _pathMove.Points[1], _pathMove.Points[2],
+				ArrowStats.Arrow.position = BezireCurve.CubicPoint(_pathMove.Points[0], _pathMove.Points[1],
+					_pathMove.Points[2],
 					_pathMove.Points[3], _tMove);
 				ArrowStats.Arrow.forward = BezireCurve.CubicDirection(_pathMove.Points[0], _pathMove.Points[1],
 					_pathMove.Points[2], _pathMove.Points[3], _tMove);

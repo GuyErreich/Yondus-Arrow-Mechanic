@@ -14,6 +14,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
 
         public override void Update()
         {
+			Actions.Mark();
 			Actions.Move();
 
 			Debug.Log("Attacking");

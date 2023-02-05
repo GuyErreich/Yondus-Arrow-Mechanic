@@ -1,7 +1,6 @@
-using UnityEditor;
 using UnityEngine;
 
-namespace YundosArrow.Scripts.Systems.Managers.Enemy
+namespace Assets.YundosArrow.Scripts.Systems.Managers.Enemy
 {
     public class SpawnArea : MonoBehaviour {
         private void OnDrawGizmos() { 

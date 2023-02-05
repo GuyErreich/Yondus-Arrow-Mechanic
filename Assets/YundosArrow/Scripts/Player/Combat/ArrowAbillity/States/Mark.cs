@@ -10,7 +10,8 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
         public Mark(ArrowController playerController) : base(playerController)
         {
 			Transitions.Add(new Transition(this, new StartAttackDecision(), ArrowStates.StartAttack));
-        }
+			Transitions.Add(new Transition(this, new NotMarkedDecision(), ArrowStates.Idle));
+		}
 
         public override void Update()
         {

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Decisions;
@@ -14,14 +15,14 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
 
         public override void Update()
         {
-			Actions.FloatAnimation();
-
 			Debug.Log("Idle");
         }
 
         public override void OnStateEnter()
         {
 			ArrowStats.CrosshairAnim.Close();
+			Actions.FloatAnimation();
+
         }
 
         public override void OnStateExit() {}

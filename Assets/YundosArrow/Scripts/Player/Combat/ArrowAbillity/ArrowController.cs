@@ -6,9 +6,7 @@ using Assets.YundosArrow.Scripts.Player.Input;
 
 namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 {
-	[RequireComponent(typeof(CharacterController))]
 	[RequireComponent(typeof(PlayerInputManager))]
-	[RequireComponent(typeof(DetectCollision))]
 	public class ArrowController : MonoBehaviour {
         [SerializeField] private ArrowStats _playerStats;
 

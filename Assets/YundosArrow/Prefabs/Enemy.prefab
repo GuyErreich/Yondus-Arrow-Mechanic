@@ -25,7 +25,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &862247934614277275
 Transform:
   m_ObjectHideFlags: 0
@@ -114,7 +114,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 7
+  m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19e3fb678f34784fb6946484d48df1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 100
+  _amount: 100
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -191,10 +191,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e018bb634ba0e7045afc8cf64c8218d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balloonPop: {fileID: 2100000, guid: 0c3b1817730e5db42a22dff5304c29c5, type: 2}
-  startFrameAmount: -1.12
-  endFrameAmount: 0.18
-  duration: 0.5
+  _balloonPop: {fileID: 2100000, guid: 0c3b1817730e5db42a22dff5304c29c5, type: 2}
+  _startFrameAmount: -1.12
+  _endFrameAmount: 0.3
+  _duration: 1
 --- !u!114 &1381066765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,9 +207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ed37de2170db0d46866d55899c0fa5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 10
-  radius: 1.22
-  layerMask:
+  _amount: 10
+  _layerMask:
     serializedVersion: 2
     m_Bits: 128
 --- !u!54 &1062710025

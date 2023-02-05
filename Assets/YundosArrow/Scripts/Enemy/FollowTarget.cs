@@ -1,22 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.YundosArrow.Scripts.Systems.Managers.Enemy;
 using UnityEngine;
 using UnityEngine.AI;
-using YundosArrow.Scripts.Systems.Managers.Enemy;
 
-namespace YundosArrow.Scripts.Enemy
+namespace Assets.YundosArrow.Scripts.Enemy
 {
     public class FollowTarget : MonoBehaviour
     {
-        private NavMeshAgent agent;
+        private NavMeshAgent _agent;
 
         private void Awake() {
-            this.agent = this.GetComponent<NavMeshAgent>();
+            _agent = GetComponent<NavMeshAgent>();
         }
         // Update is called once per frame
         void Update()
         {
-            this.agent.destination = EnemyManager.Instance.Player.position;
+            _agent.destination = EnemyManager.Instance.Player.position;
         }
     }
 }
