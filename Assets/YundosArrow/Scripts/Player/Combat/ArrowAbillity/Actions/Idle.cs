@@ -6,7 +6,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
     public partial class Actions {
         public static void FloatAnimation() {
 			ArrowStats.Arrow.DOShakePosition(
-				ArrowStats.IdleStats.Duration,
+				0f,
 				ArrowStats.IdleStats.Strength,
 				ArrowStats.IdleStats.Vibration,
 				ArrowStats.IdleStats.Randomness,

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats;
 using UnityEngine;
 
 namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Utils

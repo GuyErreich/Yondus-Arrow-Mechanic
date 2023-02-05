@@ -2,26 +2,26 @@ using UnityEngine;
 using System.Collections;
 using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Decisions;
 using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats;
-using Debug = UnityEngine.Debug;
 
 namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
 {
-    public class Idle : ArrowState {
-        public Idle(ArrowController playerController) : base(playerController)
+    public class Mark : ArrowState {
+
+        public Mark(ArrowController playerController) : base(playerController)
         {
-			Transitions.Add(new Transition(this, new MarkDecision(), ArrowStates.Mark));
+			Transitions.Add(new Transition(this, new StartAttackDecision(), ArrowStates.StartAttack));
         }
 
         public override void Update()
         {
-			Actions.FloatAnimation();
+			Actions.Mark();
 
-			Debug.Log("Idle");
+			Debug.Log("Marking");
         }
 
         public override void OnStateEnter()
         {
-			ArrowStats.CrosshairAnim.Close();
+			ArrowStats.CrosshairAnim.Open();
         }
 
         public override void OnStateExit() {}

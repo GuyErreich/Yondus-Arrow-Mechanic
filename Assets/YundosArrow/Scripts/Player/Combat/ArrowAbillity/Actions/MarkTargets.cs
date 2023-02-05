@@ -8,10 +8,6 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 {
 	public partial class Actions
 	{
-		private static RaycastHit _hit;
-
-		public static bool IsMarked => GlobalCollections.Targets != null && GlobalCollections.Targets.Count > 0f;
-
 		/**
         TODO: this what is better -
             to not let the player mark more than once in row(before it is no longer in the list)
@@ -30,18 +26,18 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 				{
 					if (!IsMarked)
 					{
-						GlobalCollections.Targets = new List<Transform> { _hit.transform };
-						GlobalCollections.CurrentTargets = new List<Transform> { _hit.transform };
+						_targets = new List<Transform> { _hit.transform };
+						_currentTargets = new List<Transform> { _hit.transform };
 					}
 					else
 					{
-						// if(GlobalCollections.Targets[GlobalCollections.Targets.Count - 1] != _hit.transform) {
-						//     GlobalCollections.Targets.Add(_hit.transform);
+						// if(_targets[_targets.Count - 1] != _hit.transform) {
+						//     _targets.Add(_hit.transform);
 						// }
-						if (!GlobalCollections.Targets.Contains(_hit.transform))
+						if (!_targets.Contains(_hit.transform))
 						{
-							GlobalCollections.Targets.Add(_hit.transform);
-							GlobalCollections.CurrentTargets.Add(_hit.transform);
+							_targets.Add(_hit.transform);
+							_currentTargets.Add(_hit.transform);
 						}
 					}
 				}

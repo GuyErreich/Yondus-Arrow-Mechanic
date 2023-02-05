@@ -49,8 +49,11 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 		private ArrowState GetState(ArrowStates state) => state switch
 		{
 			ArrowStates.Idle => new Idle(this),
+			ArrowStates.Mark => new Mark(this),
+			ArrowStates.StartAttack => new StartAttack(this),
 			ArrowStates.Attack => new Attack(this),
-//			ArrowStates.ForceAttack => new ForceAttack(this),
+			ArrowStates.ReturnToPlayer => new ReturnToPlayer(this),
+			//			ArrowStates.ForceAttack => new ForceAttack(this),
 			ArrowStates.CurrentState => _currentState,
 			_ => throw new NullReferenceException($"State: {state}. doesnt exist")
 		};
@@ -59,7 +62,10 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 	public enum ArrowStates {
 		CurrentState = 0,
 		Idle,
-        Attack,
+		Mark,
+        StartAttack,
+		Attack,
+		ReturnToPlayer,
         ForceAttack
     }
 }

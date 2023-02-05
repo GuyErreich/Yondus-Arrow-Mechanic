@@ -5,25 +5,22 @@ using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats;
 
 namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
 {
-    public class Attack : ArrowState {
+    public class StartAttack : ArrowState {
 
-        public Attack(ArrowController playerController) : base(playerController)
+		public StartAttack(ArrowController playerController) : base(playerController)
         {
-			Transitions.Add(new Transition(this, new IsAttackOverDecision(), ArrowStates.Idle));
+			Transitions.Add(new Transition(this, new AttackDecision(), ArrowStates.Attack));
         }
 
         public override void Update()
         {
-			Actions.Mark();
-			Actions.Move();
-
-			Debug.Log("Attacking");
+			Debug.Log("Start attack");
         }
 
-        public override void OnStateEnter()
-        {
-			ArrowStats.CrosshairAnim.Open();
-        }
+		public override void OnStateEnter()
+		{
+			Actions.MoveInit();
+		}
 
         public override void OnStateExit() {}
     }
