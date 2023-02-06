@@ -37,7 +37,6 @@ namespace Assets.YundosArrow.Scripts.Editor
             go.AddComponent<EnemyManager>();
         }
 
-
         [MenuItem("GameObject/Systems/Health/DynamicHealthBar")]
         private static void CreateDynamicHealthBar()
         {

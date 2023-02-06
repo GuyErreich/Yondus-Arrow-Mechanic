@@ -9,7 +9,7 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
     public class Dash : PlayerState {
 		private float _startTime;
 
-		public float StartTime { get => _startTime; }
+		public float StartTime => _startTime;
 
 		public Dash(PlayerController playerController, CharacterController characterController) : base(playerController, characterController)
 		{
@@ -29,8 +29,8 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 
 		public override void OnStateEnter()
 		{
-//			Debug.Log("Started Dashing");
 			_startTime = Time.time;
+			GetGameObject().GetComponent<TimeScaleController>().SetScale(0.005f, PlayerStats.Movement.Dash.Duration * 10);
 			ComboManager.Instance.Decrease(ComboManager.Instance.DashNumber);
 		}
 

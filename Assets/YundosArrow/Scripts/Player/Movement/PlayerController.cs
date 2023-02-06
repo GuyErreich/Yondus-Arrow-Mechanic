@@ -14,8 +14,12 @@ namespace Assets.YundosArrow.Scripts.Player.Movement
 		private PlayerState _currentState;
 		private CharacterController _characterController;
 
+        private void Awake()
+        {
+			this.gameObject.AddComponent<TimeScaleController>();
+        }
 
-		private void Start()
+        private void Start()
 		{
 			_characterController = this.GetComponent<CharacterController>();
 			_currentState = GetState(PlayerStates.GroundMovement);

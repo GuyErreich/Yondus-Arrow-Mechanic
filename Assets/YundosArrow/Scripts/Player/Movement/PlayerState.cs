@@ -19,5 +19,10 @@ namespace Assets.YundosArrow.Scripts.Player.Movement
 		public abstract void Update();
 		public abstract void OnStateEnter();
 		public abstract void OnStateExit();
+
+		public GameObject GetGameObject()
+		{
+			return _playerController.gameObject;
+		}
     }
 }
