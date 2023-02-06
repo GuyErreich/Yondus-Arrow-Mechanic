@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Assets.YundosArrow.Scripts.Input;
+using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity;
 using Assets.YundosArrow.Scripts.Player.Movement;
 using UnityEngine;
 
@@ -58,7 +59,9 @@ namespace Assets.YundosArrow.Scripts.Player.Input
 			_characterInput.Dash.canceled += ctx => _isDashing = false;
 
 			_characterInput.Shoot.started += ctx => _isShooting = true;
-            _characterInput.Shoot.canceled += ctx => _isShooting = false;
+			_characterInput.Shoot.performed += ctx => _isShooting = false;
+			_characterInput.Shoot.canceled += ctx => MarkRectionGapHandler.Mark();
+			_characterInput.Shoot.canceled += ctx => _isShooting = false;
 
             _characterInput.Aim.started += ctx => _isAiming = true;
             _characterInput.Aim.canceled += ctx => _isAiming = false;

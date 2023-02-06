@@ -1,7 +1,5 @@
 using UnityEngine;
-using System.Collections;
 using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Decisions;
-using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats;
 
 namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
 {
@@ -10,6 +8,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
 		public ReturnToPlayer(ArrowController playerController) : base(playerController)
         {
 			Transitions.Add(new Transition(this, new IsReturnedToPlayerDecision(), ArrowStates.Idle));
+//			Transitions.Add(new Transition(this, new MarkDecision(), ArrowStates.MarkAgain));
         }
 
         public override void Update()

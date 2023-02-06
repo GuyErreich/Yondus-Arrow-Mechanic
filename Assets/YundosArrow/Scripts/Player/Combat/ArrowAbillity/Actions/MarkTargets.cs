@@ -22,8 +22,8 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 				    ArrowStats.AttackStats.MarkTargets.Range,
 				    ArrowStats.AttackStats.MarkTargets.LayerMask))
 			{
-				if (InputReceiver.Bool[InputReceiverType.ShootPressed])
-				{
+//				if (InputReceiver.Bool[InputReceiverType.ShootPressed])
+//				{
 					if (!IsMarked)
 					{
 						_targets = new List<Transform> { _hit.transform };
@@ -40,7 +40,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 							_currentTargets.Add(_hit.transform);
 						}
 					}
-				}
+//				}
 			}
 
 			if (_hit.point == Vector3.zero)

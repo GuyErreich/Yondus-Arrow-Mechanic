@@ -155,7 +155,7 @@ namespace Assets.YundosArrow.Scripts.Input
                     ""name"": """",
                     ""id"": ""241828fb-6d1b-4500-8a00-a394ec1164cf"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Press"",
+                    ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Shoot"",

@@ -22,6 +22,7 @@ namespace Assets.YundosArrow.Scripts.Enemy {
 
         private void OnEnable() {
             CurrentHealth = MaxHealth;
+			GetComponent<Collider>().enabled = true;
         }
 
         public async void Change(float amount) {
@@ -29,9 +30,19 @@ namespace Assets.YundosArrow.Scripts.Enemy {
             OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
 
             if (CurrentHealth <= 0) {
-                while (GetComponent<AttachHealthBar>().HealthBar.Image.fillAmount > 0) { await Task.Delay(25); }
-                GetComponent<BalloonEffect>().Play();
-                while (!GetComponent<BalloonEffect>().IsCompleted) { await Task.Delay(25); }
+				var healthBar = GetComponent<AttachHealthBar>().HealthBar;
+				if (healthBar != null)
+					while (healthBar.Image.fillAmount > 0) { await Task.Delay(25); }
+
+				GetComponent<Collider>().enabled = false;
+
+				var balloonEffect = GetComponent<BalloonEffect>();
+				if (balloonEffect != null)
+				{
+	                GetComponent<BalloonEffect>().Play();
+	                while (!GetComponent<BalloonEffect>().IsCompleted) { await Task.Delay(25); }
+				}
+
                 EnemySpawnManager.Instance.StashEnemy(gameObject);
                 OnDeath?.Invoke();
             }
