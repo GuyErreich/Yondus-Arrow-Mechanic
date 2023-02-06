@@ -9,8 +9,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
 
 		public MarkAgain(ArrowController playerController) : base(playerController)
         {
-
-//			Transitions.Add(new Transition(this, new RetargetDecision(), ArrowStates.RetargetAttack));
+			Transitions.Add(new Transition(this, new RetargetDecision(), ArrowStates.StartAttack));
 			Transitions.Add(new Transition(this, new AttackDecision(), ArrowStates.Attack));
 			Transitions.Add(new Transition(this, new NotMarkedDecision(), ArrowStates.Idle));
 		}

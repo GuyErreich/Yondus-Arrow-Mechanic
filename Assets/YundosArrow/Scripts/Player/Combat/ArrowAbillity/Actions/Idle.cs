@@ -8,13 +8,13 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 		private static Tweener _tweener;
         public static void FloatAnimation() {
 			_tweener = ArrowStats.Arrow.DOShakePosition(
-				ArrowStats.IdleStats.Duration,
-				ArrowStats.IdleStats.Strength,
-				ArrowStats.IdleStats.Vibration,
-				ArrowStats.IdleStats.Randomness,
-				ArrowStats.IdleStats.Snapping,
-				ArrowStats.IdleStats.FadeOut,
-				ArrowStats.IdleStats.RandomnessMode
+				ArrowStats.IdleStats.ShakeAnimation.Duration,
+				ArrowStats.IdleStats.ShakeAnimation.Strength,
+				ArrowStats.IdleStats.ShakeAnimation.Vibration,
+				ArrowStats.IdleStats.ShakeAnimation.Randomness,
+				ArrowStats.IdleStats.ShakeAnimation.Snapping,
+				ArrowStats.IdleStats.ShakeAnimation.FadeOut,
+				ArrowStats.IdleStats.ShakeAnimation.RandomnessMode
 				).SetLoops(-1)
 				.OnComplete(() =>
 				{
@@ -22,5 +22,9 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 				});
 
         }
+
+		public static void FollowTarget(Vector3 position) {
+			ArrowStats.Arrow.transform.DOMove(position, ArrowStats.IdleStats.FollowTarget.Duration);
+		}
     }
 }

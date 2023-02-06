@@ -26,10 +26,6 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 			_pathMove = new ArrowPath(ArrowStats.Arrow.position, _currentTargets[0].position, ArrowStats.Arrow.forward,
 				ArrowStats.AttackStats.Movement.Force);
 
-			_cacheParent = ArrowStats.Arrow.parent;
-			_localPos = ArrowStats.Arrow.localPosition;
-			ArrowStats.Arrow.parent = null;
-			ArrowStats.Arrow.position = _cacheParent.TransformPoint(_localPos);
 			_tMove = 0;
 			IsMoving = true;
 			IsAttacking = true;
@@ -38,7 +34,10 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 		public static void MoveToStartingPoint()
 		{
 			if (_tMove == 0)
+			{
 				_pathMove.ChangeDestination(ArrowStats.StartPoint.position, ArrowStats.AttackStats.Movement.Force);
+				_targets.Clear();
+			}
 
 			if (_tMove <= 1f)
 			{
@@ -54,10 +53,6 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 			}
 			else
 			{
-				ArrowStats.Arrow.parent = _cacheParent;
-				ArrowStats.Arrow.localPosition = Vector3.zero;
-				ArrowStats.Arrow.localRotation = Quaternion.identity;
-				_targets.Clear();
 				IsMoving = false;
 			}
 		}
@@ -86,11 +81,6 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 			{
 				IsAttacking = false;
 			}
-		}
-
-		public static void RetargetArrow()
-		{
-			IsAttacking = true;
 		}
 
 		private static void Move(ArrowPath path, float t)

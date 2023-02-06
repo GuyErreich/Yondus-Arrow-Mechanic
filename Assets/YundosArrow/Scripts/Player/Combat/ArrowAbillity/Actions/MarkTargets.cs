@@ -24,7 +24,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 			{
 //				if (InputReceiver.Bool[InputReceiverType.ShootPressed])
 //				{
-					if (!IsMarked)
+					if (_targets == null || _targets.Count == 0f)
 					{
 						_targets = new List<Transform> { _hit.transform };
 						_currentTargets = new List<Transform> { _hit.transform };

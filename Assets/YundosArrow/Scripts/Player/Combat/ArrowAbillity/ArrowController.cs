@@ -52,7 +52,6 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 			ArrowStates.StartAttack => new StartAttack(this),
 			ArrowStates.Attack => new Attack(this),
 			ArrowStates.ReturnToPlayer => new ReturnToPlayer(this),
-			ArrowStates.RetargetAttack => new RetargetAttack(this),
 			//			ArrowStates.ForceAttack => new ForceAttack(this),
 			ArrowStates.CurrentState => _currentState,
 			_ => throw new NullReferenceException($"State: {state}. doesnt exist")
@@ -67,7 +66,6 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
         StartAttack,
 		Attack,
 		ReturnToPlayer,
-		RetargetAttack,
         ForceAttack
     }
 }

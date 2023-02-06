@@ -8,7 +8,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
 		public ReturnToPlayer(ArrowController playerController) : base(playerController)
         {
 			Transitions.Add(new Transition(this, new IsReturnedToPlayerDecision(), ArrowStates.Idle));
-//			Transitions.Add(new Transition(this, new MarkDecision(), ArrowStates.MarkAgain));
+			Transitions.Add(new Transition(this, new MarkDecision(), ArrowStates.MarkAgain));
         }
 
         public override void Update()

@@ -1,36 +1,20 @@
-using DG.Tweening;
 using UnityEngine;
 
 namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats
 {
 	[System.Serializable]
 	public class IdleStats {
-		[Header("Move")]
-		[SerializeField] private float _duration;
-        [SerializeField] private Vector3 _strength;
-        [SerializeField] private int _vibration;
-        [SerializeField] private float _randomness;
-        [SerializeField] private bool _snapping;
-        [SerializeField] private bool _fadeOut;
-        [SerializeField] private ShakeRandomnessMode _randomnessMode;
+		[SerializeField] private SubStats.ShakeAnimation _shakeAnimation;
+        [Space]
+        [SerializeField] private SubStats.FollowTarget _followTarget;
 
-        public float Duration => _duration;
-        public Vector3 Strength => _strength;
-        public int Vibration => _vibration;
-        public float Randomness => _randomness;
-        public bool Snapping => _snapping;
-        public bool FadeOut => _fadeOut;
-        public ShakeRandomnessMode RandomnessMode => _randomnessMode;
+        public SubStats.ShakeAnimation ShakeAnimation => _shakeAnimation;
+        public SubStats.FollowTarget FollowTarget => _followTarget;
 
         public IdleStats()
         {
-            _duration = 1f;
-            _strength = new Vector3(0, 2, 0);
-            _vibration = 10;
-            _randomness = 90f;
-            _snapping = false;
-            _fadeOut = true;
-            _randomnessMode = ShakeRandomnessMode.Full;
+            _shakeAnimation = new SubStats.ShakeAnimation();
+            _followTarget = new SubStats.FollowTarget();
         }
     }
 }
