@@ -17,13 +17,17 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 		public static void Mark()
 		{
 			Ray ray = Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f));
+			var distance = Vector3.Distance(Camera.main.ViewportToWorldPoint(new Vector2(0.5f, 0.5f)), Player.transform.position);
 
 			if (Physics.SphereCast(ray, ArrowStats.attackStats.markTargets.radius, out _hitMark,
 				    ArrowStats.attackStats.markTargets.range,
 				    ArrowStats.attackStats.markTargets.layerMask))
 			{
-//				if (InputReceiver.Bool[InputReceiverType.ShootPressed])
-//				{
+
+				if (_hitMark.distance >= distance)
+				{
+					//				if (InputReceiver.Bool[InputReceiverType.ShootPressed])
+					//				{
 					if (_targets == null || _targets.Count == 0f)
 					{
 						_targets = new List<Transform> { _hitMark.transform };
@@ -40,7 +44,24 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 							_currentTargets.Add(_hitMark.transform);
 						}
 					}
-//				}
+					//				}
+				}
+			}
+		}
+
+		public static void DryMark()
+		{
+			Ray ray = Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f));
+			var distance = Vector3.Distance(Camera.main.ViewportToWorldPoint(new Vector2(0.5f, 0.5f)), Player.transform.position);
+
+			if (Physics.SphereCast(ray, ArrowStats.attackStats.markTargets.radius, out _hitMark,
+				ArrowStats.attackStats.markTargets.range,
+				ArrowStats.attackStats.markTargets.layerMask))
+			{
+				if (_hitMark.distance >= distance)
+				{
+					_hitMark.point = Vector3.zero;
+				}
 			}
 		}
 

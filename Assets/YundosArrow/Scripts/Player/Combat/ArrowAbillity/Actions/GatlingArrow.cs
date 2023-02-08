@@ -12,22 +12,6 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 		private static Queue<Transform> _gatlingArrowAnchors;
 		public static int GatlingArrowsCount => _gatlingArrows != null ? _gatlingArrows.Count : 0;
 
-//		public static void CreateArrows()
-//		{
-//			_gatlingArrows = new Queue<Transform>();
-//			_gatlingArrowAnchors = new Transform[ArrowStats.attackStats.gatlingArrow.amount];
-//			for (int i = 0; i < ArrowStats.attackStats.gatlingArrow.amount; i++)
-//			{
-//				var newArrow = Instantiate(ArrowStats.attackStats.gatlingArrow.arrow);
-//				_gatlingArrows.Enqueue(newArrow);
-//
-//				var newAnchor = new GameObject($"Gatling Arrow Anchor{i}");
-//				newAnchor.transform.parent = ArrowStats.attackStats.homingArrow.arrow;
-//				newAnchor.transform.localPosition = new Vector3(Mathf.Cos(i), Mathf.Sin(i), Mathf.Atan2(Mathf.Cos(i), Mathf.Sin(i))) * 0.75f;
-//				_gatlingArrowAnchors[i] = newAnchor.transform;
-//			}
-//		}
-
 		public static void CreateArrows()
 		{
 			_gatlingArrows = new Queue<Transform>();
@@ -38,7 +22,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 
 				var newAnchor = new GameObject($"Gatling Arrow Anchor{i}");
 				newAnchor.transform.parent = ArrowStats.attackStats.homingArrow.arrow;
-				newAnchor.transform.localPosition = new Vector3(Mathf.Cos(i), Mathf.Sin(i), Mathf.Atan2(Mathf.Cos(i), Mathf.Sin(i))) * 0.75f;
+				newAnchor.transform.localPosition = new Vector3(Mathf.Cos(i), Mathf.Sin(i), Mathf.Atan2(Mathf.Cos(i), Mathf.Sin(i)) * 0.5f) * 0.75f;
 
 				_gatlingArrowAnchors.Enqueue(newAnchor.transform);
 

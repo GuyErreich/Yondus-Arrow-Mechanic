@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 4
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2159.5977, g: 2263.4062, b: 3286.4062, a: 1}
+  m_IndirectSpecularColor: {r: 2160.5244, g: 2264.5078, b: 3287.5742, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5543,7 +5543,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277728772}
-  m_LocalRotation: {x: 0.087277964, y: 0.05982437, z: -0.0052509, w: 0.99437225}
+  m_LocalRotation: {x: 0.087277964, y: 0.059824366, z: -0.005250899, w: 0.99437225}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13704,10 +13704,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1417798097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6330deb78a653f14abbe1097fbff1fd0, type: 3}
+  m_Script: {fileID: 11500000, guid: 3eee94e3da4726346af69c606c7f36f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _amount: 100
+  _amount: 25
   _layerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -14134,7 +14134,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1517401541}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6330deb78a653f14abbe1097fbff1fd0, type: 3}
+  m_Script: {fileID: 11500000, guid: d2581822021b9af4eb9fd73d8922a50d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _amount: 100
@@ -14306,8 +14306,8 @@ MonoBehaviour:
   - {fileID: 1329422854}
   - {fileID: 1888271978}
   - {fileID: 1235275405}
-  _amount: 2
-  _respawnTime: 1
+  _amount: 1
+  _respawnTime: 2
   _spawnMask:
     serializedVersion: 2
     m_Bits: 0
@@ -14955,7 +14955,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910683946}
-  m_LocalRotation: {x: 0.0874304, y: 0.01105246, z: -0.00097009586, w: 0.9961089}
+  m_LocalRotation: {x: 0.0874304, y: 0.011052462, z: -0.00097009604, w: 0.9961089}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15654,6 +15654,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1372372811}
     m_Modifications:
+    - target: {fileID: 2050040103, guid: 0118efafee993894988299a803303365, type: 3}
+      propertyPath: _playerStats._movementStats._dash._distance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050040103, guid: 0118efafee993894988299a803303365, type: 3}
+      propertyPath: _playerStats._movementStats._dash._duration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
       propertyPath: ArrowStats._crosshairAnim
       value: 
@@ -15663,13 +15671,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1517401542}
     - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
-      propertyPath: ArrowStats._attackStats._homingArrow._speed
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
       propertyPath: ArrowStats._attackStats._gatlingArrow._arrow
       value: 
       objectReference: {fileID: 1417798098}
+    - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
+      propertyPath: ArrowStats._attackStats._gatlingArrow._amount
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
+      propertyPath: ArrowStats._attackStats._gatlingArrow._rateOfFire
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
+      propertyPath: ArrowStats._attackStats._markTargets._rangeOnNoHit
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 303351760760739798, guid: 0118efafee993894988299a803303365,
         type: 3}
       propertyPath: m_Name
