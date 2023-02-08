@@ -8,7 +8,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States.GatlingA
 
 		public StartAttack(ArrowController arrowController) : base(arrowController)
         {
-			Transitions.Add(new Transition(this, new NotMarkedDecision(), ArrowStates.Idle));
+			Transitions.Add(new Transition(this, new GatlingAttackDecision(), ArrowStates.GatlingAttack));
         }
 
         public override void Update()

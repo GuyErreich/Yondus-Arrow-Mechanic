@@ -52,6 +52,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 			ArrowStates.HomingAttack => new HomingArrow.Attack(this),
 			ArrowStates.ReturnToPlayer => new HomingArrow.ReturnToPlayer(this),
 			ArrowStates.StartGatlingAttack => new GatlingArrow.StartAttack(this),
+			ArrowStates.GatlingAttack => new GatlingArrow.Attack(this),
 			ArrowStates.CurrentState => _currentState,
 			_ => throw new NullReferenceException($"State: {state}. doesnt exist")
 		};
@@ -65,6 +66,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 		StartHomingAttack,
 		HomingAttack,
 		ReturnToPlayer,
-		StartGatlingAttack
+		StartGatlingAttack,
+		GatlingAttack
     }
 }

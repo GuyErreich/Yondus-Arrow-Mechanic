@@ -5063,7 +5063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5b0bdbeca5dc242bb5c03641a6fb06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerStats:
+  ArrowStats:
     _crosshairAnim: {fileID: 0}
     _idleStats:
       _shakeAnimation:
@@ -5086,10 +5086,12 @@ MonoBehaviour:
         _loopHoleForce: 1
       _gatlingArrow:
         _arrow: {fileID: 0}
-        _amount: 6
-        _speed: 1
+        _amount: 18
+        _speed: 50
+        _range: 50
+        _rateOfFire: 0.15
       _markTargets:
-        _radius: 1
+        _radius: 0.3
         _range: 70
         _rangeOnNoHit: 20
         _layerMask:

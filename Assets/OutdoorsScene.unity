@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 4
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2158.1865, g: 2262.537, b: 3286.3008, a: 1}
+  m_IndirectSpecularColor: {r: 2159.5977, g: 2263.4062, b: 3286.4062, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6618,7 +6618,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -7103,7 +7103,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 7000
+    maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -13681,7 +13681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _axis: {x: 0, y: 0, z: 1}
-  _speed: 100
+  _speed: 300
 --- !u!65 &1417798100
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14111,7 +14111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _axis: {x: 0, y: 0, z: 1}
-  _speed: 100
+  _speed: 150
 --- !u!65 &1517401544
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14955,7 +14955,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910683946}
-  m_LocalRotation: {x: 0.0874304, y: 0.011052462, z: -0.00097009604, w: 0.9961089}
+  m_LocalRotation: {x: 0.0874304, y: 0.01105246, z: -0.00097009586, w: 0.9961089}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15655,15 +15655,19 @@ PrefabInstance:
     m_TransformParent: {fileID: 1372372811}
     m_Modifications:
     - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
-      propertyPath: _playerStats._crosshairAnim
+      propertyPath: ArrowStats._crosshairAnim
       value: 
       objectReference: {fileID: 386701813}
     - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
-      propertyPath: _playerStats._attackStats._homingArrow._arrow
+      propertyPath: ArrowStats._attackStats._homingArrow._arrow
       value: 
       objectReference: {fileID: 1517401542}
     - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
-      propertyPath: _playerStats._attackStats._gatlingArrow._arrow
+      propertyPath: ArrowStats._attackStats._homingArrow._speed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
+      propertyPath: ArrowStats._attackStats._gatlingArrow._arrow
       value: 
       objectReference: {fileID: 1417798098}
     - target: {fileID: 303351760760739798, guid: 0118efafee993894988299a803303365,
@@ -15805,21 +15809,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 3222773034910450502, guid: 494a38f30c77f154283a64c249eaceb6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7265831218791916607, guid: 494a38f30c77f154283a64c249eaceb6,
         type: 3}
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 47790503}
-    - target: {fileID: 9053390846300352829, guid: 494a38f30c77f154283a64c249eaceb6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 494a38f30c77f154283a64c249eaceb6, type: 3}
 --- !u!1001 &7503865869262708823

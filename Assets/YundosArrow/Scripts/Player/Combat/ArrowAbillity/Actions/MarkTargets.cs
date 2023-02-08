@@ -46,14 +46,18 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 
 		private static Vector3 GetHitMarkPoint()
 		{
+			var markPoint = Vector3.zero;
 			if (_hitMark.point == Vector3.zero)
 			{
-				return Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)).origin + Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)).direction * ArrowStats.attackStats.markTargets.rangeOnNoHit;
+				markPoint = Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)).origin + Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)).direction * ArrowStats.attackStats.markTargets.rangeOnNoHit;
 			}
 			else
 			{
-				return _hitMark.point;
+				markPoint = _hitMark.point;
 			}
+
+			_hitMark.point = Vector3.zero;
+			return markPoint;
 		}
 	}
 }
