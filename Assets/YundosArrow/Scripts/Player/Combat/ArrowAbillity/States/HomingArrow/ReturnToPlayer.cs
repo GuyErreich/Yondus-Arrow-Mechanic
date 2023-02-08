@@ -1,11 +1,11 @@
 using UnityEngine;
 using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Decisions;
 
-namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
+namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States.HomingArrow
 {
 	public class ReturnToPlayer : ArrowState {
 
-		public ReturnToPlayer(ArrowController playerController) : base(playerController)
+		public ReturnToPlayer(ArrowController arrowController) : base(arrowController)
         {
 			Transitions.Add(new Transition(this, new IsReturnedToPlayerDecision(), ArrowStates.Idle));
 			Transitions.Add(new Transition(this, new MarkDecision(), ArrowStates.MarkAgain));

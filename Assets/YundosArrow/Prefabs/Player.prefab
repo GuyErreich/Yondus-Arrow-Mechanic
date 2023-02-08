@@ -5065,8 +5065,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerStats:
     _crosshairAnim: {fileID: 0}
-    _arrow: {fileID: 0}
-    _startPoint: {fileID: 303351760237742821}
     _idleStats:
       _shakeAnimation:
         _duration: 1
@@ -5079,11 +5077,17 @@ MonoBehaviour:
       _followTarget:
         _duration: 0.5
     _attackStats:
-      _movement:
-        _speed: 30
+      _homingArrow:
+        _arrow: {fileID: 0}
+        _startPoint: {fileID: 303351760237742821}
+        _speed: 15
         _force: 1.5
         _returnForce: 10
         _loopHoleForce: 1
+      _gatlingArrow:
+        _arrow: {fileID: 0}
+        _amount: 6
+        _speed: 1
       _markTargets:
         _radius: 1
         _range: 70

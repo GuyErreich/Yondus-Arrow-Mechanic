@@ -1,5 +1,7 @@
 using System;
 using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States;
+using GatlingArrow = Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States.GatlingArrow;
+using HomingArrow = Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States.HomingArrow;
 using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats;
 using UnityEngine;
 using Assets.YundosArrow.Scripts.Player.Input;
@@ -8,15 +10,12 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 {
 	[RequireComponent(typeof(PlayerInputManager))]
 	public class ArrowController : MonoBehaviour {
-        [SerializeField] private ArrowStats _playerStats;
+        public ArrowStats ArrowStats;
 
 		private ArrowState _currentState;
-		private CharacterController _characterController;
-
 
 		private void Start()
 		{
-			_characterController = this.GetComponent<CharacterController>();
 			_currentState = GetState(ArrowStates.Idle);
 			_currentState.OnStateEnter();
 		}
@@ -49,10 +48,10 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 			ArrowStates.Idle => new Idle(this),
 			ArrowStates.Mark => new Mark(this),
 			ArrowStates.MarkAgain => new MarkAgain(this),
-			ArrowStates.StartAttack => new StartAttack(this),
-			ArrowStates.Attack => new Attack(this),
-			ArrowStates.ReturnToPlayer => new ReturnToPlayer(this),
-			//			ArrowStates.ForceAttack => new ForceAttack(this),
+			ArrowStates.StartHomingAttack => new HomingArrow.StartAttack(this),
+			ArrowStates.HomingAttack => new HomingArrow.Attack(this),
+			ArrowStates.ReturnToPlayer => new HomingArrow.ReturnToPlayer(this),
+			ArrowStates.StartGatlingAttack => new GatlingArrow.StartAttack(this),
 			ArrowStates.CurrentState => _currentState,
 			_ => throw new NullReferenceException($"State: {state}. doesnt exist")
 		};
@@ -63,9 +62,9 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 		Idle,
 		Mark,
 		MarkAgain,
-        StartAttack,
-		Attack,
+		StartHomingAttack,
+		HomingAttack,
 		ReturnToPlayer,
-        ForceAttack
+		StartGatlingAttack
     }
 }

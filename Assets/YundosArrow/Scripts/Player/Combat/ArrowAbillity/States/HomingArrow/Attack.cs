@@ -1,13 +1,13 @@
 using UnityEngine;
 using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Decisions;
 
-namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
+namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States.HomingArrow
 {
     public class Attack : ArrowState {
 
-		public Attack(ArrowController playerController) : base(playerController)
+		public Attack(ArrowController arrowController) : base(arrowController)
         {
-			Transitions.Add(new Transition(this, new IsAttackOverDecision(), ArrowStates.ReturnToPlayer));
+			Transitions.Add(new Transition(this, new HomingAttackOverDecision(), ArrowStates.ReturnToPlayer));
 			Transitions.Add(new Transition(this, new MarkDecision(), ArrowStates.MarkAgain));
 		}
 
@@ -15,7 +15,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
         {
 			Actions.Attack();
 
-			Debug.Log("Attacking");
+			Debug.Log("Homing attack");
         }
 
 		public override void OnStateEnter() {}

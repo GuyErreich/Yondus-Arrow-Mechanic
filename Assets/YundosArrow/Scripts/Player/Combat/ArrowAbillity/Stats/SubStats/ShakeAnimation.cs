@@ -13,13 +13,13 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats.SubStats
         [SerializeField] private bool _fadeOut;
         [SerializeField] private ShakeRandomnessMode _randomnessMode;
 
-        public float Duration => _duration;
-        public Vector3 Strength => _strength;
-        public int Vibration => _vibration;
-        public float Randomness => _randomness;
-        public bool Snapping => _snapping;
-        public bool FadeOut => _fadeOut;
-        public ShakeRandomnessMode RandomnessMode => _randomnessMode;
+        public float duration => _duration;
+        public Vector3 strength => _strength;
+        public int vibration => _vibration;
+        public float randomness => _randomness;
+        public bool snapping => _snapping;
+        public bool fadeout => _fadeOut;
+        public ShakeRandomnessMode randomnessmode => _randomnessMode;
 
         public ShakeAnimation()
         {

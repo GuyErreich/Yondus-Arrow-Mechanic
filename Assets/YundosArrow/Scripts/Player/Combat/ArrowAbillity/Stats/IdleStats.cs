@@ -8,8 +8,8 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats
         [Space]
         [SerializeField] private SubStats.FollowTarget _followTarget;
 
-        public SubStats.ShakeAnimation ShakeAnimation => _shakeAnimation;
-        public SubStats.FollowTarget FollowTarget => _followTarget;
+        public SubStats.ShakeAnimation shakeAnimation => _shakeAnimation;
+        public SubStats.FollowTarget followTarget => _followTarget;
 
         public IdleStats()
         {

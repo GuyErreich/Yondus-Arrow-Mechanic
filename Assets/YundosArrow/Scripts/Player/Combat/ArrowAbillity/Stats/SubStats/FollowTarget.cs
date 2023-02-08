@@ -7,7 +7,8 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats.SubStats
 	public class FollowTarget {
         [SerializeField, Range(0.01f, 10)] private float _duration;
 
-        public float Duration => _duration;
+        public float duration => _duration;
+		
         public FollowTarget()
         {
             _duration = 0.5f;

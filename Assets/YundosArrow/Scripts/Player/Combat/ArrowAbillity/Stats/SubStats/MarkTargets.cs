@@ -13,10 +13,10 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats.SubStats
         [SerializeField] private LayerMask _layerMask;
 
         // public Transform StartPoint { get => startPoint; }
-        public float Radius => _radius;
-        public float Range => _range;
-        public float RangeOnNoHit => _rangeOnNoHit;
-        public LayerMask LayerMask => _layerMask;
+        public float radius => _radius;
+        public float range => _range;
+        public float rangeOnNoHit => _rangeOnNoHit;
+        public LayerMask layerMask => _layerMask;
 
         public MarkTargets()
         {

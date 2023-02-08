@@ -11,7 +11,7 @@ namespace Assets.YundosArrow.Scripts.Player
 
 		private void Update()
 		{
-			Debug.Log($"Current time scale: {Time.timeScale}");
+//			Debug.Log($"Current time scale: {Time.timeScale}");
 		}
 
         public void SetScale(float scale, float fadeTime)
