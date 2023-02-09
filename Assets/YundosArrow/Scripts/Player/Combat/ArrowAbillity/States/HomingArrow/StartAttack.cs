@@ -1,5 +1,6 @@
 using UnityEngine;
 using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Decisions;
+using DG.Tweening;
 
 namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States.HomingArrow
 {
@@ -10,6 +11,11 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States.HomingAr
 			Transitions.Add(new Transition(this, new HomingAttackDecision(), ArrowStates.HomingAttack));
         }
 
+		private void Awake()
+		{
+			Actions.AttackInit();
+		}
+
         public override void Update()
         {
 			Debug.Log("Start homing attack");
@@ -18,6 +24,9 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States.HomingAr
 		public override void OnStateEnter()
 		{
 			Actions.AttackInit();
+//			ArrowStats.attackStats.homingArrow.haloVfx.enabled = true;
+//			ArrowStats.attackStats.homingArrow.haloVfx.pause = false;
+//			ArrowStats.attackStats.homingArrow.haloVfx.
 		}
 
         public override void OnStateExit() {}
