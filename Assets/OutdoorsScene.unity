@@ -555,7 +555,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243862454}
-  m_LocalRotation: {x: 0.094274566, y: -0.01650696, z: 0.0015633651, w: 0.9954082}
+  m_LocalRotation: {x: 0.094274454, y: -0.016576802, z: 0.0015699799, w: 0.995407}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -716,7 +716,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277728772}
-  m_LocalRotation: {x: 0.08736366, y: 0.040450398, z: -0.0035504096, w: 0.9953486}
+  m_LocalRotation: {x: 0.08736537, y: 0.039969925, z: -0.003508237, w: 0.995368}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2702,7 +2702,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926698291}
-  m_LocalRotation: {x: 0.08743548, y: 0.002577151, z: -0.00022620164, w: 0.9961668}
+  m_LocalRotation: {x: 0.087435514, y: 0.0023680567, z: -0.000207849, w: 0.99616736}
   m_LocalPosition: {x: 79.02336, y: 14.45, z: 58.1137}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4170,8 +4170,8 @@ MonoBehaviour:
   - {fileID: 1329422854}
   - {fileID: 1888271978}
   - {fileID: 1235275405}
-  _amount: 1
-  _respawnTime: 2
+  _amount: 100
+  _respawnTime: 0.5
   _spawnMask:
     serializedVersion: 2
     m_Bits: 0
@@ -4954,7 +4954,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910683946}
-  m_LocalRotation: {x: 0.087435484, y: 0.0025771493, z: -0.00022620136, w: 0.9961668}
+  m_LocalRotation: {x: 0.087435536, y: 0.0023680562, z: -0.00020784882, w: 0.99616736}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6211,6 +6211,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222773034910450502, guid: 494a38f30c77f154283a64c249eaceb6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7265831218791916607, guid: 494a38f30c77f154283a64c249eaceb6,
         type: 3}
