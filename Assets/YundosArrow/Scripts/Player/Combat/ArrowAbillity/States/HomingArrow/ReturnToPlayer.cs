@@ -15,14 +15,11 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States.HomingAr
         {
 			Actions.MoveToStartingPoint();
 
-			Debug.Log("Returning to player");
+//			Debug.Log("Returning to player");
         }
 
 		public override void OnStateEnter() {}
 
-		public override void OnStateExit()
-		{
-//			ArrowStats.attackStats.homingArrow.haloVfx.enabled = false;
-		}
+		public override void OnStateExit() {}
     }
 }

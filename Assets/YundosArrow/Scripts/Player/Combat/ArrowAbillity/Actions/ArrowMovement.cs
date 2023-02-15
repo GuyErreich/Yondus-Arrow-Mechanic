@@ -23,6 +23,8 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 			_pathMove = new ArrowPath(ArrowStats.attackStats.homingArrow.arrow.position, _currentTargets[0].position, ArrowStats.attackStats.homingArrow.arrow.forward,
 				ArrowStats.attackStats.homingArrow.force);
 
+			_pathMove.RecalculatePath(ArrowStats.attackStats.homingArrow.startPoint.position);
+
 			_tMove = 0;
 			IsMoving = true;
 			IsAttacking = true;

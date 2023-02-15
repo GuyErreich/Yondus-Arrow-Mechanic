@@ -18,7 +18,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
         {
 			Actions.Mark();
 
-			Debug.Log("Marking again");
+//			Debug.Log("Marking again");
         }
 
         public override void OnStateEnter()

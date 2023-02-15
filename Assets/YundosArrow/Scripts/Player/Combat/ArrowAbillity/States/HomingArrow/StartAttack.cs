@@ -24,9 +24,6 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States.HomingAr
 		public override void OnStateEnter()
 		{
 			Actions.AttackInit();
-//			ArrowStats.attackStats.homingArrow.haloVfx.enabled = true;
-//			ArrowStats.attackStats.homingArrow.haloVfx.pause = false;
-//			ArrowStats.attackStats.homingArrow.haloVfx.
 		}
 
         public override void OnStateExit() {}
