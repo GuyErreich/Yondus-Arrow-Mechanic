@@ -30,8 +30,8 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 		public override void OnStateEnter()
 		{
 			_startTime = Time.time;
-			GetGameObject().GetComponent<TimeScaleController>().SetScale(0.005f, PlayerStats.Movement.Dash.Duration * 10);
-			ComboManager.Instance.Decrease(ComboManager.Instance.DashNumber);
+//			GetGameObject().GetComponent<TimeScaleController>().SetScale(0.005f, PlayerStats.Movement.Dash.Duration * 10);
+//			ComboManager.Instance.Decrease(ComboManager.Instance.DashNumber);
 		}
 
 		public override void OnStateExit() {}
