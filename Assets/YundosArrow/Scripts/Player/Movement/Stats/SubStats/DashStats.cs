@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.YundosArrow.Scripts.Player.Movement.Stats.SubStats
 {
@@ -8,10 +9,13 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.Stats.SubStats
 		[SerializeField, Range(0f, 3f)] private float _duration;
 		[SerializeField, Range(0f, 3f)] private float _reactionGapTime;
 
+		public UnityEvent OnStart;
+		public UnityEvent OnExit;
 
-        public float Distance { get => _distance; }
-        public float Duration { get => _duration; }
-		public float ReactionGapTime { get => _reactionGapTime; }
+
+        public float Distance => _distance;
+        public float Duration => _duration;
+        public float ReactionGapTime => _reactionGapTime;
 
         public DashStats()
         {
