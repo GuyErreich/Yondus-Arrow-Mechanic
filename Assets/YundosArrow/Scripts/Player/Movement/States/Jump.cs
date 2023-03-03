@@ -36,8 +36,13 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 		{
 			_lastJumpTime = Time.time;
 			Actions.Jump(PlayerStats.Jump.JumpForce);
+			PlayerStats.Anim.SetBool("IsJumping", true);
+			PlayerStats.Anim.SetBool("IsGrounded", false);
 		}
 
-		public override void OnStateExit() {}
+		public override void OnStateExit()
+		{
+			PlayerStats.Anim.SetBool("IsJumping", false);
+		}
    }
 }
