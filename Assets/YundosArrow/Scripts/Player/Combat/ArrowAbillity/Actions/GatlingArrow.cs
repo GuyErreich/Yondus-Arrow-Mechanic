@@ -52,12 +52,12 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 			}
 		}
 
-		private static float _tGatlinRate;
+		private static float _tGatlingRate;
 		public static void GatlingAttack()
 		{
 			if (_gatlingArrows.Count > 0)
 			{
-				if (_tGatlinRate >= ArrowStats.attackStats.gatlingArrow.rateOfFire)
+				if (_tGatlingRate >= ArrowStats.attackStats.gatlingArrow.rateOfFire)
 				{
 					var arrow = _gatlingArrows.Dequeue();
 					var arrowAnchor = _gatlingArrowAnchors.Dequeue();
@@ -78,10 +78,10 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 						)
 					);
 
-					_tGatlinRate = 0;
+					_tGatlingRate = 0;
 				}
 
-				_tGatlinRate += Time.deltaTime;
+				_tGatlingRate += Time.deltaTime;
 			}
 		}
 

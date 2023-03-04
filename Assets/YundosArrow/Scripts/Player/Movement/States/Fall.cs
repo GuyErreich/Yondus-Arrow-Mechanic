@@ -33,7 +33,10 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 			Debug.Log("Falling");
 		}
 
-		public override void OnStateEnter() {}
+		public override void OnStateEnter() 
+		{
+			PlayerStats.Anim.SetTrigger("Fall");
+		}
 
 		public override void OnStateExit() {}
 	}
