@@ -10,7 +10,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats.SubStats
 		[SerializeField] private Transform _arrow;
 		[SerializeField] private Transform _startPoint;
 		[SerializeField] private VisualEffect _haloVfx;
-		[SerializeField, Range(0.1f, 50)] private float _speed;
+		[SerializeField, Range(0.1f, 200f)] private float _speed;
         [SerializeField, Range(1, 10)] private float _force;
         [SerializeField, Range(1, 20)] private float _returnForce;
         [SerializeField, Range(1, 10)] private float _loopHoleForce;

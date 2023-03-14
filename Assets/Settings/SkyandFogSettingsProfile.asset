@@ -581,12 +581,12 @@ MonoBehaviour:
     m_Value: 0
   limitMin:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 13.739857
   limitMax:
     m_OverrideState: 1
-    m_Value: 14
+    m_Value: 15
   curveMap:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value:
       serializedVersion: 2
       m_Curve:
@@ -612,7 +612,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   limitMinCurveMap:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value:
       serializedVersion: 2
       m_Curve:
@@ -638,7 +638,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   limitMaxCurveMap:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value:
       serializedVersion: 2
       m_Curve:
