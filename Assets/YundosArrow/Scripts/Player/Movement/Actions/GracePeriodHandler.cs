@@ -13,6 +13,11 @@ namespace Assets.YundosArrow.Scripts.Player.Movement
 			return Time.time - _lastGroundTouchTime <= PlayerStats.Jump.GracePeriod && Time.time - _lastJumpTime  <= PlayerStats.Jump.GracePeriod;
 		}
 
+		public static bool CanDoubleJump(float gracePeriod)
+		{
+			return Time.time - _lastGroundTouchTime >= gracePeriod;
+		}
+
 		public static void TouchGround()
 		{
 			_lastGroundTouchTime = Time.time;

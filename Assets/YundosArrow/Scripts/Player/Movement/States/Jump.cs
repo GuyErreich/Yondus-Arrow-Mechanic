@@ -13,6 +13,7 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 		public Jump(PlayerController playerController, CharacterController characterController) : base(playerController, characterController)
 		{
 			Transitions.Add(new Transition(this, new FallDecision(), PlayerStates.Fall));
+			Transitions.Add(new Transition(this, new DoubleJumpDecision(), PlayerStates.DoubleJump));
 			Transitions.Add(new Transition(this, new DashDecision(), PlayerStates.Dash));
 		}
 
