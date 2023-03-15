@@ -7,8 +7,7 @@ using UnityEngine.AI;
 
 namespace Assets.YundosArrow.Scripts.Enemy.Movement
 {
-	[RequireComponent(typeof(PlayerInputManager))]
-	public class EnemyController : MonoBehaviour {
+		public class EnemyController : MonoBehaviour {
         public EnemyStats EnemyStats;
 
 		private EnemyState _currentState;

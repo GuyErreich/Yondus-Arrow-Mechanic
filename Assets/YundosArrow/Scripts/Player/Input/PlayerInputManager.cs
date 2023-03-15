@@ -39,6 +39,8 @@ namespace Assets.YundosArrow.Scripts.Player.Input
             _smoothMovement = new Vector2(x, y);
 
             InputReceiver.Receive(InputsVector2, InputsBool);
+
+            //Debug.Log(_currentMovementInput);
         }
 
         private void CharacterInput() {
