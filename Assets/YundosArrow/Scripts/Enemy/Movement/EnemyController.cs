@@ -2,7 +2,7 @@ using System;
 using Assets.YundosArrow.Scripts.Enemy.Movement.States;
 using Assets.YundosArrow.Scripts.Enemy.Movement.Stats;
 using UnityEngine;
-using Assets.YundosArrow.Scripts.Player.Input;
+using System.Collections.Generic;
 using UnityEngine.AI;
 
 namespace Assets.YundosArrow.Scripts.Enemy.Movement
@@ -11,46 +11,79 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement
         public EnemyStats EnemyStats;
 
 		private EnemyState _currentState;
+		private Dictionary<EnemyStates, EnemyState> _states = new Dictionary<EnemyStates, EnemyState>();
+		
+
+		private void Awake() {
+			foreach (EnemyStates state in Enum.GetValues(typeof(EnemyStates)))
+			{
+				AddState(state);
+			}
+		}
 
 		private void Start()
 		{
-			_currentState = GetState(EnemyStates.Roam);
+			_currentState = _states[EnemyStates.Roam];
 			_currentState.OnStateEnter();
+			_currentState.enabled = true;
 		}
 
 		private void Update()
 		{
-			_currentState.Update();
-
 			foreach (Transition transition in _currentState.Transitions)
 			{
 				if (transition.ShouldTransition())
 				{
-					_currentState.OnStateExit();
-					_currentState = GetState(transition.ToState);
-					_currentState.OnStateEnter();
+					SetState(_states[transition.ToState]);
 					break;
 				}
 			}
 		}
 
-		public void SetState(EnemyState newState)
+		private void SetState(EnemyState newState)
 		{
 			_currentState.OnStateExit();
+			_currentState.enabled = false;
 			_currentState = newState;
 			_currentState.OnStateEnter();
+			_currentState.enabled = true;
 		}
 
-		private EnemyState GetState(EnemyStates state) => state switch
+		private void AddState(EnemyStates state)
 		{
-			EnemyStates.Roam => new Roam(this),
-			EnemyStates.CurrentState => _currentState,
-			_ => throw new NullReferenceException($"State: {state}. doesnt exist")
-		};
+			switch (state)
+			{
+				case EnemyStates.Roam:
+					SetComponent<Roam>(state); break;
+				case EnemyStates.Chase:
+					SetComponent<Chase>(state); break;
+				default:
+					throw new NotSupportedException($"State: {state}. doesnt exist");
+			};
+		}
+
+		private void SetComponent<T>(EnemyStates state) where T : EnemyState
+		{
+			T component = GetComponent<T>();
+
+			if (component == null)
+			{
+				component = gameObject.AddComponent<T>();
+				component.enabled = false;
+			}
+			
+			_states.Add(state, component);
+		}
+
+		private void OnDrawGizmos() {
+			Gizmos.matrix = transform.localToWorldMatrix;
+			Gizmos.color = Color.yellow;
+			Gizmos.DrawWireSphere(Vector3.zero, EnemyStats.FollowStats.ScanRadius);
+		}
     }
 
 	public enum EnemyStates {
-		CurrentState = 0,
-		Roam
+		Roam,
+		Chase
     }
 }

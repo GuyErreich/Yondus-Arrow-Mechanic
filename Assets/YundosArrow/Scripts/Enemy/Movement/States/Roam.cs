@@ -1,37 +1,39 @@
- using UnityEngine;
- using UnityEngine.AI;
+using UnityEngine;
+using UnityEngine.AI;
+using Assets.YundosArrow.Scripts.Enemy.Movement.Decisions;
 
- namespace Assets.YundosArrow.Scripts.Enemy.Movement.States
+namespace Assets.YundosArrow.Scripts.Enemy.Movement.States
  {
      public class Roam : EnemyState {
-		 private float _timeCounter;
-		 private Vector3 _position;
-		 private NavMeshAgent _agent;
+		private float _timeCounter;
+		private NavMeshAgent _agent;
 
-		 public Roam(EnemyController enemyController) : base(enemyController)
-         {
-// 			Transitions.Add(new Transition(this, new MarkDecision(), ArrowStates.Mark));
+		private void Awake() {
+			Transitions.Add(new Transition(this, new ChaseDecision(), EnemyStates.Chase));
 // 			Transitions.Add(new Transition(this, new StartGatlingAttackDecision(), ArrowStates.StartGatlingAttack));
-			 _timeCounter = 0;
-			 _position = enemyController.transform.position;
-			 _agent = enemyController.GetComponent<NavMeshAgent>();
- 		}
 
-         public override void Update()
-         {
-			 _timeCounter += Time.deltaTime;
+			Stats = GetComponent<EnemyController>().EnemyStats;
+			_agent = GetComponent<NavMeshAgent>();
+		}
 
-			 if (EnemyStats.Agent.remainingDistance >= 0f)
-			 	if (_timeCounter < Random.Range(EnemyStats.RandomMovemebtStats.MinMoveTime, EnemyStats.RandomMovemebtStats.MaxMoveTime))
-			 		return;
+		protected override void Update()
+		{
+			_timeCounter += Time.deltaTime;
 
-			 _timeCounter = 0;
-//			 EnemyStats.Agent.destination = Actions.RandomMovement(_position, EnemyStats.RandomMovemebtStats.MoveRadius);
-			 _agent.destination = Actions.RandomMovement(_position, EnemyStats.RandomMovemebtStats.MoveRadius);
-		 }
+			if (_agent.remainingDistance >= 0f)
+			if (_timeCounter < Random.Range(Stats.RandomMovemebtStats.MinMoveTime, Stats.RandomMovemebtStats.MaxMoveTime))
+				return;
 
-         public override void OnStateEnter() {}
+			_timeCounter = 0;
+			_agent.destination = Actions.RandomMovement(transform.position, Stats.RandomMovemebtStats.MoveRadius);
 
-         public override void OnStateExit() {}
-     }
+			Debug.Log("Roaming");
+		}
+
+		public override void OnStateEnter() {
+			_timeCounter = 0;
+		}
+
+		public override void OnStateExit() {}
+    }
  }

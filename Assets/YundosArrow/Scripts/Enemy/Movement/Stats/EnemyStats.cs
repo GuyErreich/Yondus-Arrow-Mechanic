@@ -5,15 +5,10 @@
  {
  	[System.Serializable]
  	public class EnemyStats {
-		 [SerializeField] private NavMeshAgent _agent;
 		 [SerializeField] private RandomMovemebtStats _randomMovemebtStats;
+		 [SerializeField] private FollowStats _followStats;
 
-		 public NavMeshAgent Agent => _agent;
 		 public RandomMovemebtStats RandomMovemebtStats => _randomMovemebtStats;
-
-//		 public EnemyStats(NavMeshAgent agent)
-//		 {
-//			 _agent = agent;
-//		 }
+		 public FollowStats FollowStats => _followStats;
 	 }
  }

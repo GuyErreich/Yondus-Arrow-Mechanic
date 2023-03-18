@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8799480974950933733}
   - component: {fileID: 471580302548315351}
   - component: {fileID: 7685503934175875495}
-  - component: {fileID: 6707912437387203271}
   - component: {fileID: 9053390846300352829}
   - component: {fileID: 7265831218791916607}
   - component: {fileID: 7265831218791916608}
@@ -107,26 +106,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6707912437387203271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3222773034910450502}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c6146c9c24a8ec468fafe9764bc59cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _minMoveTime: 2.71
-  _maxMoveTime: 8.8
-  _moveRadius: 450
-  _scanRadius: 30
-  _avoidanceRadius: 10
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 192
 --- !u!114 &9053390846300352829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,11 +246,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyStats:
-    _agent: {fileID: 1270919753617514559}
     _randomMovemebtStats:
       _minMoveTime: 2
       _maxMoveTime: 8.31
       _moveRadius: 80
+    _followStats:
+      _scanRadius: 10.62
+      _layerMask:
+        serializedVersion: 2
+        m_Bits: 0
 --- !u!1 &7932510575403058846
 GameObject:
   m_ObjectHideFlags: 0

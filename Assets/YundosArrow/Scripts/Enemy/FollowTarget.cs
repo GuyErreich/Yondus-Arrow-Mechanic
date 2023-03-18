@@ -73,7 +73,7 @@ namespace Assets.YundosArrow.Scripts.Enemy
 		{
 			var hits = Physics.OverlapSphere(transform.position, _scanRadius, _layerMask, QueryTriggerInteraction.Collide);
 			foreach (var hit in hits) {
-				if (!_isUnderling && hit.CompareTag("Player"))
+				if (hit.CompareTag("Player"))
 				{
 					Debug.Log("following player");
 					_nextDestination = hit.gameObject.transform.position;

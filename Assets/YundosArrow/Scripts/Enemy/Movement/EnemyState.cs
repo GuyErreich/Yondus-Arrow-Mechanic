@@ -6,18 +6,18 @@ using UnityEngine;
 
 namespace Assets.YundosArrow.Scripts.Enemy.Movement
 {
-    public abstract class EnemyState
+    public abstract class EnemyState : MonoBehaviour
     {
-//		private EnemyController _arrowController;
-		protected EnemyStats EnemyStats;
-
+		// protected EnemyStats EnemyStats;
+		
+		public EnemyStats Stats;
 		public List<Transition> Transitions = new List<Transition>();
 
-		public EnemyState(EnemyController enemyController) {
-			EnemyStats = enemyController.EnemyStats;
-		}
+		// private void Awake() {
+		// 	Stats = GetComponent<EnemyController>().EnemyStats;
+		// }
 
-		public abstract void Update();
+		protected abstract void Update();
 		public abstract void OnStateEnter();
 		public abstract void OnStateExit();
     }
