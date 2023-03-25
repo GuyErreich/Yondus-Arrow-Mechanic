@@ -5,7 +5,8 @@ namespace Assets.YundosArrow.Scripts.Enemy
 {
     public class BalloonEffect : MonoBehaviour
     {
-        [SerializeField] private Material _balloonPop;
+        [SerializeField] private Renderer _renderer;
+        // [SerializeField] private Material _balloonPop;
         [SerializeField] private float _startFrameAmount;
         [SerializeField] private float _endFrameAmount;
         [SerializeField] private float _duration;
@@ -15,8 +16,8 @@ namespace Assets.YundosArrow.Scripts.Enemy
         public bool IsCompleted { get; private set; }
 
         private void Awake() {
-            _currentRenderer = gameObject.GetComponent<Renderer>();
-            _currentRenderer.material = _balloonPop;
+            _currentRenderer = _renderer;
+            // _currentRenderer.material = _balloonPop;
         }
 
         private void OnEnable() {

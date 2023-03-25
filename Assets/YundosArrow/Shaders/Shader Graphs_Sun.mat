@@ -69,6 +69,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
+    - _Solar_Waves_Emission_Multiplier: 40
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 0
@@ -90,6 +91,8 @@ Material:
     - _TransparentWritingMotionVec: 0
     - _TransparentZWrite: 0
     - _UseShadowThreshold: 0
+    - _Voronoi_Emission_Multiplier: 100
+    - _Voronoi_Noise_Speed: 30
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
@@ -98,6 +101,9 @@ Material:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _Noise_Emission: {r: 766.9961, g: 0, b: 0, a: 1}
+    - _Solar_Waves_Emission: {r: 1351.1757, g: 382.07108, b: 0, a: 1}
+    - _Solar_Waves_Speed: {r: 0.4, g: 0.2, b: 0, a: 0}
+    - _Voronoi_Noise_Emission: {r: 766.9961, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &7718252661046011664
 MonoBehaviour:

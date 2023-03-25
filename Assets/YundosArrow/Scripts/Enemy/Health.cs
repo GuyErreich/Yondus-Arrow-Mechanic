@@ -3,11 +3,13 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using Assets.YundosArrow.Scripts.Systems.Managers.Enemy;
+using System.Collections.Generic;
 
 namespace Assets.YundosArrow.Scripts.Enemy {
     [RequireComponent(typeof(AttachHealthBar))]
     [RequireComponent(typeof(BalloonEffect))]
     public class Health : MonoBehaviour {
+        [SerializeField] private List<Collider> _colliders;
         [SerializeField] private float _amount = 100f;
         
         public event Action<float, float> OnHealthChanged;
