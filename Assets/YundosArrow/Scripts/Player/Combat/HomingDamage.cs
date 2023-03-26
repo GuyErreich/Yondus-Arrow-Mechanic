@@ -14,10 +14,10 @@ namespace Assets.YundosArrow.Scripts.Player.Combat {
         **/
 		private void OnTriggerEnter(Collider other) {
             if (other.tag == "Enemy") {
-                var health = other.GetComponent<Enemy.Health>();
-                if (health) {
+                var hitBox = other.GetComponent<Enemy.HitBox>();
+                if (hitBox) {
                     if (Actions.CurrentTargets != null && Actions.CurrentTargets.Contains(other.transform))
-                        health.Change(-(Amount));
+                        hitBox.Hit(-(Amount));
                 }
             }
         }

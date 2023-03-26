@@ -14,9 +14,9 @@ namespace Assets.YundosArrow.Scripts.Player.Combat {
         **/
 		private void OnTriggerEnter(Collider other) {
             if (other.tag == "Enemy") {
-                var health = other.GetComponent<Enemy.Health>();
-                if (health) {
-                        health.Change(-(Amount));
+                var hitBox = other.GetComponent<Enemy.HitBox>();
+                if (hitBox) {
+                        hitBox.Hit(-(Amount));
                 }
             }
         }
