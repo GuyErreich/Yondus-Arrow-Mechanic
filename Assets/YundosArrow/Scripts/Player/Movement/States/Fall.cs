@@ -11,7 +11,7 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 
 		public Fall(PlayerController playerController, CharacterController characterController) : base(playerController, characterController)
 		{
-			Transitions.Add(new Transition(this, new IsGroundedDecision(), PlayerStates.GroundMovement));
+			Transitions.Add(new Transition(this, new IsGroundedDecision(), PlayerStates.Idle));
 			Transitions.Add(new Transition(this, new JumpDecision(), PlayerStates.Jump));
 			Transitions.Add(new Transition(this, new DashDecision(),  PlayerStates.Dash));
 			// Transitions.Add(new Transition(this, new DoubleJumpDecision(), PlayerStates.DoubleJump));

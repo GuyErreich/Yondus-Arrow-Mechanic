@@ -26,6 +26,7 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 
 		public override void OnStateEnter()
 		{
+			_direction = Vector3.zero;
 			PlayerStats.Anim.SetBool("IsMoving", false);
 			PlayerStats.Anim.SetBool("IsGrounded", true);
 		}
