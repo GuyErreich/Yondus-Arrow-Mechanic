@@ -191,7 +191,7 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 0.94280905, y: 1.0592737, z: 0, w: 1}
+      - m_Value: {x: 0.8487674, y: 0.95602924, z: 0, w: 1}
         m_Name: Color01
         m_Overridden: 1
       - m_Value: {x: 1.4980392, y: 0.7137255, z: 0, w: 1}
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2581822021b9af4eb9fd73d8922a50d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _amount: 100
+  _amount: 34
   _layerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -10583,8 +10583,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8236145010498246560}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -1.55}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalPosition: {x: 0, y: 0, z: -0.49}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4464435642602427976}
@@ -10607,7 +10607,7 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 0.1
+      - m_Value: 0.05
         m_Name: Size
         m_Overridden: 1
       - m_Value: 1
@@ -10619,10 +10619,10 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 0, y: 1.4980392, z: 0.7607843, w: 1}
+      - m_Value: {x: 0, y: 10.071419, z: 5.1022606, w: 1}
         m_Name: Color01
         m_Overridden: 1
-      - m_Value: {x: 0, y: 2.9960785, z: 0.03137255, w: 1}
+      - m_Value: {x: 0, y: 16.94838, z: 0.17746994, w: 1}
         m_Name: Color02
         m_Overridden: 1
     m_Uint:
