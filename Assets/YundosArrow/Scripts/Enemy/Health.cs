@@ -34,7 +34,7 @@ namespace Assets.YundosArrow.Scripts.Enemy {
             if (CurrentHealth <= 0) {
 				var healthBar = GetComponent<AttachHealthBar>().HealthBar;
 				if (healthBar != null)
-					while (healthBar.Image.fillAmount > 0) { await Task.Delay(25); }
+					while (healthBar.Image.fillAmount > 0) { await Task.Delay(1); }
 
 				// GetComponent<Collider>().enabled = false;
 
@@ -42,7 +42,7 @@ namespace Assets.YundosArrow.Scripts.Enemy {
 				if (balloonEffect != null)
 				{
 	                GetComponent<BalloonEffect>().Play();
-	                while (!GetComponent<BalloonEffect>().IsCompleted) { await Task.Delay(25); }
+	                while (!GetComponent<BalloonEffect>().IsCompleted) { await Task.Delay(1); }
 				}
 
                 EnemySpawnManager.Instance.StashEnemy(gameObject);

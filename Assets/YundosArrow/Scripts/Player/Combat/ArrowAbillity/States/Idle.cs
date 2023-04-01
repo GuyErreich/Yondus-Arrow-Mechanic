@@ -19,6 +19,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
 
         public override void OnStateEnter()
         {
+            Actions.CurrentTargets.Clear();
 			ArrowStats.crosshairAnim.Close();
         }
 

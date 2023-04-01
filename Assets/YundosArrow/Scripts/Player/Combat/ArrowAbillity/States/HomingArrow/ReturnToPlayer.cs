@@ -13,12 +13,16 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States.HomingAr
 
         public override void Update()
         {
+			Actions.Mark();
 			Actions.MoveToStartingPoint();
 
 //			Debug.Log("Returning to player");
         }
 
-		public override void OnStateEnter() {}
+		public override void OnStateEnter() 
+		{
+			Actions.CurrentTargets.Clear();
+		}
 
 		public override void OnStateExit() {}
     }

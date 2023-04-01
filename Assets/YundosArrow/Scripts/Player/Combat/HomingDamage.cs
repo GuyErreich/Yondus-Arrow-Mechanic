@@ -14,6 +14,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat {
         **/
 		private void OnTriggerEnter(Collider other) {
             if (other.tag == "Enemy") {
+                Debug.Log("Found enemy");
                 var hitBox = other.GetComponent<Enemy.HitBox>();
                 if (hitBox) {
                     if (Actions.CurrentTargets != null && Actions.CurrentTargets.Contains(other.transform))
