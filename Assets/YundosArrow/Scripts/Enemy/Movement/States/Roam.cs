@@ -31,6 +31,7 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement.States
 		}
 
 		public override void OnStateEnter() {
+			_agent.speed = Stats.FollowStats.Speed;
 			_timeCounter = 0;
 		}
 

@@ -669,7 +669,7 @@ MonoBehaviour:
       _dash:
         _distance: 20
         _duration: 0.5
-        _reactionGapTime: 0.1
+        _reactionGapTime: 0.6
         OnStart:
           m_PersistentCalls:
             m_Calls:
@@ -812,11 +812,12 @@ MonoBehaviour:
               m_CallState: 2
     _jumpStats:
       _jumpForce: 10
-      _fallMultiplier: 6
+      _fallMultiplier: 5
       _gracePeriod: 0.2
       _usePhysics: 1
       _doubleJump:
-        _force: 10
+        _force: 5
+        _reactionGapTime: 0.4
 --- !u!114 &2050040104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,7 +862,7 @@ MonoBehaviour:
         _arrow: {fileID: 0}
         _startPoint: {fileID: 2138889018820275385}
         _haloVfx: {fileID: 0}
-        _speed: 25
+        _speed: 85
         _force: 1.5
         _returnForce: 10
         _loopHoleForce: 1

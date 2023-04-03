@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.AI;
 using Assets.YundosArrow.Scripts.Enemy.Movement.Decisions;
+using Assets.YundosArrow.Scripts.Enemy.Movement.Stats;
 
-
- namespace Assets.YundosArrow.Scripts.Enemy.Movement.States
+namespace Assets.YundosArrow.Scripts.Enemy.Movement.States
  {
      public class Chase : EnemyState {
 		private float _timeCounter;
@@ -12,7 +12,7 @@ using Assets.YundosArrow.Scripts.Enemy.Movement.Decisions;
 		private void Awake() {
 			Transitions.Add(new Transition(this, new ChaseToRoamDecision(), EnemyStates.Roam));
 // 			Transitions.Add(new Transition(this, new StartGatlingAttackDecision(), ArrowStates.StartGatlingAttack));
-
+			
 			Stats = GetComponent<EnemyController>().EnemyStats;
 			_agent = GetComponent<NavMeshAgent>();
 		}
@@ -35,10 +35,16 @@ using Assets.YundosArrow.Scripts.Enemy.Movement.Decisions;
 			Debug.Log("Chasing player");
 		}
 
-		public override void OnStateEnter() {
+		public override void OnStateEnter() 
+		{
+			Stats.Anim.SetBool("isChasing", true);
+			_agent.speed = Stats.FollowStats.Speed;
 			_timeCounter = 0;
 		}
 
-		public override void OnStateExit() {}
+		public override void OnStateExit() 
+		{
+			Stats.Anim.SetBool("isChasing", false);
+		}
      }
  }

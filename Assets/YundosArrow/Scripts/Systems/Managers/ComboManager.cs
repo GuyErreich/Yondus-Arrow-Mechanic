@@ -73,11 +73,12 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers
             _instance._lastChangeTime = Time.time;
         }
 
-        public void OnBeforeSerialize() {}
+        public void OnBeforeSerialize() {
+        }
 
         public void OnAfterDeserialize()
         {
-            _dashNumber = Mathf.Clamp(_instance._dashNumber, 0, _instance._maxNumber);
+            _dashNumber = Mathf.Clamp(_dashNumber, 0, _maxNumber);
         }
     }
 }

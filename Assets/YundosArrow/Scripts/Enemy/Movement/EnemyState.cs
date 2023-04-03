@@ -9,7 +9,6 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement
     public abstract class EnemyState : MonoBehaviour
     {
 		// protected EnemyStats EnemyStats;
-		
 		public EnemyStats Stats;
 		public List<Transition> Transitions = new List<Transition>();
 

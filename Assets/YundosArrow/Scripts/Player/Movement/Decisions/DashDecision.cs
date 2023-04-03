@@ -9,7 +9,7 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.Decisions
 		private float t = 0;
 		public override bool Decide(PlayerState currentState)
 		{
-//			Debug.Log($"Dash pressed: {InputReceiver.Bool[InputReceiverType.RunPressed]}");
+			// Debug.Log($"Dash pressed: {InputReceiver.Bool[InputReceiverType.RunPressed]}");
 //			Debug.Log($"Valid combo: {ComboManager.Instance.CurrentNumber >= ComboManager.Instance.DashNumber}");
 
 			if (InputReceiver.Bool[InputReceiverType.DashPressed])

@@ -41,8 +41,8 @@ ModelImporter:
       name: CINEMA_4D_Main
       takeName: CINEMA_4D_Main
       internalID: -1498010087492872569
-      firstFrame: 60
-      lastFrame: 90
+      firstFrame: 185
+      lastFrame: 214
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -52,12 +52,12 @@ ModelImporter:
       loopTime: 1
       loopBlend: 1
       loopBlendOrientation: 1
-      loopBlendPositionY: 0
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
+      keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []

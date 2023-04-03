@@ -33,16 +33,16 @@ namespace Assets.YundosArrow.Scripts.Enemy {
 
             if (CurrentHealth <= 0) {
 				var healthBar = GetComponent<AttachHealthBar>().HealthBar;
-				if (healthBar != null)
-					while (healthBar.Image.fillAmount > 0) { await Task.Delay(1); }
+				// if (healthBar != null)
+				// 	while (healthBar.Image.fillAmount > 0) { await Task.Delay(1); }
 
-				// GetComponent<Collider>().enabled = false;
 
 				var balloonEffect = GetComponent<BalloonEffect>();
 				if (balloonEffect != null)
 				{
+				    // GetComponent<Collider>().enabled = false;
 	                GetComponent<BalloonEffect>().Play();
-	                while (!GetComponent<BalloonEffect>().IsCompleted) { await Task.Delay(1); }
+	                while (!GetComponent<BalloonEffect>().IsCompleted) { await Task.Delay(10); }
 				}
 
                 EnemySpawnManager.Instance.StashEnemy(gameObject);
