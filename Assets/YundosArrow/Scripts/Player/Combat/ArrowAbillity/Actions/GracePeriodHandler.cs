@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 {
-	public class MarkRectionGapHandler
+	public class MarkReactionGapHandler
 	{
 		private static float _lastMarkTime;
 

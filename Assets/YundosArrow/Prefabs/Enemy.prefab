@@ -8791,9 +8791,9 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3222773034910450502}
   m_Enabled: 1
-  m_AgentTypeID: -1923039037
+  m_AgentTypeID: 0
   m_Radius: 0.74
-  m_Speed: 3
+  m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -8834,11 +8834,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyStats:
+    _anim: {fileID: 3842071198698028555}
     _randomMovemebtStats:
+      _speed: 0.75
       _minMoveTime: 2
       _maxMoveTime: 8.31
       _moveRadius: 80
     _followStats:
+      _speed: 3.5
       _scanRadius: 30
       _layerMask:
         serializedVersion: 2
