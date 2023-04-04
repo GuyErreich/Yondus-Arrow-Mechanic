@@ -16,8 +16,8 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 		}
 
 		private static void FollowTarget(Transform transform, Vector3 position, Vector3 lookAt, float duration) {
-			transform.DOMove(position, duration);
-			transform.DOLookAt(lookAt , duration);
+			transform.DOMove(position, duration).SetUpdate(true);
+			transform.DOLookAt(lookAt , duration).SetUpdate(true);
 		}
     }
 }

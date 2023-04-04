@@ -1,5 +1,6 @@
 using Assets.YundosArrow.Scripts.Player.Movement.Decisions;
 using Assets.YundosArrow.Scripts.Player.Movement.Stats;
+using Assets.YundosArrow.Scripts.Systems.Managers;
 using UnityEngine;
 
 namespace Assets.YundosArrow.Scripts.Player.Movement.States
@@ -27,7 +28,8 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 
 		public override void OnStateEnter()
 		{
-			_startTime = Time.time;
+			ComboManager.Instance.Decrease(ComboManager.Instance.DashNumber);
+			_startTime = Time.unscaledTime;
 			PlayerStats.Movement.Dash.OnStart?.Invoke();
 		}
 

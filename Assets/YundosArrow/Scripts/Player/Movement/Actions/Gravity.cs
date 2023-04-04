@@ -8,9 +8,9 @@ namespace Assets.YundosArrow.Scripts.Player.Movement
 			//TODO: make it global and serializable with a curve
 			if (!IsGrounded) {
 				if (_verticalSpeed >= 0f)
-					_verticalSpeed += Physics.gravity.y * Time.deltaTime;
+					_verticalSpeed += Physics.gravity.y * Time.unscaledDeltaTime;
 				else
-					_verticalSpeed += Physics.gravity.y * PlayerStats.Jump.FallMultiplier * Time.deltaTime;
+					_verticalSpeed += Physics.gravity.y * PlayerStats.Jump.FallMultiplier * Time.unscaledDeltaTime;
 			}
 
 			if(IsGrounded) {

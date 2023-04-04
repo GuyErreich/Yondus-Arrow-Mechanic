@@ -13,7 +13,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Utils
 
         private void Update()
         {
-            transform.DOBlendableLocalRotateBy((Vector3)_axis * _speed * Time.deltaTime, 0.5f);
+            transform.DOBlendableLocalRotateBy((Vector3)_axis * _speed * Time.unscaledDeltaTime, 0.5f).SetUpdate(true);
         }
 
         public void OnAfterDeserialize()

@@ -90,10 +90,10 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 
 		private static float CalculateSpeed(ArrowPath path, float t)
 		{
-			var velocity = BezireCurve.CubicVelocity(path.Points[0], path.Points[1], path.Points[2], path.Points[3], t);
-			var distance = BezireCurve.CubicDistance(path.Points[0], path.Points[1], path.Points[2], path.Points[3], t);
+			var velocity = BezireCurve.CubicVelocity(path.Points[0], path.Points[1], path.Points[2], path.Points[3], t * Time.unscaledDeltaTime);
+			var distance = BezireCurve.CubicDistance(path.Points[0], path.Points[1], path.Points[2], path.Points[3], t * Time.unscaledDeltaTime);
 
-			return ArrowStats.attackStats.homingArrow.speed * velocity / distance * Time.deltaTime;
+			return ArrowStats.attackStats.homingArrow.speed * velocity / distance * Time.unscaledDeltaTime;
 		}
 	}
 }

@@ -36,7 +36,7 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 
 		public override void OnStateEnter()
 		{
-			_lastJumpTime = Time.time;
+			_lastJumpTime = Time.unscaledTime;
 			Actions.Jump(PlayerStats.Jump.JumpForce);
 			PlayerStats.Anim.SetTrigger("Jump");
 			PlayerStats.Anim.SetBool("IsGrounded", false);

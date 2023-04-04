@@ -21,12 +21,13 @@ namespace Assets.YundosArrow.Scripts.Enemy
         }
 
         private void OnEnable() {
-            _currentRenderer.material.DOFloat(_startFrameAmount, "_Amount", 0);
+            _currentRenderer.material.DOFloat(_startFrameAmount, "_Amount", 0).SetUpdate(true);
             IsCompleted = false;
         }
 
         public void Play() {
             _currentRenderer.material.DOFloat(_endFrameAmount, "_Amount", _duration)
+            .SetUpdate(true)
             .onComplete = () => {
 				IsCompleted = true;
 			};

@@ -7,7 +7,7 @@ namespace Assets.YundosArrow.Scripts.Player.Movement
 			_velocity = direction * speed;
 			_velocity.y = _verticalSpeed;
 
-			_charController.Move(_velocity * Time.deltaTime);
+			_charController.Move(_velocity * Time.unscaledDeltaTime);
 		}
 	}
 }

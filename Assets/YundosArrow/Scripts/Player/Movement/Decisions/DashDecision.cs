@@ -21,7 +21,7 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.Decisions
 						return true;
 					}
 
-			t += Time.deltaTime;
+			t += Time.unscaledDeltaTime;
 
 			return false;
 		}

@@ -9,7 +9,7 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.Decisions
 		{
 			var startTime = (currentState as Dash)?.StartTime;
 
-			if (Time.time - startTime >= PlayerStats.Movement.Dash.Duration)
+			if (Time.unscaledTime - startTime >= PlayerStats.Movement.Dash.Duration)
 				return new FallDecision().Decide(currentState);
 
 			return false;

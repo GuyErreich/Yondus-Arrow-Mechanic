@@ -6,10 +6,10 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats.SubStats
 	[System.Serializable]
 	public class GatlingArrow {
 		[SerializeField] private Transform _arrow;
-		[SerializeField, Range(6, 32)] private int _amount;
-		[SerializeField, Range(0.1f, 50f)] private float _speed;
-		[SerializeField, Range(5f, 50f)] private float _range;
-		[SerializeField, Range(0.1f, 5f)] private float _rateOfFire;
+		[SerializeField, Range(6, 64)] private int _amount;
+		[SerializeField, Range(0.1f, 200f)] private float _speed;
+		[SerializeField, Range(5f, 200f)] private float _range;
+		[SerializeField, Range(0.001f, 5f)] private float _rateOfFire;
 
 		public Transform arrow => _arrow;
 		public int amount => _amount;

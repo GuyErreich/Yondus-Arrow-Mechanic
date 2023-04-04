@@ -9,12 +9,12 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 
 		public static bool CanMark()
 		{
-			return Time.time - _lastMarkTime >= 0.3f;
+			return Time.unscaledTime - _lastMarkTime >= 0.3f;
 		}
 
 		public static void Mark()
 		{
-			_lastMarkTime = Time.time;
+			_lastMarkTime = Time.unscaledTime;
 		}
 	}
 }

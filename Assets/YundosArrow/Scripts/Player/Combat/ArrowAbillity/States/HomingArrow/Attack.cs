@@ -13,7 +13,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States.HomingAr
 
         public override void Update()
         {
-            Actions.Mark();
+            // Actions.Mark();
 			Actions.Attack();
 
 			Debug.Log("Homing attack");

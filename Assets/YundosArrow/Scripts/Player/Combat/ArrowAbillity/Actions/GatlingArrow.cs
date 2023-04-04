@@ -65,9 +65,11 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 					var duration = ArrowStats.attackStats.gatlingArrow.range / ArrowStats.attackStats.gatlingArrow.speed;
 
 					arrow.DOLookAt(destination, 0.1f)
+						.SetUpdate(true)
 						.OnComplete(() =>
 							arrow.DOMove(destination, duration)
 							.SetEase(Ease.InFlash)
+							.SetUpdate(true)
 							.OnComplete(() =>
 							{
 								arrow.gameObject.SetActive(false);
@@ -81,7 +83,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 					_tGatlingRate = 0;
 				}
 
-				_tGatlingRate += Time.deltaTime;
+				_tGatlingRate += Time.unscaledDeltaTime;
 			}
 		}
 

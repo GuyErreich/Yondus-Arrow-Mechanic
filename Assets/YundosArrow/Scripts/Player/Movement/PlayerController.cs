@@ -16,7 +16,7 @@ namespace Assets.YundosArrow.Scripts.Player.Movement
 
         private void Awake()
         {
-			this.gameObject.AddComponent<TimeScaleController>();
+			// this.gameObject.AddComponent<TimeScaleController>();
         }
 
         private void Start()
