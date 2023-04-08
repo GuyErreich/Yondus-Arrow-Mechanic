@@ -11,7 +11,7 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement.States
 
 		private void Awake() {
 			Transitions.Add(new Transition(this, new ChaseToRoamDecision(), EnemyStates.Roam));
-// 			Transitions.Add(new Transition(this, new StartGatlingAttackDecision(), ArrowStates.StartGatlingAttack));
+			Transitions.Add(new Transition(this, new FallDecision(), EnemyStates.Fall));
 			
 			Stats = GetComponent<EnemyController>().EnemyStats;
 			_agent = GetComponent<NavMeshAgent>();
@@ -37,8 +37,8 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement.States
 
 		public override void OnStateEnter() 
 		{
-			Stats.Anim.SetBool("isChasing", true);
 			_agent.speed = Stats.FollowStats.Speed;
+			Stats.Anim.SetBool("isChasing", true);
 			_timeCounter = 0;
 		}
 
