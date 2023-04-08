@@ -35,9 +35,13 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 
 		public override void OnStateEnter() 
 		{
-			PlayerStats.Anim.SetTrigger("Fall");
+			PlayerStats.Anim.SetBool("isFalling", true);
 		}
 
-		public override void OnStateExit() {}
+		public override void OnStateExit()
+		{
+			PlayerStats.Anim.SetBool("isFalling", false);
+
+		}
 	}
 }

@@ -6775,7 +6775,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243862454}
-  m_LocalRotation: {x: 0.256699, y: 0.10385313, z: -0.027755484, w: 0.9604946}
+  m_LocalRotation: {x: 0.25669897, y: 0.10385313, z: -0.027755482, w: 0.9604946}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7377,7 +7377,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277728772}
-  m_LocalRotation: {x: -0.011071786, y: 0.21771803, z: 0.0024699396, w: 0.97594583}
+  m_LocalRotation: {x: -0.011071807, y: 0.21771803, z: 0.0024699443, w: 0.97594583}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -53649,7 +53649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
       propertyPath: ArrowStats._attackStats._homingArrow._speed
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
       propertyPath: ArrowStats._attackStats._markTargets._range
@@ -53998,12 +53998,17 @@ PrefabInstance:
     - target: {fileID: 3222773034910450502, guid: 494a38f30c77f154283a64c249eaceb6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7265831218791916606, guid: 494a38f30c77f154283a64c249eaceb6,
         type: 3}
-      propertyPath: EnemyStats._followStats._scanRadius
-      value: 80
+      propertyPath: EnemyStats._followStats._speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265831218791916606, guid: 494a38f30c77f154283a64c249eaceb6,
+        type: 3}
+      propertyPath: EnemyStats._randomMovemebtStats._speed
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7265831218791916607, guid: 494a38f30c77f154283a64c249eaceb6,
         type: 3}
