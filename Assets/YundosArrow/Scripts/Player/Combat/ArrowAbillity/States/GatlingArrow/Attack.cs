@@ -12,7 +12,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States.GatlingA
 
         public override void Update()
         {
-			Actions.IdleFollow();
+			Actions.GatlingArrowsFollow();
 			Actions.GatlingAttack();
 
 			Debug.Log("Attacking");

@@ -25,8 +25,8 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 					{
 						transform =
 						{
-							parent = ArrowStats.attackStats.homingArrow.arrow,
-							localPosition = new Vector3(Mathf.Cos(i), Mathf.Sin(i), Mathf.Atan2(Mathf.Cos(i), Mathf.Sin(i)) * 0.5f) * 0.75f
+							parent = ArrowStats.attackStats.gatlingArrow.anchor,
+							localPosition = new Vector3(Mathf.Cos(i), Mathf.Sin(i), Mathf.Atan2(Mathf.Cos(i), Mathf.Sin(i)) * ArrowStats.attackStats.gatlingArrow.offsetZ) * ArrowStats.attackStats.gatlingArrow.distance
 						}
 					};
 
@@ -87,7 +87,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 			}
 		}
 
-		private static void GatlingFollowMainArrow()
+		public static void GatlingArrowsFollow()
 		{
 			for (int i = 0; i < ArrowStats.attackStats.gatlingArrow.amount; i++)
 			{
@@ -95,7 +95,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 				{
 					var arrow = _gatlingArrows.Dequeue();
 					var arrowAnchor = _gatlingArrowAnchors.Dequeue();
-					FollowTarget(arrow,  arrowAnchor.position, GetHitMarkPoint(), 0.05f);
+					FollowTarget(arrow,  arrowAnchor.position, GetHitMarkPoint(), ArrowStats.attackStats.gatlingArrow.duration);
 					_gatlingArrows.Enqueue(arrow);
 					_gatlingArrowAnchors.Enqueue(arrowAnchor);
 				}

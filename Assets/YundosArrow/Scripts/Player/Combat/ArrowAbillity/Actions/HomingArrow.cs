@@ -95,5 +95,10 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 
 			return ArrowStats.attackStats.homingArrow.speed * velocity / distance * Time.unscaledDeltaTime;
 		}
+
+		public static void IdleFollow()
+		{
+			FollowTarget(ArrowStats.attackStats.homingArrow.arrow, ArrowStats.idleStats.followTarget.target.position, GetHitMarkPoint(), ArrowStats.idleStats.followTarget.duration);
+		}
 	}
 }
