@@ -63,7 +63,7 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers.Enemy
                     _instance.Enemies.Add(currentEnemy);
                 }
 
-                yield return new WaitForSeconds(_respawnTime);
+                yield return new WaitForSecondsRealtime(_respawnTime);
             }
         }
 
