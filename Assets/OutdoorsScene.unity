@@ -1814,12 +1814,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 7
-  _maxNumber: 200
+  _maxNumber: 80
   _dashNumber: 1
   _doubleJumpNumber: 5
   _maxTimeSlow: 0.2
   _timeChangeSpeed: 80
-  _numberToStartSlow: 0
+  _numberToStartSlow: 8
   OnUpdate:
     m_PersistentCalls:
       m_Calls:
@@ -6447,7 +6447,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243862454}
-  m_LocalRotation: {x: 0.25669897, y: 0.10385313, z: -0.027755482, w: 0.9604946}
+  m_LocalRotation: {x: 0.256699, y: 0.10385313, z: -0.027755484, w: 0.9604946}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7213,7 +7213,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277728772}
-  m_LocalRotation: {x: -0.011071783, y: 0.21771803, z: 0.002469939, w: 0.97594583}
+  m_LocalRotation: {x: -0.011071788, y: 0.21771802, z: 0.0024699399, w: 0.97594583}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13003,7 +13003,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &444887685
 Transform:
   m_ObjectHideFlags: 0
@@ -13945,7 +13945,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &485370749
 Transform:
   m_ObjectHideFlags: 0
@@ -29168,8 +29168,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926698291}
-  m_LocalRotation: {x: 0.09266374, y: 0.18676412, z: -0.017698018, w: 0.97786474}
-  m_LocalPosition: {x: -0.28139025, y: 1.0500445, z: -1.3082776}
+  m_LocalRotation: {x: 0.09266379, y: 0.18676409, z: -0.017698022, w: 0.97786474}
+  m_LocalPosition: {x: -0.87093276, y: 3.25, z: -4.0492587}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -32015,7 +32015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1161271524
 Transform:
   m_ObjectHideFlags: 0
@@ -33608,7 +33608,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1235275405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34659,7 +34659,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1272620095
 Transform:
   m_ObjectHideFlags: 0
@@ -34942,7 +34942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1329422854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44400,7 +44400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1888271978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44547,7 +44547,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910683946}
-  m_LocalRotation: {x: 0.09266374, y: 0.18676412, z: -0.017698012, w: 0.97786474}
+  m_LocalRotation: {x: 0.09266378, y: 0.1867641, z: -0.01769802, w: 0.97786474}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -50216,7 +50216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2082395575
 Transform:
   m_ObjectHideFlags: 0
@@ -53669,7 +53669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
       propertyPath: ArrowStats._attackStats._markTargets._radius
-      value: 0.65
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
       propertyPath: ArrowStats._attackStats._gatlingArrow._amount
@@ -53685,15 +53685,15 @@ PrefabInstance:
       objectReference: {fileID: 1006069828}
     - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
       propertyPath: ArrowStats._attackStats._gatlingArrow._offsetZ
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
       propertyPath: ArrowStats._attackStats._gatlingArrow._distance
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
       propertyPath: ArrowStats._attackStats._gatlingArrow._duration
-      value: 0.25
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2050040107, guid: 0118efafee993894988299a803303365, type: 3}
       propertyPath: ArrowStats._attackStats._gatlingArrow._rateOfFire
@@ -53778,6 +53778,11 @@ PrefabInstance:
       propertyPath: m_UpdateMode
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6249161543242780965, guid: 0118efafee993894988299a803303365,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0118efafee993894988299a803303365, type: 3}
 --- !u!4 &303351761128863437 stripped
@@ -53811,17 +53816,17 @@ PrefabInstance:
     - target: {fileID: 4464435642622362204, guid: f2347bee406f14e4cbac85e4c58f7717,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4464435642622362204, guid: f2347bee406f14e4cbac85e4c58f7717,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4464435642622362204, guid: f2347bee406f14e4cbac85e4c58f7717,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.174
+      value: 0.11599999
       objectReference: {fileID: 0}
     - target: {fileID: 4464435642622362204, guid: f2347bee406f14e4cbac85e4c58f7717,
         type: 3}

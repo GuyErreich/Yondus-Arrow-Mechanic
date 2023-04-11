@@ -11,6 +11,8 @@ namespace Assets.YundosArrow.Scripts.Enemy {
     public class Health : MonoBehaviour {
         [SerializeField] private List<Collider> _colliders;
         [SerializeField] private float _amount = 100f;
+
+        private bool _isDead = false;
         
         public event Action<float, float> OnHealthChanged;
         public UnityEvent OnDeath;
@@ -24,6 +26,7 @@ namespace Assets.YundosArrow.Scripts.Enemy {
 
         private void OnEnable() {
             CurrentHealth = MaxHealth;
+            _isDead = false;
 			// GetComponent<Collider>().enabled = true;
         }
 
@@ -31,7 +34,8 @@ namespace Assets.YundosArrow.Scripts.Enemy {
             CurrentHealth += amount;
             OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
 
-            if (CurrentHealth <= 0) {
+            if (!_isDead && CurrentHealth <= 0) {
+                _isDead = true;
 				var healthBar = GetComponent<AttachHealthBar>().HealthBar;
 				// if (healthBar != null)
 				// 	while (healthBar.Image.fillAmount > 0) { await Task.Delay(1); }
