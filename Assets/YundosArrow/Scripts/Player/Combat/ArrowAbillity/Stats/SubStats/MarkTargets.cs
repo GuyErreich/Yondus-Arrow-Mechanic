@@ -1,38 +1,29 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Stats.SubStats
+namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats.SubStats
 {
 	[System.Serializable]
 	public class MarkTargets {
 		[Header("Spherecast settings")]
         // [SerializeReference] private Transform startPoint;
-        [SerializeField] private float radius;
-        [SerializeField] private float range;
-        [SerializeField] private float rangeOnNoHit;
-        [SerializeField] private LayerMask layerMask;
+        [SerializeField] private float _radius;
+        [SerializeField] private float _range;
+        [SerializeField] private float _rangeOnNoHit;
+        [SerializeField] private LayerMask _layerMask;
 
         // public Transform StartPoint { get => startPoint; }
-        public float Radius { get => radius; }
-        public float Range { get => range; }
-        public float RangeOnNoHit { get => rangeOnNoHit; }
-        public LayerMask LayerMask { get => layerMask; }
+        public float radius => _radius;
+        public float range => _range;
+        public float rangeOnNoHit => _rangeOnNoHit;
+        public LayerMask layerMask => _layerMask;
 
         public MarkTargets()
         {
-            this.radius = 5f;
-            this.range = 5f;
-            this.rangeOnNoHit = 20f;
-            this.layerMask = new LayerMask();
-        }
-
-        public MarkTargets(float radius, float range, float rangeOnNoHit, LayerMask layerMask)
-        {
-            // this.startPoint = startPoint;
-            this.radius = radius;
-            this.range = range;
-            this.rangeOnNoHit = rangeOnNoHit;
-            this.layerMask = layerMask;
+            _radius = 5f;
+            _range = 5f;
+            _rangeOnNoHit = 20f;
+            _layerMask = new LayerMask();
         }
     }
 }

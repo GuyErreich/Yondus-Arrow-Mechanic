@@ -1,10 +1,9 @@
+using Assets.YundosArrow.Scripts.Systems.Managers;
 using UnityEngine;
-using TMPro;
-using YundosArrow.Scripts.Systems.Managers;
 using UnityEngine.UI;
 using DG.Tweening;
 
-namespace YundosArrow.Scripts.UI
+namespace Assets.YundosArrow.Scripts.UI
 {
     public class EnergyBar : MonoBehaviour
     {
@@ -17,7 +16,7 @@ namespace YundosArrow.Scripts.UI
         }
 
         public void UpdateValue() {
-            this.slider.DOValue(ComboManager.Instance.CurrentNumber, this.duration);
+            this.slider.DOValue(ComboManager.Instance.CurrentNumber, this.duration).SetUpdate(true);
         }
     }
 }

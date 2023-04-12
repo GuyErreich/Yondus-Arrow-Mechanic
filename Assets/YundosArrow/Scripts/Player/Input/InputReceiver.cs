@@ -1,17 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace YundosArrow.Scripts.Player
+namespace Assets.YundosArrow.Scripts.Player.Input
 {
     public enum InputReceiverType {
-        RunPressed = 0,
-        JumpPressed = 1,
-        Movement = 2,
-        SmoothMovement = 3,
-        ShootPressed = 4,
-        AimPressed = 5
+        Movement = 0,
+        SmoothMovement,
+        RunPressed,
+        JumpPressed,
+		DashPressed,
+        ShootPressed,
+        AimPressed,
+
     }
-    public class InputReceiver
+
+	public static class InputReceiver
     {
         public static Dictionary<InputReceiverType, Vector2> Vector2 { get; private set; }
         public static Dictionary<InputReceiverType, bool> Bool { get; private set; }
@@ -25,7 +28,8 @@ namespace YundosArrow.Scripts.Player
             Bool = new Dictionary<InputReceiverType, bool>() {
                 {InputReceiverType.RunPressed, false},
                 {InputReceiverType.JumpPressed, false},
-                {InputReceiverType.ShootPressed, false},
+				{InputReceiverType.DashPressed, false},
+				{InputReceiverType.ShootPressed, false},
                 {InputReceiverType.AimPressed, false}
             };
         }

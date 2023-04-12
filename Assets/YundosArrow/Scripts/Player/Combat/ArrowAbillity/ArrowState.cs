@@ -1,17 +1,26 @@
-using YundosArrow.Scripts.FSM;
+using System.Collections.Generic;
+using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats;
+using Unity.VisualScripting;
+using UnityEngine;
 
-namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities
+namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 {
-    public class ArrowState : State
+    public abstract class ArrowState
     {
-        protected ArrowAbilityMachine stateMachine;
+//		private ArrowController _arrowController;
+		protected ArrowStats ArrowStats;
 
-        private void Start() {
-            this.stateMachine = GetComponent<ArrowAbilityMachine>();
-        }
+		public List<Transition> Transitions = new List<Transition>();
 
-        protected void ChangeState(ArrowStates mode) {
-            this.stateMachine.SetState(this.stateMachine.States[(int)mode]);
-        }
+		public ArrowState(ArrowController arrowController) {
+//			_arrowController = arrowController;
+			ArrowStats = arrowController.ArrowStats;
+			Actions.ArrowStats = arrowController.ArrowStats;
+			Actions.Player = arrowController.transform;
+		}
+
+		public abstract void Update();
+		public abstract void OnStateEnter();
+		public abstract void OnStateExit();
     }
 }

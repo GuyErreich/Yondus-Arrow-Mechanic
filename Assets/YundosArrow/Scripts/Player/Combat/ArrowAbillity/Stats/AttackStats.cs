@@ -1,29 +1,24 @@
-using DG.Tweening;
 using UnityEngine;
-using YundosArrow.Scripts.Player.Combat.ArrowAbilities.Stats.SubStats;
 
-namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.Stats
+namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats
 {
 	[System.Serializable]
 	public class AttackStats {
-        [SerializeField] private SubStats.Movement movement;
-        [Space]
-        [SerializeField] private SubStats.MarkTargets markTargets;
+		[SerializeField] private SubStats.HomingArrow _homingArrow;
+		[Space]
+		[SerializeField] private SubStats.GatlingArrow _gatlingArrow;
+		[Space]
+        [SerializeField] private SubStats.MarkTargets _markTargets;
 
-        public SubStats.Movement Movement { get => movement; }
-        public SubStats.MarkTargets MarkTargets { get => markTargets; }
+		public SubStats.HomingArrow homingArrow => _homingArrow;
+		public SubStats.GatlingArrow gatlingArrow => _gatlingArrow;
+		public SubStats.MarkTargets markTargets => _markTargets;
 
         public AttackStats()
         {
-            this.movement = new SubStats.Movement();
-            this.markTargets = new SubStats.MarkTargets();
+			_homingArrow = new SubStats.HomingArrow();
+			_gatlingArrow = new SubStats.GatlingArrow();
+			_markTargets = new SubStats.MarkTargets();
         }
-
-        public AttackStats(SubStats.Movement movement, MarkTargets markTargets)
-        {
-            this.movement = movement;
-            this.markTargets = markTargets;
-        }
-
     }
 }

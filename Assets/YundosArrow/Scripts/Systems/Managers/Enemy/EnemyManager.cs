@@ -1,59 +1,56 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.AI;
 using YundosArrow.Scripts.UI.HealthBars;
 
-namespace YundosArrow.Scripts.Systems.Managers.Enemy
+namespace Assets.YundosArrow.Scripts.Systems.Managers.Enemy
 {
     public class EnemyManager : MonoBehaviour {
-        [SerializeField] private Transform player;
-        [SerializeField] private Transform healthBar;
-        [SerializeField] private Transform healthBarsContainer;
+        [SerializeField] private Transform _player;
+        [SerializeField] private Transform _healthBar;
+        [SerializeField] private Transform _healthBarsContainer;
 
-        private Queue<DynamicHealthBar> healthBarsPool = new Queue<DynamicHealthBar>();
+        private Queue<DynamicHealthBar> _healthBarsPool = new Queue<DynamicHealthBar>();
         
-        public Transform Player { get => player; }
+        public Transform Player => _player;
 
-        public DynamicHealthBar HealthBar { 
+        public DynamicHealthBar HealthBar {
             get {
-                if (Instance.healthBarsPool == null || Instance.healthBarsPool.Count == 0)
-                    return Instantiate(Instance.healthBar, Instance.healthBarsContainer).GetComponent<DynamicHealthBar>();
-                else 
-                    return Instance.healthBarsPool.Dequeue();
+                if (_instance._healthBarsPool == null || _instance._healthBarsPool.Count == 0)
+                    return Instantiate(_instance._healthBar, _instance._healthBarsContainer).GetComponent<DynamicHealthBar>();
+                else
+                    return _instance._healthBarsPool.Dequeue();
             }
 
             set {
                 if (value.GetComponent<DynamicHealthBar>() != null)
-                    Instance.healthBarsPool.Enqueue(value);
+                    _instance._healthBarsPool.Enqueue(value);
                 else
                     throw new System.TypeLoadException("You can only set Transform type to HealthBar");
-            }            
+            }
         }
 
-        private static EnemyManager instance;
+        private static EnemyManager _instance;
 
         public static EnemyManager Instance
         {
             get
             {
-                if (instance == null)
+                if (_instance == null)
                 {
-                    instance = FindObjectOfType<EnemyManager>();
+                    _instance = FindObjectOfType<EnemyManager>();
                 }
-                return instance;
+                return _instance;
             }
         }
 
         private void Awake()
         {
-            if (instance == null)
+            if (_instance == null)
             {
                 DontDestroyOnLoad(this.gameObject);
-                instance = this;
+                _instance = this;
             }
-            else if (instance != this)
+            else if (_instance != this)
             {
                 Destroy(this.gameObject);
             }

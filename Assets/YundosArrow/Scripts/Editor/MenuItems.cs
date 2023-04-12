@@ -1,8 +1,8 @@
-﻿using UnityEditor;
+﻿using Assets.YundosArrow.Scripts.Systems.Managers;
+using Assets.YundosArrow.Scripts.Systems.Managers.Enemy;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using YundosArrow.Scripts.Systems.Managers;
-using YundosArrow.Scripts.Systems.Managers.Enemy;
 using YundosArrow.Scripts.UI.HealthBars;
 
 namespace Assets.YundosArrow.Scripts.Editor
@@ -36,7 +36,6 @@ namespace Assets.YundosArrow.Scripts.Editor
             GameObject go = new GameObject("EnemyManager");
             go.AddComponent<EnemyManager>();
         }
-
 
         [MenuItem("GameObject/Systems/Health/DynamicHealthBar")]
         private static void CreateDynamicHealthBar()

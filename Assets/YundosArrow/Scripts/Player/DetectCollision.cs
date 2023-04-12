@@ -1,35 +1,32 @@
 using UnityEngine;
 
-namespace YundosArrow.Scripts.Player
+namespace Assets.YundosArrow.Scripts.Player
 {
     public class DetectCollision : MonoBehaviour {
         [System.Serializable] private struct Detector
         {
-            public float height;
-            public float radius;
-            public float range;
+			public float Height;
+            public float Radius;
+            public float Range;
 
             public Detector(float height, float radius, float range)
             {
-                this.height = 0f;
-                this.radius = 0.5f;
-                this.range = 0.5f;
+				Height = height;
+				Radius = radius;
+				Range = range;
             }
         }
 
-        public enum direction {
-            front = 0,
-            bottom = 1,
-            frontFeet = 2
-        }
-
-        [Header("Stats:")]
-        [SerializeField] private int precision = 10;
+		public enum Direction {
+			Front = 0,
+			Bottom = 1,
+			FrontFeet = 2
+		}
 
         [Header("Detectors:")]
-        [SerializeField] private Detector FrontDetector = new Detector(0f, 0.5f, 0.5f);
-        [SerializeField] private Detector BottomDetector  = new Detector(0f, 0.5f, 0.5f);
-        [SerializeField] private Detector FrontFeetDetector = new Detector(-0.5f, 0.5f, 0.5f);
+        [SerializeField] private Detector _frontDetector = new Detector(0f, 0.5f, 0.5f);
+        [SerializeField] private Detector _bottomDetector  = new Detector(0f, 0.5f, 0.5f);
+        [SerializeField] private Detector _frontFeetDetector = new Detector(-0.5f, 0.5f, 0.5f);
 
         public RaycastHit? Front { get; private set; }
         public RaycastHit? Bottom { get; private set; }
@@ -37,18 +34,18 @@ namespace YundosArrow.Scripts.Player
 
         private void Update() {
             // Front detection
-            this.Front = this.DetectedCollider(this.FrontDetector.height, this.FrontDetector.radius, this.FrontDetector.range, this.transform.forward);
+            Front = DetectedCollider(_frontDetector.Height, _frontDetector.Radius, _frontDetector.Range, transform.forward);
             
             // Bottom detection
-            this.Bottom = this.DetectedCollider(this.BottomDetector.height, this.BottomDetector.radius, this.BottomDetector.range, -this.transform.up);
+            Bottom = DetectedCollider(_bottomDetector.Height, _bottomDetector.Radius, _bottomDetector.Range, -transform.up);
 
             // Front feet detection
-            this.FrontFeet = this.DetectedCollider(this.FrontFeetDetector.height, this.FrontFeetDetector.radius, this.FrontFeetDetector.range, this.transform.forward);
+            FrontFeet = DetectedCollider(_frontFeetDetector.Height, _frontFeetDetector.Radius, _frontFeetDetector.Range, transform.forward);
             
         }
 
         private RaycastHit? DetectedCollider(float height, float radius, float range, Vector3 direction) {
-            var origin = this.transform.position + (Vector3.up * height);
+            var origin = transform.position + (Vector3.up * height);
 
             RaycastHit hit;
             if (Physics.SphereCast(origin, radius, direction, out hit, range))
@@ -57,42 +54,42 @@ namespace YundosArrow.Scripts.Player
                 return null;
         }
 
-        public float GetRange(direction dir) {
-            if (dir == direction.front)
-                return this.FrontDetector.range;
-            if (dir == direction.bottom)
-                return this.BottomDetector.range;
-            if (dir == direction.frontFeet)
-                return this.FrontFeetDetector.range;
+        public float GetRange(Direction dir) {
+            if (dir == Direction.Front)
+                return _frontDetector.Range;
+            if (dir == Direction.Bottom)
+                return _bottomDetector.Range;
+            if (dir == Direction.FrontFeet)
+                return _frontFeetDetector.Range;
 
             throw new System.Exception("Unknown direction");
         }
 
-        public bool CompareTag(string tag, direction dir) {
-            if (dir == direction.front)
-                return this.Front != null && this.Front.Value.collider.tag == tag;
-            if (dir == direction.bottom)
-                return this.Bottom != null && this.Bottom.Value.collider.tag == tag;
-            if (dir == direction.frontFeet)
-                return this.FrontFeet != null && this.FrontFeet.Value.collider.tag == tag;
+        public bool CompareTag(string tagName, Direction dir) {
+            if (dir == Direction.Front)
+				return Front != null && Front.Value.collider.tag == tagName;
+            if (dir == Direction.Bottom)
+				return Bottom != null && Bottom.Value.collider.tag == tagName;
+            if (dir == Direction.FrontFeet)
+				return FrontFeet != null && FrontFeet.Value.collider.tag == tagName;
 
             throw new System.Exception("Unknown direction");
         } 
 
         void OnDrawGizmosSelected() {
             // Front detection
-            this.DrawDetector(this.FrontDetector.height, this.FrontDetector.radius, this.FrontDetector.range, this.transform.forward);
+            DrawDetector(_frontDetector.Height, _frontDetector.Radius, _frontDetector.Range, transform.forward);
             
             // Bottom detection
-            this.DrawDetector(this.BottomDetector.height, this.BottomDetector.radius, this.BottomDetector.range, -this.transform.up);
+            DrawDetector(_bottomDetector.Height, _bottomDetector.Radius, _bottomDetector.Range, -transform.up);
 
             // Front feet detection
-            this.DrawDetector(this.FrontFeetDetector.height, this.FrontFeetDetector.radius, this.FrontFeetDetector.range, this.transform.forward);
+            DrawDetector(_frontFeetDetector.Height, _frontFeetDetector.Radius, _frontFeetDetector.Range, transform.forward);
         }
 
 
         private void DrawDetector(float height, float radius, float range, Vector3 direction) {
-            var startPoint = this.transform.position + (Vector3.up * height);
+            var startPoint = transform.position + (Vector3.up * height);
             var endPoint = startPoint + (direction * (range - radius));
             Gizmos.DrawLine(startPoint, endPoint);
             Gizmos.DrawWireSphere(startPoint + (direction * range), radius);

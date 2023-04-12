@@ -44,7 +44,7 @@ namespace YundosArrow.Scripts.UI.HealthBars
         public void HandleHealthChanged(float currentHealth, float maxHealth)
         {
             var percentage = currentHealth / maxHealth;
-            this.image.DOFillAmount(percentage, speed);
+            this.image.DOFillAmount(percentage, speed).SetUpdate(true);
         }
 
         private void LateUpdate()

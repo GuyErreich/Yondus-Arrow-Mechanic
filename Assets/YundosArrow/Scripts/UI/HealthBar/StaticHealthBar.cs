@@ -21,7 +21,7 @@ namespace YundosArrow.Scripts.UI.HealthBars
 
         public void HandleHealthChanged(float currentHealth)
         {
-            this.slider.DOValue(currentHealth, duration);
+            this.slider.DOValue(currentHealth, duration).SetUpdate(true);
         }
     }
 }

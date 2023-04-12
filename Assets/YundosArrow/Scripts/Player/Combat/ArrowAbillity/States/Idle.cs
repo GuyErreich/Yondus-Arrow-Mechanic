@@ -1,36 +1,29 @@
 using UnityEngine;
-using System.Collections;
-using YundosArrow.Scripts.Player.Combat.ArrowAbilities.Actions;
+using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Decisions;
+using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats;
+using DG.Tweening;
 
-namespace YundosArrow.Scripts.Player.Combat.ArrowAbilities.States
+namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
 {
     public class Idle : ArrowState {
-        public override IEnumerator On() {
-            ArrowStates nextState;
+		public Idle(ArrowController arrowController) : base(arrowController)
+        {
+			Transitions.Add(new Transition(this, new MarkDecision(), ArrowStates.Mark));
+			Transitions.Add(new Transition(this, new StartGatlingAttackDecision(), ArrowStates.StartGatlingAttack));
+		}
 
-            var anim = StartCoroutine(Actions.Idle.FloatAnimation());
-            
-            while (true) {
-                MarkTargets.Mark();
-                ArrowStats.CrosshairAnim.Close();
-
-                yield return new WaitForEndOfFrame();
-
-                print("Idle");
-                
-                if (MarkTargets.IsMarked) {
-                    nextState = ArrowStates.Attack;
-                    break;
-                }
-            }
-
-            StopCoroutine(anim);
-
-            ChangeState(nextState);
+        public override void Update()
+        {
+			Actions.IdleFollow();
+//			Debug.Log("Idle");
         }
 
-        private void OnDrawGizmos() {
-            Actions.MarkTargets.Draw();
+        public override void OnStateEnter()
+        {
+            Actions.CurrentTargets?.Clear();
+			ArrowStats.crosshairAnim.Close();
         }
+
+        public override void OnStateExit() {}
     }
 }

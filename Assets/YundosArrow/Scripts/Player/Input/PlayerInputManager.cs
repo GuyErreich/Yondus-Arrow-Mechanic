@@ -1,23 +1,24 @@
 using System.Collections.Generic;
+using Assets.YundosArrow.Scripts.Input;
+using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity;
+using Assets.YundosArrow.Scripts.Player.Movement;
 using UnityEngine;
-using YundosArrow.Scripts.Input;
-using YundosArrow.Scripts.UI;
 
-namespace YundosArrow.Scripts.Player
+namespace Assets.YundosArrow.Scripts.Player.Input
 {
     public class PlayerInputManager : MonoBehaviour {
-        [SerializeField] private float smoothMovementTime = 0.2f;
-        [SerializeField, Range(0.001f, 0.01f)] private float smoothMovementThreshHold = 0.005f;
-        [SerializeField] private CrosshairAnim crosshairAnim;
+        [SerializeField] private float _smoothMovementTime = 0.2f;
+        [SerializeField, Range(0.001f, 0.01f)] private float _smoothMovementThreshHold = 0.005f;
+//        [SerializeField] private CrosshairAnim _crosshairAnim;
         
 
-        private PlayerControls controls;
-        private PlayerControls.CharacterActions characterInput;
+        private PlayerControls _controls;
+        private PlayerControls.CharacterActions _characterInput;
 
-        private Vector2 smoothMovement, movement;
-        private bool isMoving ,isJumping, isRunnig, isShooting, isAiming;
+        private Vector2 _smoothMovement, _movement;
+        private bool _isMoving ,_isJumping, _isRunnig, _isShooting, _isAiming, _isDashing;
 
-        private Vector2 currentMovementInput, smoothMovementVelocity;
+        private Vector2 _currentMovementInput, _smoothMovementVelocity;
 
         private void Awake() {
             //to lock in the centre of window
@@ -26,62 +27,71 @@ namespace YundosArrow.Scripts.Player
             //to hide the curser
             Cursor.visible = false;
 
-            this.controls = new PlayerControls();
+            _controls = new PlayerControls();
 
-            this.CharacterInput();
+            CharacterInput();
         }
 
-        private void Update() {
-            var smoothedMovement = Vector2.SmoothDamp(this.smoothMovement, this.currentMovementInput, ref this.smoothMovementVelocity, this.smoothMovementTime);
-            var x = (smoothedMovement.x < smoothMovementThreshHold) && (smoothedMovement.x > -smoothMovementThreshHold) ? 0 : smoothedMovement.x;
-            var y = (smoothedMovement.y < smoothMovementThreshHold) && (smoothedMovement.y > -smoothMovementThreshHold) ? 0 : smoothedMovement.y;
-            this.smoothMovement = new Vector2(x, y);
+        private void FixedUpdate() {
+            var smoothedMovement = Vector2.SmoothDamp(_smoothMovement, _currentMovementInput, ref _smoothMovementVelocity, _smoothMovementTime);
+            var x = (smoothedMovement.x < _smoothMovementThreshHold) && (smoothedMovement.x > -_smoothMovementThreshHold) ? 0 : smoothedMovement.x;
+            var y = (smoothedMovement.y < _smoothMovementThreshHold) && (smoothedMovement.y > -_smoothMovementThreshHold) ? 0 : smoothedMovement.y;
+            _smoothMovement = new Vector2(x, y);
 
-            InputReceiver.Receive(this.InputsVector2, this.InputsBool);
+            InputReceiver.Receive(InputsVector2, InputsBool);
+
+            //Debug.Log(_currentMovementInput);
         }
 
         private void CharacterInput() {
-            this.characterInput = this.controls.Character;
+            _characterInput = _controls.Character;
 
-            this.characterInput.Movement.performed += ctx => this.currentMovementInput  = ctx.ReadValue<Vector2>();
-            this.characterInput.Movement.performed += ctx => this.movement  = ctx.ReadValue<Vector2>();
-            this.characterInput.Run.started += ctx => this.isRunnig = true;
-            this.characterInput.Run.canceled += ctx => this.isRunnig = false;
-            this.characterInput.Jump.started += ctx => this.isJumping = true;
-            this.characterInput.Jump.canceled += ctx => this.isJumping = false;
+            _characterInput.Movement.performed += ctx => _currentMovementInput  = ctx.ReadValue<Vector2>();
+            _characterInput.Movement.performed += ctx => _movement  = ctx.ReadValue<Vector2>();
+			
+            _characterInput.Run.started += ctx => _isRunnig = true;
+            _characterInput.Run.canceled += ctx => _isRunnig = false;
 
-            this.characterInput.Shoot.started += ctx => this.isShooting = true;
-            this.characterInput.Shoot.canceled += ctx => this.isShooting = false;
+			_characterInput.Jump.started += ctx => _isJumping = true;
+			_characterInput.Jump.started += ctx => JumpGracePeriodHandler.Jump();
+			_characterInput.Jump.canceled += ctx => _isJumping = false;
 
-            // this.characterInput.Shoot.started += ctx => crosshairAnim.Open();
-            // this.characterInput.Shoot.canceled += ctx => crosshairAnim.Close();
+			_characterInput.Dash.started += ctx => _isDashing = true;
+			_characterInput.Dash.performed += ctx => _isDashing = false;
+			_characterInput.Dash.canceled += ctx => _isDashing = false;
 
-            this.characterInput.Aim.started += ctx => this.isAiming = true;
-            this.characterInput.Aim.canceled += ctx => this.isAiming = false;
+			_characterInput.Shoot.started += ctx => _isShooting = true;
+			// _characterInput.Shoot.performed += ctx => _isShooting = false;
+			// _characterInput.Shoot.canceled += ctx => MarkReactionGapHandler.Mark();
+			_characterInput.Shoot.canceled += ctx => _isShooting = false;
+
+            _characterInput.Aim.started += ctx => _isAiming = true;
+            _characterInput.Aim.canceled += ctx => _isAiming = false;
         }
 
         private Dictionary<InputReceiverType, bool> InputsBool {
             get => new Dictionary<InputReceiverType, bool>() {
-                {InputReceiverType.RunPressed, this.isRunnig},
-                {InputReceiverType.JumpPressed, this.isJumping},
-                {InputReceiverType.ShootPressed, this.isShooting},
-                {InputReceiverType.AimPressed, this.isAiming}
+                {InputReceiverType.RunPressed, _isRunnig},
+                {InputReceiverType.JumpPressed, _isJumping},
+				{InputReceiverType.DashPressed, _isDashing},
+				{InputReceiverType.ShootPressed, _isShooting},
+                {InputReceiverType.AimPressed, _isAiming}
             };
         }
 
         private Dictionary<InputReceiverType, Vector2> InputsVector2 {
             get => new Dictionary<InputReceiverType, Vector2>() {
-                {InputReceiverType.Movement, this.movement},
-                {InputReceiverType.SmoothMovement, this.smoothMovement}
+                {InputReceiverType.Movement, _movement},
+                {InputReceiverType.SmoothMovement, _smoothMovement}
             };
         }
 
         private void OnEnable() {
-            controls.Enable();
+            _controls.Enable();
         }
 
         private void OnDestroy() {
-            controls.Disable();
+            _controls.Disable();
         }
     }
 }
