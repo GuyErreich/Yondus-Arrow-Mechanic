@@ -11,10 +11,10 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 
 		public Fall(PlayerController playerController, CharacterController characterController) : base(playerController, characterController)
 		{
-			Transitions.Add(new Transition(this, new IsGroundedDecision(), PlayerStates.GroundMovement));
+			Transitions.Add(new Transition(this, new IsGroundedDecision(), PlayerStates.Idle));
 			Transitions.Add(new Transition(this, new JumpDecision(), PlayerStates.Jump));
 			Transitions.Add(new Transition(this, new DashDecision(),  PlayerStates.Dash));
-			Transitions.Add(new Transition(this, new DoubleJumpDecision(), PlayerStates.DoubleJump));
+			// Transitions.Add(new Transition(this, new DoubleJumpDecision(), PlayerStates.DoubleJump));
 		}
 
 		public override void Update()
@@ -33,8 +33,15 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 			Debug.Log("Falling");
 		}
 
-		public override void OnStateEnter() {}
+		public override void OnStateEnter() 
+		{
+			PlayerStats.Anim.SetBool("isFalling", true);
+		}
 
-		public override void OnStateExit() {}
+		public override void OnStateExit()
+		{
+			PlayerStats.Anim.SetBool("isFalling", false);
+
+		}
 	}
 }

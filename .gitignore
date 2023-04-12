@@ -62,3 +62,6 @@ crashlytics-build.properties
 
 *.zip
 UserSettings/
+
+
+.vscode/

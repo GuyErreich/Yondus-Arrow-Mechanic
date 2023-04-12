@@ -10,7 +10,12 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers
         [SerializeField] private int _dashNumber = 5;
         [SerializeField] private int _doubleJumpNumber = 5;
 
-		public UnityEvent OnUpdate;
+        [SerializeField, Range(1, 0)] private float _maxTimeSlow = 0.1f;
+        [SerializeField] private float _timeChangeSpeed = 20f;
+        [SerializeField] private int _numberToStartSlow = 25;
+
+
+        public UnityEvent OnUpdate;
         private float? _lastChangeTime;
 
         public int CurrentNumber { get; private set; }
@@ -46,9 +51,15 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers
 
         private void Update()
         {
+            ComboSupervisor();
+            TimeSpeedSupervisor();
+        }
+
+        private void ComboSupervisor()
+        {
             if (_instance._lastChangeTime != null)
             {
-                if (Time.time - _instance._lastChangeTime >= _instance._duration)
+                if (Time.unscaledTime - _instance._lastChangeTime >= _instance._duration)
                 {
                     _instance.CurrentNumber = 0;
                     _instance.OnUpdate?.Invoke();
@@ -57,27 +68,61 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers
             }
         }
 
+        private void TimeSpeedSupervisor()
+        {
+            if (CurrentNumber < _numberToStartSlow)
+            {
+                Time.timeScale = 1f;
+                return;
+            }
+
+            float range = _maxNumber - _numberToStartSlow;
+            float current = CurrentNumber - _numberToStartSlow;
+
+            Time.timeScale = Mathf.Clamp(1 - current / range, _maxTimeSlow, 1);
+
+            Debug.Log(1 - current / range);
+        }
+
+		// public void FadeScale(float fadeTime, float scaleTo)
+		// {
+		// 	while (Time.timeScale < scaleTo)
+		// 	{
+		// 		Time.timeScale = Mathf.Clamp(Mathf.Lerp(Time.timeScale, scaleTo, _time / fadeTime), 0f, 1f);
+		// 		_time += Time.unscaledDeltaTime;
+
+		// 		yield return new WaitForEndOfFrame();
+		// 	}
+		// 	Time.timeScale = scaleTo;
+		// 	_time = 0;
+		// }
+
         public void Increase(int amount)
         {
-            _instance.CurrentNumber += Mathf.Abs(amount);
-            _instance.OnUpdate?.Invoke();
+            CurrentNumber += Mathf.Abs(amount);
+            CurrentNumber = Mathf.Clamp(_instance.CurrentNumber, 0, _maxNumber);
+            OnUpdate?.Invoke();
 
-            _instance._lastChangeTime = Time.time;
+            _lastChangeTime = Time.unscaledTime;
         }
 
         public void Decrease(int amount)
         {
             _instance.CurrentNumber -= Mathf.Abs(amount);
+            CurrentNumber = Mathf.Clamp(_instance.CurrentNumber, 0, _maxNumber);
             _instance.OnUpdate?.Invoke();
 
-            _instance._lastChangeTime = Time.time;
+            _instance._lastChangeTime = Time.unscaledTime;
         }
 
-        public void OnBeforeSerialize() {}
+        public void OnBeforeSerialize()
+        {
+        }
 
         public void OnAfterDeserialize()
         {
-            _dashNumber = Mathf.Clamp(_instance._dashNumber, 0, _instance._maxNumber);
+            _dashNumber = Mathf.Clamp(_dashNumber, 0, _maxNumber);
+            _numberToStartSlow = Mathf.Clamp(_numberToStartSlow, 0, _maxNumber);
         }
     }
 }

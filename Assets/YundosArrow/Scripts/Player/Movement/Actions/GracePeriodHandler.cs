@@ -10,17 +10,22 @@ namespace Assets.YundosArrow.Scripts.Player.Movement
 
 		public static bool CanJump()
 		{
-			return Time.time - _lastGroundTouchTime <= PlayerStats.Jump.GracePeriod && Time.time - _lastJumpTime  <= PlayerStats.Jump.GracePeriod;
+			return Time.unscaledTime - _lastGroundTouchTime <= PlayerStats.Jump.GracePeriod && Time.unscaledTime - _lastJumpTime  <= PlayerStats.Jump.GracePeriod;
+		}
+
+		public static bool CanDoubleJump(float gracePeriod)
+		{
+			return Time.unscaledTime - _lastGroundTouchTime >= gracePeriod;
 		}
 
 		public static void TouchGround()
 		{
-			_lastGroundTouchTime = Time.time;
+			_lastGroundTouchTime = Time.unscaledTime;
 		}
 
 		public static void Jump()
 		{
-			_lastJumpTime = Time.time;
+			_lastJumpTime = Time.unscaledTime;
 		}
 	}
 
@@ -30,12 +35,12 @@ namespace Assets.YundosArrow.Scripts.Player.Movement
 
 		public static bool CanDash()
 		{
-			return Time.time - _lastDashTime >= PlayerStats.Movement.Dash.ReactionGapTime;
+			return Time.unscaledTime - _lastDashTime >= PlayerStats.Movement.Dash.ReactionGapTime;
 		}
 
 		public static void Dash()
 		{
-			_lastDashTime = Time.time;
+			_lastDashTime = Time.unscaledTime;
 		}
 	}
 }

@@ -3,12 +3,16 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using Assets.YundosArrow.Scripts.Systems.Managers.Enemy;
+using System.Collections.Generic;
 
 namespace Assets.YundosArrow.Scripts.Enemy {
     [RequireComponent(typeof(AttachHealthBar))]
     [RequireComponent(typeof(BalloonEffect))]
     public class Health : MonoBehaviour {
+        [SerializeField] private List<Collider> _colliders;
         [SerializeField] private float _amount = 100f;
+
+        private bool _isDead = false;
         
         public event Action<float, float> OnHealthChanged;
         public UnityEvent OnDeath;
@@ -22,25 +26,27 @@ namespace Assets.YundosArrow.Scripts.Enemy {
 
         private void OnEnable() {
             CurrentHealth = MaxHealth;
-			GetComponent<Collider>().enabled = true;
+            _isDead = false;
+			// GetComponent<Collider>().enabled = true;
         }
 
         public async void Change(float amount) {
             CurrentHealth += amount;
             OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
 
-            if (CurrentHealth <= 0) {
+            if (!_isDead && CurrentHealth <= 0) {
+                _isDead = true;
 				var healthBar = GetComponent<AttachHealthBar>().HealthBar;
-				if (healthBar != null)
-					while (healthBar.Image.fillAmount > 0) { await Task.Delay(25); }
+				// if (healthBar != null)
+				// 	while (healthBar.Image.fillAmount > 0) { await Task.Delay(1); }
 
-				GetComponent<Collider>().enabled = false;
 
 				var balloonEffect = GetComponent<BalloonEffect>();
 				if (balloonEffect != null)
 				{
+				    // GetComponent<Collider>().enabled = false;
 	                GetComponent<BalloonEffect>().Play();
-	                while (!GetComponent<BalloonEffect>().IsCompleted) { await Task.Delay(25); }
+	                while (!GetComponent<BalloonEffect>().IsCompleted) { await Task.Delay(10); }
 				}
 
                 EnemySpawnManager.Instance.StashEnemy(gameObject);

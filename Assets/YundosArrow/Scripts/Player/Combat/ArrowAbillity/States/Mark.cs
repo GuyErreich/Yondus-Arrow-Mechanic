@@ -7,9 +7,9 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
 {
     public class Mark : ArrowState {
 
-        public Mark(ArrowController playerController) : base(playerController)
+		public Mark(ArrowController arrowController) : base(arrowController)
         {
-			Transitions.Add(new Transition(this, new StartAttackDecision(), ArrowStates.StartAttack));
+			Transitions.Add(new Transition(this, new StartHomingAttackDecision(), ArrowStates.StartHomingAttack));
 			Transitions.Add(new Transition(this, new NotMarkedDecision(), ArrowStates.Idle));
 		}
 
@@ -17,12 +17,12 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
         {
 			Actions.Mark();
 
-			Debug.Log("Marking");
+//			Debug.Log("Marking");
         }
 
         public override void OnStateEnter()
         {
-			ArrowStats.CrosshairAnim.Open();
+			ArrowStats.crosshairAnim.Open();
         }
 
         public override void OnStateExit() {}

@@ -6,7 +6,10 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.Decisions
 		public override bool Decide(PlayerState currentState)
 		{
 //			Debug.Log($"Vertical velocity: {Actions.VerticalSpeed}");
-			return Actions.VerticalSpeed < 0;
+			if (!Actions.IsGrounded)
+				return Actions.VerticalSpeed < 0;
+
+			return false;
 		}
 	}
 }

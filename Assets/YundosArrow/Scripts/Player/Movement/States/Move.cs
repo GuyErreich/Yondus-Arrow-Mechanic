@@ -9,6 +9,7 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 	{
 		public Move(PlayerController playerController, CharacterController characterController) : base(playerController, characterController)
 		{
+			Transitions.Add(new Transition(this ,new IsIdleDecision(), PlayerStates.Idle));
 			Transitions.Add(new Transition(this ,new FallDecision(), PlayerStates.Fall));
 			Transitions.Add(new Transition(this, new JumpDecision(), PlayerStates.Jump));
 			Transitions.Add(new Transition(this, new DashDecision(),  PlayerStates.Dash));
@@ -31,7 +32,8 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 
 		public override void OnStateEnter()
 		{
-			// Play jump animation
+			PlayerStats.Anim.SetBool("IsMoving", true);
+			PlayerStats.Anim.SetBool("IsGrounded", true);
 		}
 
 		public override void OnStateExit()

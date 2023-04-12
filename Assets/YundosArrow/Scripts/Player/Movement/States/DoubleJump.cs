@@ -37,6 +37,8 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 			ComboManager.Instance.Decrease(ComboManager.Instance.DoubleJumpNumber);
 
 			Actions.Jump(PlayerStats.Jump.JumpForce);
+			
+			PlayerStats.Anim.SetTrigger("DoubleJump");
 		}
 
 		public override void OnStateExit() {}

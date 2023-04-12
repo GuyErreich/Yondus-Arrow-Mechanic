@@ -2,6 +2,6 @@ namespace Assets.YundosArrow.Scripts.Player.Movement
 {
     public abstract class Decision
     {
-		public abstract bool Decide(PlayerState currentState);
-	}
+		public abstract bool Decide(PlayerState currentState); //TODO: Implement Decide
+    }
 }

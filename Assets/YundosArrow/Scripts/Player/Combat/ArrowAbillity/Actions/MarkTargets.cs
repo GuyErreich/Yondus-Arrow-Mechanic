@@ -17,34 +17,46 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 		public static void Mark()
 		{
 			Ray ray = Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f));
+			var distance = Vector3.Distance(Camera.main.ViewportToWorldPoint(new Vector2(0.5f, 0.5f)), Player.transform.position);
 
-			if (Physics.SphereCast(ray, ArrowStats.AttackStats.MarkTargets.Radius, out _hit,
-				    ArrowStats.AttackStats.MarkTargets.Range,
-				    ArrowStats.AttackStats.MarkTargets.LayerMask))
+			if (Physics.SphereCast(ray, ArrowStats.attackStats.markTargets.radius, out var hit,
+				    ArrowStats.attackStats.markTargets.range,
+				    ArrowStats.attackStats.markTargets.layerMask))
 			{
-//				if (InputReceiver.Bool[InputReceiverType.ShootPressed])
-//				{
+
+				if (hit.distance >= distance)
+				{
 					if (_targets == null || _targets.Count == 0f)
 					{
-						_targets = new List<Transform> { _hit.transform };
-						_currentTargets = new List<Transform> { _hit.transform };
+						_targets = new List<Transform> { hit.transform };
+						_currentTargets = new List<Transform> { hit.transform };
 					}
 					else
 					{
-						// if(_targets[_targets.Count - 1] != _hit.transform) {
-						//     _targets.Add(_hit.transform);
-						// }
-						if (!_targets.Contains(_hit.transform))
+						if (!_targets.Contains(hit.transform))
 						{
-							_targets.Add(_hit.transform);
-							_currentTargets.Add(_hit.transform);
+							_targets.Add(hit.transform);
+							_currentTargets.Add(hit.transform);
 						}
 					}
-//				}
+				}
+			}
+		}
+
+		private static Vector3 GetHitMarkPoint()
+		{
+			Ray ray = Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f));
+			var distance = Vector3.Distance(Camera.main.ViewportToWorldPoint(new Vector2(0.5f, 0.5f)), Player.transform.position);
+
+			if (Physics.SphereCast(ray, ArrowStats.attackStats.markTargets.radius, out var hit,
+				ArrowStats.attackStats.markTargets.range,
+				ArrowStats.attackStats.markTargets.layerMask))
+			{
+				if (hit.distance >= distance)
+					return hit.point;
 			}
 
-			if (_hit.point == Vector3.zero)
-				_hit.point = ray.origin + ray.direction * ArrowStats.AttackStats.MarkTargets.RangeOnNoHit;
+			return Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)).origin + Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)).direction * ArrowStats.attackStats.markTargets.rangeOnNoHit;
 		}
 	}
 }

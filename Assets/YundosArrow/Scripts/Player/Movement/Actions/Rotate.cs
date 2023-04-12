@@ -15,7 +15,7 @@ namespace Assets.YundosArrow.Scripts.Player.Movement
 
 				var angle = Quaternion.Angle(_charController.transform.rotation, toRotation);
 
-				_charController.transform.rotation = Quaternion.RotateTowards(_charController.transform.rotation, toRotation, angle / (rotationTime / Time.deltaTime));
+				_charController.transform.rotation = Quaternion.RotateTowards(_charController.transform.rotation, toRotation, angle / (rotationTime / Time.unscaledDeltaTime));
 			}
 		}
 
@@ -28,7 +28,7 @@ namespace Assets.YundosArrow.Scripts.Player.Movement
 
 				var angle = Quaternion.Angle(_charController.transform.rotation, toRotation);
 
-				_charController.transform.rotation = Quaternion.RotateTowards(_charController.transform.rotation, toRotation, angle / (rotationTime / Time.deltaTime));
+				_charController.transform.rotation = Quaternion.RotateTowards(_charController.transform.rotation, toRotation, angle / (rotationTime / Time.unscaledDeltaTime));
 			}
 		}
 	}

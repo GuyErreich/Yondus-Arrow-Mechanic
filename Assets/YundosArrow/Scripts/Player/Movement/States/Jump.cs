@@ -12,7 +12,9 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 
 		public Jump(PlayerController playerController, CharacterController characterController) : base(playerController, characterController)
 		{
+			Transitions.Add(new Transition(this, new IsGroundedDecision(), PlayerStates.Idle));
 			Transitions.Add(new Transition(this, new FallDecision(), PlayerStates.Fall));
+			Transitions.Add(new Transition(this, new DoubleJumpDecision(), PlayerStates.DoubleJump));
 			Transitions.Add(new Transition(this, new DashDecision(), PlayerStates.Dash));
 		}
 
@@ -34,8 +36,10 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 
 		public override void OnStateEnter()
 		{
-			_lastJumpTime = Time.time;
+			_lastJumpTime = Time.unscaledTime;
 			Actions.Jump(PlayerStats.Jump.JumpForce);
+			PlayerStats.Anim.SetTrigger("Jump");
+			PlayerStats.Anim.SetBool("IsGrounded", false);
 		}
 
 		public override void OnStateExit() {}

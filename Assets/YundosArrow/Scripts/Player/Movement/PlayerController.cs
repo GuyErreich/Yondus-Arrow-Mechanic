@@ -16,13 +16,13 @@ namespace Assets.YundosArrow.Scripts.Player.Movement
 
         private void Awake()
         {
-			this.gameObject.AddComponent<TimeScaleController>();
+			// this.gameObject.AddComponent<TimeScaleController>();
         }
 
         private void Start()
 		{
 			_characterController = this.GetComponent<CharacterController>();
-			_currentState = GetState(PlayerStates.GroundMovement);
+			_currentState = GetState(PlayerStates.Idle);
 			_currentState.OnStateEnter();
 		}
 
@@ -51,6 +51,7 @@ namespace Assets.YundosArrow.Scripts.Player.Movement
 
 		private PlayerState GetState(PlayerStates state) => state switch
 		{
+			PlayerStates.Idle => new Idle(this, _characterController),
 			PlayerStates.GroundMovement => new Move(this, _characterController),
 			PlayerStates.Jump => new Jump(this, _characterController),
 			PlayerStates.Fall => new Fall(this, _characterController),
@@ -63,6 +64,7 @@ namespace Assets.YundosArrow.Scripts.Player.Movement
 
 	public enum PlayerStates {
         CurrentState = 0,
+		Idle,
         GroundMovement,
         Jump,
 		Fall,

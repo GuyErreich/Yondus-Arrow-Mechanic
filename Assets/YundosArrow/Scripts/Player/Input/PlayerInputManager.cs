@@ -39,6 +39,8 @@ namespace Assets.YundosArrow.Scripts.Player.Input
             _smoothMovement = new Vector2(x, y);
 
             InputReceiver.Receive(InputsVector2, InputsBool);
+
+            //Debug.Log(_currentMovementInput);
         }
 
         private void CharacterInput() {
@@ -59,8 +61,8 @@ namespace Assets.YundosArrow.Scripts.Player.Input
 			_characterInput.Dash.canceled += ctx => _isDashing = false;
 
 			_characterInput.Shoot.started += ctx => _isShooting = true;
-			_characterInput.Shoot.performed += ctx => _isShooting = false;
-			_characterInput.Shoot.canceled += ctx => MarkRectionGapHandler.Mark();
+			// _characterInput.Shoot.performed += ctx => _isShooting = false;
+			// _characterInput.Shoot.canceled += ctx => MarkReactionGapHandler.Mark();
 			_characterInput.Shoot.canceled += ctx => _isShooting = false;
 
             _characterInput.Aim.started += ctx => _isAiming = true;

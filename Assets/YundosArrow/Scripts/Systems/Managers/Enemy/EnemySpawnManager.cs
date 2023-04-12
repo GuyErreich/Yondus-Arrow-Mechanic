@@ -63,7 +63,7 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers.Enemy
                     _instance.Enemies.Add(currentEnemy);
                 }
 
-                yield return new WaitForSeconds(_respawnTime);
+                yield return new WaitForSecondsRealtime(_respawnTime);
             }
         }
 
@@ -83,8 +83,10 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers.Enemy
                                         spawnArea.transform.lossyScale.x * 0.5f);
             var pointZ = Random.Range(spawnArea.transform.lossyScale.z * -0.5f,
                                         spawnArea.transform.lossyScale.z * 0.5f);
+            var pointY = Random.Range(spawnArea.transform.lossyScale.y * -0.5f,
+                                        spawnArea.transform.lossyScale.y * 0.5f);
 
-            var spawnPoint = new Vector3(pointX, spawnArea.transform.position.y, pointZ);
+            var spawnPoint = new Vector3(pointX, pointY, pointZ);
 
             return spawnArea.transform.TransformPoint(spawnPoint);
         }

@@ -1,4 +1,3 @@
-using Assets.YundosArrow.Scripts.Player.Input;
 using Assets.YundosArrow.Scripts.Player.Movement.Decisions;
 using Assets.YundosArrow.Scripts.Player.Movement.Stats;
 using Assets.YundosArrow.Scripts.Systems.Managers;
@@ -29,11 +28,14 @@ namespace Assets.YundosArrow.Scripts.Player.Movement.States
 
 		public override void OnStateEnter()
 		{
-			_startTime = Time.time;
-			GetGameObject().GetComponent<TimeScaleController>().SetScale(0.005f, PlayerStats.Movement.Dash.Duration * 10);
 			ComboManager.Instance.Decrease(ComboManager.Instance.DashNumber);
+			_startTime = Time.unscaledTime;
+			PlayerStats.Movement.Dash.OnStart?.Invoke();
 		}
 
-		public override void OnStateExit() {}
+		public override void OnStateExit()
+		{
+			PlayerStats.Movement.Dash.OnExit?.Invoke();
+		}
     }
 }

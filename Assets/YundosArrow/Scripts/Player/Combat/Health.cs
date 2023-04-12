@@ -28,10 +28,10 @@ namespace Assets.YundosArrow.Scripts.Player.Combat {
 
         public void Change(float amount) {
             if (_lastHitTime != null)
-                if (Time.time - _lastHitTime <= _hitGracePeriod)
+                if (Time.unscaledTime - _lastHitTime <= _hitGracePeriod)
                     return;
                 
-            _lastHitTime = Time.time;
+            _lastHitTime = Time.unscaledTime;
             
 			CurrentHealth += amount;
             OnHealthChanged?.Invoke(CurrentHealth);

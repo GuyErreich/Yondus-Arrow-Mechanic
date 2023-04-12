@@ -3,18 +3,18 @@ using UnityEngine;
 
 namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 {
-	public class MarkRectionGapHandler
+	public class MarkReactionGapHandler
 	{
 		private static float _lastMarkTime;
 
 		public static bool CanMark()
 		{
-			return Time.time - _lastMarkTime >= 0.3f;
+			return Time.unscaledTime - _lastMarkTime >= 0.3f;
 		}
 
 		public static void Mark()
 		{
-			_lastMarkTime = Time.time;
+			_lastMarkTime = Time.unscaledTime;
 		}
 	}
 }
