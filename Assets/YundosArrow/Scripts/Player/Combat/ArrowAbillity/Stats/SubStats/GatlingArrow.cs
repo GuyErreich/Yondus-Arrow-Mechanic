@@ -9,7 +9,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats.SubStats
 		[SerializeField] private Transform _anchor;
 		[Space]
 		[Header("Parameters")]
-		[SerializeField, Range(1, 64)] private int _amount;
+		[SerializeField, Range(1, 128)] private int _amount;
 		[SerializeField, Range(0.1f, 200f)] private float _speed;
 		[SerializeField, Range(5f, 200f)] private float _range;
 		[SerializeField, Range(0.001f, 5f)] private float _rateOfFire;

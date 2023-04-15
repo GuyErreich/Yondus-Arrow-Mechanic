@@ -19,6 +19,7 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers
         private float? _lastChangeTime;
 
         public int CurrentNumber { get; private set; }
+        public float SlowAmount => Mathf.Clamp(1 - (CurrentNumber - _numberToStartSlow) / (_maxNumber - _numberToStartSlow), _maxTimeSlow, 1);
         public int DashNumber => _dashNumber;
         public int DoubleJumpNumber => _doubleJumpNumber;
         private static ComboManager _instance;
@@ -79,7 +80,7 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers
             float range = _maxNumber - _numberToStartSlow;
             float current = CurrentNumber - _numberToStartSlow;
 
-            Time.timeScale = Mathf.Clamp(1 - current / range, _maxTimeSlow, 1);
+            Time.timeScale = SlowAmount;
 
             Debug.Log(1 - current / range);
         }

@@ -18,6 +18,7 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement.States
 
 		protected override void Update()
 		{
+			var deltaTime = Actions.GetDeltaTime(Stats.IsUnsacledTime);
 			if(NavMesh.SamplePosition(_agent.transform.position, out var hit, 3f, NavMesh.AllAreas)) 
 			{
 				Stats.CharacterController.enabled = false;
@@ -27,7 +28,7 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement.States
 			{
 				// _ySpeed += Stats.FallStats.Speed;
 				_ySpeed += 2f;
-				Stats.CharacterController.Move(Vector3.down * _ySpeed * Time.deltaTime);
+				Stats.CharacterController.Move(Vector3.down * _ySpeed * deltaTime);
 			}
 
 			Debug.Log("Enemy Falling");
@@ -37,12 +38,14 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement.States
 		{
 			_ySpeed = 0;
 			Stats.CharacterController.enabled = true;
+			Stats.Anim.SetBool("isFalling", true);
 		}
 
 		public override void OnStateExit() 
 		{
 			_ySpeed = 0;
 			Stats.CharacterController.enabled = false;
+			Stats.Anim.SetBool("isFalling", false);
 		}
      }
  }

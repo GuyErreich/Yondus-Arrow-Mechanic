@@ -7,6 +7,7 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement.Stats
     public class EnemyStats
     {
         [SerializeField] private Animator _anim;
+        [SerializeField] private bool _isUnsacledTime = false;
         [SerializeField] private RandomMovemebtStats _randomMovemebtStats;
         [SerializeField] private FollowStats _followStats;
 
@@ -14,6 +15,7 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement.Stats
         public CharacterController CharacterController { get; set; }
 
         public Animator Anim => _anim;
+        public bool IsUnsacledTime => _isUnsacledTime;
         public RandomMovemebtStats RandomMovemebtStats => _randomMovemebtStats;
         public FollowStats FollowStats => _followStats;
     }

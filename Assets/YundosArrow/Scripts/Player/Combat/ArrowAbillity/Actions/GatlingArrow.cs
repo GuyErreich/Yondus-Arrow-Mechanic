@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats;
 using DG.Tweening;
 using UnityEngine;
@@ -46,7 +45,6 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 					// for (int j = 0; j < 4; j++) 
 					// {
 						var newArrow = Instantiate(ArrowStats.attackStats.gatlingArrow.arrow);
-						// newArrow.position = newAnchor.transform.position;
 						newArrow.gameObject.SetActive(false);
 
 						_gatlingArrowsCache.Enqueue(newArrow);

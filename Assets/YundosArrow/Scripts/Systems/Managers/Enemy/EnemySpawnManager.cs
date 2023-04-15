@@ -6,14 +6,23 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers.Enemy
 {
     public class EnemySpawnManager : MonoBehaviour 
     {
-        [SerializeField] private Transform _enemy;
+        [Header("Global")]
         [SerializeField] private Transform _enemiesContainer;
         [SerializeField] private List<SpawnArea> _spawnAreas;
-        [SerializeField] private int _amount = 10;
-        [SerializeField] private float _respawnTime = 10f;
-        [SerializeField] private LayerMask _spawnMask;
+        [Space]
+        [Header("Normal Enemy")]
+        [SerializeField] private Transform _normalEnemy;
+        [SerializeField] private int _normalEnemyAmount = 10;
+        [SerializeField] private float __normalEnemyRespawnTime = 10f;
+        [Space]
+        [Header("Light Speed Enemy")]
+        [SerializeField] private Transform _lightSpeedEnemy;
+        [SerializeField] private int _lightSpeedEnemyAmount = 10;
+        [SerializeField] private float __lightSpeedEnemyRespawnTime = 10f;
+        [SerializeField, Range(0f, 1f)] private float _slowAmountToSpawLightSpeed;
 
-        private Queue<Transform> _enemiesPool = new Queue<Transform>();
+        private Queue<Transform> _normalEnemyPool = new Queue<Transform>();
+        private Queue<Transform> _lightSpeedEnemyPool = new Queue<Transform>();
 
         public List<Transform> Enemies { get; private set; }
 
@@ -41,38 +50,47 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers.Enemy
         }
 
         private void Init() {
-            _instance.Enemies = new List<Transform>();
+            Enemies = new List<Transform>();
 
-            for (int i = 0; i < _instance._amount; i++) {
-                var newEnemy = Instantiate(_instance._enemy, Vector3.zero, Quaternion.identity, _instance._enemiesContainer);
-                newEnemy.position = Vector3.zero;
-                newEnemy.rotation = Quaternion.identity;
-                _instance._enemy.gameObject.SetActive(false);
-                _instance._enemiesPool.Enqueue(newEnemy);
-            }
+            CreateEnemies(_normalEnemyAmount, _normalEnemy, _normalEnemyPool);
+            CreateEnemies(_lightSpeedEnemyAmount, _lightSpeedEnemy, _lightSpeedEnemyPool);
         }
 
         private IEnumerator SpawnSupervisor() {
             while (true) {
-                if (_instance.Enemies.Count < _instance._amount) {
-                    var currentEnemy = _instance._enemiesPool.Dequeue();
-                    currentEnemy.position = _instance.GetRandomSpawnPoint();
+                if (Enemies.Count < _normalEnemyAmount) {
+                    Transform currentEnemy;
+                    if(ComboManager.Instance.SlowAmount > _slowAmountToSpawLightSpeed)
+                        currentEnemy = _lightSpeedEnemyPool.Dequeue();
+                    else
+                        currentEnemy = _normalEnemyPool.Dequeue();
+
+                    currentEnemy.position = GetRandomSpawnPoint();
                     // currentEnemy.GetComponent<Health>().OnDeath += this.StashEnemy;
                     currentEnemy.gameObject.SetActive(true);
 
-                    _instance.Enemies.Add(currentEnemy);
+                    Enemies.Add(currentEnemy);
                 }
 
-                yield return new WaitForSecondsRealtime(_respawnTime);
+                yield return new WaitForSecondsRealtime(__normalEnemyRespawnTime);
             }
         }
 
+        private void CreateEnemies(int amount, Transform enemy, Queue<Transform> pool) {
+            for (int i = 0; i < amount; i++) {
+                var newEnemy = Instantiate(enemy, Vector3.zero, Quaternion.identity, _enemiesContainer);
+                newEnemy.gameObject.SetActive(false);
+                pool.Enqueue(newEnemy);
+            }
+        }
+
+        //TODO: make it work for to types of enemies
         public void StashEnemy(GameObject currentEnemy) {
             // currentEnemy.GetComponent<Health>().OnDeath -= this.StashEnemy;
             currentEnemy.SetActive(false);
 
             _instance.Enemies.Remove(currentEnemy.transform);
-            _instance._enemiesPool.Enqueue(currentEnemy.transform);
+            _instance._normalEnemyPool.Enqueue(currentEnemy.transform);
         }
 
         private Vector3 GetRandomSpawnPoint() {

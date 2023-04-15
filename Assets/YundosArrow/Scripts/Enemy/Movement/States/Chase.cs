@@ -37,7 +37,7 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement.States
 
 		public override void OnStateEnter() 
 		{
-			_agent.speed = Stats.FollowStats.Speed;
+			_agent.speed = Stats.FollowStats.Speed * 100 * Actions.GetDeltaTime(Stats.IsUnsacledTime);
 			Stats.Anim.SetBool("isChasing", true);
 			_timeCounter = 0;
 		}

@@ -12,5 +12,9 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement
 
 			return false;
 		}
+
+		public static float GetDeltaTime(bool isUnscaled) {
+			return isUnscaled ?  Time.unscaledDeltaTime : Time.deltaTime;
+		}
 	}
 }
