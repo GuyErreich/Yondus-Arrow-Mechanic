@@ -20718,7 +20718,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3901292564560556909}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 132.25, y: 11.7, z: 88.3}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
@@ -20757,7 +20757,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: YundosArrow.Scripts.Systems.Managers.ComboManager,
+        m_TargetAssemblyTypeName: Assets.YundosArrow.Scripts.Systems.Managers.ComboManager,
           Assembly-CSharp
         m_MethodName: Increase
         m_Mode: 3
@@ -20852,8 +20852,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyStats:
+    _enemyID: 1
     _anim: {fileID: 3901292564981507598}
-    _isUnsacledTime: 0
+    _isUnsacledTime: 1
     _randomMovemebtStats:
       _speed: 1.5
       _minMoveTime: 2
@@ -20882,7 +20883,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.94, z: 0}
 --- !u!1 &3901292564563679646
 GameObject:
   m_ObjectHideFlags: 0

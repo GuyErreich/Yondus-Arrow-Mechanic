@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.YundosArrow.Scripts.Enemy.Movement;
 using UnityEngine;
 
 namespace Assets.YundosArrow.Scripts.Systems.Managers.Enemy
@@ -11,14 +12,16 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers.Enemy
         [SerializeField] private List<SpawnArea> _spawnAreas;
         [Space]
         [Header("Normal Enemy")]
+        [SerializeField] private string _normalEnemyID;
         [SerializeField] private Transform _normalEnemy;
         [SerializeField] private int _normalEnemyAmount = 10;
-        [SerializeField] private float __normalEnemyRespawnTime = 10f;
+        [SerializeField] private float _normalEnemyRespawnTime = 10f;
         [Space]
         [Header("Light Speed Enemy")]
+        [SerializeField] private string _lightSpeedEnemyID;
         [SerializeField] private Transform _lightSpeedEnemy;
         [SerializeField] private int _lightSpeedEnemyAmount = 10;
-        [SerializeField] private float __lightSpeedEnemyRespawnTime = 10f;
+        [SerializeField] private float _lightSpeedEnemyRespawnTime = 10f;
         [SerializeField, Range(0f, 1f)] private float _slowAmountToSpawLightSpeed;
 
         private Queue<Transform> _normalEnemyPool = new Queue<Transform>();
@@ -58,21 +61,33 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers.Enemy
 
         private IEnumerator SpawnSupervisor() {
             while (true) {
-                if (Enemies.Count < _normalEnemyAmount) {
-                    Transform currentEnemy;
-                    if(ComboManager.Instance.SlowAmount > _slowAmountToSpawLightSpeed)
-                        currentEnemy = _lightSpeedEnemyPool.Dequeue();
-                    else
-                        currentEnemy = _normalEnemyPool.Dequeue();
+                if (_normalEnemyPool.Count > 0) {
+	                
+                    var currentEnemy = _normalEnemyPool.Dequeue();
 
                     currentEnemy.position = GetRandomSpawnPoint();
                     // currentEnemy.GetComponent<Health>().OnDeath += this.StashEnemy;
                     currentEnemy.gameObject.SetActive(true);
 
                     Enemies.Add(currentEnemy);
+
+                    yield return new WaitForSecondsRealtime(_normalEnemyRespawnTime);
                 }
 
-                yield return new WaitForSecondsRealtime(__normalEnemyRespawnTime);
+                Debug.Log($"Slow amount: {ComboManager.Instance.SlowAmount}");
+                if (_lightSpeedEnemyPool.Count > 0 && ComboManager.Instance.SlowAmount <= _slowAmountToSpawLightSpeed) {
+	                
+                    var currentEnemy = _lightSpeedEnemyPool.Dequeue();
+
+                    currentEnemy.position = GetRandomSpawnPoint();
+                    // currentEnemy.GetComponent<Health>().OnDeath += this.StashEnemy;
+                    currentEnemy.gameObject.SetActive(true);
+
+                    Enemies.Add(currentEnemy);
+                    
+                    yield return new WaitForSecondsRealtime(_lightSpeedEnemyRespawnTime);
+                }
+
             }
         }
 
@@ -89,8 +104,15 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers.Enemy
             // currentEnemy.GetComponent<Health>().OnDeath -= this.StashEnemy;
             currentEnemy.SetActive(false);
 
-            _instance.Enemies.Remove(currentEnemy.transform);
-            _instance._normalEnemyPool.Enqueue(currentEnemy.transform);
+            Enemies.Remove(currentEnemy.transform);
+
+            var currentEnemyID = currentEnemy.GetComponent<EnemyController>().EnemyStats.EnemyID;
+
+            if (currentEnemyID == _lightSpeedEnemyID)
+                _lightSpeedEnemyPool.Enqueue(currentEnemy.transform);
+
+            if (currentEnemyID == _normalEnemyID)
+                _normalEnemyPool.Enqueue(currentEnemy.transform);
         }
 
         private Vector3 GetRandomSpawnPoint() {

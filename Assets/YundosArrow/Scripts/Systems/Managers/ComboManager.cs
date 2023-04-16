@@ -19,7 +19,7 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers
         private float? _lastChangeTime;
 
         public int CurrentNumber { get; private set; }
-        public float SlowAmount => Mathf.Clamp(1 - (CurrentNumber - _numberToStartSlow) / (_maxNumber - _numberToStartSlow), _maxTimeSlow, 1);
+        public float SlowAmount => Mathf.Clamp(1 - ((CurrentNumber - _numberToStartSlow) / (_maxNumber - _numberToStartSlow)), _maxTimeSlow, 1);
         public int DashNumber => _dashNumber;
         public int DoubleJumpNumber => _doubleJumpNumber;
         private static ComboManager _instance;

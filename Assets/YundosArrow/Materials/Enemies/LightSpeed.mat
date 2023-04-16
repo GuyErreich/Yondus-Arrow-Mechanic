@@ -176,9 +176,9 @@ Material:
     - _Color02: {r: 5.5908804, g: 0, b: 0, a: 0}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
-    - _Edge_Color: {r: 1825.2126, g: 303.8192, b: 0, a: 0}
+    - _Edge_Color: {r: 8.78344, g: 1862.0848, b: 1612.3134, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Emission_Color: {r: 1024, g: 0, b: 0, a: 0}
+    - _Emission_Color: {r: 1367.1202, g: 1367.1202, b: 1367.1202, a: 0}
     - _Emission_Remap: {r: -0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4504178154199938263
