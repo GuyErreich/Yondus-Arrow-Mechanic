@@ -10,7 +10,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
 		public MarkAgain(ArrowController arrowController) : base(arrowController)
         {
 			Transitions.Add(new Transition(this, new RetargetDecision(), ArrowStates.StartHomingAttack));
-			Transitions.Add(new Transition(this, new HomingAttackDecision(), ArrowStates.HomingAttack));
+			// Transitions.Add(new Transition(this, new HomingAttackDecision(), ArrowStates.HomingAttack));
 			Transitions.Add(new Transition(this, new NotMarkedDecision(), ArrowStates.Idle));
 		}
 

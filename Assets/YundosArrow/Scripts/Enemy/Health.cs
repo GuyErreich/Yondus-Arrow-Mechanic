@@ -27,7 +27,9 @@ namespace Assets.YundosArrow.Scripts.Enemy {
         private void OnEnable() {
             CurrentHealth = MaxHealth;
             _isDead = false;
-			// GetComponent<Collider>().enabled = true;
+			
+            var colliders = GetComponentsInChildren<Collider>();
+            foreach(var collider in colliders) { collider.enabled = false; }
         }
 
         public async void Change(float amount) {
@@ -39,6 +41,9 @@ namespace Assets.YundosArrow.Scripts.Enemy {
 				var healthBar = GetComponent<AttachHealthBar>().HealthBar;
 				// if (healthBar != null)
 				// 	while (healthBar.Image.fillAmount > 0) { await Task.Delay(1); }
+
+                var colliders = GetComponentsInChildren<Collider>();
+                foreach(var collider in colliders) { collider.enabled = false; }
 
 
 				var balloonEffect = GetComponent<BalloonEffect>();

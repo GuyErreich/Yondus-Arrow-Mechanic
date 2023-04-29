@@ -87,7 +87,8 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers.Enemy
                     
                     yield return new WaitForSecondsRealtime(_lightSpeedEnemyRespawnTime);
                 }
-
+                
+                yield return null;
             }
         }
 

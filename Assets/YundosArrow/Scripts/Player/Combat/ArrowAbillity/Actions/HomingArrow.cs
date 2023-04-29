@@ -23,7 +23,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 			_pathMove = new ArrowPath(ArrowStats.attackStats.homingArrow.arrow.position, _currentTargets[0].position, ArrowStats.attackStats.homingArrow.arrow.forward,
 				ArrowStats.attackStats.homingArrow.force);
 
-			_pathMove.RecalculatePath(ArrowStats.attackStats.homingArrow.startPoint.position);
+			// _pathMove.RecalculatePath(ArrowStats.attackStats.homingArrow.startPoint.position);
 
 			_tMove = 0;
 			IsMoving = true;
@@ -58,27 +58,29 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 
 		public static void Attack()
 		{
-			if (_currentTargets.Count > 0)
-			{
-				if (_tMove < 1f)
-				{
-					_pathMove.RecalculatePath(_currentTargets[0].position);
-					_tMove += CalculateSpeed(_pathMove, _tMove);
-
-					Move(_pathMove, _tMove);
-				}
-				else
-				{
-					_currentTargets.RemoveAt(0);
-					if (_currentTargets.Count > 0)
-						_pathMove.ChangeDestination(_currentTargets[0].transform.position, ArrowStats.attackStats.homingArrow.force);
-					_tMove = 0;
-				}
-			}
-
-			if (_currentTargets.Count == 0)
-			{
+			if (_currentTargets.Count <= 0) {
 				IsAttacking = false;
+				return;
+			} 
+
+			if (_currentTargets[0].GetComponent<Collider>().enabled == false) {
+				_currentTargets.RemoveAt(0); 
+				return;
+			} 
+
+			if (_tMove < 1f)
+			{
+				_pathMove.RecalculatePath(_currentTargets[0].position);
+				_tMove += CalculateSpeed(_pathMove, _tMove);
+
+				Move(_pathMove, _tMove);
+			}
+			else
+			{
+				_currentTargets.RemoveAt(0);
+				if (_currentTargets.Count > 0)
+					_pathMove.ChangeDestination(_currentTargets[0].transform.position, ArrowStats.attackStats.homingArrow.force);
+				_tMove = 0;
 			}
 		}
 
@@ -92,8 +94,11 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 		{
 			var velocity = BezireCurve.CubicVelocity(path.Points[0], path.Points[1], path.Points[2], path.Points[3], t * Time.unscaledDeltaTime);
 			var distance = BezireCurve.CubicDistance(path.Points[0], path.Points[1], path.Points[2], path.Points[3], t * Time.unscaledDeltaTime);
+			// var velocity = BezireCurve.CubicVelocity(path.Points[0], path.Points[1], path.Points[2], path.Points[3], t);
+			// var distance = BezireCurve.CubicDistance(path.Points[0], path.Points[1], path.Points[2], path.Points[3], t);
 
 			return ArrowStats.attackStats.homingArrow.speed * velocity / distance * Time.unscaledDeltaTime;
+			// return ArrowStats.attackStats.homingArrow.speed * velocity / distance;
 		}
 
 		public static void IdleFollow()

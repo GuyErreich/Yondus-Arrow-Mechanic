@@ -11,6 +11,7 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement.Stats
         [SerializeField] private bool _isUnsacledTime = false;
         [SerializeField] private RandomMovemebtStats _randomMovemebtStats;
         [SerializeField] private FollowStats _followStats;
+        [SerializeField] private JumpStats _jumpStats;
 
         public NavMeshAgent Agent { get; set; }
         public CharacterController CharacterController { get; set; }
@@ -20,5 +21,7 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement.Stats
         public bool IsUnsacledTime => _isUnsacledTime;
         public RandomMovemebtStats RandomMovemebtStats => _randomMovemebtStats;
         public FollowStats FollowStats => _followStats;
+        public JumpStats JumpStats => _jumpStats;
+        
     }
 }

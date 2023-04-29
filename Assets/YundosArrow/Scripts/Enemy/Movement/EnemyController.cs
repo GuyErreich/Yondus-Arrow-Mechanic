@@ -64,6 +64,8 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement
                     SetComponent<Chase>(state); break;
                 case EnemyStates.Fall:
                     SetComponent<Fall>(state); break;
+                case EnemyStates.OffMeshLinkJump:
+                    SetComponent<OffMeshLinkJump>(state); break;
                 default:
                     throw new NotSupportedException($"State: {state}. doesnt exist");
             };
@@ -94,6 +96,7 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement
     {
         Roam,
         Chase,
-        Fall
+        Fall,
+        OffMeshLinkJump
     }
 }

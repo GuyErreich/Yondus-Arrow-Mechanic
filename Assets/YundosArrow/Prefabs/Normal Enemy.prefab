@@ -23743,16 +23743,18 @@ MonoBehaviour:
     _anim: {fileID: 6903312384797761172}
     _isUnsacledTime: 0
     _randomMovemebtStats:
-      _speed: 1.5
+      _speed: 1
       _minMoveTime: 2
       _maxMoveTime: 8.31
       _moveRadius: 80
     _followStats:
-      _speed: 3
+      _speed: 2
       _scanRadius: 80
       _layerMask:
         serializedVersion: 2
         m_Bits: 128
+    _jumpStats:
+      _duration: 1.5
 --- !u!143 &6903312384760695082
 CharacterController:
   m_ObjectHideFlags: 0

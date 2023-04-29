@@ -11,10 +11,10 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States.HomingAr
 			Transitions.Add(new Transition(this, new HomingAttackDecision(), ArrowStates.HomingAttack));
         }
 
-		private void Awake()
-		{
-			Actions.AttackInit();
-		}
+		// private void Awake()
+		// {
+		// 	Actions.AttackInit();
+		// }
 
         public override void Update()
         {

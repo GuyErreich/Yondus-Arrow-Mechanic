@@ -31,7 +31,7 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement.States
 		}
 
 		public override void OnStateEnter() {
-			_agent.speed = Stats.RandomMovemebtStats.Speed / Time.timeScale * 100 * Actions.GetDeltaTime(Stats.IsUnsacledTime);;
+			_agent.speed = Stats.RandomMovemebtStats.Speed;
 			_timeCounter = 0;
 		}
 
