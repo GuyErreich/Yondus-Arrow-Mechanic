@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Assets.YundosArrow.Scripts.Input;
 using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity;
 using Assets.YundosArrow.Scripts.Player.Movement;
+using YundosArrow.Scripts.UI;
 using UnityEngine;
 
 namespace Assets.YundosArrow.Scripts.Player.Input
@@ -9,7 +10,7 @@ namespace Assets.YundosArrow.Scripts.Player.Input
     public class PlayerInputManager : MonoBehaviour {
         [SerializeField] private float _smoothMovementTime = 0.2f;
         [SerializeField, Range(0.001f, 0.01f)] private float _smoothMovementThreshHold = 0.005f;
-//        [SerializeField] private CrosshairAnim _crosshairAnim;
+        [SerializeField] private CrosshairAnim _crosshairAnim;
         
 
         private PlayerControls _controls;
@@ -61,9 +62,11 @@ namespace Assets.YundosArrow.Scripts.Player.Input
 			_characterInput.Dash.canceled += ctx => _isDashing = false;
 
 			_characterInput.Shoot.started += ctx => _isShooting = true;
+			_characterInput.Shoot.started += ctx => _crosshairAnim.Open();
 			// _characterInput.Shoot.performed += ctx => _isShooting = false;
 			// _characterInput.Shoot.canceled += ctx => MarkReactionGapHandler.Mark();
 			_characterInput.Shoot.canceled += ctx => _isShooting = false;
+			_characterInput.Shoot.canceled += ctx => _crosshairAnim.Close();
 
             _characterInput.Aim.started += ctx => _isAiming = true;
             _characterInput.Aim.canceled += ctx => _isAiming = false;

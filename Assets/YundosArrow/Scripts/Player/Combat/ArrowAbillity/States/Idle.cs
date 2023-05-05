@@ -15,14 +15,10 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
         public override void Update()
         {
 			Actions.IdleFollow();
-//			Debug.Log("Idle");
+			Debug.Log("Idle");
         }
 
-        public override void OnStateEnter()
-        {
-            Actions.CurrentTargets?.Clear();
-			ArrowStats.crosshairAnim.Close();
-        }
+        public override void OnStateEnter() {}
 
         public override void OnStateExit() {}
     }

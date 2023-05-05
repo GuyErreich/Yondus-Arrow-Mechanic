@@ -15,12 +15,14 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Utils
 		{
             var control1 = anchor1 + (direction * velocity);
 
-            _points = new List<Vector3> {
+            var newPoints = new List<Vector3> {
                 anchor1,
                 control1,
-                (control1 + anchor2) * .5f,
+                (control1 + anchor2) * 0.5f,
                 anchor2
             };
+
+            _points = newPoints;
         }
 
         public Vector3 this[int i] => _points[i];
@@ -38,11 +40,12 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Utils
 		{
             var lastPoint = _points[_points.Count - 1];
             var direction = (lastPoint - _points[_points.Count - 2]);
+            var control1 = lastPoint + direction * force;
 
             var newPoints = new List<Vector3> {
                 lastPoint,
-                lastPoint + direction * force,
-                (lastPoint + anchor) * .5f,
+                control1,
+                (control1 + anchor) * .5f,
                 anchor
             };
 

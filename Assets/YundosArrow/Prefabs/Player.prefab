@@ -862,15 +862,16 @@ MonoBehaviour:
         _loopHoleForce: 1
       _gatlingArrow:
         _arrow: {fileID: 0}
-        _amount: 32
+        _anchor: {fileID: 6249161543242780965}
+        _amount: 64
         _speed: 200
         _range: 100
         _rateOfFire: 0.01
-        _followTarget:
-          _target: {fileID: 0}
-          _duration: 0.5
+        _distance: 1
+        _offsetZ: 1
+        _duration: 0.01
       _markTargets:
-        _radius: 0.65
+        _radius: 0.33
         _range: 70
         _rangeOnNoHit: 100
         _layerMask:
@@ -946,7 +947,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4207679739790943899}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.171, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -2,6 +2,7 @@ using System;
 using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Stats;
 using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Utils;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 {
@@ -20,10 +21,11 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 			if (_currentTargets.Count == 0)
 				throw new Exception("targets cant be empty.", new IndexOutOfRangeException());
 
-			_pathMove = new ArrowPath(ArrowStats.attackStats.homingArrow.arrow.position, _currentTargets[0].position, ArrowStats.attackStats.homingArrow.arrow.forward,
-				ArrowStats.attackStats.homingArrow.force);
-
-			// _pathMove.RecalculatePath(ArrowStats.attackStats.homingArrow.startPoint.position);
+			var sign = Random.Range(0,1) == 0 ? -1 : 1;
+			var dir = ArrowStats.attackStats.homingArrow.arrow.forward + (ArrowStats.attackStats.homingArrow.arrow.right * ArrowStats.attackStats.homingArrow.force * sign);
+			dir = dir.normalized;
+			_pathMove = new ArrowPath(ArrowStats.attackStats.homingArrow.arrow.position, _currentTargets[0].position, dir,
+											ArrowStats.attackStats.homingArrow.returnForce);
 
 			_tMove = 0;
 			IsMoving = true;
@@ -34,21 +36,22 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 		{
 			if (_tMove == 0)
 			{
-				_pathMove.ChangeDestination(ArrowStats.attackStats.homingArrow.startPoint.position, ArrowStats.attackStats.homingArrow.force);
 				_targets.Clear();
+				_pathMove.ChangeDestination(ArrowStats.attackStats.homingArrow.startPoint.position, ArrowStats.attackStats.homingArrow.force);
 			}
 
 			if (_tMove <= 1f)
 			{
 				_pathMove.RecalculatePath(ArrowStats.attackStats.homingArrow.startPoint.position);
-
+				
 				var point = ArrowStats.attackStats.homingArrow.startPoint.position -
 					ArrowStats.attackStats.homingArrow.startPoint.forward * (ArrowStats.attackStats.homingArrow.returnForce);
 				point += ArrowStats.attackStats.homingArrow.startPoint.right * (ArrowStats.attackStats.homingArrow.returnForce);
 				_pathMove.MovePoint(_pathMove.Points.Length - 2, point);
 
-				_tMove += CalculateSpeed(_pathMove, _tMove);
 				Move(_pathMove, _tMove);
+
+				_tMove += CalculateSpeed(_pathMove, _tMove);
 			}
 			else
 			{
@@ -63,23 +66,26 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 				return;
 			} 
 
-			if (_currentTargets[0].GetComponent<Collider>().enabled == false) {
+			var target = _currentTargets[0];
+
+			if (target.GetComponent<Collider>().enabled == false) {
 				_currentTargets.RemoveAt(0); 
 				return;
-			} 
+			}
 
-			if (_tMove < 1f)
+			if (_tMove <= 1f)
 			{
-				_pathMove.RecalculatePath(_currentTargets[0].position);
-				_tMove += CalculateSpeed(_pathMove, _tMove);
-
+				_pathMove.RecalculatePath(target.position);
 				Move(_pathMove, _tMove);
+
+				_tMove += CalculateSpeed(_pathMove, _tMove);
 			}
 			else
 			{
-				_currentTargets.RemoveAt(0);
+				_targets.Remove(target);
+				_currentTargets.Remove(target);
 				if (_currentTargets.Count > 0)
-					_pathMove.ChangeDestination(_currentTargets[0].transform.position, ArrowStats.attackStats.homingArrow.force);
+					_pathMove.ChangeDestination(target.transform.position, ArrowStats.attackStats.homingArrow.force);
 				_tMove = 0;
 			}
 		}
@@ -94,16 +100,16 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 		{
 			var velocity = BezireCurve.CubicVelocity(path.Points[0], path.Points[1], path.Points[2], path.Points[3], t * Time.unscaledDeltaTime);
 			var distance = BezireCurve.CubicDistance(path.Points[0], path.Points[1], path.Points[2], path.Points[3], t * Time.unscaledDeltaTime);
-			// var velocity = BezireCurve.CubicVelocity(path.Points[0], path.Points[1], path.Points[2], path.Points[3], t);
-			// var distance = BezireCurve.CubicDistance(path.Points[0], path.Points[1], path.Points[2], path.Points[3], t);
 
 			return ArrowStats.attackStats.homingArrow.speed * velocity / distance * Time.unscaledDeltaTime;
-			// return ArrowStats.attackStats.homingArrow.speed * velocity / distance;
 		}
 
 		public static void IdleFollow()
 		{
 			FollowTarget(ArrowStats.attackStats.homingArrow.arrow, ArrowStats.idleStats.followTarget.target.position, GetHitMarkPoint(), ArrowStats.idleStats.followTarget.duration);
 		}
+
+		public static void StopAttack() => IsAttacking = false;
+		public static void StopMove() => IsMoving = false;
 	}
 }

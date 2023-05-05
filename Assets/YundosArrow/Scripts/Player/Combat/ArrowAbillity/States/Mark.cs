@@ -17,12 +17,12 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
         {
 			Actions.Mark();
 
-//			Debug.Log("Marking");
+			Debug.Log("Marking");
         }
 
         public override void OnStateEnter()
         {
-			ArrowStats.crosshairAnim.Open();
+			// ArrowStats.crosshairAnim.Open();
         }
 
         public override void OnStateExit() {}
