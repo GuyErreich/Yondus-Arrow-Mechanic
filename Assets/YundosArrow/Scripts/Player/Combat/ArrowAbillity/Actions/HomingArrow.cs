@@ -32,35 +32,53 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 			IsAttacking = true;
 		}
 
+		private static bool newPath = true; 
 		public static void MoveToStartingPoint()
 		{
-			if (_tMove == 0)
-			{
-				_targets.Clear();
-				_pathMove.ChangeDestination(ArrowStats.attackStats.homingArrow.startPoint.position, ArrowStats.attackStats.homingArrow.force);
+			var returnPoint = ArrowStats.attackStats.homingArrow.startPoint;
+
+			_targets.Clear();
+
+			if (_tMove > 0 && newPath) {
+				_pathMove = new ArrowPath(ArrowStats.attackStats.homingArrow.arrow.position, 
+											returnPoint.position,
+											ArrowStats.attackStats.homingArrow.arrow.forward,
+											ArrowStats.attackStats.homingArrow.force);
+				newPath = false;
+			}
+
+			if (_tMove == 0 && newPath) {
+				_pathMove.ChangeDestination(returnPoint.position, ArrowStats.attackStats.homingArrow.force);
+				newPath = false;
 			}
 
 			if (_tMove <= 1f)
 			{
-				_pathMove.RecalculatePath(ArrowStats.attackStats.homingArrow.startPoint.position);
+				_pathMove.RecalculatePathDestination(returnPoint.position);
 				
-				var point = ArrowStats.attackStats.homingArrow.startPoint.position -
-					ArrowStats.attackStats.homingArrow.startPoint.forward * (ArrowStats.attackStats.homingArrow.returnForce);
-				point += ArrowStats.attackStats.homingArrow.startPoint.right * (ArrowStats.attackStats.homingArrow.returnForce);
+				var point = returnPoint.position -
+					returnPoint.forward * (ArrowStats.attackStats.homingArrow.returnForce);
+				point += returnPoint.right * (ArrowStats.attackStats.homingArrow.returnForce);
 				_pathMove.MovePoint(_pathMove.Points.Length - 2, point);
 
 				Move(_pathMove, _tMove);
+
+				var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+				sphere.transform.position = ArrowStats.attackStats.homingArrow.arrow.position;
 
 				_tMove += CalculateSpeed(_pathMove, _tMove);
 			}
 			else
 			{
+				newPath = true;
 				IsMoving = false;
 			}
 		}
 
 		public static void Attack()
 		{
+			newPath = true;
+
 			if (_currentTargets.Count <= 0) {
 				IsAttacking = false;
 				return;
@@ -75,7 +93,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 
 			if (_tMove <= 1f)
 			{
-				_pathMove.RecalculatePath(target.position);
+				_pathMove.RecalculatePathDestination(target.position);
 				Move(_pathMove, _tMove);
 
 				_tMove += CalculateSpeed(_pathMove, _tMove);

@@ -30,16 +30,22 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.Utils
         //TODO: remember to remove if not used
         public Vector3[] Points => _points.ToArray();
 
-        public void RecalculatePath(Vector3 anchor)
+        public void RecalculatePathDestination(Vector3 anchor)
 		{
 			_points[_points.Count - 2] = (_points[_points.Count - 3] + anchor) * .5f;
 			_points[_points.Count - 1] = anchor;
 		}
 
+        public void RecalculatePathOrigin(Vector3 anchor, Vector3 direction, float force)
+		{
+			_points[0] = anchor;
+			_points[1] = anchor + direction * force;
+		}
+
         public void ChangeDestination(Vector3 anchor, float force)
 		{
             var lastPoint = _points[_points.Count - 1];
-            var direction = (lastPoint - _points[_points.Count - 2]);
+            var direction = (lastPoint - _points[_points.Count - 2]).normalized;
             var control1 = lastPoint + direction * force;
 
             var newPoints = new List<Vector3> {

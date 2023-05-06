@@ -20,6 +20,8 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
 			Actions.Mark();
             if (Actions.IsAttacking)
                 Actions.Attack();
+            // else if (Actions.IsMoving) 
+            //     Actions.MoveToStartingPoint();
 			Debug.Log("Marking again");
         }
 
