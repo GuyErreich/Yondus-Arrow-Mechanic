@@ -9,7 +9,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
 		public Idle(ArrowController arrowController) : base(arrowController)
         {
 			Transitions.Add(new Transition(this, new MarkDecision(), ArrowStates.Mark));
-			Transitions.Add(new Transition(this, new StartGatlingAttackDecision(), ArrowStates.StartGatlingAttack));
+			// Transitions.Add(new Transition(this, new StartGatlingAttackDecision(), ArrowStates.StartGatlingAttack));
 		}
 
         public override void Update()
@@ -18,7 +18,10 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
 			Debug.Log("Idle");
         }
 
-        public override void OnStateEnter() {}
+        public override void OnStateEnter() {
+            Actions.StopAttack();
+            Actions.StopMove();
+        }
 
         public override void OnStateExit() {}
     }

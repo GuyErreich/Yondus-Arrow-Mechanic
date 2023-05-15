@@ -826,12 +826,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 7
-  _maxNumber: 2
+  _maxNumber: 100
   _dashNumber: 0
   _doubleJumpNumber: 0
   _maxTimeSlow: 0.2
   _timeChangeSpeed: 80
-  _numberToStartSlow: 0
+  _numberToStartSlow: 50
   OnUpdate:
     m_PersistentCalls:
       m_Calls:
@@ -2272,7 +2272,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243862454}
-  m_LocalRotation: {x: 0.21270813, y: -0.024361651, z: 0.0053050104, w: 0.97679764}
+  m_LocalRotation: {x: 0.21270555, y: -0.024832085, z: 0.0054074526, w: 0.97678584}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2874,7 +2874,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277728772}
-  m_LocalRotation: {x: 0.0035218403, y: 0.0540109, z: -0.00019049701, w: 0.99853414}
+  m_LocalRotation: {x: 0.0035260473, y: 0.023262449, z: -0.0000820472, w: 0.9997232}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4859,6 +4859,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Normal Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6903312384955928300, guid: e7ebc4f1768f7c64baa7d99fad4d6e86,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7ebc4f1768f7c64baa7d99fad4d6e86, type: 3}
@@ -10791,7 +10796,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926698291}
-  m_LocalRotation: {x: 0.09112875, y: 0.031922426, z: -0.0029227196, w: 0.99532306}
+  m_LocalRotation: {x: 0.0911714, y: 0.009587728, z: -0.0008778228, w: 0.9957887}
   m_LocalPosition: {x: 0.29075533, y: 3.25, z: -5.5479417}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13894,11 +13899,11 @@ MonoBehaviour:
   - {fileID: 433322948}
   _normalEnemyID: 0
   _normalEnemy: {fileID: 1637166050}
-  _normalEnemyAmount: 1
+  _normalEnemyAmount: 100
   _normalEnemyRespawnTime: 2
   _lightSpeedEnemyID: 1
   _lightSpeedEnemy: {fileID: 24408908}
-  _lightSpeedEnemyAmount: 0
+  _lightSpeedEnemyAmount: 20
   _lightSpeedEnemyRespawnTime: 1
   _slowAmountToSpawLightSpeed: 0.3
 --- !u!4 &1659537461
@@ -15331,7 +15336,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910683946}
-  m_LocalRotation: {x: 0.09112877, y: 0.03192243, z: -0.002922721, w: 0.99532306}
+  m_LocalRotation: {x: 0.09117139, y: 0.009587723, z: -0.000877823, w: 0.9957887}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17788,7 +17793,7 @@ PrefabInstance:
     - target: {fileID: 4464435642602427975, guid: f2347bee406f14e4cbac85e4c58f7717,
         type: 3}
       propertyPath: _amount
-      value: 34
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4464435642602427976, guid: f2347bee406f14e4cbac85e4c58f7717,
         type: 3}

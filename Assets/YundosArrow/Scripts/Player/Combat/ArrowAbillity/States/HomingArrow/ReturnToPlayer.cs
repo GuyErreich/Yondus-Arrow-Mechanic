@@ -21,7 +21,6 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States.HomingAr
 		public override void OnStateEnter() 
 		{
 			Actions.StopAttack();
-			Actions.CurrentTargets.Clear();
 		}
 
 		public override void OnStateExit() {}

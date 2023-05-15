@@ -51,6 +51,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 			ArrowStates.StartHomingAttack => new HomingArrow.StartAttack(this),
 			ArrowStates.HomingAttack => new HomingArrow.Attack(this),
 			ArrowStates.ReturnToPlayer => new HomingArrow.ReturnToPlayer(this),
+			ArrowStates.StopAttack => new HomingArrow.StopAttack(this),
 			ArrowStates.StartGatlingAttack => new GatlingArrow.StartAttack(this),
 			ArrowStates.GatlingAttack => new GatlingArrow.Attack(this),
 			ArrowStates.CurrentState => _currentState,
@@ -66,6 +67,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity
 		StartHomingAttack,
 		HomingAttack,
 		ReturnToPlayer,
+		StopAttack,
 		StartGatlingAttack,
 		GatlingAttack
     }
