@@ -9,7 +9,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
 
 		public MarkAgain(ArrowController arrowController) : base(arrowController)
         {
-			Transitions.Add(new Transition(this, new HomingAttackDecision(), ArrowStates.HomingAttack));
+			// Transitions.Add(new Transition(this, new HomingAttackDecision(), ArrowStates.HomingAttack));
 			Transitions.Add(new Transition(this, new RetargetDecision(), ArrowStates.StartHomingAttack));
 			Transitions.Add(new Transition(this, new HomingAttackOverDecision(), ArrowStates.ReturnToPlayer));
 
@@ -18,8 +18,10 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States
         public override void Update()
         {
 			Actions.Mark();
-            if (Actions.IsAttacking)
-                Actions.Attack();
+            // if (Actions.IsAttacking)
+            //     Actions.Attack();
+            // else if (Actions.IsMoving) 
+            //     Actions.MoveToStartingPoint();
 			Debug.Log("Marking again");
         }
 

@@ -9,6 +9,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.States.HomingAr
         {
 			Transitions.Add(new Transition(this, new IsReturnedToPlayerDecision(), ArrowStates.Idle));
 			Transitions.Add(new Transition(this, new MarkDecision(), ArrowStates.MarkAgain));
+			// Transitions.Add(new Transition(this, new MarkDecision(), ArrowStates.Mark));
         }
 
         public override void Update()

@@ -58,9 +58,9 @@ namespace Assets.YundosArrow.Scripts.Enemy.Movement.States
 			Stats.Anim.SetBool("isChasing", false);
 		}
 
-		private void OnDrawGizmos() {
-			OffMeshLink nearestLink = FindNearestOffMeshLink(_agent.nextPosition);
-			Gizmos.DrawSphere(nearestLink.startTransform.position, 2);
-		}
+		// private void OnDrawGizmos() {
+		// 	OffMeshLink nearestLink = FindNearestOffMeshLink(_agent.nextPosition);
+		// 	Gizmos.DrawSphere(nearestLink.startTransform.position, 2);
+		// }
      }
  }
