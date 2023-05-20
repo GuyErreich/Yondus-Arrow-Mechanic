@@ -5,11 +5,14 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers
 {
     public class ComboManager : MonoBehaviour, ISerializationCallbackReceiver
     {
+        [Header("Combos Settings")]
         [SerializeField, Min(1)] private float _duration = 3f;
         [SerializeField] private int _maxNumber = 25;
         [SerializeField] private int _dashNumber = 5;
         [SerializeField] private int _doubleJumpNumber = 5;
-
+        [SerializeField] private int _gatlingNumber = 20;
+        [Space]
+        [Header("Slow Time Settings")]
         [SerializeField, Range(1, 0)] private float _maxTimeSlow = 0.1f;
         [SerializeField] private float _timeChangeSpeed = 20f;
         [SerializeField] private int _numberToStartSlow = 25;
@@ -22,6 +25,7 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers
         public float SlowAmount => Mathf.Clamp(1 - ((CurrentNumber - _numberToStartSlow) / (_maxNumber - _numberToStartSlow)), _maxTimeSlow, 1);
         public int DashNumber => _dashNumber;
         public int DoubleJumpNumber => _doubleJumpNumber;
+        public int GatlingNumber => _gatlingNumber;
         private static ComboManager _instance;
 
         public static ComboManager Instance
