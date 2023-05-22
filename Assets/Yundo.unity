@@ -827,14 +827,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _duration: 7
   _maxNumber: 300
-<<<<<<< Updated upstream
-  _dashNumber: 15
-  _doubleJumpNumber: 5
-=======
   _dashNumber: 10
   _doubleJumpNumber: 5
   _gatlingNumber: 20
->>>>>>> Stashed changes
   _maxTimeSlow: 0.2
   _timeChangeSpeed: 20
   _numberToStartSlow: 100
@@ -2886,11 +2881,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277728772}
-<<<<<<< Updated upstream
-  m_LocalRotation: {x: 0.0035260392, y: 0.023439726, z: -0.00008267262, w: 0.9997191}
-=======
-  m_LocalRotation: {x: 0.0035260299, y: 0.023439726, z: -0.0000826724, w: 0.9997191}
->>>>>>> Stashed changes
+  m_LocalRotation: {x: 0.003526048, y: 0.02343973, z: -0.000082672836, w: 0.9997191}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5113,7 +5104,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35076
+  m_Name: pb_Mesh52990
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9522,6 +9513,152 @@ Transform:
   m_Father: {fileID: 1265985211}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 200.057, z: 0}
+--- !u!1 &824330675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 824330676}
+  - component: {fileID: 824330678}
+  - component: {fileID: 824330677}
+  m_Layer: 0
+  m_Name: SFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &824330676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824330675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1517401542}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &824330677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824330675}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730dd770d3a35cb448c784ad67fe8cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 824330678}
+  startClipTime: 0
+  targetClipTime: 1
+  duration: 1
+  currentTime: 0
+--- !u!82 &824330678
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824330675}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f5a25d4fa8fe34b4bb245c0fb4cf6985, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.6
+  m_Pitch: -0.5
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 400
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &829825081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10818,11 +10955,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926698291}
-<<<<<<< Updated upstream
-  m_LocalRotation: {x: 0.09117128, y: 0.009716024, z: -0.00088956935, w: 0.99578744}
-=======
-  m_LocalRotation: {x: 0.09117125, y: 0.009716013, z: -0.00088956807, w: 0.99578744}
->>>>>>> Stashed changes
+  m_LocalRotation: {x: 0.09117128, y: 0.009716016, z: -0.00088956876, w: 0.99578744}
   m_LocalPosition: {x: 0.29075533, y: 3.25, z: -5.5479417}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11491,7 +11624,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35054
+  m_Name: pb_Mesh52968
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14586,7 +14719,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34580
+  m_Name: pb_Mesh52484
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15412,11 +15545,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910683946}
-<<<<<<< Updated upstream
-  m_LocalRotation: {x: 0.091171294, y: 0.009716015, z: -0.00088956923, w: 0.99578744}
-=======
-  m_LocalRotation: {x: 0.09117128, y: 0.009716012, z: -0.00088956853, w: 0.99578744}
->>>>>>> Stashed changes
+  m_LocalRotation: {x: 0.091171294, y: 0.009716014, z: -0.00088956906, w: 0.99578744}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17365,7 +17494,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh34386
+  m_Name: pb_Mesh52288
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
