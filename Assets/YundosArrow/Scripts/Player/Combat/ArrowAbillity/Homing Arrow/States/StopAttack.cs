@@ -12,14 +12,15 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.HomingArrow.Sta
 			Transitions.Add(new Transition(this, new HomingAttackOverDecision(), ArrowStates.ReturnToPlayer));
         }
 
-        public override void Update()
-        {
-			Debug.Log("Stop homing attack");
-        }
+        public override void Update() {}
 
 		public override void OnStateEnter()
 		{
+            Actions.StopAttack();
 			Actions.MoveToStartingInit();
+            Actions.StartMove();
+
+			Debug.Log("Stop homing attack");
 		}
 
         public override void OnStateExit() {}

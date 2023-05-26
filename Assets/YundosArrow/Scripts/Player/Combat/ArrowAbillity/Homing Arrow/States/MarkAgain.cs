@@ -9,7 +9,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.HomingArrow.Sta
 
 		public MarkAgain(ArrowController arrowController) : base(arrowController)
         {
-			// Transitions.Add(new Transition(this, new HomingAttackDecision(), ArrowStates.HomingAttack));
+			// Transitions.Add(new Transition(this, new KeepAttackingDecision(), ArrowStates.HomingAttack));
 			Transitions.Add(new Transition(this, new RetargetDecision(), ArrowStates.StartHomingAttack));
 			Transitions.Add(new Transition(this, new HomingAttackOverDecision(), ArrowStates.ReturnToPlayer));
 
@@ -18,6 +18,9 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.HomingArrow.Sta
         public override void Update()
         {
 			Actions.Mark();
+
+            // var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            // sphere.transform.position = ArrowStats.attackStats.homingArrow.arrow.position;
             // if (Actions.IsAttacking)
             //     Actions.Attack();
             // else if (Actions.IsMoving) 
@@ -25,10 +28,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.HomingArrow.Sta
 			Debug.Log("Marking again");
         }
 
-        public override void OnStateEnter()
-        {
-			ArrowStats.crosshairAnim.Open();
-        }
+        public override void OnStateEnter() {}
 
 		public override void OnStateExit() {}
     }

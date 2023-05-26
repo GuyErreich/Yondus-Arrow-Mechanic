@@ -14,6 +14,9 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.HomingArrow
 		private static float _tMove;
 		private static ArrowPath _pathMove;
 
+		// public static float normalizedPathPos { get; private set; }
+		public static float normalizedPathPos => _tMove;
+
 		public static void AttackInit()
 		{
 			if (_currentTargets == null)
@@ -56,7 +59,6 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.HomingArrow
 			IsAttacking = false;
 		}
 
-		private static bool newPath = true; 
 		public static void MoveToStartingPoint()
 		{
 			var returnPoint = ArrowStats.attackStats.homingArrow.startPoint;
@@ -73,22 +75,19 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.HomingArrow
 
 				Move(_pathMove, _tMove);
 
-				// var sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-				// sphere.transform.position = ArrowStats.attackStats.homingArrow.arrow.position;
-
 				_tMove += CalculateSpeed(_pathMove, _tMove);
+				// normalizedPathPos += CalculateSpeed(_pathMove, _tMove);
 			}
 			else
 			{
-				// newPath = true;
 				IsMoving = false;
+				_tMove = 0;
+				// normalizedPathPos = 0;
 			}
 		}
 
 		public static void Attack()
 		{
-			newPath = true;
-
 			if (_currentTargets.Count <= 0) {
 				IsAttacking = false;
 				return;
@@ -107,14 +106,18 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.HomingArrow
 				Move(_pathMove, _tMove);
 
 				_tMove += CalculateSpeed(_pathMove, _tMove);
+				// normalizedPathPos += CalculateSpeed(_pathMove, _tMove);
 			}
 			else
 			{
 				_targets.Remove(target);
 				_currentTargets.Remove(target);
-				if (_currentTargets.Count > 0)
+				if (_currentTargets.Count > 0) {
+					target = _currentTargets[0];
 					_pathMove.ChangeDestination(target.transform.position, ArrowStats.attackStats.homingArrow.force);
+				}
 				_tMove = 0;
+				// normalizedPathPos = 0;
 			}
 		}
 

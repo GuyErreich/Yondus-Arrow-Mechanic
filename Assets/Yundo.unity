@@ -2279,7 +2279,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243862454}
-  m_LocalRotation: {x: 0.2127056, y: -0.024829393, z: 0.0054068654, w: 0.97678584}
+  m_LocalRotation: {x: 0.21270873, y: -0.024251098, z: 0.0052809347, w: 0.9768004}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2881,7 +2881,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277728772}
-  m_LocalRotation: {x: 0.003526048, y: 0.02343973, z: -0.000082672836, w: 0.9997191}
+  m_LocalRotation: {x: 0.003520408, y: 0.061149914, z: -0.00021567756, w: 0.9981224}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4876,7 +4876,7 @@ PrefabInstance:
     - target: {fileID: 6903312384955928300, guid: e7ebc4f1768f7c64baa7d99fad4d6e86,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7ebc4f1768f7c64baa7d99fad4d6e86, type: 3}
@@ -9524,6 +9524,8 @@ GameObject:
   - component: {fileID: 824330676}
   - component: {fileID: 824330678}
   - component: {fileID: 824330677}
+  - component: {fileID: 824330680}
+  - component: {fileID: 824330679}
   m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
@@ -9553,7 +9555,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824330675}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 730dd770d3a35cb448c784ad67fe8cfd, type: 3}
   m_Name: 
@@ -9563,6 +9565,7 @@ MonoBehaviour:
   targetClipTime: 1
   duration: 1
   currentTime: 0
+  isPlaying: 0
 --- !u!82 &824330678
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9573,18 +9576,18 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f5a25d4fa8fe34b4bb245c0fb4cf6985, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_audioClip: {fileID: 8300000, guid: f20f62217c465054d83d744930e14a2d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
   m_Pitch: -0.5
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 400
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -9659,6 +9662,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!168 &824330679
+AudioEchoFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824330675}
+  m_Enabled: 1
+  m_Delay: 500
+  m_DecayRatio: 0.5
+  m_WetMix: 1
+  m_DryMix: 1
+--- !u!166 &824330680
+AudioChorusFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824330675}
+  m_Enabled: 1
+  m_DryMix: 0.5
+  m_WetMix1: 0.5
+  m_WetMix2: 0.5
+  m_WetMix3: 0.5
+  m_Delay: 100
+  m_Rate: 0
+  m_Depth: 1
 --- !u!1001 &829825081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10083,7 +10113,7 @@ PrefabInstance:
     - target: {fileID: 3901292564560556909, guid: 514b9b404df0b1d4bbf4981ea4bb3a0b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3901292564560556911, guid: 514b9b404df0b1d4bbf4981ea4bb3a0b,
         type: 3}
@@ -10955,7 +10985,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926698291}
-  m_LocalRotation: {x: 0.09117128, y: 0.009716016, z: -0.00088956876, w: 0.99578744}
+  m_LocalRotation: {x: 0.09111218, y: 0.037137732, z: -0.0034002175, w: 0.9951421}
   m_LocalPosition: {x: 0.29075533, y: 3.25, z: -5.5479417}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15545,7 +15575,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910683946}
-  m_LocalRotation: {x: 0.091171294, y: 0.009716014, z: -0.00088956906, w: 0.99578744}
+  m_LocalRotation: {x: 0.091112204, y: 0.037137736, z: -0.0034002184, w: 0.9951421}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17353,6 +17383,33 @@ MonoBehaviour:
         _layerMask:
           serializedVersion: 2
           m_Bits: 64
+--- !u!114 &2050040109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137970116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500f682082821234680ed9fd225e6e47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onMove:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 824330677}
+        m_TargetAssemblyTypeName: ClipTimeLerper, Assembly-CSharp
+        m_MethodName: set_CurrentTime
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2082395574
 GameObject:
   m_ObjectHideFlags: 0

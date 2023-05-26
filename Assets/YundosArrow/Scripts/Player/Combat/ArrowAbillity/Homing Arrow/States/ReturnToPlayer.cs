@@ -9,7 +9,6 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.HomingArrow.Sta
         {
 			Transitions.Add(new Transition(this, new IsReturnedToPlayerDecision(), ArrowStates.Idle));
 			Transitions.Add(new Transition(this, new MarkDecision(), ArrowStates.MarkAgain));
-			// Transitions.Add(new Transition(this, new MarkDecision(), ArrowStates.Mark));
         }
 
         public override void Update()
@@ -19,10 +18,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.HomingArrow.Sta
 			Debug.Log("Returning to player");
         }
 
-		public override void OnStateEnter() 
-		{
-			Actions.StopAttack();
-		}
+		public override void OnStateEnter() {}
 
 		public override void OnStateExit() {}
     }

@@ -1,10 +1,12 @@
 using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.HomingArrow;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.YundosArrow.Scripts.Player.Combat {
     public class HomingDamage : MonoBehaviour, ISerializationCallbackReceiver {
         [SerializeField] private float _amount = 10f;
         [SerializeField] private LayerMask _layerMask;
+        [SerializeField] private UnityEvent onHit;
 
         public float Amount { get; set; }
 
@@ -19,6 +21,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat {
                 if (hitBox) {
                     if (Actions.CurrentTargets != null && Actions.CurrentTargets.Contains(other.transform))
                         hitBox.Hit(-(Amount));
+                        onHit.Invoke();
                 }
             }
         }
