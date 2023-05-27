@@ -5,55 +5,51 @@ public class ClipTimeLerper : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private float startClipTime = 0f;
     [SerializeField] private float targetClipTime = 1f;
-    [SerializeField] private float duration = 1f;
     [SerializeField, Range(0f, 1f)] private float currentTime = 0f;
 
+    private float sourceVolume;
     public float CurrentTime { get => currentTime; set => currentTime = value; }
 
-    private float GetCurrentTime()
-    {
-        return currentTime;
-    }
 
     private void Start()
     {
-        audioSource.time = startClipTime;
+        sourceVolume = audioSource.volume;
+        StopClip();
     }
 
     private float f = 0f;
     public bool isPlaying = false;
+
     private void Update()
     {
-        if (currentTime == 0) {
-            audioSource.volume = 0;
-            audioSource.time = 0;
-            // audioSource.Stop();
+        if (CurrentTime == 0) {
+            StopClip();
             return;
         }
 
-        if(currentTime > 0) {
-            // if (!isPlaying) {
-                // audioSource.Play();
-                // audioSource.loop = true;
-                audioSource.volume = 1;
-                // isPlaying = true;
-            // }
+        if (!isPlaying) {
+            StartClip();
+            return;
         }
-            
 
-        // if (currentTime < duration)
-        // {
-        //     // audioSource.Play();
-        //     // float t = currentTime / duration;
-        //     // float lerpedTime = Mathf.Lerp(startClipTime, targetClipTime, t);
-        //     // audioSource.time = lerpedTime;
-        // }
-        // else
-        // {
-        //     // audioSource.time = targetClipTime;
-        //     audioSource.Stop();
-        //     // audioSource.volume = 0;
-        //     // isPlaying = false;
-        // }
+        if(CurrentTime > 0) {
+            // float t = 1 - (targetClipTime - CurrentTime * targetClipTime);
+            float t = (targetClipTime - startClipTime) / CurrentTime;
+            float lerpedTime = Mathf.Lerp(startClipTime, targetClipTime, t);
+            audioSource.time = lerpedTime;
+        }
+    }
+
+    private void StopClip() {
+        audioSource.time = startClipTime;
+        audioSource.volume = 0;
+        audioSource.Stop();
+        isPlaying = false;
+    }
+
+    private void StartClip() {
+        audioSource.volume = 1 * sourceVolume;
+        audioSource.Play();
+        isPlaying = true;
     }
 }

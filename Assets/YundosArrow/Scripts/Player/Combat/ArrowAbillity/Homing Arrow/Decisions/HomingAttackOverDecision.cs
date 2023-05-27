@@ -5,7 +5,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.HomingArrow.Dec
 	public class HomingAttackOverDecision : Decision {
 		public override bool Decide(ArrowState currentState)
 		{
-			return Actions.IsMoving && !Actions.IsAttacking;
+			return !Actions.IsMarked && Actions.IsMoving && !Actions.IsAttacking;
 		}
 	}
 }

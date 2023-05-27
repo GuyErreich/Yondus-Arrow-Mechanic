@@ -12,7 +12,10 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.HomingArrow.Sta
 			Transitions.Add(new Transition(this, new HomingAttackOverDecision(), ArrowStates.ReturnToPlayer));
         }
 
-        public override void Update() {}
+        public override void Update() {
+            if (Actions.IsAttacking)
+                Actions.Attack();
+        }
 
 		public override void OnStateEnter()
 		{
