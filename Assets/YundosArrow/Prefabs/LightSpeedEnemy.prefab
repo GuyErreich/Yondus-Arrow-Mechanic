@@ -2786,6 +2786,7 @@ GameObject:
   - component: {fileID: 3901292563121439788}
   - component: {fileID: 3901292563121439789}
   - component: {fileID: 3901292563121439786}
+  - component: {fileID: 7862074593117108764}
   m_Layer: 6
   m_Name: HitBox
   m_TagString: Untagged
@@ -2867,6 +2868,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7862074593117108764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901292563121439784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed37de2170db0d46866d55899c0fa5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 15
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3901292563123138621
 GameObject:
   m_ObjectHideFlags: 0
@@ -5245,6 +5262,7 @@ GameObject:
   - component: {fileID: 3901292563334086480}
   - component: {fileID: 3901292563334086481}
   - component: {fileID: 3901292563334086494}
+  - component: {fileID: 2658984303548450335}
   m_Layer: 6
   m_Name: HitBox (1)
   m_TagString: Enemy
@@ -5314,7 +5332,7 @@ MonoBehaviour:
   OnHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3901292564560556911}
         m_TargetAssemblyTypeName: Assets.YundosArrow.Scripts.Enemy.Health, Assembly-CSharp
         m_MethodName: Change
         m_Mode: 0
@@ -5326,6 +5344,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2658984303548450335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901292563334086492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed37de2170db0d46866d55899c0fa5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 15
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3901292563335955539
 GameObject:
   m_ObjectHideFlags: 0
@@ -10963,6 +10997,7 @@ GameObject:
   - component: {fileID: 3901292563767863016}
   - component: {fileID: 3901292563767863017}
   - component: {fileID: 3901292563767862934}
+  - component: {fileID: 353459127253560073}
   m_Layer: 6
   m_Name: HitBox (1)
   m_TagString: Enemy
@@ -11044,6 +11079,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &353459127253560073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901292563767862932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed37de2170db0d46866d55899c0fa5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 15
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3901292563771197230
 GameObject:
   m_ObjectHideFlags: 0
@@ -11405,6 +11456,7 @@ GameObject:
   - component: {fileID: 3901292563789662164}
   - component: {fileID: 3901292563789662165}
   - component: {fileID: 3901292563789662162}
+  - component: {fileID: 3371849024078357524}
   m_Layer: 6
   m_Name: HitBox (1)
   m_TagString: Enemy
@@ -11474,7 +11526,7 @@ MonoBehaviour:
   OnHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3901292564560556911}
         m_TargetAssemblyTypeName: Assets.YundosArrow.Scripts.Enemy.Health, Assembly-CSharp
         m_MethodName: Change
         m_Mode: 0
@@ -11486,6 +11538,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3371849024078357524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901292563789662160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed37de2170db0d46866d55899c0fa5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 15
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3901292563790085629
 GameObject:
   m_ObjectHideFlags: 0
@@ -12869,6 +12937,7 @@ GameObject:
   - component: {fileID: 3901292563900444584}
   - component: {fileID: 3901292563900444585}
   - component: {fileID: 3901292563900444246}
+  - component: {fileID: 6135987010713430032}
   m_Layer: 6
   m_Name: HitBox (2)
   m_TagString: Enemy
@@ -12950,6 +13019,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6135987010713430032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901292563900444244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed37de2170db0d46866d55899c0fa5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 15
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3901292563901253948
 GameObject:
   m_ObjectHideFlags: 0
@@ -15551,6 +15636,7 @@ GameObject:
   - component: {fileID: 3901292564152524198}
   - component: {fileID: 3901292564152524199}
   - component: {fileID: 3901292564152524196}
+  - component: {fileID: 5600202825984724633}
   m_Layer: 6
   m_Name: HitBox (1)
   m_TagString: Enemy
@@ -15620,7 +15706,7 @@ MonoBehaviour:
   OnHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3901292564560556911}
         m_TargetAssemblyTypeName: Assets.YundosArrow.Scripts.Enemy.Health, Assembly-CSharp
         m_MethodName: Change
         m_Mode: 0
@@ -15632,6 +15718,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5600202825984724633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901292564152524194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed37de2170db0d46866d55899c0fa5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 15
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3901292564152862319
 GameObject:
   m_ObjectHideFlags: 0
@@ -19557,6 +19659,7 @@ GameObject:
   - component: {fileID: 3901292564489431798}
   - component: {fileID: 3901292564489431799}
   - component: {fileID: 3901292564489431796}
+  - component: {fileID: 4853589284411288108}
   m_Layer: 6
   m_Name: HitBox (1)
   m_TagString: Enemy
@@ -19638,6 +19741,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4853589284411288108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901292564489431794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed37de2170db0d46866d55899c0fa5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 15
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3901292564492213336
 GameObject:
   m_ObjectHideFlags: 0
@@ -20384,6 +20503,7 @@ GameObject:
   - component: {fileID: 3901292564536307785}
   - component: {fileID: 3901292564536307830}
   - component: {fileID: 3901292564536307831}
+  - component: {fileID: 6601704493291880617}
   m_Layer: 6
   m_Name: HitBox (1)
   m_TagString: Enemy
@@ -20453,7 +20573,7 @@ MonoBehaviour:
   OnHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3901292564560556911}
         m_TargetAssemblyTypeName: Assets.YundosArrow.Scripts.Enemy.Health, Assembly-CSharp
         m_MethodName: Change
         m_Mode: 0
@@ -20465,6 +20585,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6601704493291880617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901292564536307829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed37de2170db0d46866d55899c0fa5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 15
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3901292564536774961
 GameObject:
   m_ObjectHideFlags: 0
@@ -20699,12 +20835,10 @@ GameObject:
   - component: {fileID: 3901292564560556900}
   - component: {fileID: 3901292564560556911}
   - component: {fileID: 3901292564560556901}
-  - component: {fileID: 3901292564560556898}
   - component: {fileID: 3901292564560556899}
   - component: {fileID: 3901292564560556896}
   - component: {fileID: 3901292564560556897}
   - component: {fileID: 3901292564560556910}
-  - component: {fileID: 950920986}
   m_Layer: 6
   m_Name: LightSpeedEnemy
   m_TagString: Enemy
@@ -20786,22 +20920,6 @@ MonoBehaviour:
   _startFrameAmount: -3
   _endFrameAmount: 4.5
   _duration: 1
---- !u!114 &3901292564560556898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3901292564560556909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ed37de2170db0d46866d55899c0fa5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _amount: 15
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!195 &3901292564560556899
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -20887,20 +21005,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.94, z: 0}
---- !u!136 &950920986
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3901292564560556909}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.97
-  m_Height: 3.36
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.48, z: 0}
 --- !u!1 &3901292564563679646
 GameObject:
   m_ObjectHideFlags: 0
@@ -21710,6 +21814,7 @@ GameObject:
   - component: {fileID: 3901292564617979481}
   - component: {fileID: 3901292564617979462}
   - component: {fileID: 3901292564617979463}
+  - component: {fileID: 4036587874418700590}
   m_Layer: 6
   m_Name: HitBox (1)
   m_TagString: Enemy
@@ -21791,6 +21896,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4036587874418700590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901292564617979461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed37de2170db0d46866d55899c0fa5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 15
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3901292564618257947
 GameObject:
   m_ObjectHideFlags: 0
@@ -23878,6 +23999,7 @@ GameObject:
   - component: {fileID: 3901292564783950266}
   - component: {fileID: 3901292564783950267}
   - component: {fileID: 3901292564783950264}
+  - component: {fileID: 4713428495025407033}
   m_Layer: 6
   m_Name: HitBox
   m_TagString: Enemy
@@ -23959,6 +24081,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4713428495025407033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901292564783950246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed37de2170db0d46866d55899c0fa5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 15
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3901292564787040081
 GameObject:
   m_ObjectHideFlags: 0
@@ -24069,6 +24207,7 @@ GameObject:
   - component: {fileID: 3901292564796232548}
   - component: {fileID: 3901292564796232549}
   - component: {fileID: 3901292564796232546}
+  - component: {fileID: 7013385092334144714}
   m_Layer: 6
   m_Name: HitBox (1)
   m_TagString: Enemy
@@ -24150,6 +24289,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7013385092334144714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901292564796232544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed37de2170db0d46866d55899c0fa5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 15
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3901292564798781588
 GameObject:
   m_ObjectHideFlags: 0
@@ -24449,6 +24604,7 @@ GameObject:
   - component: {fileID: 3901292564810930095}
   - component: {fileID: 3901292564810930092}
   - component: {fileID: 3901292564810930093}
+  - component: {fileID: 6597559335491621989}
   m_Layer: 6
   m_Name: HitBox
   m_TagString: Enemy
@@ -24530,6 +24686,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6597559335491621989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901292564810930091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed37de2170db0d46866d55899c0fa5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 15
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3901292564811325987
 GameObject:
   m_ObjectHideFlags: 0
@@ -24734,6 +24906,7 @@ GameObject:
   - component: {fileID: 3901292564832684464}
   - component: {fileID: 3901292564832684465}
   - component: {fileID: 3901292564832684478}
+  - component: {fileID: 6954621994797555533}
   m_Layer: 6
   m_Name: HitBox
   m_TagString: Enemy
@@ -24815,6 +24988,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6954621994797555533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901292564832684476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed37de2170db0d46866d55899c0fa5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amount: 15
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3901292564837009208
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ namespace Assets.YundosArrow.Scripts.Enemy {
             _isDead = false;
 			
             var colliders = GetComponentsInChildren<Collider>();
-            foreach(var collider in colliders) { collider.enabled = false; }
+            foreach(var collider in colliders) { collider.enabled = true; }
         }
 
         public async void Change(float amount) {

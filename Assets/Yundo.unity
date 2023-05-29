@@ -827,8 +827,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _duration: 7
   _maxNumber: 100
-  _dashNumber: 10
-  _doubleJumpNumber: 5
+  _dashNumber: 2
+  _doubleJumpNumber: 1
   _gatlingNumber: 20
   _maxTimeSlow: 0.2
   _timeChangeSpeed: 20
@@ -2280,7 +2280,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243862454}
-  m_LocalRotation: {x: 0.21270874, y: -0.024251098, z: 0.0052809357, w: 0.9768004}
+  m_LocalRotation: {x: 0.21270873, y: -0.024251098, z: 0.0052809347, w: 0.9768004}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2882,7 +2882,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277728772}
-  m_LocalRotation: {x: 0.003520406, y: 0.061149914, z: -0.00021567744, w: 0.9981224}
+  m_LocalRotation: {x: 0.0035203942, y: 0.06114992, z: -0.00021567676, w: 0.9981224}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4809,11 +4809,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1748114586}
     m_Modifications:
-    - target: {fileID: 6903312384760695061, guid: e7ebc4f1768f7c64baa7d99fad4d6e86,
-        type: 3}
-      propertyPath: EnemyStats._followStats._speed
-      value: 2.25
-      objectReference: {fileID: 0}
     - target: {fileID: 6903312384760695080, guid: e7ebc4f1768f7c64baa7d99fad4d6e86,
         type: 3}
       propertyPath: m_RootOrder
@@ -4878,11 +4873,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Normal Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 6903312384955928300, guid: e7ebc4f1768f7c64baa7d99fad4d6e86,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7ebc4f1768f7c64baa7d99fad4d6e86, type: 3}
@@ -6213,7 +6203,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1307413492}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -10050,11 +10040,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1748114586}
     m_Modifications:
-    - target: {fileID: 3901292564560556897, guid: 514b9b404df0b1d4bbf4981ea4bb3a0b,
-        type: 3}
-      propertyPath: EnemyStats._followStats._speed
-      value: 2.25
-      objectReference: {fileID: 0}
     - target: {fileID: 3901292564560556908, guid: 514b9b404df0b1d4bbf4981ea4bb3a0b,
         type: 3}
       propertyPath: m_RootOrder
@@ -10114,11 +10099,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LightSpeedEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 3901292564560556909, guid: 514b9b404df0b1d4bbf4981ea4bb3a0b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3901292564560556911, guid: 514b9b404df0b1d4bbf4981ea4bb3a0b,
         type: 3}
@@ -17346,7 +17326,7 @@ MonoBehaviour:
         _arrow: {fileID: 1517401542}
         _startPoint: {fileID: 128593816}
         _haloVfx: {fileID: 1006069828}
-        _speed: 70
+        _speed: 62
         _force: 6
         _returnForce: 10
         _loopHoleForce: 1
@@ -17373,7 +17353,7 @@ MonoBehaviour:
     _attackStats:
       _arrow: {fileID: 1417798098}
       _anchor: {fileID: 357836161}
-      _amount: 64
+      _amount: 32
       _speed: 150
       _range: 100
       _rateOfFire: 0.005
@@ -17418,6 +17398,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!136 &2050040114
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137970116}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.35
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &2082395574
 GameObject:
   m_ObjectHideFlags: 0
