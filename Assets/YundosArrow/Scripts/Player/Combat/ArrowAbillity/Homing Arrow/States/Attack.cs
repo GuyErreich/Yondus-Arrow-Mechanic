@@ -7,6 +7,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.HomingArrow.Sta
 
 		public Attack(ArrowController arrowController) : base(arrowController)
         {
+			// Transitions.Add(new Transition(this, new RetargetDecision(), ArrowStates.StartHomingAttack));
 			Transitions.Add(new Transition(this, new HomingAttackOverDecision(), ArrowStates.StopAttack));
 			Transitions.Add(new Transition(this, new StopAttackDecision(), ArrowStates.StopAttack));
 			// Transitions.Add(new Transition(this, new MarkDecision(), ArrowStates.MarkAgain));

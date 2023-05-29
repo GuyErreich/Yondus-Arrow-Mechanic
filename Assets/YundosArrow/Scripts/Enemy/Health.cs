@@ -49,7 +49,6 @@ namespace Assets.YundosArrow.Scripts.Enemy {
 				var balloonEffect = GetComponent<BalloonEffect>();
 				if (balloonEffect != null)
 				{
-				    // GetComponent<Collider>().enabled = false;
 	                GetComponent<BalloonEffect>().Play();
 	                while (!GetComponent<BalloonEffect>().IsCompleted) { await Task.Delay(10); }
 				}

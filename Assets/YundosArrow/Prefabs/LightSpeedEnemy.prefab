@@ -20704,6 +20704,7 @@ GameObject:
   - component: {fileID: 3901292564560556896}
   - component: {fileID: 3901292564560556897}
   - component: {fileID: 3901292564560556910}
+  - component: {fileID: 950920986}
   m_Layer: 6
   m_Name: LightSpeedEnemy
   m_TagString: Enemy
@@ -20797,7 +20798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ed37de2170db0d46866d55899c0fa5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _amount: 10
+  _amount: 15
   _layerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -20861,7 +20862,7 @@ MonoBehaviour:
       _maxMoveTime: 8.31
       _moveRadius: 80
     _followStats:
-      _speed: 3
+      _speed: 2.5
       _scanRadius: 120
       _layerMask:
         serializedVersion: 2
@@ -20886,6 +20887,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.94, z: 0}
+--- !u!136 &950920986
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901292564560556909}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.97
+  m_Height: 3.36
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.48, z: 0}
 --- !u!1 &3901292564563679646
 GameObject:
   m_ObjectHideFlags: 0

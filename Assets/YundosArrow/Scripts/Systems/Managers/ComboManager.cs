@@ -7,7 +7,7 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers
     {
         [Header("Combos Settings")]
         [SerializeField, Min(1)] private float _duration = 3f;
-        [SerializeField] private int _maxNumber = 25;
+        [SerializeField] private int _maxNumber = 200;
         [SerializeField] private int _dashNumber = 5;
         [SerializeField] private int _doubleJumpNumber = 5;
         [SerializeField] private int _gatlingNumber = 20;
@@ -16,17 +16,19 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers
         [SerializeField, Range(1, 0)] private float _maxTimeSlow = 0.1f;
         [SerializeField] private float _timeChangeSpeed = 20f;
         [SerializeField] private int _numberToStartSlow = 25;
+        [SerializeField] private int _numberForFullSlow = 100;
 
 
         public UnityEvent OnUpdate;
         private float? _lastChangeTime;
 
         public int CurrentNumber { get; private set; }
-        public float SlowAmount => Mathf.Clamp(1 - ((CurrentNumber - _numberToStartSlow) / (_maxNumber - _numberToStartSlow)), _maxTimeSlow, 1);
+        public float SlowAmount { get; private set; }
         public int DashNumber => _dashNumber;
         public int DoubleJumpNumber => _doubleJumpNumber;
         public int GatlingNumber => _gatlingNumber;
         private static ComboManager _instance;
+        private static float _time = 0f;
 
         public static ComboManager Instance
         {
@@ -52,6 +54,8 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers
             {
                 Destroy(gameObject);
             }
+
+            SlowAmount = 1f;
         }
 
         private void Update()
@@ -81,15 +85,18 @@ namespace Assets.YundosArrow.Scripts.Systems.Managers
                 return;
             }
 
-            float range = _maxNumber - _numberToStartSlow;
+            float range = _numberForFullSlow - _numberToStartSlow;
             float current = CurrentNumber - _numberToStartSlow;
-
+            SlowAmount = Mathf.Clamp(1 - current / range, _maxTimeSlow, 1);
+            
+            // Time.timeScale = Mathf.Clamp(Mathf.Lerp(Time.timeScale, _maxTimeSlow, _time / _timeChangeSpeed), 0f, 1f);
+            // _time += Time.unscaledDeltaTime;
             Time.timeScale = SlowAmount;
 
-            Debug.Log(1 - current / range);
+            Debug.Log($"Time Scale: {SlowAmount}");
         }
 
-		// public void FadeScale(float fadeTime, float scaleTo)
+		// private void FadeScale(float fadeTime, float scaleTo)
 		// {
 		// 	while (Time.timeScale < scaleTo)
 		// 	{

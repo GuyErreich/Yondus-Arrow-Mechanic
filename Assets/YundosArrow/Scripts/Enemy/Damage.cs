@@ -7,13 +7,13 @@ namespace Assets.YundosArrow.Scripts.Enemy {
 
         public float Amount { get; set; }
 
-//        private void OnCollisionEnter(Collision other) { 
-//            var health = other.gameObject.GetComponent<Player.Combat.Health>();
-//            if (health) {
-//                Debug.Log("Health: Collision" + health);
-//                health.Change(-(Amount));
-//            }
-//        }
+        private void OnCollisionEnter(Collision other) { 
+            var health = other.gameObject.GetComponent<Player.Combat.Health>();
+            if (health) {
+                Debug.Log("Health: Collision" + health);
+                health.Change(-(Amount));
+            }
+        }
 
         private void OnTriggerEnter(Collider other) {
             var health = other.GetComponent<Player.Combat.Health>();

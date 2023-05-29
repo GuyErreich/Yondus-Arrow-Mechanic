@@ -826,13 +826,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 7
-  _maxNumber: 300
+  _maxNumber: 100
   _dashNumber: 10
   _doubleJumpNumber: 5
   _gatlingNumber: 20
   _maxTimeSlow: 0.2
   _timeChangeSpeed: 20
-  _numberToStartSlow: 50
+  _numberToStartSlow: 20
+  _numberForFullSlow: 100
   OnUpdate:
     m_PersistentCalls:
       m_Calls:
@@ -2279,7 +2280,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243862454}
-  m_LocalRotation: {x: 0.21270686, y: -0.024597313, z: 0.005356328, w: 0.97679174}
+  m_LocalRotation: {x: 0.21270874, y: -0.024251098, z: 0.0052809357, w: 0.9768004}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2881,7 +2882,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277728772}
-  m_LocalRotation: {x: 0.0035243512, y: 0.038674362, z: -0.00013640492, w: 0.99924564}
+  m_LocalRotation: {x: 0.003520406, y: 0.061149914, z: -0.00021567744, w: 0.9981224}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4808,6 +4809,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1748114586}
     m_Modifications:
+    - target: {fileID: 6903312384760695061, guid: e7ebc4f1768f7c64baa7d99fad4d6e86,
+        type: 3}
+      propertyPath: EnemyStats._followStats._speed
+      value: 2.25
+      objectReference: {fileID: 0}
     - target: {fileID: 6903312384760695080, guid: e7ebc4f1768f7c64baa7d99fad4d6e86,
         type: 3}
       propertyPath: m_RootOrder
@@ -4821,12 +4827,12 @@ PrefabInstance:
     - target: {fileID: 6903312384760695080, guid: e7ebc4f1768f7c64baa7d99fad4d6e86,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6903312384760695080, guid: e7ebc4f1768f7c64baa7d99fad4d6e86,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 88.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6903312384760695080, guid: e7ebc4f1768f7c64baa7d99fad4d6e86,
         type: 3}
@@ -10047,7 +10053,7 @@ PrefabInstance:
     - target: {fileID: 3901292564560556897, guid: 514b9b404df0b1d4bbf4981ea4bb3a0b,
         type: 3}
       propertyPath: EnemyStats._followStats._speed
-      value: 2.5
+      value: 2.25
       objectReference: {fileID: 0}
     - target: {fileID: 3901292564560556908, guid: 514b9b404df0b1d4bbf4981ea4bb3a0b,
         type: 3}
@@ -10062,12 +10068,12 @@ PrefabInstance:
     - target: {fileID: 3901292564560556908, guid: 514b9b404df0b1d4bbf4981ea4bb3a0b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3901292564560556908, guid: 514b9b404df0b1d4bbf4981ea4bb3a0b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 88.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3901292564560556908, guid: 514b9b404df0b1d4bbf4981ea4bb3a0b,
         type: 3}
@@ -10984,7 +10990,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926698291}
-  m_LocalRotation: {x: 0.09115578, y: 0.020759255, z: -0.001900653, w: 0.99561846}
+  m_LocalRotation: {x: 0.09111218, y: 0.037137732, z: -0.0034002175, w: 0.9951421}
   m_LocalPosition: {x: 0.29075533, y: 3.25, z: -5.5479417}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13460,7 +13466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a75a80ac16bafcd48b4c7c8371f2f34c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _amount: 1001
+  _amount: 100
   _layerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -14933,7 +14939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748114585}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 52.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15577,7 +15583,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910683946}
-  m_LocalRotation: {x: 0.09115581, y: 0.02075925, z: -0.0019006537, w: 0.99561846}
+  m_LocalRotation: {x: 0.091112204, y: 0.037137736, z: -0.0034002184, w: 0.9951421}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17367,9 +17373,9 @@ MonoBehaviour:
     _attackStats:
       _arrow: {fileID: 1417798098}
       _anchor: {fileID: 357836161}
-      _amount: 32
+      _amount: 64
       _speed: 150
-      _range: 70
+      _range: 100
       _rateOfFire: 0.005
       _isSphere: 1
       _distance: 1.5

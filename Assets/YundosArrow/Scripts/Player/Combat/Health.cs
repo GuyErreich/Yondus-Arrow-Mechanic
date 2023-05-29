@@ -34,6 +34,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat {
             _lastHitTime = Time.unscaledTime;
             
 			CurrentHealth += amount;
+            Debug.LogError($"Health: {CurrentHealth}");
             OnHealthChanged?.Invoke(CurrentHealth);
         }
     }

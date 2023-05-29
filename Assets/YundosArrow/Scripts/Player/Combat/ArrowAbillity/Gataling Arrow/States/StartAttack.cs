@@ -1,5 +1,6 @@
 using UnityEngine;
 using Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.GatlingArrow.Decisions;
+using Assets.YundosArrow.Scripts.Systems.Managers;
 
 namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.GatlingArrow.States
 {
@@ -17,6 +18,7 @@ namespace Assets.YundosArrow.Scripts.Player.Combat.ArrowAbillity.GatlingArrow.St
 
 		public override void OnStateEnter()
 		{
+            ComboManager.Instance.Decrease(ComboManager.Instance.GatlingNumber);
 			Actions.CreateArrows(Stats.attackStats.arrow, Stats.attackStats.anchor, Stats.attackStats.zOffset,
                                     Stats.attackStats.distance, Stats.attackStats.amount, Stats.attackStats.isSphere);
 		}
