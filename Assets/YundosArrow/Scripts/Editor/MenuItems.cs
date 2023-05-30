@@ -48,5 +48,12 @@ namespace Assets.YundosArrow.Scripts.Editor
             image.fillMethod = Image.FillMethod.Horizontal;
             image.fillOrigin = (int)Image.OriginHorizontal.Right;
         }
+
+        [MenuItem("GameObject/Systems/Managers/GameManager")]
+        private static void CreateGameManager()
+        {
+            GameObject go = new GameObject("GameManager");
+            go.AddComponent<GameManager>();
+        }
     }
 }
