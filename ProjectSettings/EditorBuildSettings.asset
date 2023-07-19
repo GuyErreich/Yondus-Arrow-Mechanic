@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Yundo.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
+  - enabled: 0
+    path: Assets/Yundo ShowReel.unity
+    guid: 2650bcad0508a9b4cbb5464aa90d2dea
+  - enabled: 0
+    path: Assets/Yundo 1.unity
+    guid: bc9c76cd21c91e447b98007e13018fcb
   m_configObjects: {}

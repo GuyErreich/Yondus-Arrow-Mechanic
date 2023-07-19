@@ -20980,8 +20980,8 @@ MonoBehaviour:
       _maxMoveTime: 8.31
       _moveRadius: 80
     _followStats:
-      _speed: 2.5
-      _scanRadius: 120
+      _speed: 3
+      _scanRadius: 200
       _layerMask:
         serializedVersion: 2
         m_Bits: 128

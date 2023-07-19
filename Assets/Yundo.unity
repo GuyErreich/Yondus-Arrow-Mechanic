@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 5928f79fad9488445b516fe4470a23ef,
+  m_LightingDataAsset: {fileID: 112000000, guid: f9673f72a9da6de4a872fcd68e408fdf,
     type: 2}
   m_LightingSettings: {fileID: 1984229888}
 --- !u!196 &4
@@ -1525,17 +1525,17 @@ MonoBehaviour:
   m_InnerSpotPercent: 0
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
-  m_VolumetricDimmer: 1
+  m_VolumetricDimmer: 2.78
   m_LightUnit: 0
   m_FadeDistance: 10000
-  m_VolumetricFadeDistance: 10000
+  m_VolumetricFadeDistance: 10929.4
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 0.5
   m_ShapeHeight: 0.5
   m_AspectRatio: 1
-  m_ShapeRadius: 3
+  m_ShapeRadius: 7.9
   m_SoftnessScale: 1
   m_UseCustomSpotLightShadowCone: 0
   m_CustomSpotLightShadowCone: 30
@@ -1642,12 +1642,12 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.8090929, b: 0.67358494, a: 1}
   m_Intensity: 318469020
-  m_Range: 200
+  m_Range: 428
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1683,13 +1683,13 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
-  m_BounceIntensity: 0
+  m_BounceIntensity: 1.34
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 3
+  m_ShadowRadius: 7.9
   m_ShadowAngle: 0
 --- !u!1 &80092477
 GameObject:
@@ -2534,7 +2534,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243862454}
-  m_LocalRotation: {x: 0.2028645, y: 0.048312604, z: -0.010021772, w: 0.9779629}
+  m_LocalRotation: {x: 0.20286578, y: 0.048188988, z: -0.009996121, w: 0.97796905}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3136,7 +3136,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277728772}
-  m_LocalRotation: {x: -0.03681005, y: 0.15072884, z: 0.0056164423, w: 0.9878737}
+  m_LocalRotation: {x: -0.036853213, y: 0.14292553, z: 0.0053256713, w: 0.9890328}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5198,16 +5198,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1748114586}
     m_Modifications:
-    - target: {fileID: 6903312384760695061, guid: e7ebc4f1768f7c64baa7d99fad4d6e86,
-        type: 3}
-      propertyPath: EnemyStats._followStats._speed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6903312384760695061, guid: e7ebc4f1768f7c64baa7d99fad4d6e86,
-        type: 3}
-      propertyPath: EnemyStats._followStats._scanRadius
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 6903312384760695080, guid: e7ebc4f1768f7c64baa7d99fad4d6e86,
         type: 3}
       propertyPath: m_RootOrder
@@ -5504,7 +5494,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh612868
+  m_Name: pb_Mesh216784
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10540,16 +10530,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1748114586}
     m_Modifications:
-    - target: {fileID: 3901292564560556897, guid: 514b9b404df0b1d4bbf4981ea4bb3a0b,
-        type: 3}
-      propertyPath: EnemyStats._followStats._speed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3901292564560556897, guid: 514b9b404df0b1d4bbf4981ea4bb3a0b,
-        type: 3}
-      propertyPath: EnemyStats._followStats._scanRadius
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 3901292564560556908, guid: 514b9b404df0b1d4bbf4981ea4bb3a0b,
         type: 3}
       propertyPath: m_RootOrder
@@ -11485,7 +11465,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 926698291}
-  m_LocalRotation: {x: 0.055595763, y: 0.38720146, z: -0.023398155, w: 0.92002}
+  m_LocalRotation: {x: 0.05573097, y: 0.38184294, z: -0.023074353, w: 0.9222569}
   m_LocalPosition: {x: -115.73915, y: 3.2500002, z: -131.91579}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12155,7 +12135,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh612762
+  m_Name: pb_Mesh216614
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15080,11 +15060,11 @@ MonoBehaviour:
   - {fileID: 433322948}
   _normalEnemyID: 0
   _normalEnemy: {fileID: 1637166050}
-  _normalEnemyAmount: 100
-  _normalEnemyRespawnTime: 0.5
+  _normalEnemyAmount: 20
+  _normalEnemyRespawnTime: 0.7
   _lightSpeedEnemyID: 1
   _lightSpeedEnemy: {fileID: 24408908}
-  _lightSpeedEnemyAmount: 70
+  _lightSpeedEnemyAmount: 7
   _lightSpeedEnemyRespawnTime: 0.1
   _slowAmountToSpawLightSpeed: 0.56
 --- !u!4 &1659537461
@@ -16011,7 +15991,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh607650
+  m_Name: pb_Mesh211464
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16837,7 +16817,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910683946}
-  m_LocalRotation: {x: 0.059861545, y: 0.122682214, z: -0.0074135503, w: 0.9906113}
+  m_LocalRotation: {x: 0.05990365, y: 0.11691749, z: -0.0070651937, w: 0.9913083}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18974,7 +18954,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh605608
+  m_Name: pb_Mesh209530
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19584,6 +19564,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464435643114572746, guid: f2347bee406f14e4cbac85e4c58f7717,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464435643114572746, guid: f2347bee406f14e4cbac85e4c58f7717,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.y
+      value: 10.071419
+      objectReference: {fileID: 0}
+    - target: {fileID: 4464435643114572746, guid: f2347bee406f14e4cbac85e4c58f7717,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.z
+      value: 5.1022606
       objectReference: {fileID: 0}
     - target: {fileID: 4464435643114572749, guid: f2347bee406f14e4cbac85e4c58f7717,
         type: 3}
